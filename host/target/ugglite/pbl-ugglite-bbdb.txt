@@ -1,0 +1,3012 @@
+j_reset 0 00100000 4 B               reset
+j_reset 1 00100090 4 LDR             PC, =main_function
+sub_100020 0 00100020 4 B               sub_100020
+sub_100040 0 00100040 4 B               sub_100040
+sub_100060 0 00100060 4 B               sub_100060
+reset 0 00100090 4 LDR             PC, =main_function
+reset 1 00100094 4 MCR             p15, 0, R0,c13,c0, 2
+main_function 0 00100094 4 MCR             p15, 0, R0,c13,c0, 2
+main_function 1 001000ac 4 MOV             R0, #j_reset
+main_function 2 001000c4 4 BIC             R0, R0, #1
+main_function 3 001000dc 4 LDR             R0, =0xA606C
+main_function 4 00100100 4 LDR             R0, =0x205400
+main_function 5 00100198 4 LDR             R0, =sub_100060
+main_function 6 001001a4 4 LDR             R0, =loc_105910
+main_function 7 00105910 4 LDR             R0, =off_110000
+main_function 8 00105970 4 LDR             R1, [R6,R4,LSL#2]
+main_function 9 0010597c 4 LDR             R0, =0x21863C
+main_function 10 00105988 4 CMP             R5, #0
+main_function 11 00105990 4 MOV             R3, R5
+main_function 12 001059a4 4 B               loc_1059A4
+main_function 13 001059a8 4 ADD             R4, R4, #1
+main_function 14 001059b4 4 B               loc_1059A4
+main_function 15 00100290 4 B               loc_100290
+main_function 16 00100258 4 MOV             R0, #0
+infinite_loop 0 00100258 4 MOV             R0, #0
+infinite_loop 1 00100290 4 B               loc_100290
+some_stack_arrangements 0 001002a8 4 STMFD           SP!, {R4,LR}
+some_stack_arrangements 1 001002c0 4 SUB             R0, R0, R2
+some_stack_arrangements 2 001002d8 4 LDMFD           SP!, {R4,PC}
+sub_1002DC 0 001002dc 4 LDR             SP, =0x2053E0
+sub_1002E4 0 001002e4 4 MCR             p15, 0, R0,c12,c0, 0
+sub_1003FC 0 001003fc 4 STMFD           SP!, {R4-R11,LR}
+sub_1003FC 1 00100430 4 LDR             R1, [R0,#4]
+sub_1003FC 2 0010044c 4 LDR             R3, [R0,#0]
+sub_1003FC 3 0010046c 4 TST             R4, #3
+sub_1003FC 4 00100488 4 LDR             R0, [R11,#0x100]
+sub_1003FC 5 00100494 4 CMP             R9, #0
+sub_1003FC 6 001004a0 4 MOV             R2, #4
+sub_1003FC 7 001004b4 4 STR             R0, [R11,#0x10]
+sub_1003FC 8 001004c8 4 CMP             R7, #0
+sub_1003FC 9 001004d8 4 LDR             R0, [R11,#0x100]
+sub_1003FC 10 001004e4 4 ADD             R1, R5, R4,LSL#2
+sub_1003FC 11 00100508 4 LDR             R0, [R11,#0x100]
+sub_1003FC 12 00100514 4 LDR             R0, [R11,#0x100]
+sub_1003FC 13 00100520 4 LDR             R0, [SP,#0x18]
+sub_1003FC 14 0010052c 4 ADD             SP, SP, #0x1C
+sub_1003FC 15 0010f0d4 4 B               loc_10F0D4
+sub_100548 0 00100548 4 MOV             R1, #0
+sub_100548 1 0010055c 4 LDRB            R2, [R0,#0]
+sub_100548 2 00100570 4 CMP             R2, #2
+sub_100548 3 00100580 4 MOV             R0, #2
+sub_100548 4 0010058c 4 LDR             R12, [R0,#0x2D]
+sub_100548 5 001005a4 4 ADD             R5, R0, R1,LSL#2
+sub_100548 6 001005c0 4 STR             R2, [R12,#0x300]
+sub_100548 7 001005f4 4 AND             R1, R0, #0xF
+sub_100548 8 00100604 4 MOV             R0, #1
+sub_100548 9 0010060c 4 LDR             R0, [R12,#0x100]
+sub_100548 10 0010061c 4 MOV             R0, R4
+sub_100634 0 00100634 4 CMP             R0, #0
+sub_100634 1 00100640 4 LDR             R1, =0x73A000
+sub_100634 2 00100654 4 BX              LR
+sub_10065C 0 0010065c 4 CMP             R1, #0
+sub_10065C 1 00100670 4 CMP             R3, #6; switch 6 cases
+sub_10065C 2 0010067c 4 B               loc_1006AC; jumptable 00100678 default case
+sub_10065C 3 00100698 4 MOV             R2, #0xD; jumptable 00100678 case 2
+sub_10065C 4 001006a0 4 MOV             R2, #0xE; jumptable 00100678 case 3
+sub_10065C 5 001006a4 4 STR             R2, [R1,#0]; jumptable 00100678 cases 0,1,4,5
+sub_10065C 6 001006a8 4 BX              LR
+sub_10065C 7 001006ac 4 MOV             R0, #1; jumptable 00100678 default case
+sub_1006B4 0 001006b4 4 STMFD           SP!, {R4-R6,LR}
+sub_1006B4 1 001006d8 4 B               loc_100834; jumptable 001006D4 default case
+sub_1006B4 2 001006fc 4 CMP             R3, #0; jumptable 001006D4 case 1
+sub_1006B4 3 00100708 4 CMP             R4, #0
+sub_1006B4 4 00100718 4 LDMFD           SP!, {R4-R6,PC}
+sub_1006B4 5 0010071c 4 CMP             R1, #0; jumptable 001006D4 case 2
+sub_1006B4 6 00100724 4 CMP             R2, #0x35
+sub_1006B4 7 0010072c 4 MOV             R0, R1
+sub_1006B4 8 00100738 4 CMP             R3, #0; jumptable 001006D4 case 3
+sub_1006B4 9 00100740 4 CMP             R12, #0x35
+sub_1006B4 10 00100748 4 CMP             R4, #0
+sub_1006B4 11 00100750 4 LDRB            R2, [R3,#0]
+sub_1006B4 12 0010076c 4 LDR             R2, =0x73A000
+sub_1006B4 13 00100780 4 ADD             R12, R2, R1,LSL#2
+sub_1006B4 14 0010079c 4 MOV             R1, #0x35
+sub_1006B4 15 001007a4 4 CMP             R1, #0; jumptable 001006D4 case 4
+sub_1006B4 16 001007ac 4 CMP             R2, #8
+sub_1006B4 17 001007b4 4 CMP             R4, #0
+sub_1006B4 18 001007bc 4 MOV             R0, R1
+sub_1006B4 19 001007c8 4 STR             R1, [R4,#0]
+sub_1006B4 20 001007d0 4 CMP             R1, #0; jumptable 001006D4 case 5
+sub_1006B4 21 001007d8 4 CMP             R2, R5
+sub_1006B4 22 001007e4 4 B               loc_100834; jumptable 001006D4 default case
+sub_1006B4 23 001007e8 4 CMP             R3, #0; jumptable 001006D4 case 6
+sub_1006B4 24 001007f0 4 CMP             R5, R12
+sub_1006B4 25 001007f8 4 CMP             R4, #0
+sub_1006B4 26 00100808 4 B               loc_100834; jumptable 001006D4 default case
+sub_1006B4 27 0010080c 4 CMP             R1, #0; jumptable 001006D4 case 7
+sub_1006B4 28 00100814 4 CMP             R2, #0xC
+sub_1006B4 29 0010081c 4 CMP             R4, #0
+sub_1006B4 30 00100824 4 MOV             R1, #0xC
+sub_1006B4 31 00100834 4 MOV             R0, #1; jumptable 001006D4 default case
+sub_1006B4 32 00100548 4 MOV             R1, #0
+sub_100840 0 00100840 4 CMP             R0, #0
+sub_100840 1 0010084c 4 LDR             R1, =0x73A400
+sub_100840 2 0010085c 4 BX              LR
+sub_100874 0 00100874 4 STR             LR, [SP,#-4]!
+sub_1008F8 0 001008f8 4 CMP             R0, #0
+sub_1008F8 1 00100904 4 LDR             R2, [R1,#0]
+sub_1008F8 2 00100910 4 MOV             R0, #1
+sub_1008F8 3 00100918 4 MOV             R2, #0
+sub_100930 0 00100930 4 CMP             R1, #0
+sub_100930 1 0010093c 4 CMP             R0, #0
+sub_100930 2 00100950 4 BX              LR
+sub_100970 0 00100970 4 STMFD           SP!, {R4,LR}
+sub_100988 0 00100988 4 STMFD           SP!, {R4,LR}
+sub_100A2C 0 00100a2c 4 STMFD           SP!, {R4-R6,LR}
+sub_100A2C 1 00100a38 4 LDR             R0, [R5,#0x104]
+sub_100A2C 2 00100a44 4 MOV             R0, #0x3E8
+sub_100A2C 3 00100a54 4 LDR             R0, [R5,#0x104]
+sub_100A2C 4 00100a64 4 LDR             R0, [R5,#0x104]
+sub_100A2C 5 00100a70 4 LDMFD           SP!, {R4-R6,PC}
+sub_100AA8 0 00100aa8 4 STMFD           SP!, {R4-R8,LR}
+sub_100AA8 1 00100ac4 4 LDR             R0, [R5,#4]
+sub_100AA8 2 00100ad0 4 LDR             R0, [R5,#0]
+sub_100AA8 3 00100adc 4 CMP             R2, #1
+sub_100AA8 4 00100ae4 4 CMP             R1, #0
+sub_100AA8 5 00100aec 4 LDRB            R2, [R8,#0]
+sub_100AA8 6 00100afc 4 CMP             R2, #2
+sub_100AA8 7 00100b08 4 LDR             R0, [R0,#4]
+sub_100AA8 8 00100b1c 4 MOV             R0, #2
+sub_100AA8 9 00100b20 4 LDMFD           SP!, {R4-R8,PC}
+sub_100AA8 10 00100b24 4 CMN             R4, #4
+sub_100AA8 11 00100b2c 4 MOV             R3, #0
+sub_100AA8 12 00100b48 4 ADDS            R4, R4, #4
+sub_100AA8 13 00100b54 4 B               loc_100B6C
+sub_100AA8 14 00100b58 4 MOV             R3, #1
+sub_100AA8 15 00100b6c 4 LDR             R0, [R5,#0]
+sub_100AA8 16 00100b88 4 MOV             R1, #1
+sub_100B9C 0 00100b9c 4 CMP             R0, #0
+sub_100B9C 1 00100bb0 4 MOV             R2, #0
+sub_100B9C 2 00100bc0 4 BX              LR
+sub_100BC4 0 00100bc4 4 STMFD           SP!, {R4-R6,LR}
+sub_100BC4 1 00100be0 4 LDR             R0, [R5,#4]
+sub_100BC4 2 00100bec 4 LDR             R1, [R5,#0]
+sub_100BC4 3 00100bf8 4 LDRB            R0, [R4,#0]
+sub_100BC4 4 00100c08 4 CMP             R0, #2
+sub_100BC4 5 00100c14 4 LDR             R0, [R1,#4]
+sub_100BC4 6 00100c20 4 MOV             R0, #2
+sub_100BC4 7 00100c24 4 LDMFD           SP!, {R4-R6,PC}
+sub_100BC4 8 00100c28 4 LDR             R0, [R4,#0x75]
+sub_100BC4 9 00100c34 4 CMP             R0, #0x40
+sub_100BC4 10 00100c40 4 ADD             R1, R4, #0x35
+sub_100BC4 11 00100c5c 4 LDR             R2, [R4,#0x75]
+sub_100BC4 12 00100c78 4 LDR             R0, [R5,#0]
+sub_100BC4 13 00100c94 4 MOV             R1, #1
+sub_100CA8 0 00100ca8 4 CMP             R1, #1
+sub_100CA8 1 00100cb8 4 CMP             R0, #0
+sub_100CA8 2 00100cc8 4 LDR             R0, [R0,#0]
+sub_100CA8 3 00100cd4 4 CMP             R1, #1
+sub_100CA8 4 00100ce0 4 MOV             R0, #2
+sub_100CA8 5 00100ce8 4 MOV             R2, #0
+sub_100CA8 6 00100d08 4 CMP             R1, #2
+sub_100CA8 7 00100d10 4 B               loc_100D8C
+sub_100CA8 8 00100d14 4 LDR             R1, =0x1234567
+sub_100CA8 9 00100d44 4 MOV             R1, #2
+sub_100CA8 10 00100d8c 4 MOV             R0, R3
+sub_100DC8 0 00100dc8 4 STMFD           SP!, {R4-R10,LR}
+sub_100DC8 1 00100ddc 4 CMP             R2, #1
+sub_100DC8 2 00100de4 4 CMP             R1, #0
+sub_100DC8 3 00100dec 4 LDR             R5, [R1,#4]
+sub_100DC8 4 00100e04 4 MOV             R0, #1
+sub_100DC8 5 00100e08 4 LDMFD           SP!, {R4-R10,PC}
+sub_100DC8 6 00100e0c 4 MOV             R0, #2
+sub_100DC8 7 00100e14 4 CMP             R1, #0x40
+sub_100DC8 8 00100e1c 4 ADD             R1, R4, #0x35
+sub_100DC8 9 00100e38 4 LDR             R1, [R4,#0x75]
+sub_100DC8 10 00100e48 4 CMP             R0, #0x40
+sub_100DC8 11 00100e54 4 CMP             R7, #0x40
+sub_100DC8 12 00100e5c 4 CMP             R0, #0x40
+sub_100DC8 13 00100e64 4 ADD             R1, R4, #0x35
+sub_100DC8 14 00100e80 4 MOV             R2, #0x40
+sub_100DC8 15 00100ea0 4 CMP             R7, R5
+sub_100DC8 16 00100ea8 4 SUB             R0, R5, R7
+sub_100DC8 17 00100edc 4 CMP             R8, #0
+sub_100DC8 18 00100ef0 4 CMN             R5, #4
+sub_100DC8 19 00100efc 4 MOV             R2, #0xFFFFFFFC
+sub_100DC8 20 00100f14 4 ADDS            R5, R5, #4
+sub_100DC8 21 00100f20 4 LDMFD           SP!, {R4-R10,PC}
+sub_100DC8 22 00100f24 4 MOV             R2, R5
+sub_100DC8 23 00100fd0 4 STMFD           SP!, {R4-R9,LR}
+sub_100F40 0 00100f40 4 LDR             R0, =dword_10F75C
+sub_100F40 1 00100f80 4 MOV             R1, SP
+sub_100F40 2 00100f94 4 LDR             R0, [SP,#0]
+sub_100F40 3 00100fa0 4 LDRB            R0, [SP,#8]
+sub_100F40 4 00100fa8 4 MOV             R5, R0
+sub_100F40 5 00100fb8 4 ADD             SP, SP, #0x14
+sub_100F40 6 00100fc4 4 MOV             R0, #1
+sub_100F40 7 0010f0d4 4 B               loc_10F0D4
+sub_100FD0 0 00100fd0 4 STMFD           SP!, {R4-R9,LR}
+sub_100FD0 1 0010100c 4 CMP             R3, #1
+sub_100FD0 2 00101048 4 TST             R5, #0xF
+sub_100FD0 3 00101050 4 AND             R0, R5, #0xF
+sub_100FD0 4 0010105c 4 ADD             R0, SP, #0x18
+sub_100FD0 5 00101094 4 CMP             R0, #2
+sub_100FD0 6 001010a0 4 STR             R0, [SP,#0xC]
+sub_100FD0 7 001010a4 4 ADD             R1, SP, #0x28
+sub_100FD0 8 001010b8 4 LDR             R0, [SP,#0x28]
+sub_100FD0 9 001010c8 4 LDRB            R0, [SP,#0x34]
+sub_100FD0 10 001010dc 4 LDR             R3, [SP,#0x30]
+sub_100FD0 11 001010f8 4 MOV             R0, #0x35
+sub_100FD0 12 0010111c 4 MOV             R6, R0
+sub_100FD0 13 00101120 4 LDR             R0, [SP,#0x38]
+sub_100FD0 14 0010112c 4 ADD             SP, SP, #0x3C
+sub_100FD0 15 0010f0d4 4 B               loc_10F0D4
+sub_10113C 0 0010113c 4 LDR             R2, =0x118600
+sub_10113C 1 00103e8c 4 STMFD           SP!, {R4-R10,LR}
+sub_101170 0 00101170 4 MOV             R3, R0
+sub_101170 1 00101188 4 LDR             R4, [R3,#0]
+sub_101170 2 001011b0 4 LDMFD           SP!, {R4,R5}
+sub_1011B8 0 001011b8 4 LDR             R2, =0x80034B0
+sub_1011B8 1 001011d0 4 LDR             R0, [R0,#4]
+sub_1011B8 2 001011dc 4 BL              sub_1012B0
+sub_1011B8 3 001011e8 4 MOV             R0, R1
+sub_1011F4 0 001011f4 4 STMFD           SP!, {R3-R7,LR}
+sub_1011F4 1 0010126c 4 CMP             R0, #0
+sub_1011F4 2 00101278 4 LDR             R0, [R4,#4]
+sub_1011F4 3 00101284 4 ORRS            R0, R6, R5
+sub_1011F4 4 00101298 4 LDR             R0, [R7,#4]
+sub_1011F4 5 001012a4 4 LDMFD           SP!, {R3-R7,PC}
+sub_1011F4 6 00102470 4 LDR             R5, =0x80034B0
+sub_1012B0 0 001012b0 4 STMFD           SP!, {R3-R7,LR}
+sub_1012B0 1 0010130c 4 MOV             R2, #0
+sub_1012B0 2 0010133c 4 CMP             R0, #0
+sub_1012B0 3 00101344 4 LDR             R0, [R4,#4]
+sub_1012B0 4 00101350 4 STRB            R6, [R5,#0]
+sub_101360 0 00101360 4 STMFD           SP!, {R4-R6,LR}
+sub_101360 1 0010139c 4 LDR             R0, [R5,#0x30]
+sub_101360 2 001013b4 4 LDRD            R0, [R5,#0x50]
+sub_1013C8 0 001013c8 4 STMFD           SP!, {R4-R6,LR}
+sub_1013C8 1 001013e4 4 LDR             R2, [R1,#8]
+sub_1013C8 2 00101400 4 STR             R0, [R5,#0x30]
+sub_1013C8 3 0010141c 4 LDR             R6, [R0,#8]
+sub_1013C8 4 00101430 4 LDR             R6, [R0,#0x10]
+sub_1013C8 5 00101444 4 LDR             R6, [R0,#0x18]
+sub_1013C8 6 00101458 4 LDR             R6, [R0,#0x20]
+sub_1013C8 7 0010146c 4 LDR             R6, [R0,#0x24]
+sub_1013C8 8 00101480 4 LDR             R6, [R0,#0x2C]
+sub_1013C8 9 00101494 4 STR             R12, [R5,#0x5C]
+sub_1013C8 10 001014b0 4 LDR             R12, [R1,#0]
+sub_1013C8 11 001014c4 4 LDR             R12, [R1,#0x10]
+sub_1013C8 12 001014d8 4 LDR             R12, [R1,#0xC]
+sub_1013C8 13 001014ec 4 LDR             R1, [R1,#0x18]
+sub_1013C8 14 00101500 4 LDR             R1, [R2,#4]
+sub_1013C8 15 0010150c 4 STR             R3, [R5,#0xC]
+sub_1013C8 16 0010151c 4 STR             R6, [R3,#0]
+sub_1013C8 17 001015ac 4 CMP             R4, #0
+sub_1013C8 18 001015b8 4 MOV             R0, R4
+sub_1013C8 19 001015c0 4 MOV             R4, #0
+sub_1013C8 20 001015c4 4 LDR             R1, [R5,#4]
+sub_1015D8 0 001015d8 4 LDR             R12, =0x80034B0
+sub_10163C 0 0010163c 4 STMFD           SP!, {R4-R11,LR}
+sub_10163C 1 00101664 4 MOV             R7, #0
+sub_10163C 2 0010169c 4 SUB             R0, R5, R1
+sub_10163C 3 001016b4 4 STR             R9, [R8,#0x44]
+sub_10163C 4 001016ec 4 LDR             R0, [R8,#0x30]
+sub_10163C 5 00101704 4 LDR             R0, [R8,#0x48]
+sub_10163C 6 00101710 4 CMP             R5, #0
+sub_10163C 7 00101718 4 MOV             R2, #1
+sub_10163C 8 0010173c 4 B               loc_101D70; jumptable 00101738 default case
+sub_10163C 9 00101778 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 0
+sub_10163C 10 00101784 4 CMP             R5, #0x30
+sub_10163C 11 00101790 4 CMP             R5, #0x14
+sub_10163C 12 001017a0 4 B               loc_1017B8
+sub_10163C 13 001017a4 4 LDR             R0, [R1,#4]
+sub_10163C 14 001017b0 4 MOV             R0, #5
+sub_10163C 15 001017b8 4 LDR             R0, [R1,#0x10]
+sub_10163C 16 001017c4 4 LDR             R0, [R1,#8]
+sub_10163C 17 001017d8 4 LDR             R2, [R8,#0x34]
+sub_10163C 18 001017f0 4 CMP             R5, #0x14
+sub_10163C 19 001017fc 4 LDR             R0, [R1,#0x14]
+sub_10163C 20 00101810 4 CMP             R0, #2
+sub_10163C 21 00101818 4 CMP             R0, #3
+sub_10163C 22 00101820 4 LDR             R0, [R8,#8]
+sub_10163C 23 00101834 4 BL              sub_1011F4
+sub_10163C 24 00101844 4 LDR             R0, [R8,#8]
+sub_10163C 25 00101850 4 STRB            R0, [R8,#0]
+sub_10163C 26 00101858 4 LDR             R0, [R8,#0x2C]
+sub_10163C 27 00101864 4 LDR             R0, [R8,#0x28]
+sub_10163C 28 00101878 4 STR             R9, [SP,#0]
+sub_10163C 29 001018ec 4 CMP             R0, #0
+sub_10163C 30 001018f4 4 B               loc_101960
+sub_10163C 31 001018f8 4 MOV             R0, #0x1B
+sub_10163C 32 00101900 4 LDR             R0, [R4,#4]
+sub_10163C 33 00101910 4 B               loc_101850
+sub_10163C 34 00101914 4 LDR             R4, =0x80037A8
+sub_10163C 35 00101958 4 CMP             R0, #0
+sub_10163C 36 00101960 4 MOV             R0, #0xC
+sub_10163C 37 00101968 4 MOV             R0, #0x17
+sub_10163C 38 00101970 4 LDR             R0, [R4,#4]
+sub_10163C 39 00101980 4 MOV             R0, #0xA
+sub_10163C 40 00101988 4 BL              sub_102130
+sub_10163C 41 00101998 4 B               loc_101CDC
+sub_10163C 42 0010199c 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 3
+sub_10163C 43 001019a8 4 CMP             R5, #8
+sub_10163C 44 001019bc 4 MOV             R0, #6
+sub_10163C 45 001019dc 4 MOV             R2, #0
+sub_10163C 46 00101a0c 4 CMP             R0, #0
+sub_10163C 47 00101a14 4 LDR             R0, [R4,#4]
+sub_10163C 48 00101a20 4 LDR             R0, [R8,#0x14]
+sub_10163C 49 00101a2c 4 B               loc_101A74
+sub_10163C 50 00101a30 4 MOV             R0, #2
+sub_10163C 51 00101a58 4 CMP             R0, #0xA
+sub_10163C 52 00101a64 4 STRB            R9, [R8,#0]
+sub_10163C 53 00101a70 4 B               loc_101A70
+sub_10163C 54 00101a74 4 LDR             R0, [R8,#0x30]
+sub_10163C 55 00101a8c 4 CMP             R0, #1
+sub_10163C 56 00101a98 4 CMP             R0, #0xB
+sub_10163C 57 00101aa0 4 STRB            R9, [R8,#0]
+sub_10163C 58 00101aa8 4 STR             R10, [R8,#0x10]
+sub_10163C 59 00101ab0 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 5
+sub_10163C 60 00101ac0 4 CMP             R0, #0xA
+sub_10163C 61 00101acc 4 CMP             R5, #8
+sub_10163C 62 00101ae0 4 STR             R9, [SP,#0]
+sub_10163C 63 00101b14 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 8
+sub_10163C 64 00101b20 4 CMP             R5, #0x10
+sub_10163C 65 00101b3c 4 LDRD            R0, [R4,#8]
+sub_10163C 66 00101b58 4 LDRD            R0, [R4,#8]
+sub_10163C 67 00101b78 4 CMP             R5, #0
+sub_10163C 68 00101b80 4 LDR             R0, [R8,#0x28]
+sub_10163C 69 00101bac 4 MOV             R6, #0x19
+sub_10163C 70 00101bb8 4 LDR             R0, [R8,#0x24]
+sub_10163C 71 00101bd8 4 CMP             R0, #0
+sub_10163C 72 00101be0 4 MOV             R6, #0xC
+sub_10163C 73 00101be8 4 MOV             R6, #0x17
+sub_10163C 74 00101bf0 4 CMP             R1, R4
+sub_10163C 75 00101bf8 4 MOV             R6, #0xA
+sub_10163C 76 00101bfc 4 MOV             R0, R6
+sub_10163C 77 00101c04 4 CMP             R6, #0
+sub_10163C 78 00101c14 4 B               loc_101BFC
+sub_10163C 79 00101c18 4 LDRD            R0, [R4,#8]
+sub_10163C 80 00101c30 4 CMP             R1, #0
+sub_10163C 81 00101c38 4 LDR             R1, [R4,#0xC]
+sub_10163C 82 00101c44 4 B               loc_101CDC
+sub_10163C 83 00101c48 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 10
+sub_10163C 84 00101c58 4 CMP             R5, #0xC
+sub_10163C 85 00101c6c 4 LDR             R0, [R0,#8]
+sub_10163C 86 00101c7c 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 11
+sub_10163C 87 00101c88 4 CMP             R5, #0xC
+sub_10163C 88 00101ca8 4 LDR             R1, [R8,#0x30]
+sub_10163C 89 00101cd8 4 BL              sub_1011F4
+sub_10163C 90 00101cdc 4 LDRB            R0, [R8,#0]
+sub_10163C 91 00101ce8 4 B               loc_101E88
+sub_10163C 92 00101cec 4 LDR             R4, =0x80037A8
+sub_10163C 93 00101d3c 4 CMP             R0, #0
+sub_10163C 94 00101d44 4 LDR             R0, [R4,#4]
+sub_10163C 95 00101d50 4 LDR             R0, [R8,#0x1C]
+sub_10163C 96 00101d60 4 B               loc_101CDC
+sub_10163C 97 00101d64 4 LDRB            R0, [R8,#0]; jumptable 00101738 case 13
+sub_10163C 98 00101d70 4 CMP             R7, #0; jumptable 00101738 default case
+sub_10163C 99 00101d7c 4 B               loc_101CD8
+sub_10163C 100 00101d80 4 LDR             R0, =0x80037A8
+sub_10163C 101 00101d98 4 LDR             R0, [R0,#8]
+sub_10163C 102 00101dac 4 LDR             R0, [R8,#0x20]
+sub_10163C 103 00101dd8 4 CMP             R1, #0
+sub_10163C 104 00101de0 4 LDR             R1, [R8,#0x1C]
+sub_10163C 105 00101df0 4 B               loc_101850
+sub_10163C 106 00101df4 4 LDR             R4, =0x80037A8
+sub_10163C 107 00101e40 4 MOV             R2, #0
+sub_10163C 108 00101e70 4 CMP             R0, #0
+sub_10163C 109 00101e78 4 LDR             R0, [R4,#4]
+sub_10163C 110 00101e84 4 STRB            R10, [R8,#0]
+sub_10163C 111 00101e88 4 LDR             R0, [R8,#0x10]
+sub_10163C 112 00101e94 4 STRB            R9, [R8,#0]
+sub_10163C 113 00102470 4 LDR             R5, =0x80034B0
+sub_101EB0 0 00101eb0 4 STMFD           SP!, {R4-R11,LR}
+sub_101EB0 1 00101ed4 4 CMP             R6, #0
+sub_101EB0 2 00101edc 4 LDR             R5, =0x80034B0
+sub_101EB0 3 00101ef8 4 LDR             R0, [R5,#0x30]
+sub_101EB0 4 00101f08 4 LDR             R0, =0x80034B0
+sub_101EB0 5 00101f68 4 CMP             R0, #0
+sub_101EB0 6 00101f74 4 BL              sub_1011F4
+sub_101EB0 7 00101f78 4 LDR             R0, =0x80034B0
+sub_101EB0 8 00101f88 4 ADD             R1, SP, #4
+sub_101EB0 9 00101fc0 4 LDR             R0, [SP,#0]
+sub_101EB0 10 00101fcc 4 CMP             R5, R9
+sub_101EB0 11 00101fd4 4 MOV             R0, #8
+sub_101EB0 12 00101fe4 4 LDR             R0, [R5,#4]
+sub_101EB0 13 00101ff4 4 B               loc_101F74
+sub_101EB0 14 00101ff8 4 LDR             R0, =0x80034B0
+sub_101EB0 15 00102044 4 LDR             R0, [R5,#0x30]
+sub_101EB0 16 0010205c 4 LDR             R1, =0x80034B0
+sub_101EB0 17 00102070 4 MOV             R3, #1
+sub_101EB0 18 001020cc 4 CMP             R1, #0
+sub_101EB0 19 001020d4 4 MOV             R7, #0xC
+sub_101EB0 20 001020dc 4 MOV             R7, #0x16
+sub_101EB0 21 001020e4 4 CMP             R0, R4
+sub_101EB0 22 001020ec 4 MOV             R7, #8
+sub_101EB0 23 001020f4 4 MOV             R7, #0xD
+sub_101EB0 24 001020f8 4 ADD             SP, SP, #0x14
+sub_101EB0 25 00102104 4 CMP             R7, #0
+sub_101EB0 26 0010211c 4 B               loc_1020F8
+sub_102130 0 00102130 4 STMFD           SP!, {R4-R11,LR}
+sub_102130 1 00102170 4 MOV             R0, #6
+sub_102130 2 001021a4 4 LDR             R0, [R11,#0x30]
+sub_102130 3 001021d8 4 MOV             R0, #7
+sub_102130 4 00102208 4 ADD             R10, R5, #0x14
+sub_102130 5 00102240 4 CMP             R0, R6
+sub_102130 6 00102248 4 ADD             R1, R10, R6,LSL#5
+sub_102130 7 0010225c 4 CMP             R8, #0
+sub_102130 8 00102268 4 B               loc_102278
+sub_102130 9 0010226c 4 CMP             R8, #0
+sub_102130 10 00102278 4 ADD             R0, R10, R8,LSL#5
+sub_102130 11 0010229c 4 LDR             R0, [SP,#0]
+sub_102130 12 001022b4 4 LDR             R0, [R11,#0x30]
+sub_102130 13 001022d4 4 LDR             R0, [R11,#0xC]
+sub_102130 14 001022e4 4 CMP             R6, #0
+sub_102130 15 001022ec 4 MOV             R2, R5
+sub_102130 16 00102304 4 B               loc_102428
+sub_102130 17 00102308 4 MOV             R8, R6
+sub_102130 18 00102320 4 MOV             R4, #0x26
+sub_102130 19 00102328 4 LDR             R0, [R11,#0x5C]
+sub_102130 20 00102348 4 B               loc_1023F8
+sub_102130 21 0010234c 4 CMP             R8, R5
+sub_102130 22 00102354 4 LDR             R0, [R11,#0x5C]
+sub_102130 23 00102370 4 LDR             R0, [R6,#4]
+sub_102130 24 0010239c 4 LDR             R0, [SP,#0]
+sub_102130 25 001023b0 4 MOV             R4, #0x12
+sub_102130 26 001023b8 4 LDR             R0, [R11,#0x30]
+sub_102130 27 001023d8 4 LDR             R0, [SP,#8]
+sub_102130 28 001023f4 4 ADD             R5, R5, #1
+sub_102130 29 001023f8 4 LDRH            R0, [R7,#0x2C]
+sub_102130 30 00102404 4 CMP             R4, #0
+sub_102130 31 0010240c 4 LDR             R0, [R11,#0x5C]
+sub_102130 32 00102428 4 CMP             R4, #0x16
+sub_102130 33 00102430 4 CMP             R4, #0
+sub_102130 34 00102438 4 B               loc_102454
+sub_102130 35 0010243c 4 MOV             R0, #2
+sub_102130 36 00102448 4 LDR             R1, [R11,#0xC]
+sub_102130 37 00102454 4 ADD             SP, SP, #0x14
+sub_102130 38 00102470 4 LDR             R5, =0x80034B0
+sub_102130 39 00102498 4 CMP             R0, #0xA
+sub_102130 40 001024a4 4 MOV             R0, #1
+sub_102130 41 001024b4 4 B               loc_1024B4
+sub_1024EC 0 001024ec 4 STMFD           SP!, {R4-R12,LR}
+sub_1024EC 1 0010250c 4 BNE             loc_1025EC
+sub_1024EC 2 00102510 4 LDR             R0, [R4,#4]
+sub_1024EC 3 00102520 4 CMN             R2, #1
+sub_1024EC 4 0010252c 4 CMP             R2, #0
+sub_1024EC 5 00102538 4 CMP             R6, R2
+sub_1024EC 6 00102544 4 LDR             R1, [R4,#4]
+sub_1024EC 7 0010255c 4 LDR             R2, [R5,#0]
+sub_1024EC 8 00102568 4 LDR             R1, [R4,#0]
+sub_1024EC 9 00102580 4 BL              sub_10F760
+sub_1024EC 10 00102584 4 LDR             R2, [R5,#0]
+sub_1024EC 11 001025e8 4 B               loc_10266C
+sub_1024EC 12 001025ec 4 MOV             R0, #0xFFFFFFFF
+sub_1024EC 13 001025f4 4 LDR             R3, [R4,#0]
+sub_1024EC 14 0010263c 4 MOVS            R2, R1
+sub_1024EC 15 00102644 4 LDR             R1, [R4,#4]
+sub_1024EC 16 00102654 4 BNE             loc_1026BC
+sub_1024EC 17 00102658 4 LDR             R1, [R4,#0]
+sub_1024EC 18 00102668 4 B               loc_1025F4
+sub_1024EC 19 0010266c 4 LDR             R2, [R4,#0]
+sub_1024EC 20 001026bc 4 STR             R0, [R7,#0]
+sub_10270C 0 0010270c 4 CMN             R1, #0xFC000001
+sub_10270C 1 00102718 4 CMP             R1, #0
+sub_10270C 2 00102720 4 ADD             R2, R0, R1,LSL#2
+sub_10270C 3 00102734 4 MOV             R2, #0
+sub_10270C 4 00102780 4 BX              LR
+sub_10270C 5 00102784 4 MOV             R0, #0xFFFFFFFF
+sub_10278C 0 0010278c 4 TST             R0, #2
+sub_10278C 1 001027b4 4 TST             R0, R1
+sub_10278C 2 001027e4 4 LDMFD           SP!, {R4,R5}
+sub_1027F0 0 001027f0 4 STMFD           SP!, {R0-R11,LR}
+sub_1027F0 1 00102810 4 LDR             R1, [SP,#0x28]
+sub_1027F0 2 00102828 4 LDR             R0, [SP,#0x28]
+sub_1027F0 3 0010283c 4 LDR             R0, [SP,#0x24]
+sub_1027F0 4 00102850 4 MOV             R1, R8,LSL#2
+sub_1027F0 5 00102864 4 CMP             R0, #0
+sub_1027F0 6 0010286c 4 MOV             R1, #0
+sub_1027F0 7 001028b0 4 ADD             SP, SP, #0x2C
+sub_1027F0 8 001028bc 4 LDR             R0, [SP,#0x1C]
+sub_1027F0 9 001028d8 4 LDR             R0, [SP,#0x1C]
+sub_1027F0 10 001028e8 4 ADD             SP, SP, #0x2C
+sub_1027F0 11 001028f4 4 LDR             R0, [SP,#0xC]
+sub_1027F0 12 0010293c 4 AND             R0, R4, #1
+sub_1027F0 13 0010294c 4 LDR             R3, [R2,R1,LSL#2]
+sub_1027F0 14 0010295c 4 ADD             R1, R1, #1
+sub_1027F0 15 00102968 4 CMP             R0, R4
+sub_1027F0 16 00102970 4 LDR             R1, [R2,R0,LSL#2]
+sub_1027F0 17 00102980 4 ADD             R1, R2, R0,LSL#2
+sub_1027F0 18 00102994 4 LDR             R0, [R7,#0xC]
+sub_1027F0 19 001029b4 4 MOV             R0, R10,ASR#31
+sub_1027F0 20 001029f8 4 B               loc_102AB4
+sub_1027F0 21 001029fc 4 ADD             R0, R0, #2
+sub_1027F0 22 00102a08 4 B               loc_1029B4
+sub_1027F0 23 00102a0c 4 MOV             R0, R10,ASR#31
+sub_1027F0 24 00102a38 4 LDR             R6, [R7,#0]
+sub_1027F0 25 00102a6c 4 CMP             R11, #0
+sub_1027F0 26 00102a74 4 LDR             R6, [R7,#0]
+sub_1027F0 27 00102aa8 4 SUBS            R10, R10, #2
+sub_1027F0 28 00102ab4 4 STR             R9, [SP,#0]
+sub_1027F0 29 00102ad0 4 LDR             R0, [SP,#0x1C]
+sub_1027F0 30 00102ae0 4 ADD             SP, SP, #0x2C
+sub_102AF0 0 00102af0 4 STMFD           SP!, {R0-R11,LR}
+sub_102AF0 1 00102b20 4 LDR             R1, [SP,#4]
+sub_102AF0 2 00102b50 4 LDR             R0, [SP,#0x10]
+sub_102AF0 3 00102b64 4 MOV             R7, #0
+sub_102AF0 4 00102b80 4 LDR             R0, [SP,#0]
+sub_102AF0 5 00102b8c 4 LDR             R9, [R12,#4]
+sub_102AF0 6 00102bcc 4 LDR             R0, [SP,#0x10]
+sub_102AF0 7 00102bd0 4 ADD             R3, R3, #1
+sub_102AF0 8 00102bec 4 LDR             R0, [SP,#4]
+sub_102AF0 9 00102c08 4 LDR             R0, [SP,#4]
+sub_102AF0 10 00102c1c 4 ADD             SP, SP, #0x14
+sub_102C28 0 00102c28 4 STMFD           SP!, {R0-R11,LR}
+sub_102C28 1 00102c60 4 LDR             R0, [SP,#0x70]
+sub_102C28 2 00102cb8 4 LDR             R0, [SP,#0x44]
+sub_102C28 3 00102cd8 4 MOV             R10, #0
+sub_102C28 4 00102d44 4 LDR             R0, [SP,#0x70]
+sub_102C28 5 00102d48 4 ADDS            R3, R12, R4
+sub_102C28 6 00102d8c 4 LDR             R0, [SP,#0]
+sub_102C28 7 00102d98 4 LDR             R0, [SP,#0x3C]
+sub_102C28 8 00102dbc 4 ADD             SP, SP, #0x4C
+sub_102DC8 0 00102dc8 4 STMFD           SP!, {R0-R11,LR}
+sub_102DC8 1 00102e08 4 LDREQ           R0, [R9,#0]
+sub_102DC8 2 00102e14 4 MOV             R0, #0x40000000
+sub_102DC8 3 00102e54 4 LDR             R1, [SP,#0x18]
+sub_102DC8 4 00102e80 4 LDR             R0, [SP,#0x24]
+sub_102DC8 5 00102e8c 4 MOV             R5, #0
+sub_102DC8 6 00102f24 4 LDR             R0, [SP,#4]
+sub_102DC8 7 00102f38 4 LDR             R1, [R11],#4
+sub_102DC8 8 00102f78 4 MOV             R1, R6
+sub_102DC8 9 00102f7c 4 LDR             R0, [SP,#0]
+sub_102DC8 10 00102fa0 4 BLE             loc_102FDC
+sub_102DC8 11 00102fa4 4 MOV             R2, R6
+sub_102DC8 12 00102fc0 4 CMP             R5, #0
+sub_102DC8 13 00102fc8 4 B               loc_103000
+sub_102DC8 14 00102fcc 4 MOV             R0, #0
+sub_102DC8 15 00102fdc 4 LDRD            R0, [SP,#0]
+sub_102DC8 16 00102ff8 4 CMP             R5, #0
+sub_102DC8 17 00103000 4 CMP             R4, #0x10
+sub_102DC8 18 00103008 4 MOV             R1, #0xFFFFFFFF
+sub_102DC8 19 00103010 4 LDRD            R0, [SP,#0]
+sub_102DC8 20 00103024 4 MOV             R2, R6
+sub_102DC8 21 00103034 4 MOV             R1, #0
+sub_102DC8 22 00103038 4 LDR             R0, [SP,#0x20]
+sub_102DC8 23 00103060 4 LDR             R0, [SP,#8]
+pbl_mc3 0 0010306c 4 STMFD           SP!, {R4-R6,LR}
+pbl_mc3 1 0010307c 4 MOV             R3, #0
+pbl_mc3 2 00103090 4 LDR             R0, [R4,#0x28]
+pbl_mc3 3 0010309c 4 MOV             R3, #0
+pbl_mc3 4 001030b0 4 LDR             R0, [R4,#0x28]
+pbl_mc3 5 001030cc 4 CMP             R6, #0xA
+pbl_mc3 6 001030d4 4 MOV             R3, #0
+pbl_mc3 7 001030e8 4 MOV             R0, R5
+pbl_mc3 8 001030f0 4 ADD             R0, R4, #0x44
+pbl_mc3 9 00103108 4 B               loc_10312C
+pbl_mc3 10 0010310c 4 MOV             R0, R4
+pbl_mc3 11 0010311c 4 LDR             R0, [R4,#0x40]
+pbl_mc3 12 0010312c 4 STR             R0, [R4,#0x24]
+sub_103148 0 00103148 4 CMP             R0, #0
+sub_103148 1 00103150 4 CMP             R1, #0x60
+sub_103148 2 00103158 4 MOV             R0, #2
+sub_103148 3 00103160 4 STMFD           SP!, {R4-R6,LR}
+sub_103148 4 00103178 4 MOV             R3, R5
+sub_103148 5 0010318c 4 MOV             R1, R4
+sub_103148 6 001031a0 4 ADD             R4, R4, #0x20
+sub_103148 7 001031b8 4 ADD             R1, R4, #0x20
+sub_103148 8 001031c8 4 LDMFD           SP!, {R4-R6,PC}
+sub_103148 9 0010b784 4 STMFD           SP!, {R4-R6,LR}
+sub_1031E4 0 001031e4 4 CMP             R0, #0
+sub_1031E4 1 001031ec 4 CMP             R1, #0x18
+sub_1031E4 2 001031f4 4 MOV             R0, #2
+sub_1031E4 3 001031fc 4 STMFD           SP!, {R4-R6,LR}
+sub_1031E4 4 00103218 4 MOV             R3, R4
+sub_1031E4 5 0010322c 4 MOV             R4, #1
+sub_1031E4 6 00103230 4 LDR             R0, =0x8004080
+sub_1031E4 7 00103244 4 MOV             R3, #0x20
+sub_1031E4 8 00103258 4 LDR             R1, =0x8004080
+sub_1031E4 9 0010326c 4 MOV             R2, R5
+sub_1031E4 10 00103284 4 ADD             R4, R4, #1
+sub_1031E4 11 00103294 4 LDMFD           SP!, {R4-R6,PC}
+sub_1032B4 0 001032b4 4 CMP             R0, #0
+sub_1032B4 1 001032bc 4 CMP             R1, #4
+sub_1032B4 2 001032c4 4 MOV             R0, #2
+sub_1032B4 3 001032cc 4 STMFD           SP!, {R4-R6,LR}
+sub_1032B4 4 001032e4 4 B               loc_1032E8
+sub_1032B4 5 001032e8 4 LDR             R2, =0x10500
+sub_1032B4 6 001032fc 4 MOV             R0, R4
+sub_1032B4 7 0010b8b4 4 CMP             R0, #0
+sub_103320 0 00103320 4 STMFD           SP!, {R4-R9,LR}
+sub_103320 1 0010333c 4 MOV             R3, #0
+sub_103320 2 00103350 4 CMP             R7, #0
+sub_103320 3 00103358 4 MOV             R3, #0
+sub_103320 4 0010336c 4 CMP             R8, #0
+sub_103320 5 00103374 4 MOV             R3, #0
+sub_103320 6 00103388 4 MOV             R1, #0xC
+sub_103320 7 001033a0 4 MOV             R3, #0xC
+sub_103320 8 001033b4 4 LDR             R0, =0x8004118
+sub_103320 9 001033c8 4 MOV             R3, #0x10
+sub_103320 10 001033dc 4 LDR             R0, =0x800351C
+sub_103320 11 001033f0 4 MOV             R3, #8
+sub_103320 12 00103404 4 BL              sub_105260
+sub_103320 13 00103420 4 ADD             R0, R4, R4,LSL#1
+sub_103320 14 00103448 4 LDR             R0, =0x800351C
+sub_103320 15 0010347c 4 LDR             R3, [R9,#0]
+sub_103320 16 00103490 4 BL              sub_10F2B0
+sub_103320 17 001034a8 4 CMP             R0, #3
+sub_103320 18 001034b4 4 BL              sub_105404
+sub_103320 19 001034b8 4 ADD             SP, SP, #0xC
+sub_1034E8 0 001034e8 4 STMFD           SP!, {R4,LR}
+sub_1034E8 1 001034fc 4 MOV             R3, #0
+sub_1034E8 2 00103510 4 LDR             R0, [R4,#0x2C]
+sub_1034E8 3 0010352c 4 MOV             R3, R0
+sub_1034E8 4 00103540 4 ADD             R0, R4, #0x60
+sub_1034E8 5 00103550 4 MOV             R3, R0
+sub_1034E8 6 00103564 4 LDR             R1, =0x80040C8
+sub_1034E8 7 0010357c 4 MOV             R3, #0x58
+sub_1034E8 8 00103590 4 MOV             R0, #0
+sub_1035BC 0 001035bc 4 STMFD           SP!, {R4-R6,LR}
+sub_1035BC 1 001035e0 4 CMP             R1, #3
+sub_1035BC 2 001035ec 4 LDR             R5, =dword_10CE5C
+sub_1035BC 3 001035f8 4 LDR             R1, [R5,R4,LSL#2]
+sub_1035BC 4 00103610 4 MOV             R3, R0
+sub_1035BC 5 00103624 4 LDR             R0, [R6,#0x24]
+sub_1035BC 6 00103630 4 B               loc_103644
+sub_1035BC 7 00103634 4 ADD             R4, R4, #1
+sub_1035BC 8 00103640 4 B               loc_103624
+sub_1035BC 9 00103644 4 MOV             R3, #0
+sub_1035BC 10 00103658 4 LDR             R0, =sub_100020
+sub_1035BC 11 0010366c 4 B               loc_10366C
+sub_1035BC 12 00103670 4 LDMFD           SP!, {R4-R6,PC}
+pbl_mc2 0 00103694 4 LDR             R1, =off_110400
+pbl_mc2 1 001036ac 4 ORR             R2, R4, #0x20000
+pbl_mc2 2 001036c0 4 MOV             R0, R4
+sub_1036DC 0 001036dc 4 LDR             R3, =0xFFDF69C3
+sub_1036DC 1 001036ec 4 MVN             R12, R3
+sub_1036DC 2 001036fc 4 ADD             R1, R1, R3
+sub_1036DC 3 00103710 4 MOV             R0, R2
+sub_10371C 0 0010371c 4 STMFD           SP!, {R4-R8,LR}
+sub_10371C 1 00103734 4 ADD             R5, R4, R1
+sub_10371C 2 00103744 4 MOV             R3, #0
+sub_10371C 3 00103758 4 LDR             R0, =0x8005000
+sub_10371C 4 00103768 4 LDR             R0, [R6,#0x10]
+sub_10371C 5 00103778 4 LDR             R0, =0x2186FC
+sub_10371C 6 00103788 4 LDR             R0, [R6,#0x1C]
+sub_10371C 7 00103798 4 MOV             R7, #1
+sub_10371C 8 0010379c 4 MOV             R0, R7
+sub_1037C8 0 001037c8 4 CMP             R0, #0
+sub_1037C8 1 001037d4 4 LDR             R1, [R0,#0]
+sub_1037C8 2 001037e4 4 MOV             R2, #0x833
+sub_1037C8 3 001037f0 4 LDR             R2, [R0,#4]
+sub_1037C8 4 001037fc 4 CMP             R2, #0xC
+sub_1037C8 5 00103804 4 LDR             R3, [R0,#8]
+sub_1037C8 6 00103810 4 CMP             R3, #0x1F
+sub_1037C8 7 00103820 4 LDR             R12, [R0,#0x10]
+sub_1037C8 8 00103834 4 CMP             R1, R4
+sub_1037C8 9 00103840 4 CMP             R3, #6
+sub_1037C8 10 00103848 4 CMP             R3, #0x1E
+sub_1037C8 11 00103850 4 CMP             R2, #4
+sub_1037C8 12 0010385c 4 CMP             R2, #9
+sub_1037C8 13 00103868 4 TST             R1, #3
+sub_1037C8 14 0010387c 4 ADD             R5, R12, #0x1C
+sub_1037C8 15 00103888 4 SUB             R1, R1, R4
+sub_1037C8 16 001038ac 4 B               loc_103980; jumptable 001038A8 default case
+sub_1037C8 17 001038e4 4 ADD             R1, R1, #0x1F; jumptable 001038A8 case 2
+sub_1037C8 18 001038ec 4 ADD             R1, R1, #0x3B; jumptable 001038A8 case 3
+sub_1037C8 19 001038f4 4 ADD             R1, R1, #0x5A; jumptable 001038A8 case 4
+sub_1037C8 20 001038fc 4 ADD             R1, R1, #0x78; jumptable 001038A8 case 5
+sub_1037C8 21 00103904 4 ADD             R1, R1, #0x97; jumptable 001038A8 case 6
+sub_1037C8 22 0010390c 4 ADD             R1, R1, #0xB5; jumptable 001038A8 case 7
+sub_1037C8 23 00103914 4 ADD             R1, R1, #0xD4; jumptable 001038A8 case 8
+sub_1037C8 24 0010391c 4 ADD             R1, R1, #0xF3; jumptable 001038A8 case 9
+sub_1037C8 25 00103924 4 MOV             R4, #0x111; jumptable 001038A8 case 10
+sub_1037C8 26 0010392c 4 ADD             R1, R1, #0x130; jumptable 001038A8 case 11
+sub_1037C8 27 00103934 4 MOV             R4, #0x14E; jumptable 001038A8 case 12
+sub_1037C8 28 00103938 4 ADD             R1, R1, R4
+sub_1037C8 29 0010393c 4 CMP             R12, #0; jumptable 001038A8 case 1
+sub_1037C8 30 00103980 4 LDMFD           SP!, {R4,R5}; jumptable 001038A8 default case
+pbl_hw_init 0 0010398c 4 STMFD           SP!, {R4-R6,LR}
+pbl_hw_init 1 001039b4 4 MOV             R3, R4
+pbl_hw_init 2 001039c8 4 CMP             R4, #0
+pbl_hw_init 3 001039d4 4 MOV             R0, #1
+pbl_hw_init 4 001039e4 4 MOV             R3, #1
+pbl_hw_init 5 001039f8 4 B               loc_103A20
+pbl_hw_init 6 001039fc 4 MOV             R0, #0
+pbl_hw_init 7 00103a0c 4 MOV             R3, #0
+pbl_hw_init 8 00103a20 4 MOV             R0, #0
+sub_103A44 0 00103a44 4 STMFD           SP!, {R4,LR}
+sub_103A44 1 00103a6c 4 ORR             R2, R0, #0xA0000
+sub_103A44 2 00103a84 4 MOV             R0, #0
+sub_103AA4 0 00103aa4 4 CMP             R0, #0
+sub_103AA4 1 00103aac 4 CMP             R0, #1
+sub_103AA4 2 00103ab4 4 LDR             R0, =0x1109000
+sub_103AA4 3 00103ac8 4 BX              LR
+sub_103AA4 4 00103acc 4 LDR             R0, =0x110A000
+pbl_ram_init 0 00103b38 4 LDR             R0, =loc_10D5CC
+pbl_ram_init 1 00103b60 4 LDR             R3, [R4,#0]
+pbl_ram_init 2 00103b74 4 LDR             R0, =loc_10D5D8
+pbl_ram_init 3 00103b94 4 LDR             R3, [R4,#0]
+pbl_ram_init 4 00103ba8 4 LDR             R0, =loc_10D5B8
+pbl_ram_init 5 00103bcc 4 LDR             R3, [R4,#0]
+pbl_ram_init 6 00103be0 4 LDR             R0, =loc_10D5C4
+pbl_ram_init 7 00103bfc 4 LDR             R3, [R4,#0]
+pbl_ram_init 8 00103c10 4 MOV             R0, #0
+pbl_flash 0 00103c5c 4 STMFD           SP!, {R4-R6,LR}
+pbl_flash 1 00103c6c 4 MOV             R3, #0
+pbl_flash 2 00103c80 4 LDR             R6, =0x8003524
+pbl_flash 3 00103c9c 4 BGE             loc_103CB8
+pbl_flash 4 00103ca0 4 CMP             R3, #0
+pbl_flash 5 00103ca8 4 CMP             R3, #1
+pbl_flash 6 00103cb4 4 B               loc_103CC8
+pbl_flash 7 00103cb8 4 CMP             R3, #0x80
+pbl_flash 8 00103cc0 4 CMP             R3, #0x81
+pbl_flash 9 00103cc8 4 MOV             R1, #0x81
+pbl_flash 10 00103cd8 4 LDR             R2, =0x10200
+pbl_flash 11 00103cec 4 LDR             R3, [R6,#0]
+pbl_flash 12 00103cf8 4 B               loc_103D50
+pbl_flash 13 00103cfc 4 MOV             R0, R4
+pbl_flash 14 00103d10 4 B               loc_103CD8
+pbl_flash 15 00103d14 4 MOV             R0, R4
+pbl_flash 16 00103d28 4 MOV             R0, R4
+pbl_flash 17 00103d38 4 B               loc_103CD8
+pbl_flash 18 00103d3c 4 MOV             R0, R4
+pbl_flash 19 00103d4c 4 B               loc_103CEC
+pbl_flash 20 00103d50 4 LDR             R2, =0x10300
+pbl_flash 21 00103d60 4 BL              sub_10F2B0
+sub_103D94 0 00103d94 4 LDR             R1, =off_110400
+sub_103D94 1 00103dac 4 ORR             R2, R4, #0x20000
+sub_103D94 2 00103dc0 4 MOV             R0, R4
+sub_103DDC 0 00103ddc 4 LDR             R0, =0x205400
+sub_103DDC 1 00103df8 4 MOV             R3, #0x100
+sub_103DDC 2 00103e0c 4 LDR             R0, =0x205500
+sub_103DDC 3 00103e20 4 MOV             R3, #0x100
+sub_103DDC 4 00103e34 4 LDR             R0, =0x205600
+sub_103DDC 5 00103e48 4 MOV             R2, R4
+sub_103DDC 6 00103e60 4 LDMFD           SP!, {R4,PC}
+sub_103DDC 7 00103e8c 4 STMFD           SP!, {R4-R10,LR}
+pbl_error_handler 0 00103e8c 4 STMFD           SP!, {R4-R10,LR}
+pbl_error_handler 1 00103eb4 4 BL              sub_10F204
+pbl_error_handler 2 00103ec0 4 LDR             R0, [R8,#0]
+pbl_error_handler 3 00103f28 4 AND             R0, R4, #0xFF0000
+pbl_error_handler 4 00103f38 4 LDR             R0, [R8,#0]
+pbl_error_handler 5 00103f54 4 LDR             R2, [R5,#0]
+pbl_error_handler 6 00103f68 4 AND             R0, R4, #0xFF00
+pbl_error_handler 7 00103f74 4 BL              sub_1053B8
+pbl_error_handler 8 00103f80 4 BL              sub_105260
+pbl_error_handler 9 00103f94 4 LDR             R0, =dword_10D5D0
+pbl_error_handler 10 00103fb8 4 MOV             R3, R5
+pbl_error_handler 11 00103fcc 4 LDR             R1, [R4,#0x14]
+pbl_error_handler 12 00103fe0 4 LDR             R3, [R4,#0x14]
+pbl_error_handler 13 00103ff4 4 LDR             R0, =loc_111000
+pbl_error_handler 14 00104000 4 CMP             R0, #0
+pbl_error_handler 15 00104008 4 MOV             R3, #0x4000
+pbl_error_handler 16 0010401c 4 LDR             R0, =0x2186FC
+pbl_error_handler 17 00104030 4 LDR             R3, [R4,#0x20]
+pbl_error_handler 18 00104044 4 LDR             R0, =0x20963C
+pbl_error_handler 19 00104058 4 MOV             R3, #0xF000
+pbl_error_handler 20 0010406c 4 LDR             R1, =dword_10D5F8
+pbl_error_handler 21 00104098 4 MOV             R3, R4
+pbl_error_handler 22 001040ac 4 LDR             R0, =0x205000
+pbl_error_handler 23 001040b4 4 STR             R6, [R0],#4
+pbl_error_handler 24 001040c0 4 MOV             R0, #0x8000000
+pbl_error_handler 25 001040c8 4 STR             R6, [R0],#4
+pbl_error_handler 26 001040d4 4 LDMFD           SP!, {R4-R10,LR}
+pbl_error_handler 27 00100258 4 MOV             R0, #0
+pbl_jmp_to_sbl 0 00104130 4 STMFD           SP!, {R4,LR}
+pbl_jmp_to_sbl 1 00104144 4 MOV             R3, #0
+pbl_jmp_to_sbl 2 00104158 4 BL              sub_10F2B0
+pbl_jmp_to_sbl 3 00104188 4 ORR             R2, R0, #0x20000
+pbl_jmp_to_sbl 4 0010419c 4 LDR             R1, [R4,#0x24]!
+sub_104254 0 00104254 4 STMFD           SP!, {R4-R8,LR}
+sub_104254 1 00104270 4 MOV             R3, #0
+sub_104254 2 00104284 4 CMP             R6, #2
+sub_104254 3 0010428c 4 MOV             R3, R6
+sub_104254 4 001042a0 4 LDR             R0, [R7,#0x28]
+sub_104254 5 0010432c 4 STR             R2, [R0,#0x28]
+sub_104254 6 00104340 4 LDR             R1, [R0,#0x2C]
+sub_104254 7 0010434c 4 LDR             R1, [R0,#0x2C]
+sub_104254 8 00104368 4 MOV             R0, #0
+sub_104254 9 00104370 4 LDR             R1, [R4,#0x34]
+sub_104254 10 00104384 4 LDR             R0, [R4,#0x34]
+sub_104404 0 00104404 4 STMFD           SP!, {R3-R9,LR}
+sub_104404 1 00104418 4 MOV             R3, #0
+sub_104404 2 0010442c 4 ADD             R5, R5, #0x24
+sub_104404 3 0010444c 4 MOV             R3, #0
+sub_104404 4 00104460 4 LDR             R0, [R4,#0]
+sub_104404 5 0010446c 4 CMP             R0, #1
+sub_104404 6 00104478 4 LDR             R0, [R4,#4]
+sub_104404 7 00104494 4 TST             R6, #3
+sub_104404 8 0010449c 4 LDRB            R3, [R6,#0]
+sub_104404 9 001044b0 4 STR             R6, [SP,#0]
+sub_104404 10 001044d0 4 LDMFD           SP!, {R3-R9,PC}
+sub_104404 11 001044d4 4 LDR             R0, [R4,#4]
+sub_104510 0 00104510 4 STMFD           SP!, {R4-R6,LR}
+sub_104510 1 00104528 4 LDR             R2, =0xB0700
+sub_104510 2 00104538 4 LDR             R0, =0x8003590
+sub_104510 3 0010454c 4 MOV             R2, #0x50
+sub_104510 4 00104570 4 MOV             R0, R4
+sub_10459C 0 0010459c 4 STMFD           SP!, {R4-R6,LR}
+sub_10459C 1 001045b0 4 MOV             R3, #0
+sub_10459C 2 001045c4 4 LDR             R2, [R4,#0x24]
+sub_104668 0 00104668 4 STMFD           SP!, {R4,LR}
+sub_104668 1 00104674 4 MOV             R3, #0
+sub_104668 2 00104688 4 LDR             R0, [R4,#4]
+sub_104668 3 00104694 4 BGT             loc_1046B0
+sub_104668 4 00104698 4 CMP             R0, #0
+sub_104668 5 001046a0 4 CMP             R0, #1
+sub_104668 6 001046a8 4 MOV             R0, #4
+sub_104668 7 001046ac 4 LDMFD           SP!, {R4,PC}
+sub_104668 8 001046b0 4 CMP             R0, #0x80
+sub_104668 9 001046bc 4 B               loc_1046A8
+sub_104668 10 001046c0 4 MOV             R1, #0
+sub_104668 11 001046d4 4 MOV             R0, R4
+sub_104668 12 001046e4 4 MOV             R1, #1
+sub_104668 13 001046f8 4 MOV             R0, R4
+sub_104668 14 00104d8c 4 STMFD           SP!, {R4-R11,LR}
+sub_104668 15 001047f4 4 STMFD           SP!, {R4-R11,LR}
+sub_104720 0 00104720 4 STMFD           SP!, {R4-R6,LR}
+sub_104720 1 0010473c 4 MOV             R3, #0
+sub_104720 2 00104750 4 LDR             R0, [R4,#0x28]
+sub_104720 3 001047b8 4 CMP             R1, #0x800
+sub_104720 4 001047c8 4 LDR             R0, =sub_104C9C
+sub_104720 5 001047d8 4 STR             R1, [R0,#0x10]
+sub_1047F4 0 001047f4 4 STMFD           SP!, {R4-R11,LR}
+sub_1047F4 1 00104814 4 CMP             R5, #2
+sub_1047F4 2 0010481c 4 MOV             R3, #0
+sub_1047F4 3 00104830 4 LDR             R0, [R7,#0x28]
+sub_1047F4 4 00104864 4 LDR             R0, [R4,#0]
+sub_1047F4 5 00104870 4 STR             R11, [SP,#8]
+sub_1047F4 6 00104898 4 LDR             R0, =0x40FF8080
+sub_1047F4 7 001048bc 4 CMP             R0, #2
+sub_1047F4 8 001048c4 4 B               loc_104904
+sub_1047F4 9 001048c8 4 LDR             R0, [SP,#0xC]
+sub_1047F4 10 001048d4 4 LDR             R0, [SP,#0xC]
+sub_1047F4 11 001048e4 4 LDR             R0, [SP,#0xC]
+sub_1047F4 12 001048fc 4 CMP             R5, #2
+sub_1047F4 13 00104904 4 MOV             R0, #0x1388
+sub_1047F4 14 00104918 4 STR             R6, [R4,#0]
+sub_1047F4 15 0010491c 4 LDR             R0, [R4,#0]
+sub_1047F4 16 00104930 4 MOV             R0, R4
+sub_1047F4 17 00104948 4 MOV             R2, #1
+sub_1047F4 18 001049a4 4 MOV             R0, #1
+sub_1047F4 19 001049dc 4 LDR             R1, [SP,#0xC]
+sub_1047F4 20 001049ec 4 MOV             R1, #9
+sub_1047F4 21 00104a0c 4 MOV             R5, R0
+sub_1047F4 22 00104a20 4 LDR             R3, [R4,#0x20]
+sub_1047F4 23 00104a2c 4 MOV             R1, #0x81D
+sub_1047F4 24 00104a3c 4 MOV             R0, #6
+sub_1047F4 25 00104a7c 4 MOV             R5, R8
+sub_1047F4 26 00104a88 4 MOV             R0, #0xD
+sub_1047F4 27 00104acc 4 MOV             R0, #0x64
+sub_1047F4 28 00104ae4 4 MOVS            R5, R9
+sub_1047F4 29 00104aec 4 B               loc_104AF8
+sub_1047F4 30 00104af0 4 MOV             R9, #0
+sub_1047F4 31 00104af8 4 LDR             R3, [R8,#0x30]
+sub_1047F4 32 00104b08 4 CMP             R3, #1
+sub_1047F4 33 00104b14 4 CMP             R3, #2
+sub_1047F4 34 00104b20 4 CMP             R3, #3
+sub_1047F4 35 00104b28 4 MOV             R1, #0x6B4
+sub_1047F4 36 00104b38 4 LDR             R0, [R8,#0x34]
+sub_1047F4 37 00104b54 4 CMP             R5, #0
+sub_1047F4 38 00104b5c 4 MOV             R0, R4
+sub_1047F4 39 00104b6c 4 CMP             R5, #0
+sub_1047F4 40 00104b74 4 LDR             R0, =dword_10F75C
+sub_1047F4 41 00104bbc 4 LDRB            R0, [SP,#0xFB]
+sub_1047F4 42 00104bf4 4 AND             R1, R0, #0x38
+sub_1047F4 43 00104c04 4 CMP             R1, #1
+sub_1047F4 44 00104c10 4 CMP             R1, #2
+sub_1047F4 45 00104c1c 4 LDR             R0, [R4,#0]
+sub_1047F4 46 00104c28 4 B               loc_104C4C
+sub_1047F4 47 00104c2c 4 STR             R0, [R4,#0x40]
+sub_1047F4 48 00104c3c 4 LDRB            R1, [SP,#0x11F]
+sub_1047F4 49 00104c48 4 STR             R0, [R4,#0x24]
+sub_1047F4 50 00104c4c 4 LDR             R0, [R7,#0x10]
+sub_1047F4 51 00104c68 4 LDR             R0, [SP,#0x248]
+sub_1047F4 52 00104c74 4 CMN             R4, #1
+sub_1047F4 53 00104c80 4 MOV             R2, #5
+sub_1047F4 54 00104c90 4 MOV             R0, R10
+sub_1047F4 55 00104c94 4 ADD             SP, SP, #0x24C
+sub_1047F4 56 0010f0d4 4 B               loc_10F0D4
+sub_104C9C 0 00104c9c 4 STMFD           SP!, {R4-R7,LR}
+sub_104C9C 1 00104cb4 4 MOV             R3, #0
+sub_104C9C 2 00104cc8 4 BL              sub_105260
+sub_104C9C 3 00104ce4 4 MOV             R3, #0
+sub_104C9C 4 00104cf8 4 MOV             R1, #0x10
+sub_104C9C 5 00104d0c 4 MOV             R3, #0x10
+sub_104C9C 6 00104d20 4 MOV             R0, #1
+sub_104C9C 7 00104d4c 4 MOV             R3, R0
+sub_104C9C 8 00104d60 4 ADD             SP, SP, #0x14
+sub_104D8C 0 00104d8c 4 STMFD           SP!, {R4-R11,LR}
+sub_104D8C 1 00104dac 4 MOV             R3, #0
+sub_104D8C 2 00104dc0 4 MOV             R0, #1
+sub_104D8C 3 00104e1c 4 MOV             R0, #8
+sub_104D8C 4 00104e48 4 MOV             R0, #0x3E8
+sub_104D8C 5 00104e5c 4 LDR             R0, [SP,#0]
+sub_104D8C 6 00104e68 4 MOV             R5, #0
+sub_104D8C 7 00104e6c 4 MOV             R0, #0x37
+sub_104D8C 8 00104e90 4 B               loc_104EF4
+sub_104D8C 9 00104e94 4 LDR             R1, [SP,#0x10]
+sub_104D8C 10 00104ea8 4 MOV             R11, R10
+sub_104D8C 11 00104eb0 4 MOV             R0, #0x29
+sub_104D8C 12 00104ed4 4 LDR             R0, [SP,#0x10]
+sub_104D8C 13 00104ee0 4 LDR             R0, [SP,#0x10]
+sub_104D8C 14 00104ef4 4 MOV             R0, #0x1388
+sub_104D8C 15 00104f08 4 CMP             R11, #1
+sub_104D8C 16 00104f1c 4 MOV             R0, R4
+sub_104D8C 17 00104f2c 4 MOV             R0, R4
+sub_104D8C 18 00104f3c 4 MOV             R2, #1
+sub_104D8C 19 00104f9c 4 MOV             R0, #1
+sub_104D8C 20 00104fd8 4 LDR             R1, [SP,#0xC]
+sub_104D8C 21 00104fe8 4 MOV             R1, #9
+sub_104D8C 22 00105008 4 MOV             R5, R0
+sub_104D8C 23 0010501c 4 MOV             R0, #0x33
+sub_104D8C 24 0010506c 4 LDRB            R1, [R7,#0]
+sub_104D8C 25 00105084 4 MOV             R5, R0
+sub_104D8C 26 0010508c 4 LDR             R0, [SP,#0x28]
+sub_104D8C 27 00105098 4 MOV             R3, R0
+sub_104D8C 28 001050ac 4 LDR             R0, [SP,#0x2C]
+sub_104D8C 29 001050b8 4 LDR             R0, [R4,#0x34]
+sub_104D8C 30 001050cc 4 MOV             R0, R4
+sub_104D8C 31 001050dc 4 CMP             R5, #0
+sub_104D8C 32 001050e4 4 B               loc_105180
+sub_104D8C 33 00105108 4 MOV             R0, #0
+sub_104D8C 34 0010515c 4 LDR             R1, [R7,#0x34]
+sub_104D8C 35 00105174 4 MOV             R5, R0
+sub_104D8C 36 0010517c 4 B               loc_1050CC
+sub_104D8C 37 00105180 4 LDR             R0, [R6,#0x10]
+sub_104D8C 38 0010519c 4 MOV             R1, R0
+sub_104D8C 39 001051b0 4 CMP             R9, #3
+sub_104D8C 40 001051b8 4 MOV             R0, #0
+sub_104D8C 41 001051c0 4 ADD             SP, SP, #0x34
+sub_1051CC 0 001051cc 4 STMFD           SP!, {R4,LR}
+sub_1051CC 1 001051e8 4 MOV             R3, #0
+sub_1051CC 2 001051fc 4 LDR             R0, [R4,#0x2C]
+sub_105260 0 00105260 4 LDR             R0, =0x21863C
+sub_10526C 0 0010526c 4 MOV             R0, #0xA6000
+pbl_hw_init2 0 0010527c 4 STMFD           SP!, {R4-R6,LR}
+pbl_hw_init2 1 00105288 4 MOV             R3, #0
+pbl_hw_init2 2 0010529c 4 MOV             R0, #0
+pbl_hw_init2 3 001052b4 4 LDR             R0, [R3,#0x2C]
+pbl_hw_init2 4 001052c4 4 MOV             R3, R5
+pbl_hw_init2 5 001052d8 4 STR             R5, [R4,#4]
+pbl_hw_init2 6 001052dc 4 MOV             R0, #0
+pbl_hw_init2 7 001052e4 4 LDR             R0, [R3,#0x6C]
+pbl_hw_init2 8 001052f4 4 STR             R2, [R4,#4]!
+pbl_hw_init2 9 00105304 4 LDR             R12, =0x193D000
+pbl_hw_init2 10 00105320 4 CMP             R0, #2
+pbl_hw_init2 11 00105328 4 CMP             R0, #3
+pbl_hw_init2 12 00105330 4 B               loc_105344
+pbl_hw_init2 13 00105334 4 MOV             R0, #0x80
+pbl_hw_init2 14 00105344 4 MOV             R0, #0x81
+pbl_hw_init2 15 00105350 4 STR             R0, [R4,#0x30]
+pbl_hw_init2 16 00105354 4 MOV             R0, #0xFFF0
+pbl_hw_init2 17 0010536c 4 B               loc_1052DC
+sub_105390 0 00105390 4 MOV             R0, #0xA6000
+sub_1053A8 0 001053a8 4 MOV             R0, #0xA6000
+sub_1053A8 1 0010f1c8 4 CMP             R0, #0
+sub_1053B8 0 001053b8 4 MOV             R0, #0xA6000
+sub_105404 0 00105404 4 CMP             R0, #0
+sub_10542C 0 0010542c 4 LDR             R1, =0x119D000
+sub_105488 0 00105488 4 STMFD           SP!, {R4-R12,LR}
+sub_105488 1 001054a8 4 MOV             R3, #0x2C0
+sub_105488 2 001054bc 4 CMP             R4, #0
+sub_105488 3 001054c4 4 MOV             R3, #0
+sub_105488 4 001054d8 4 LDR             R0, [R4,#4]
+sub_105488 5 001054e4 4 MOV             R3, #0
+sub_105488 6 001054f8 4 LDR             R0, [R4,#8]
+sub_105488 7 00105504 4 MOV             R3, #0
+sub_105488 8 00105518 4 BL              sub_10A040
+sub_105488 9 00105524 4 MOV             R3, R0
+sub_105488 10 00105538 4 LDR             R9, =0x8003DC0
+sub_105488 11 00105560 4 MOV             R3, #0x34
+sub_105488 12 00105574 4 LDR             R0, =0x8003DC0
+sub_105488 13 00105584 4 ORR             R2, R0, #0xA0000
+sub_105488 14 00105598 4 LDRH            R0, [R9,#0x2C]
+sub_105488 15 001055b8 4 LDRH            R0, [R9,#0x2C]
+sub_105488 16 001055d0 4 LDRH            R0, [R9,#0x2C]
+sub_105488 17 001055e4 4 ADD             R1, R9, R5,LSL#5
+sub_105488 18 001055f8 4 ADD             R5, R5, #1
+sub_105488 19 00105604 4 LDR             R0, [R9,#0x2B8]
+sub_105488 20 00105610 4 B               loc_105744
+sub_105488 21 00105614 4 STR             R5, [R9,#0x2B4]
+sub_105488 22 00105634 4 LDR             R3, [R5,#0x48]
+sub_105488 23 00105648 4 LDR             R0, [R4,#0]
+sub_105488 24 00105654 4 MOV             R3, #0
+sub_105488 25 00105668 4 LDR             R6, [R4,#0]
+sub_105488 26 00105678 4 LDR             R0, =loc_10D33C
+sub_105488 27 0010568c 4 CMP             R5, #0
+sub_105488 28 00105694 4 MOV             R3, #0
+sub_105488 29 001056a8 4 CMP             R6, #0
+sub_105488 30 001056b0 4 MOV             R3, #0
+sub_105488 31 001056c4 4 LDR             R0, [R5,#0x14]
+sub_105488 32 001056d4 4 MOV             R2, R10
+sub_105488 33 001056e4 4 TST             R6, #3
+sub_105488 34 001056ec 4 MOV             R3, R6
+sub_105488 35 00105700 4 LDR             R2, [R5,#0x10]
+sub_105488 36 0010570c 4 LDR             R3, [R4,#4]
+sub_105488 37 00105724 4 LDR             R3, [R5,#0x10]
+sub_105488 38 00105738 4 LDR             R0, [R4,#0]
+sub_105488 39 00105744 4 LDR             R2, =0x120200
+sub_105488 40 00105758 4 LDR             R3, [R4,#8]
+sub_105488 41 00105774 4 MOV             R3, R0
+sub_105488 42 00105788 4 LDRH            R0, [R9,#0x2C]
+sub_105488 43 00105798 4 ADD             R6, R9, R7,LSL#5
+sub_105488 44 001057ac 4 LDR             R0, [R6,#0x3C]
+sub_105488 45 001057c0 4 ADD             R5, R6, #0x34
+sub_105488 46 001057d0 4 MOV             R3, #0
+sub_105488 47 001057e4 4 CMP             R5, #0
+sub_105488 48 001057ec 4 MOV             R3, #0
+sub_105488 49 00105800 4 CMP             R6, #0
+sub_105488 50 00105808 4 MOV             R3, #0
+sub_105488 51 0010581c 4 LDR             R0, [R5,#0x14]
+sub_105488 52 0010582c 4 MOV             R2, R10
+sub_105488 53 0010583c 4 TST             R6, #3
+sub_105488 54 00105844 4 MOV             R3, R6
+sub_105488 55 00105858 4 B               loc_105898
+sub_105488 56 00105898 4 LDR             R2, [R5,#0x10]
+sub_105488 57 001058a4 4 LDR             R3, [R4,#4]
+sub_105488 58 001058bc 4 LDR             R3, [R5,#0x10]
+sub_105488 59 001058d0 4 LDRH            R0, [R9,#0x2C]
+sub_105488 60 001058e0 4 LDR             R0, [R4,#0xC]
+sub_105488 61 001058f0 4 MOV             R3, R0
+sub_105488 62 00105904 4 MOV             R0, #0
+sub_1059E0 0 001059e0 4 LDR             R0, =dword_10D5F0
+sub_1059E0 1 00105a08 4 LDR             R3, [R4,#0]
+sub_1059E0 2 00105a1c 4 LDR             R0, =dword_10D5FC
+sub_1059E0 3 00105a38 4 LDR             R3, [R4,#0]
+sub_1059E0 4 00105a50 4 LDMFD           SP!, {R4,PC}
+sub_1059E0 5 00103e8c 4 STMFD           SP!, {R4-R10,LR}
+pbl_pt_stuff 0 00105a84 4 LDR             R1, =0x205400
+pbl_pt_stuff 1 00105aa0 4 LDR             R0, =0x205000
+pbl_pt_stuff 2 00105ab4 4 MOV             R3, #0x400
+pbl_pt_stuff 3 00105ac8 4 MOV             R0, #0
+pbl_pt_stuff 4 00105acc 4 LDMFD           SP!, {R4,PC}
+pbl_mc4 0 00105af0 4 STMFD           SP!, {R4-R8,LR}
+pbl_mc4 1 00105afc 4 MOV             R3, #0
+pbl_mc4 2 00105b10 4 LDR             R0, =0x8003100
+pbl_mc4 3 00105bac 4 MOV             R3, #0x20
+pbl_mc4 4 00105bc0 4 LDR             R0, [R4,#0x28]
+pbl_mc4 5 00105bcc 4 MOV             R0, R4
+pbl_mc4 6 00105bdc 4 MOV             R0, R4
+pbl_mc4 7 00105bec 4 MOV             R0, R4
+pbl_mc4 8 00105c04 4 ORR             R2, R5, #0x20000
+pbl_mc4 9 00105c18 4 MOV             R0, R5
+pbl_mc4 10 00105c1c 4 LDMFD           SP!, {R4-R8,PC}
+sub_105E14 0 00105e14 4 CMP             R0, #0
+sub_105E14 1 00105e20 4 MOV             R3, #0
+sub_105E14 2 00105e34 4 LDR             R0, =0x800305C
+sub_105E14 3 00105e44 4 MOV             R3, R0
+sub_105E14 4 00105e58 4 LDR             R0, =loc_111000
+sub_105FB8 0 00105fb8 4 STMFD           SP!, {R4-R8,LR}
+sub_105FB8 1 00105fc4 4 MOV             R3, #0
+sub_105FB8 2 00105fd8 4 LDR             R0, [R6,#0x28]
+sub_105FB8 3 00105fe4 4 MOV             R3, #0
+sub_105FB8 4 00105ff8 4 LDR             R0, =loc_111000
+sub_105FB8 5 0010600c 4 MOV             R3, #0x4000
+sub_105FB8 6 00106020 4 LDR             R1, =0x8003154
+sub_105FB8 7 00106054 4 MOV             R3, R5
+sub_105FB8 8 00106068 4 BL              sub_105260
+sub_105FB8 9 00106078 4 CMP             R5, #3
+sub_105FB8 10 00106080 4 B               loc_1060E0
+sub_105FB8 11 00106084 4 LDR             R0, [R0,#0x30]
+sub_105FB8 12 00106090 4 CMP             R0, #2
+sub_105FB8 13 00106098 4 CMP             R5, #3
+sub_105FB8 14 001060a0 4 CMP             R5, #0
+sub_105FB8 15 001060a8 4 MOV             R3, R4
+sub_105FB8 16 001060bc 4 LDR             R0, [R7,#8]
+sub_105FB8 17 001060d4 4 B               loc_1060E8
+sub_105FB8 18 001060d8 4 CMP             R5, #3
+sub_105FB8 19 001060e0 4 MOV             R4, #0xD
+sub_105FB8 20 001060e8 4 LDR             R2, =0xC8300
+sub_105FB8 21 001060fc 4 LDR             R1, [R6,#0x28]
+sub_1061C4 0 001061c4 4 STMFD           SP!, {R0-R11,LR}
+sub_1061C4 1 001061f0 4 MOV             R3, #0
+sub_1061C4 2 00106204 4 LDR             R0, [R4,#0]
+sub_1061C4 3 00106214 4 LDR             R0, [R4,#0x40]
+sub_1061C4 4 00106224 4 CMP             R1, #1
+sub_1061C4 5 0010622c 4 CMP             R1, #2
+sub_1061C4 6 00106234 4 B               loc_106268
+sub_1061C4 7 00106238 4 ORR             R0, R0, #1
+sub_1061C4 8 00106248 4 ORR             R0, R0, #2
+sub_1061C4 9 00106254 4 MOV             R1, #1
+sub_1061C4 10 00106268 4 LDR             R0, [SP,#0x54]
+sub_1061C4 11 00106298 4 LDR             R0, [R4,#0x14]
+sub_1061C4 12 001062dc 4 LDR             R0, [R4,#0x18]
+sub_1061C4 13 001062e8 4 LDR             R0, [R4,#0x34]
+sub_1061C4 14 00106308 4 STR             R8, [SP,#0]
+sub_1061C4 15 00106328 4 CMP             R7, #0
+sub_1061C4 16 00106334 4 MOV             R0, #0xC
+sub_1061C4 17 0010635c 4 LDR             R0, [R4,#0x34]
+sub_1061C4 18 00106370 4 LDR             R0, [R4,#0]
+sub_1061C4 19 00106380 4 CMP             R6, #0
+sub_1061C4 20 00106388 4 MOV             R1, #0
+sub_1061C4 21 00106398 4 ORRS            R0, R5, R9
+sub_1061C4 22 001063a0 4 MOV             R0, #1
+sub_1061C4 23 001063a4 4 ADD             SP, SP, #0x5C
+sub_1063C4 0 001063c4 4 CMP             R1, #0
+sub_1063C4 1 001063dc 4 LDR             R3, [R1,#8]
+sub_1063C4 2 001063e8 4 LDR             R1, [R1,#0]
+sub_1063C4 3 001063f8 4 MOV             R0, #3
+sub_1063C4 4 001063fc 4 BX              LR
+sub_106400 0 00106400 4 STMFD           SP!, {R4-R6,LR}
+sub_106400 1 0010641c 4 LDR             R1, [R4,#8]
+sub_106400 2 00106430 4 ADD             R1, R1, R0
+sub_106400 3 00106444 4 BL              sub_10F154
+sub_106400 4 00106454 4 LDR             R1, [R4,#8]
+sub_106400 5 00106460 4 CMP             R0, #0
+sub_106400 6 00106468 4 MOV             R5, #3
+sub_106400 7 00106470 4 STR             R0, [R6,#8]
+sub_106400 8 0010648c 4 MOV             R0, R5
+sub_106494 0 00106494 4 STMFD           SP!, {R4-R6,LR}
+sub_106494 1 001064b0 4 LDR             R1, [R0,#8]
+sub_106494 2 001064bc 4 LDR             R1, [R0,#0]
+sub_106494 3 001064c8 4 ADD             R2, R1, #1
+sub_106494 4 001064dc 4 MOV             R4, #3
+sub_106494 5 001064e4 4 MOV             R0, R1
+sub_106494 6 001064f8 4 MOV             R0, R4
+sub_106500 0 00106500 4 STMFD           SP!, {R4-R10,LR}
+sub_106500 1 0010652c 4 MOV             R0, #0
+sub_106500 2 00106548 4 MOV             R0, R4
+sub_106500 3 0010655c 4 BL              sub_10F154
+sub_106500 4 00106574 4 ADD             R0, R4, #1
+sub_106500 5 00106588 4 MOV             R0, R4
+sub_106500 6 0010659c 4 MOV             R7, #3
+sub_106500 7 001065a4 4 SUBS            R6, R6, #1
+sub_106500 8 001065b0 4 CMP             R7, #0
+sub_106500 9 001065b8 4 MOV             R0, R7
+sub_106500 10 001065bc 4 LDMFD           SP!, {R4-R10,PC}
+sub_106500 11 001065c0 4 BL              sub_10F154
+sub_106500 12 001065cc 4 ADD             R0, R4, R5
+sub_106500 13 001065e4 4 B               loc_10659C
+sub_1065E8 0 001065e8 4 STMFD           SP!, {R4-R6,LR}
+sub_1065E8 1 00106608 4 ADD             R2, R0, #1
+sub_1065E8 2 00106618 4 BL              sub_10F154
+sub_1065E8 3 00106638 4 ANDS            R1, R0, #0xC0
+sub_1065E8 4 00106648 4 CMP             R1, #0x80
+sub_1065E8 5 00106650 4 STR             R2, [R4,#0]
+sub_1065E8 6 00106654 4 MOV             R0, R6
+sub_1065E8 7 0010665c 4 MOV             R6, #3
+sub_106664 0 00106664 4 STMFD           SP!, {R4-R6,LR}
+sub_106664 1 00106684 4 LDR             R1, [R0,#8]
+sub_106664 2 001066a0 4 CMP             R2, #0
+sub_106664 3 001066a8 4 CMP             R1, #0xD
+sub_106664 4 001066b4 4 MOV             R0, R5
+sub_106664 5 00106704 4 CMP             R1, #0xF
+sub_106664 6 0010670c 4 MOV             R0, R5
+sub_106664 7 00106790 4 MOV             R0, R5
+sub_106664 8 001068b4 4 MOV             R4, #3
+sub_106664 9 001068bc 4 MOV             R0, SP
+sub_106664 10 001068c8 4 MOV             R0, R4
+sub_106664 11 001068cc 4 ADD             SP, SP, #0x18
+sub_1068DC 0 001068dc 4 CMP             R0, #0
+sub_1068DC 1 001068ec 4 LDR             R2, [R0,#8]
+sub_1068DC 2 001068f8 4 LDR             R2, [R0,#0]
+sub_1068DC 3 00106908 4 MOV             R1, #3
+sub_1068DC 4 0010690c 4 MOV             R0, R1
+sub_106914 0 00106914 4 STMFD           SP!, {R3-R9,LR}
+sub_106914 1 0010692c 4 LDR             R8, [R4,#8]
+sub_106914 2 00106938 4 LDR             R7, [R4,#0]
+sub_106914 3 00106948 4 LDR             R1, [R4,#4]
+sub_106914 4 00106954 4 MOV             R0, #4
+sub_106914 5 00106958 4 LDMFD           SP!, {R3-R9,PC}
+sub_106914 6 0010695c 4 CMP             R8, #0
+sub_106914 7 0010696c 4 MOV             R2, SP
+sub_106914 8 00106980 4 STR             R7, [R4],#4
+sub_106914 9 00106990 4 CMP             R9, #0
+sub_106914 10 00106998 4 LDR             R0, [SP,#0]
+sub_106914 11 001069a4 4 STR             R7, [R4],#4
+sub_106914 12 001069b8 4 LDR             R1, [R4,#4]
+sub_106914 13 001069d0 4 LDR             R1, [R4,#0]
+sub_106914 14 001069f4 4 MOV             R0, #3
+sub_106914 15 001069fc 4 STR             R1, [R4,#0]
+sub_106914 16 00106a34 4 LDR             R12, [R4,#0]
+sub_106914 17 00106a44 4 LDR             R12, [R4,#4]
+sub_106914 18 00106a54 4 CMP             R1, R2
+sub_106914 19 00106a5c 4 CMP             R6, R1
+sub_106914 20 00106a64 4 LDMFD           SP!, {R3-R9,PC}
+sub_106A68 0 00106a68 4 STMFD           SP!, {R0-R2,R4,R5,LR}
+sub_106A68 1 00106a8c 4 CMP             R1, R5
+sub_106A68 2 00106a94 4 MOV             R2, SP
+sub_106A68 3 00106aac 4 LDR             R0, [SP,#0]
+sub_106A68 4 00106abc 4 ADD             R2, R4, #8
+sub_106A68 5 00106ad4 4 LDR             R2, [R4,#8]
+sub_106A68 6 00106ae0 4 MOV             R0, #3
+sub_106A68 7 00106ae4 4 ADD             SP, SP, #0x14
+sub_106A68 8 00106aec 4 LDR             R1, [SP,#8]
+sub_106A68 9 00106b04 4 CMP             R5, R2
+sub_106A68 10 00106b0c 4 ADD             SP, SP, #0x14
+sub_106B14 0 00106b14 4 STMFD           SP!, {R4-R8,LR}
+sub_106B14 1 00106b2c 4 LDR             R0, [R5,#0x384]
+sub_106B14 2 00106b3c 4 BLS             loc_106C08
+sub_106B14 3 00106b40 4 LDR             R1, [R6,#0]
+sub_106B14 4 00106b4c 4 LDR             R0, [R6,#8]
+sub_106B14 5 00106b58 4 RSB             R0, R4, R4,LSL#4
+sub_106B14 6 00106b6c 4 CMN             R1, #1
+sub_106B14 7 00106b7c 4 LDR             R0, [R0,#0xC4]
+sub_106B14 8 00106b90 4 CMP             R4, #0
+sub_106B14 9 00106b98 4 RSB             R0, R4, R4,LSL#4
+sub_106B14 10 00106bb8 4 B               loc_106BC4
+sub_106B14 11 00106bbc 4 MOV             R0, #3
+sub_106B14 12 00106bc4 4 MOV             R7, #3
+sub_106B14 13 00106bcc 4 LDR             R0, [R5,#0x384]
+sub_106B14 14 00106bdc 4 RSB             R0, R4, R4,LSL#4
+sub_106B14 15 00106bf8 4 LDR             R0, [R5,#0x384]
+sub_106B14 16 00106c08 4 MOV             R0, R7
+sub_106C10 0 00106c10 4 STMFD           SP!, {R4-R6,LR}
+sub_106C10 1 00106c24 4 ADDS            R0, R4, #0x5C
+sub_106C10 2 00106c38 4 LDR             R2, [R1,#0xC]
+sub_106C10 3 00106c4c 4 LDR             R3, [R1,#4]
+sub_106C10 4 00106c60 4 CMP             R0, #0
+sub_106C10 5 00106c68 4 LDR             R0, [R5,#0x88]
+sub_106C10 6 00106c74 4 LDR             R0, [R5,#0x94]
+sub_106C10 7 00106c88 4 LDR             R2, [R4,#0xC0]
+sub_106C10 8 00106c94 4 LDR             R1, [R4,#0xB8]
+sub_106C10 9 00106ca8 4 LDR             R0, [R5,#0xB0]
+sub_106C10 10 00106cb4 4 LDR             R2, [R4,#0x18]
+sub_106C10 11 00106cc0 4 MOV             R0, #1
+sub_106C10 12 00106cc4 4 LDMFD           SP!, {R4-R6,PC}
+sub_106C10 13 00106cc8 4 LDR             R1, [R4,#0x10]
+sub_106C10 14 00106cdc 4 LDR             R0, [R5,#0x98]
+sub_106C10 15 00106ce8 4 ADDS            R0, R4, #0x2C
+sub_106C10 16 00106cfc 4 LDR             R2, [R3,#0xC]
+sub_106C10 17 00106d10 4 LDR             R1, [R0,#4]
+sub_106C10 18 00106d1c 4 CMP             R0, #0
+sub_106C10 19 00106d24 4 LDR             R0, [R4,#0xC8]
+sub_106C10 20 00106d30 4 LDR             R0, [R4,#0xC4]
+sub_106C10 21 00106d40 4 MOV             R0, #0
+sub_107028 0 00107028 4 STMFD           SP!, {R0-R11,LR}
+sub_107028 1 00107058 4 CMP             R1, #0
+sub_107028 2 00107068 4 ADD             R9, R0, R1
+sub_107028 3 00107074 4 CMP             R10, #0
+sub_107028 4 0010707c 4 STR             R0, [SP,#4]
+sub_107028 5 001070a0 4 MOV             R2, #1
+sub_107028 6 001070b8 4 CMP             R5, #0
+sub_107028 7 001070c8 4 CMP             R4, #0
+sub_107028 8 001070d0 4 B               loc_107108
+sub_107028 9 001070d4 4 ADD             SP, SP, #0x1C
+sub_107028 10 001070e0 4 LDR             R0, =0x2FFFD
+sub_107028 11 001070ec 4 B               loc_10711C
+sub_107028 12 001070f0 4 ADD             R0, R5, #1
+sub_107028 13 00107100 4 MOV             R4, #1
+sub_107028 14 00107108 4 LDR             R0, [SP,#0]
+sub_107028 15 00107114 4 CMP             R8, #0x10
+sub_107028 16 0010711c 4 MOV             R0, #0
+sub_107028 17 00107128 4 CMP             R10, #1
+sub_107028 18 00107130 4 LDR             R0, [SP,#0]
+sub_107028 19 00107140 4 AND             R2, R11, #0xFF
+sub_107028 20 00107158 4 LDR             R0, [R6,#0x384]
+sub_107028 21 00107184 4 MOV             R0, #0
+sub_107028 22 001071a4 4 MOV             R4, #1
+sub_107028 23 001071ac 4 STR             R0, [SP,#0xC]
+sub_107028 24 001071cc 4 LDR             R0, [R5,#0x30]!
+sub_107028 25 001071e0 4 ADD             R7, R7, #1
+sub_107028 26 001071ec 4 LDR             R0, [R6,#0x384]
+sub_107028 27 001071f8 4 CMP             R10, #1
+sub_107028 28 00107200 4 SUB             R0, R8, R11
+sub_107028 29 00107210 4 MOV             R4, #3
+sub_107028 30 00107218 4 AND             R2, R0, #0xFF
+sub_107028 31 00107230 4 LDR             R0, [SP,#0xC]
+sub_107028 32 0010723c 4 BL              sub_10F154
+sub_107028 33 0010725c 4 ADD             SP, SP, #0x1C
+sub_107270 0 00107270 4 STMFD           SP!, {R4-R10,LR}
+sub_107270 1 00107290 4 CMP             R8, R1
+sub_107270 2 00107298 4 ADD             SP, SP, #0x28
+sub_107270 3 001072a4 4 ADD             R2, SP, #0xC
+sub_107270 4 001072b4 4 LDR             R0, [SP,#0xC]
+sub_107270 5 001072c8 4 LDR             R1, [SP,#0x14]
+sub_107270 6 001072e0 4 CMP             R0, #0x10000
+sub_107270 7 001072e8 4 MOV             R2, #0x10
+sub_107270 8 00107300 4 MOV             R0, SP
+sub_107270 9 0010732c 4 CMP             R7, #0
+sub_107270 10 00107334 4 B               loc_107378
+sub_107270 11 00107338 4 MOV             R2, #2
+sub_107270 12 00107358 4 MOV             R7, #3
+sub_107270 13 00107360 4 LDR             R0, [R6,#4]
+sub_107270 14 00107374 4 B               loc_107358
+sub_107270 15 00107378 4 MOV             R2, #2
+sub_107270 16 00107390 4 ADD             R1, R5, #0x1C
+sub_107270 17 001073a4 4 MOV             R2, #0
+sub_107270 18 001073bc 4 MOV             R1, R5
+sub_107270 19 001073d0 4 MOV             R2, R9
+sub_107270 20 001073e8 4 ADD             R1, R5, #0xEC
+sub_107270 21 001073fc 4 LDR             R0, [R5,#0xEC]
+sub_107270 22 00107408 4 MOV             R1, #0xFFFFFFFF
+sub_107270 23 00107420 4 MOV             R0, SP
+sub_107270 24 0010743c 4 CMP             R0, #0
+sub_107270 25 00107444 4 MOV             R1, R6
+sub_107270 26 00107458 4 MOV             R0, SP
+sub_107270 27 00107474 4 CMP             R0, #0
+sub_107270 28 0010747c 4 MOV             R1, R6
+sub_107270 29 00107490 4 LDR             R0, [R5,#0]
+sub_107270 30 0010749c 4 MOV             R2, #0xA3
+sub_107270 31 001074b4 4 MOV             R1, SP
+sub_107270 32 001074c8 4 LDR             R0, [SP,#0xC]
+sub_107270 33 001074d4 4 LDR             R1, [R5,#0xE0]
+sub_107270 34 001074e4 4 SUB             R0, R0, R1
+sub_107270 35 001074f8 4 ADD             R0, SP, #0xC
+sub_107270 36 00107508 4 LDR             R0, [R5,#0x1C]
+sub_107270 37 00107514 4 MOV             R4, #9
+sub_107270 38 0010751c 4 ADD             R0, SP, #0xC
+sub_107270 39 0010752c 4 MOV             R4, #3
+sub_107270 40 00107530 4 ADD             SP, SP, #0x28
+sub_10753C 0 0010753c 4 STMFD           SP!, {R0-R2,R4-R11,LR}
+sub_10753C 1 0010757c 4 CMP             R10, #0
+sub_10753C 2 00107584 4 MOV             R0, #2
+sub_10753C 3 00107590 4 MOV             R2, #0x10
+sub_10753C 4 001075a8 4 MOV             R0, #3
+sub_10753C 5 001075b4 4 LDR             R0, [SP,#0x64]
+sub_10753C 6 001075d4 4 LDR             R11, [SP,#8]
+sub_10753C 7 001075e8 4 B               loc_10766C
+sub_10753C 8 001075ec 4 CMP             R4, #0x11
+sub_10753C 9 001075f4 4 ADD             R0, R4, #0xA
+sub_10753C 10 00107600 4 MOV             R2, #0xA
+sub_10753C 11 00107618 4 ADD             R0, R4, #5
+sub_10753C 12 00107624 4 MOV             R2, #5
+sub_10753C 13 0010763c 4 MOV             R2, #5
+sub_10753C 14 00107654 4 MOV             R2, #5
+sub_10753C 15 0010766c 4 ADD             R0, R4, #4
+sub_10753C 16 00107678 4 MOV             R2, #4
+sub_10753C 17 00107694 4 ADD             R0, R4, #6
+sub_10753C 18 001076a0 4 MOV             R2, #6
+sub_10753C 19 001076bc 4 B               loc_107AA8
+sub_10753C 20 001076c0 4 MOV             R9, #0
+sub_10753C 21 001076d8 4 LDR             R0, [SP,#0]
+sub_10753C 22 00107714 4 LDR             R0, [SP,#0xC]
+sub_10753C 23 00107724 4 LDR             R0, [SP,#0xC]
+sub_10753C 24 0010773c 4 LDR             R0, [SP,#0xC]
+sub_10753C 25 0010774c 4 LDR             R0, [SP,#0xC]
+sub_10753C 26 0010775c 4 LDR             R0, [SP,#0xC]
+sub_10753C 27 00107770 4 LDR             R0, [SP,#0xC]
+sub_10753C 28 001077b0 4 STR             R8, [R10,#0x24]
+sub_10753C 29 001077bc 4 MOV             R8, #0
+sub_10753C 30 001077d4 4 LDR             R0, [SP,#0]
+sub_10753C 31 00107810 4 LDR             R0, [SP,#0xC]
+sub_10753C 32 00107820 4 LDR             R0, [SP,#0xC]
+sub_10753C 33 00107838 4 LDR             R0, [SP,#0xC]
+sub_10753C 34 00107848 4 LDR             R0, [SP,#0xC]
+sub_10753C 35 00107858 4 LDR             R0, [SP,#0xC]
+sub_10753C 36 0010786c 4 LDR             R0, [SP,#0xC]
+sub_10753C 37 001078ac 4 STRD            R8, [R10,#0]
+sub_10753C 38 001078b4 4 MOV             R9, #0
+sub_10753C 39 001078cc 4 LDR             R0, [SP,#0]
+sub_10753C 40 00107908 4 LDR             R0, [SP,#0xC]
+sub_10753C 41 00107918 4 LDR             R0, [SP,#0xC]
+sub_10753C 42 00107930 4 LDR             R0, [SP,#0xC]
+sub_10753C 43 00107940 4 LDR             R0, [SP,#0xC]
+sub_10753C 44 00107950 4 LDR             R0, [SP,#0xC]
+sub_10753C 45 00107964 4 LDR             R0, [SP,#0xC]
+sub_10753C 46 001079a4 4 STR             R8, [R10,#0xC]
+sub_10753C 47 001079b0 4 MOV             R8, #0
+sub_10753C 48 001079c8 4 LDR             R0, [SP,#0]
+sub_10753C 49 00107a04 4 LDR             R0, [SP,#0xC]
+sub_10753C 50 00107a14 4 LDR             R0, [SP,#0xC]
+sub_10753C 51 00107a2c 4 LDR             R0, [SP,#0xC]
+sub_10753C 52 00107a3c 4 LDR             R0, [SP,#0xC]
+sub_10753C 53 00107a4c 4 LDR             R0, [SP,#0xC]
+sub_10753C 54 00107a60 4 LDR             R0, [SP,#0xC]
+sub_10753C 55 00107aa0 4 STRD            R8, [R10,#0x10]
+sub_10753C 56 00107aa8 4 STR             R0, [R10,#0x18]
+sub_10753C 57 00107aac 4 ADD             R4, R4, #1
+sub_10753C 58 00107abc 4 LDR             R0, [SP,#8]
+sub_10753C 59 00107ac8 4 MOV             R2, #0x11
+sub_10753C 60 00107ae0 4 MOV             R2, #0x10
+sub_10753C 61 00107af8 4 LDR             R0, [SP,#0x30]
+sub_10753C 62 00107b1c 4 MOV             R2, #0
+sub_10753C 63 00107b34 4 ADD             R1, SP, #0x18
+sub_10753C 64 00107b48 4 LDR             R0, [SP,#8]
+sub_10753C 65 00107b54 4 LDR             R0, [SP,#0x14]
+sub_10753C 66 00107b60 4 LDR             R1, [SP,#0x64]
+sub_10753C 67 00107b7c 4 LDR             R4, [SP,#0x14]
+sub_10753C 68 00107b80 4 LDR             R1, [SP,#0x58]
+sub_10753C 69 00107b90 4 ADD             SP, SP, #0x6C
+sub_10753C 70 00107b9c 4 LDR             R0, [SP,#0x60]
+sub_10753C 71 00107bb0 4 LDR             R1, [SP,#0x64]
+sub_10753C 72 0010f0d4 4 B               loc_10F0D4
+sub_107BDC 0 00107bdc 4 STMFD           SP!, {R4-R6,LR}
+sub_107BDC 1 00107bfc 4 MOV             R2, #0x10
+sub_107BDC 2 00107c10 4 MOV             R0, #0
+sub_107BDC 3 00107c24 4 MOV             R2, #6
+sub_107BDC 4 00107c3c 4 MOV             R5, #3
+sub_107BDC 5 00107c44 4 LDR             R0, [SP,#8]
+sub_107BDC 6 00107c50 4 LDR             R1, [SP,#0]
+sub_107BDC 7 00107c70 4 LDR             R0, [SP,#8]
+sub_107BDC 8 00107c7c 4 LDR             R1, [SP,#0]
+sub_107BDC 9 00107c9c 4 LDR             R0, [SP,#8]
+sub_107BDC 10 00107ca8 4 B               loc_107D2C
+sub_107BDC 11 00107cac 4 STR             R0, [R4,#0]
+sub_107BDC 12 00107cb4 4 LDR             R1, [SP,#0]
+sub_107BDC 13 00107cd4 4 LDR             R0, [SP,#8]
+sub_107BDC 14 00107ce0 4 LDR             R1, [SP,#0]
+sub_107BDC 15 00107d00 4 LDR             R0, [SP,#8]
+sub_107BDC 16 00107d0c 4 LDR             R1, [SP,#0]
+sub_107BDC 17 00107d2c 4 LDR             R0, [SP,#8]
+sub_107BDC 18 00107d38 4 LDR             R1, [SP,#0]
+sub_107BDC 19 00107d50 4 LDR             R0, [SP,#8]
+sub_107BDC 20 00107d5c 4 LDR             R1, [SP,#0]
+sub_107BDC 21 00107d74 4 LDR             R0, [SP,#0x14]
+sub_107BDC 22 00107d80 4 CMP             R5, #0
+sub_107BDC 23 00107d88 4 B               loc_107D98
+sub_107BDC 24 00107d8c 4 LDR             R0, [R4,#0]
+sub_107BDC 25 00107d98 4 ADD             R1, SP, #0xC
+sub_107BDC 26 00107dac 4 MOV             R0, R5
+sub_107BDC 27 00107db0 4 ADD             SP, SP, #0x18
+sub_107DD4 0 00107dd4 4 STMFD           SP!, {R4-R11,LR}
+sub_107DD4 1 00107df4 4 MOV             R10, #0
+sub_107DD4 2 00107e1c 4 CMP             R0, #0
+sub_107DD4 3 00107e24 4 MOV             R8, #1
+sub_107DD4 4 00107e44 4 LDR             R0, [SP,#0x20]
+sub_107DD4 5 00107e54 4 MOV             R2, #0x10
+sub_107DD4 6 00107e6c 4 MOV             R4, #3
+sub_107DD4 7 00107e74 4 MOV             R2, #6
+sub_107DD4 8 00107e8c 4 MOV             R2, #1
+sub_107DD4 9 00107ea8 4 MOV             R2, #0
+sub_107DD4 10 00107ec0 4 LDR             R0, [SP,#8]
+sub_107DD4 11 00107ecc 4 B               loc_107EE8
+sub_107DD4 12 00107ed0 4 ADD             R1, SP, #0x48
+sub_107DD4 13 00107ee4 4 B               loc_107EA8
+sub_107DD4 14 00107ee8 4 LDR             R1, [SP,#0]
+sub_107DD4 15 00107f00 4 LDR             R0, [SP,#8]
+sub_107DD4 16 00107f0c 4 B               loc_10836C
+sub_107DD4 17 00107f10 4 LDR             R0, [SP,#0x48]
+sub_107DD4 18 00107f28 4 CMP             R6, #0
+sub_107DD4 19 00107f30 4 STR             R8, [R6,#0]
+sub_107DD4 20 00107f4c 4 MOV             R5, #3
+sub_107DD4 21 00107f54 4 MOV             R2, #0x80
+sub_107DD4 22 00107f6c 4 MOV             R2, #0xA1
+sub_107DD4 23 00107f84 4 CMP             R0, #3
+sub_107DD4 24 00107f8c 4 MOV             R2, #0x82
+sub_107DD4 25 00107fa4 4 ADD             R1, SP, #0x30
+sub_107DD4 26 00107fb8 4 CMP             R5, #0
+sub_107DD4 27 00107fc0 4 B               loc_108378
+sub_107DD4 28 00107fc4 4 ADD             R1, R6, #0x10
+sub_107DD4 29 00107fd8 4 B               loc_107F8C
+sub_107DD4 30 00107fdc 4 LDR             R1, [SP,#0]
+sub_107DD4 31 00107ff4 4 LDR             R0, [SP,#8]
+sub_107DD4 32 00108000 4 B               loc_10836C
+sub_107DD4 33 00108004 4 LDR             R0, [SP,#0x48]
+sub_107DD4 34 0010802c 4 B               loc_108378
+sub_107DD4 35 00108030 4 LDR             R1, [SP,#0]
+sub_107DD4 36 00108048 4 LDR             R0, [SP,#8]
+sub_107DD4 37 00108054 4 B               loc_10836C
+sub_107DD4 38 00108058 4 ADDS            R5, R7, #0xC4
+sub_107DD4 39 0010806c 4 MOV             R2, #3
+sub_107DD4 40 00108080 4 MOV             R6, #3
+sub_107DD4 41 00108088 4 ADD             R1, SP, #0x30
+sub_107DD4 42 0010809c 4 LDR             R0, [SP,#0x34]
+sub_107DD4 43 001080a8 4 LDR             R0, [SP,#0x30]
+sub_107DD4 44 001080c4 4 LDR             R0, [SP,#0x30]
+sub_107DD4 45 001080dc 4 LDR             R0, [R5,#0]
+sub_107DD4 46 001080e8 4 CMP             R6, #0
+sub_107DD4 47 001080f0 4 B               loc_108378
+sub_107DD4 48 001080f4 4 LDR             R1, [SP,#0]
+sub_107DD4 49 0010810c 4 LDR             R0, [SP,#8]
+sub_107DD4 50 00108118 4 B               loc_10836C
+sub_107DD4 51 0010811c 4 STR             R8, [R7,#0xD0]
+sub_107DD4 52 00108134 4 B               loc_108378
+sub_107DD4 53 00108138 4 LDR             R1, [SP,#0]
+sub_107DD4 54 00108150 4 LDR             R0, [SP,#8]
+sub_107DD4 55 0010815c 4 B               loc_10836C
+sub_107DD4 56 00108160 4 LDR             R0, [R7,#0x5C]
+sub_107DD4 57 0010816c 4 LDR             R0, [SP,#0x48]
+sub_107DD4 58 00108178 4 ADDS            R9, R7, #0x5C
+sub_107DD4 59 00108188 4 LDR             R0, [SP,#0x14]
+sub_107DD4 60 00108194 4 MOV             R2, #0xA4
+sub_107DD4 61 001081ac 4 CMP             R0, #3
+sub_107DD4 62 001081b4 4 MOV             R5, #3
+sub_107DD4 63 001081bc 4 MOV             R2, #0
+sub_107DD4 64 001081d4 4 LDR             R0, [R6,#8]
+sub_107DD4 65 001081e0 4 CMP             R5, #0
+sub_107DD4 66 001081e8 4 B               loc_108378
+sub_107DD4 67 001081ec 4 LDR             R1, [SP,#0]
+sub_107DD4 68 00108204 4 LDR             R0, [SP,#8]
+sub_107DD4 69 00108210 4 B               loc_10836C
+sub_107DD4 70 00108214 4 ADDS            R5, R7, #0x84
+sub_107DD4 71 00108224 4 MOV             R2, #0x10
+sub_107DD4 72 0010823c 4 MOV             R6, #3
+sub_107DD4 73 00108244 4 LDR             R0, [SP,#0x38]
+sub_107DD4 74 00108250 4 MOV             R2, #1
+sub_107DD4 75 00108268 4 CMP             R0, #1
+sub_107DD4 76 00108274 4 STR             R8, [R5,#0x54]
+sub_107DD4 77 00108298 4 CMP             R0, #1
+sub_107DD4 78 001082a8 4 ADD             R1, SP, #0x30
+sub_107DD4 79 001082bc 4 CMP             R6, #0
+sub_107DD4 80 001082c4 4 B               loc_108378
+sub_107DD4 81 001082c8 4 STR             R11, [R5,#0x50]!
+sub_107DD4 82 001082d8 4 ADD             R1, SP, #0x64
+sub_107DD4 83 001082ec 4 B               loc_108274
+sub_107DD4 84 001082f0 4 LDR             R0, [SP,#0x44]
+sub_107DD4 85 001082fc 4 LDR             R0, [SP,#0x3C]
+sub_107DD4 86 0010830c 4 LDR             R1, [SP,#0]
+sub_107DD4 87 00108324 4 LDR             R0, [SP,#8]
+sub_107DD4 88 00108330 4 LDR             R1, [SP,#0]
+sub_107DD4 89 00108348 4 LDR             R0, [SP,#8]
+sub_107DD4 90 00108354 4 LDR             R1, [SP,#0]
+sub_107DD4 91 0010836c 4 LDR             R0, [SP,#0x48]
+sub_107DD4 92 00108378 4 CMP             R4, #0
+sub_107DD4 93 00108380 4 ADD             R1, SP, #0x24
+sub_107DD4 94 00108394 4 LDR             R0, [SP,#0x20]
+sub_107DD4 95 001083a0 4 ADD             R1, SP, #0x18
+sub_107DD4 96 001083b4 4 MOV             R0, R4
+sub_107DD4 97 001083b8 4 ADD             SP, SP, #0x6C
+sub_1083E4 0 001083e4 4 STMFD           SP!, {R4-R6,LR}
+sub_1083E4 1 00108404 4 MOV             R0, #0
+sub_1083E4 2 00108418 4 MOV             R2, #0xA4
+sub_1083E4 3 00108430 4 CMP             R0, #3
+sub_1083E4 4 00108438 4 MOV             R6, #3
+sub_1083E4 5 00108440 4 MOV             R2, #0
+sub_1083E4 6 00108458 4 LDR             R0, [R4,#8]
+sub_1083E4 7 00108464 4 MOV             R0, R6
+sub_1083E4 8 00108468 4 ADD             SP, SP, #0x10
+sub_10851C 0 0010851c 4 STMFD           SP!, {R4-R6,LR}
+sub_10851C 1 0010853c 4 MOV             R2, #0x10
+sub_10851C 2 00108550 4 MOV             R2, #0x10
+sub_10851C 3 00108568 4 MOV             R2, #6
+sub_10851C 4 00108580 4 MOV             R2, #0
+sub_10851C 5 00108598 4 ADD             R1, SP, #0xC
+sub_10851C 6 001085ac 4 MOV             R0, #3
+sub_10851C 7 001085c0 4 LDR             R1, [SP,#0]
+sub_10851C 8 001085d8 4 ADD             R1, SP, #0x18
+sub_10851C 9 001085ec 4 MOV             R4, #3
+sub_10851C 10 001085f0 4 MOV             R0, R4
+sub_10851C 11 001085f4 4 ADD             SP, SP, #0x48
+sub_10851C 12 001085fc 4 MOV             R2, #3
+sub_10851C 13 00108614 4 ADD             R1, SP, #0x24
+sub_10851C 14 00108628 4 LDR             R0, [SP,#0x24]
+sub_10851C 15 00108654 4 STR             R0, [SP,#0x34]
+sub_10851C 16 00108670 4 MOV             R2, #2
+sub_10851C 17 00108688 4 LDR             R0, [SP,#8]
+sub_10851C 18 00108694 4 LDR             R0, [SP,#0]
+sub_10851C 19 001086a4 4 LDR             R0, [SP,#8]
+sub_10851C 20 001086b0 4 LDR             R0, [SP,#0]
+sub_10851C 21 001086d8 4 LDR             R0, [SP,#8]
+sub_10851C 22 001086e4 4 LDR             R0, [SP,#0]
+sub_10851C 23 001086f4 4 LDR             R0, [SP,#8]
+sub_10851C 24 00108700 4 ADD             SP, SP, #0x48
+sub_10851C 25 0010870c 4 LDR             R0, [SP,#0]
+sub_10851C 26 00108728 4 B               loc_1086B0
+sub_10851C 27 0010872c 4 LDR             R0, [SP,#0]
+sub_10851C 28 00108748 4 LDR             R0, [SP,#0]
+sub_10851C 29 00108770 4 B               loc_1085D8
+sub_108778 0 00108778 4 STMFD           SP!, {R4-R6,LR}
+sub_108778 1 00108798 4 MOV             R2, #0x10
+sub_108778 2 001087ac 4 MOV             R2, #6
+sub_108778 3 001087c4 4 MOV             R2, #0
+sub_108778 4 001087dc 4 LDR             R0, [SP,#8]
+sub_108778 5 001087e8 4 LDR             R1, [SP,#0]
+sub_108778 6 00108808 4 LDR             R0, [SP,#8]
+sub_108778 7 00108814 4 LDR             R1, [SP,#0]
+sub_108778 8 00108830 4 LDR             R0, [SP,#8]
+sub_108778 9 0010883c 4 LDR             R1, [SP,#0]
+sub_108778 10 00108858 4 LDR             R0, [SP,#8]
+sub_108778 11 00108864 4 B               loc_1088AC
+sub_108778 12 00108868 4 STR             R0, [R4,#0]
+sub_108778 13 0010886c 4 ADD             R1, SP, #0xC
+sub_108778 14 00108880 4 MOV             R5, #3
+sub_108778 15 00108884 4 MOV             R0, R5
+sub_108778 16 00108888 4 ADD             SP, SP, #0x28
+sub_108778 17 00108890 4 LDR             R1, [SP,#0]
+sub_108778 18 001088ac 4 MOV             R0, #4
+sub_1088C4 0 001088c4 4 STMFD           SP!, {R4-R7,LR}
+sub_1088C4 1 001088e4 4 ADD             R1, R5, #0x100
+sub_1088C4 2 001088f4 4 LDR             R0, [R5,#0x100]
+sub_1088C4 3 00108904 4 LDR             R1, [R5,#0x1C]
+sub_1088C4 4 00108910 4 MOV             R2, #3
+sub_1088C4 5 00108928 4 ADD             R1, SP, #0xC
+sub_1088C4 6 00108944 4 MOV             R7, #3
+sub_1088C4 7 00108948 4 MOV             R0, R7
+sub_1088C4 8 0010894c 4 ADD             SP, SP, #0x1C
+sub_1088C4 9 00108954 4 CMP             R4, #0
+sub_1088C4 10 0010895c 4 MOV             R0, R6
+sub_1088C4 11 00108974 4 STR             R4, [R5,#0x28]
+sub_1088C4 12 00108990 4 ADD             SP, SP, #0x1C
+sub_1089E4 0 001089e4 4 STMFD           SP!, {R4-R6,LR}
+sub_1089E4 1 00108a04 4 MOV             R2, #0x10
+sub_1089E4 2 00108a18 4 MOV             R2, #0x17
+sub_1089E4 3 00108a30 4 CMP             R0, #1
+sub_1089E4 4 00108a38 4 B               loc_108A58
+sub_1089E4 5 00108a3c 4 MOV             R2, #1
+sub_1089E4 6 00108a54 4 B               loc_108A88
+sub_1089E4 7 00108a58 4 MOV             R2, #0
+sub_1089E4 8 00108a70 4 MOV             R2, #0
+sub_1089E4 9 00108a88 4 MOV             R2, #0x17
+sub_1089E4 10 00108aa0 4 CMP             R0, #1
+sub_1089E4 11 00108aa8 4 B               loc_108B0C
+sub_1089E4 12 00108aac 4 MOV             R2, #1
+sub_1089E4 13 00108ac4 4 B               loc_108AF8
+sub_1089E4 14 00108ac8 4 MOV             R2, #0
+sub_1089E4 15 00108ae0 4 MOV             R2, #0
+sub_1089E4 16 00108af8 4 MOV             R1, SP
+sub_1089E4 17 00108b0c 4 MOV             R5, #3
+sub_1089E4 18 00108b10 4 MOV             R0, R5
+sub_1089E4 19 00108b14 4 ADD             SP, SP, #0x10
+sub_108BA4 0 00108ba4 4 STMFD           SP!, {R4-R10,LR}
+sub_108BA4 1 00108bcc 4 LDR             R4, [R7,#0]
+sub_108BA4 2 00108bdc 4 CMP             R4, R8
+sub_108BA4 3 00108be8 4 MOV             R1, R0
+sub_108BA4 4 00108c00 4 MOV             R5, #3
+sub_108BA4 5 00108c08 4 LDR             R0, [SP,#0]
+sub_108BA4 6 00108c18 4 CMP             R0, #0
+sub_108BA4 7 00108c20 4 LDR             R1, [SP,#8]
+sub_108BA4 8 00108c34 4 ADD             R0, R0, R4
+sub_108BA4 9 00108c40 4 CMP             R8, R0
+sub_108BA4 10 00108c48 4 CMP             R5, #0
+sub_108BA4 11 00108c50 4 MOV             R9, #1
+sub_108BA4 12 00108c58 4 LDR             R1, [R7,#0]
+sub_108BA4 13 00108c74 4 ADD             R6, R6, #1
+sub_108BA4 14 00108c80 4 ADD             SP, SP, #0x10
+pbl_mc1 0 00108c8c 4 STMFD           SP!, {R4,LR}
+pbl_mc1 1 00108c98 4 MOV             R3, #0
+pbl_mc1 2 00108cac 4 MOV             R1, #4
+pbl_mc1 3 00108cc0 4 MOV             R3, #4
+pbl_mc1 4 00108cd4 4 LDR             R0, =sub_103A44
+sub_108D74 0 00108d74 4 STMFD           SP!, {R4-R10,LR}
+sub_108D74 1 00108da0 4 LDR             R3, [R4,#0x34]
+sub_108D74 2 00108dc0 4 LDR             R3, [R2,#0x2C]
+sub_108D74 3 00108dcc 4 LDR             R3, [R2,#0x2C]
+sub_108D74 4 00108de8 4 MOV             R3, R0
+sub_108D74 5 00108df8 4 LDR             R3, [R4,#0xC]
+sub_108D74 6 00108e04 4 CMP             R0, #0x8000
+sub_108D74 7 00108e18 4 LDR             R3, [R1,#0]
+sub_108D74 8 00108e2c 4 CMP             LR, #4
+sub_108D74 9 00108e38 4 LDR             LR, [R1,#0x1C]
+sub_108D74 10 00108e50 4 CMP             R3, #0x18
+sub_108D74 11 00108e5c 4 ORR             R0, R0, #0x1000
+sub_108D74 12 00108e60 4 LDR             LR, [R4,#0x34]
+sub_108D74 13 00108e80 4 CMP             R7, #0
+sub_108D74 14 00108e88 4 LDR             R0, [R1,#0]
+sub_108D74 15 00108e98 4 LDR             R0, [R1,#8]
+sub_108D74 16 00108ea4 4 LDR             R5, [R4,#0x34]
+sub_108D74 17 00108eb0 4 LDR             R0, [R5,#0x28]
+sub_108D74 18 00108ec4 4 LDR             R2, [R5,#0x2C]
+sub_108D74 19 00108ed8 4 LDR             R0, [R4,#0x34]
+sub_108D74 20 00108ef0 4 MOV             R0, #0xA
+sub_108D74 21 00108f08 4 CMP             R5, #0x320
+sub_108D74 22 00108f10 4 LDR             R1, [R4,#0x34]
+sub_108D74 23 00108f2c 4 LDR             R0, [R4,#0x34]
+sub_108D74 24 00108f44 4 MOV             R0, #0xA
+sub_108D74 25 00108f5c 4 MOV             R0, R8
+sub_108D74 26 00108f64 4 MOV             R8, R9
+sub_108D74 27 00108f6c 4 TST             R0, #4
+sub_108D74 28 00108f74 4 LDR             R0, [R5,#0x2C]
+sub_108D74 29 00108f84 4 TST             R0, #1
+sub_108D74 30 00108f8c 4 LDR             R0, [R1,#0]
+sub_108D74 31 00108fb0 4 STR             R12, [R2,#0x28]
+sub_108D74 32 00108fc4 4 LDR             R0, [R2,#0x2C]
+sub_108D74 33 00108fd0 4 LDR             R0, [R2,#0x2C]
+sub_108D74 34 00108fec 4 LDR             R0, [R4,#0xC]
+sub_108D74 35 00108ffc 4 LDR             R0, [R1,#8]
+sub_108D74 36 0010900c 4 CMP             R0, #4
+sub_108D74 37 00109028 4 LDR             R12, [R4,#0x34]
+sub_108D74 38 00109044 4 LDR             R0, [R1,#8]
+sub_108D74 39 00109050 4 LDR             R0, [R1,#0xC]
+sub_108D74 40 00109070 4 LDR             R0, [R1,#8]
+sub_108D74 41 0010907c 4 LDR             R0, [R1,#0xC]
+sub_108D74 42 00109098 4 CMP             R7, #0
+sub_108D74 43 001090a0 4 LDR             R0, [R1,#0x1C]
+sub_108D74 44 001090ac 4 LDR             R6, [R4,#0x34]
+sub_108D74 45 001090b8 4 LDR             R0, [R6,#0x28]
+sub_108D74 46 001090cc 4 LDR             R1, [R6,#0x2C]
+sub_108D74 47 001090e0 4 MOV             R0, #0xA
+sub_108D74 48 001090f8 4 MOV             R0, R7
+sub_10910C 0 0010910c 4 STMFD           SP!, {R4-R6,LR}
+sub_10910C 1 00109120 4 CMP             R2, #1
+sub_10910C 2 00109128 4 MOV             R3, R4
+sub_10910C 3 0010913c 4 LDR             R0, [R5,#0x28]
+sub_10910C 4 00109148 4 LDR             R0, [R5,#0x34]
+sub_10910C 5 00109160 4 B               loc_109194
+sub_10910C 6 00109164 4 LDR             R0, [R5,#0]
+sub_10910C 7 00109170 4 CMP             R0, #6
+sub_10910C 8 00109180 4 BL              sub_105390
+sub_10910C 9 00109194 4 LDR             R2, =0xB8200
+sub_10910C 10 001091a8 4 STR             R4, [R5,#0x28]
+sub_10910C 11 001091ac 4 LDMFD           SP!, {R4-R6,PC}
+sub_1091BC 0 001091bc 4 STMFD           SP!, {R4-R9,LR}
+sub_1091BC 1 001091e8 4 MOV             R3, R7
+sub_1091BC 2 001091fc 4 LDR             R0, [R4,#0x1C]
+sub_1091BC 3 00109228 4 MOV             R0, #0x37
+sub_1091BC 4 00109254 4 MOV             R1, R5
+sub_1091BC 5 00109268 4 STR             R8, [SP,#0]
+sub_1091BC 6 00109288 4 TST             R6, #1
+sub_1091BC 7 00109290 4 MOV             R1, #0
+sub_1091BC 8 00109294 4 CMP             R1, #0
+sub_1091BC 9 001092a0 4 MOV             R0, #0xC
+sub_1091BC 10 001092c4 4 LDR             R1, [R4,#0x34]
+sub_1091BC 11 001092d8 4 ADD             SP, SP, #0x24
+sub_1091BC 12 001092e0 4 LDR             R0, [R5,#0]
+sub_1091BC 13 001092f4 4 B               loc_109294
+sub_109314 0 00109314 4 STMFD           SP!, {R4-R11,LR}
+sub_109314 1 00109360 4 MOV             R3, R10
+sub_109314 2 0010937c 4 LDR             R1, [R5,#0x44]
+sub_109314 3 00109388 4 LDR             R11, [R12,#0x50]
+sub_109314 4 0010939c 4 LDR             R0, [R6,#0]
+sub_109314 5 001093e8 4 LDRH            R0, [SP,#0x14]
+sub_109314 6 001093f8 4 LDRH            R0, [SP,#0x16]
+sub_109314 7 0010940c 4 ADD             R2, R10, R0
+sub_109314 8 00109424 4 ADD             R0, R0, #1
+sub_109314 9 00109430 4 CMP             R0, #8
+sub_109314 10 00109438 4 CMP             R3, #0
+sub_109314 11 00109440 4 LDR             R2, [R6,#0x20]
+sub_109314 12 0010945c 4 LDR             R4, [R12,#0x28]
+sub_109314 13 00109470 4 LDR             R2, [R12,#0x30]
+sub_109314 14 00109484 4 SUBS            R1, R2, R7
+sub_109314 15 00109490 4 LDR             R0, [R5,#0x44]
+sub_109314 16 001094c8 4 LDR             R0, [R12,#0x54]
+sub_109314 17 001094dc 4 ADD             SP, SP, #0x24
+sub_1094EC 0 001094ec 4 STMFD           SP!, {R4-R8,LR}
+sub_1094EC 1 00109508 4 MOV             R0, #9
+sub_1094EC 2 00109540 4 LDR             R0, [R4,#0]
+sub_1094EC 3 00109550 4 CMP             R0, #2
+sub_1094EC 4 00109558 4 CMP             R0, #5
+sub_1094EC 5 00109560 4 CMP             R0, #6
+sub_1094EC 6 00109568 4 B               loc_109644
+sub_1094EC 7 0010956c 4 LDR             R0, [SP,#0xC]
+sub_1094EC 8 0010957c 4 LDR             R1, [SP,#0x14]
+sub_1094EC 9 00109594 4 BFC             R0, #0xA, #0x16
+sub_1094EC 10 001095b8 4 MOV             R3, R5
+sub_1094EC 11 001095c8 4 ADD             R0, R6, #1
+sub_1094EC 12 001095dc 4 STR             R0, [R4,#0x24]
+sub_1094EC 13 001095e4 4 LDR             R0, [SP,#0xC]
+sub_1094EC 14 00109618 4 MOV             R3, R5
+sub_1094EC 15 00109628 4 ADD             R0, R6, #1
+sub_1094EC 16 00109644 4 LDR             R0, [SP,#0xC]
+sub_1094EC 17 00109650 4 STR             R5, [R4,#0x24]
+sub_1094EC 18 00109654 4 MOV             R0, R8
+sub_1094EC 19 00109658 4 ADD             SP, SP, #0x28
+sub_10967C 0 0010967c 4 STMFD           SP!, {R3-R11,LR}
+sub_10967C 1 001096ac 4 LDR             R0, [R4,#0]
+sub_10967C 2 001096cc 4 LDR             R2, [R4,#0x18]
+sub_10967C 3 001096e0 4 LDR             R0, [R4,#0xC]
+sub_10967C 4 001096ec 4 CMP             R0, #0x200
+sub_10967C 5 001096f4 4 LDR             R0, [R4,#0x48]
+sub_10967C 6 00109704 4 SUBS            R3, R0, R5
+sub_10967C 7 00109710 4 LDR             R2, [R4,#0x30]
+sub_10967C 8 00109724 4 LDR             R12, [R4,#0x10]
+sub_10967C 9 0010974c 4 BCC             loc_109770
+sub_10967C 10 00109750 4 LDRB            R5, [R1],#1
+sub_10967C 11 00109770 4 MVN             R0, R0
+sub_10967C 12 00109774 4 CMP             R12, R0
+sub_10967C 13 0010977c 4 LDR             R0, [R4,#0x50]
+sub_10967C 14 00109790 4 CMP             R5, R7
+sub_10967C 15 0010979c 4 EOR             R1, R1, R5
+sub_10967C 16 001097a8 4 STR             R6, [SP,#0]
+sub_10967C 17 001097c8 4 LDR             R0, [R8,#8]
+sub_10967C 18 001097d8 4 B               loc_109800
+sub_10967C 19 001097dc 4 RSBS            R2, R0, #1
+sub_10967C 20 001097e8 4 LDR             R2, [R4,#0x28]
+sub_10967C 21 001097fc 4 B               loc_109724
+sub_10967C 22 00109800 4 LDR             R2, [R4,#0x58]
+sub_10967C 23 00109810 4 CMP             R5, #0
+sub_10967C 24 00109820 4 LDRB            R12, [R6],#1
+sub_10967C 25 00109840 4 MVN             R0, R0
+sub_10967C 26 0010984c 4 CMP             R3, #0
+sub_10967C 27 00109854 4 MOV             R0, R4
+sub_10967C 28 0010985c 4 MOV             R0, #0
+sub_109878 0 00109878 4 STMFD           SP!, {R4-R6,LR}
+sub_109878 1 001098b4 4 MOV             R1, #3
+sub_109878 2 001098cc 4 CMP             R0, #6
+sub_109878 3 001098d4 4 STR             R1, [SP,#8]
+sub_109878 4 001098f0 4 STR             R5, [R4,#0x10]
+sub_109878 5 001098f4 4 ADD             SP, SP, #0x48
+sub_109878 6 001098fc 4 MOV             R0, #0x20000
+sub_10991C 0 0010991c 4 STMFD           SP!, {R4-R10,LR}
+sub_10991C 1 00109930 4 LDR             R0, [R4,#0x40]
+sub_10991C 2 0010993c 4 MOV             R7, #0
+sub_10991C 3 00109984 4 STR             R7, [SP,#0x40]
+sub_10991C 4 001099bc 4 MOV             R0, #0x64
+sub_10991C 5 001099d4 4 ADD             SP, SP, #0x48
+sub_10991C 6 001099e0 4 MOV             R6, #0
+sub_1099EC 0 001099ec 4 STMFD           SP!, {R3-R9,LR}
+sub_1099EC 1 00109a10 4 LDR             R0, [R8,#0x34]
+sub_1099EC 2 00109a24 4 LDR             R1, [R0,#0x34]
+sub_1099EC 3 00109a38 4 MOV             R3, #0
+sub_1099EC 4 00109a4c 4 ADD             R0, R4, R5
+sub_1099EC 5 00109a58 4 MOV             R3, R9
+sub_1099EC 6 00109a6c 4 TST             R5, #3
+sub_1099EC 7 00109a74 4 MOV             R3, R5
+sub_1099EC 8 00109a88 4 CMP             R9, #0
+sub_1099EC 9 00109a90 4 LDR             R1, [R8,#0x34]
+sub_1099EC 10 00109aa8 4 TST             R0, #0x200000
+sub_1099EC 11 00109ab0 4 TST             R0, #0x8000
+sub_1099EC 12 00109ab8 4 CMP             R4, #0x20
+sub_1099EC 13 00109ac0 4 CMP             R5, #0x20
+sub_1099EC 14 00109ac8 4 CMP             R5, #0
+sub_1099EC 15 00109ad0 4 LDR             R0, [R1,#0x30]
+sub_1099EC 16 00109ae8 4 B               loc_109B30
+sub_1099EC 17 00109aec 4 LDR             R1, [R1,#0x30]
+sub_1099EC 18 00109b04 4 MOV             R3, #0x20
+sub_1099EC 19 00109b18 4 CMP             R5, #0x20
+sub_1099EC 20 00109b30 4 CMP             R4, #0
+sub_1099EC 21 00109b38 4 CMP             R4, #4
+sub_1099EC 22 00109b40 4 SUB             R4, R4, #4
+sub_1099EC 23 00109b4c 4 ADDS            R0, R4, #1
+sub_1099EC 24 00109b54 4 LDRB            R1, [R7],#1
+sub_1099EC 25 00109b68 4 SUB             R9, R9, #4
+sub_1099EC 26 00109b6c 4 CMP             R9, #0
+sub_1099EC 27 00109b74 4 LDR             R0, [R8,#0xC]
+sub_1099EC 28 00109b80 4 MOV             R0, #9
+sub_1099EC 29 00109b88 4 LDR             R0, [R8,#0x34]
+sub_1099EC 30 00109bcc 4 ADD             R2, R2, #1
+sub_1099EC 31 00109bd8 4 MOV             R0, #2
+sub_1099EC 32 00109be0 4 STR             R3, [R0,#0x28]
+sub_1099EC 33 00109bf4 4 LDR             R1, [R0,#0x2C]
+sub_1099EC 34 00109c00 4 LDR             R1, [R0,#0x2C]
+sub_1099EC 35 00109c20 4 MOV             R0, #0
+sub_109C50 0 00109c50 4 STMFD           SP!, {R4,LR}
+sub_109CA4 0 00109ca4 4 STMFD           SP!, {R4-R6,LR}
+sub_109CA4 1 00109cbc 4 MOV             R3, #0
+sub_109CA4 2 00109cd0 4 LDR             R0, [R4,#0x28]
+sub_109CA4 3 00109cf8 4 LDR             R1, [R4,#0x34]
+sub_109CA4 4 00109d10 4 LDR             R1, [R4,#0x34]
+sub_109D64 0 00109d64 4 CMP             R1, #0
+sub_109D64 1 00109d70 4 CMP             R0, #1
+sub_109D64 2 00109d78 4 CMP             R0, #0
+sub_109D64 3 00109d8c 4 BX              LR
+sub_109D64 4 00109d90 4 MOV             R0, #2
+sub_109DA0 0 00109da0 4 CMP             R1, #0
+sub_109DA0 1 00109dac 4 CMP             R0, #1
+sub_109DA0 2 00109db4 4 CMP             R0, #0
+sub_109DA0 3 00109dc8 4 BX              LR
+sub_109DA0 4 00109dcc 4 MOV             R0, #1
+sub_109DDC 0 00109ddc 4 CMP             R1, #0
+sub_109DDC 1 00109de8 4 STMFD           SP!, {R4,LR}
+sub_109DDC 2 00109e04 4 CMP             R0, #0
+sub_109DDC 3 00109e10 4 LDR             R0, [R1,#0xB0]
+sub_109DDC 4 00109e28 4 LDMFD           SP!, {R4,PC}
+sub_109DDC 5 00109e2c 4 LDR             R0, [R1,#0xC0]
+sub_109E48 0 00109e48 4 STMFD           SP!, {R4-R12,LR}
+sub_109E48 1 00109e68 4 CMP             R5, #0
+sub_109E48 2 00109e74 4 LDRB            R0, [R6,#0x31]
+sub_109E48 3 00109e84 4 LDR             R0, [R6,#8]
+sub_109E48 4 00109e98 4 LDR             R0, [R6,#4]
+sub_109E48 5 00109eac 4 LDR             R1, [R1,#0x18]
+sub_109E48 6 00109eb8 4 UBFX            R2, R1, #0x18, #3
+sub_109E48 7 00109ec4 4 UBFX            R1, R1, #0x15, #3
+sub_109E48 8 00109ed4 4 MOV             R1, #0x10
+sub_109E48 9 00109ef4 4 MOV             R2, #8
+sub_109E48 10 00109f0c 4 STR             R4, [R5,#0]
+sub_109E48 11 00109f18 4 SUB             R9, R1, R12
+sub_109E48 12 00109f34 4 MOV             LR, R2
+sub_109E48 13 00109f44 4 ADD             R10, R7, R0,LSL#3
+sub_109E48 14 00109f54 4 CMP             R9, #0
+sub_109E48 15 00109f5c 4 ADD             R0, LR, R12
+sub_109E48 16 00109f6c 4 LDR             R0, [R6,#8]
+sub_109E48 17 00109f7c 4 MOV             R4, #0
+sub_109E48 18 00109f80 4 CMP             R4, #0
+sub_109E48 19 00109f88 4 B               loc_109F9C
+sub_109E48 20 00109f8c 4 ADD             R0, R0, #1
+sub_109E48 21 00109f98 4 B               loc_109F6C
+sub_109E48 22 00109f9c 4 LDR             R1, =0x8004128
+sub_109E48 23 00109fb8 4 CMP             R5, #0
+sub_109E48 24 00109fc0 4 LDRB            R0, [R6,#0x31]
+sub_109E48 25 00109fc8 4 MOV             R2, #0x3C
+sub_10A004 0 0010a004 4 STMFD           SP!, {R4-R6,LR}
+sub_10A004 1 0010a014 4 ADD             R1, R4, #4
+sub_10A004 2 0010a024 4 LDR             R0, [R4,#4]
+sub_10A004 3 0010a038 4 MOV             R0, R5
+sub_10A040 0 0010a040 4 STMFD           SP!, {R4,LR}
+sub_10A040 1 0010a050 4 CMP             R0, #4
+sub_10A040 2 0010a05c 4 CMP             R0, #1
+sub_10A040 3 0010a068 4 MOV             R0, #0
+sub_10A040 4 0010a06c 4 LDMFD           SP!, {R4,PC}
+sub_10A070 0 0010a070 4 LDR             R1, [R0,#0]
+sub_10A070 1 0010a07c 4 LDR             R0, [R0,#0x18]
+sub_10A070 2 0010a088 4 UBFX            R1, R0, #0x18, #3
+sub_10A070 3 0010a094 4 UBFX            R0, R0, #0x15, #3
+sub_10A070 4 0010a0a8 4 MOV             R0, #0
+sub_10A070 5 0010a0ac 4 BX              LR
+sub_10A0B0 0 0010a0b0 4 STMFD           SP!, {R4-R9}
+sub_10A0B0 1 0010a0c0 4 LDR             R7, [R1,#0]
+sub_10A0B0 2 0010a0d4 4 LDRH            R0, [R7,#0x2C]
+sub_10A0B0 3 0010a0f8 4 CMP             R4, #0x280
+sub_10A0B0 4 0010a100 4 MOV             R0, #0x117
+sub_10A0B0 5 0010a104 4 LDMFD           SP!, {R4-R9}
+sub_10A0B0 6 0010a10c 4 LDMFD           SP!, {R4-R9}
+sub_10A0B0 7 0010a118 4 LDR             R3, [R1,#4]
+sub_10A0B0 8 0010a128 4 CMP             R3, #0
+sub_10A0B0 9 0010a13c 4 CMP             R6, #0
+sub_10A0B0 10 0010a144 4 CMP             R6, R3
+sub_10A0B0 11 0010a14c 4 LDR             R0, [R3,#0x18]
+sub_10A0B0 12 0010a168 4 CMP             R5, #1
+sub_10A0B0 13 0010a174 4 MOV             R0, #0x126
+sub_10A0B0 14 0010a178 4 CMP             R0, #0
+sub_10A0B0 15 0010a180 4 ADD             R0, R9, #0x28
+sub_10A0B0 16 0010a194 4 LDMFD           SP!, {R4-R9}
+sub_10A0B0 17 0010a1a0 4 ADD             R6, R0, R12
+sub_10A0B0 18 0010a1b0 4 CMP             R12, #0x280
+sub_10A0B0 19 0010a1b8 4 CMP             R8, #0x800
+sub_10A0B0 20 0010a1c8 4 ADD             R3, R8, R12
+sub_10A0B0 21 0010a1dc 4 MOV             R0, #0x119
+sub_10A0B0 22 0010a1e8 4 STR             R7, [R2,#0]
+sub_10A0B0 23 0010a21c 4 CMP             R1, #0
+sub_10A0B0 24 0010a228 4 LDR             R0, [R1,#0x24]
+sub_10A0B0 25 0010a238 4 LDR             R4, [R1,#0x14]
+sub_10A0B0 26 0010a248 4 LDR             R8, [R1,#0x1C]
+sub_10A0B0 27 0010a258 4 ANDS            R4, R0, #3
+sub_10A0B0 28 0010a27c 4 MOV             R0, #0x111
+sub_10A0B0 29 0010a280 4 CMP             R0, #0
+sub_10A0B0 30 0010a288 4 LDR             R8, [R1,#0x1C]
+sub_10A0B0 31 0010a2a4 4 CMP             R4, #0
+sub_10A0B0 32 0010a2ac 4 ADD             R0, R6, R8
+sub_10A0B0 33 0010a2c0 4 STR             R0, [R2,#0x24]
+sub_10A0B0 34 0010a2d4 4 LDR             R0, [R1,#0x14]
+sub_10A0B0 35 0010a2e4 4 LDRH            R0, [R7,#0x2C]
+sub_10A0B0 36 0010a2f8 4 CMP             R3, #0
+sub_10A0B0 37 0010a308 4 CMP             R1, #0
+sub_10A0B0 38 0010a314 4 LDR             R7, [R3,#0x18]
+sub_10A0B0 39 0010a324 4 ADD             R3, R3, #0x20
+sub_10A0B0 40 0010a330 4 MOV             R3, R6
+sub_10A0B0 41 0010a334 4 CMP             R3, #0
+sub_10A0B0 42 0010a33c 4 ADD             R1, R5, R12
+sub_10A35C 0 0010a35c 4 STMFD           SP!, {R4-R11,LR}
+sub_10A35C 1 0010a37c 4 LDR             R1, [R5,#0x18]
+sub_10A35C 2 0010a390 4 MOV             R4, #1
+sub_10A35C 3 0010a3e8 4 LDR             R0, [R5,#4]
+sub_10A35C 4 0010a3fc 4 LDR             R0, [R5,#4]
+sub_10A35C 5 0010a410 4 MOV             R1, #8
+sub_10A35C 6 0010a43c 4 MOV             R1, #0x20
+sub_10A35C 7 0010a464 4 B               loc_10A48C
+sub_10A35C 8 0010a468 4 MOV             R0, #0x102
+sub_10A35C 9 0010a46c 4 ADD             SP, SP, #0x54
+sub_10A35C 10 0010a474 4 MOV             R2, #0x20
+sub_10A35C 11 0010a48c 4 MOV             R7, R0
+sub_10A35C 12 0010a49c 4 MOVS            R0, R7
+sub_10A35C 13 0010a4a8 4 B               loc_10A4B0
+sub_10A35C 14 0010a4ac 4 MOV             R0, #0
+sub_10A35C 15 0010a4b0 4 LDR             R1, [R5,#8]
+sub_10A35C 16 0010a4c4 4 ADD             SP, SP, #0x54
+sub_10A35C 17 0010f0d4 4 B               loc_10F0D4
+sub_10A4EC 0 0010a4ec 4 LDRB            R1, [R0,#0]
+sub_10A4EC 1 0010a500 4 LDRB            R1, [R0,#2]
+sub_10A4EC 2 0010a514 4 MOV             R0, #0x112
+sub_10A4EC 3 0010a518 4 BX              LR
+sub_10A4EC 4 0010a51c 4 LDRB            R1, [R0,#4]
+sub_10A4EC 5 0010a52c 4 LDRB            R1, [R0,#6]
+sub_10A4EC 6 0010a53c 4 LDRH            R1, [R0,#0x28]
+sub_10A4EC 7 0010a54c 4 LDRH            R1, [R0,#0x2A]
+sub_10A4EC 8 0010a55c 4 LDRH            R0, [R0,#0x2C]
+sub_10A5C0 0 0010a5c0 4 STMFD           SP!, {R0-R12,LR}
+sub_10A5C0 1 0010a5e4 4 CMP             R5, #0
+sub_10A5C0 2 0010a5f4 4 LDR             R0, [R5,#4]
+sub_10A5C0 3 0010a608 4 CMP             R6, #0
+sub_10A5C0 4 0010a614 4 MOV             R2, #0x58
+sub_10A5C0 5 0010a66c 4 B               loc_10A678
+sub_10A5C0 6 0010a670 4 MOV             R4, #0x102
+sub_10A5C0 7 0010a678 4 LDRB            R1, [R0,#2]
+sub_10A5C0 8 0010a68c 4 MOV             R4, #0x112
+sub_10A5C0 9 0010a690 4 CMP             R4, #0
+sub_10A5C0 10 0010a698 4 B               loc_10A6F0
+sub_10A5C0 11 0010a69c 4 LDRB            R1, [R0,#4]
+sub_10A5C0 12 0010a6ac 4 LDRB            R1, [R0,#6]
+sub_10A5C0 13 0010a6bc 4 LDRH            R1, [R0,#0x28]
+sub_10A5C0 14 0010a6cc 4 LDRH            R1, [R0,#0x2A]
+sub_10A5C0 15 0010a6dc 4 LDRH            R1, [R0,#0x2C]
+sub_10A5C0 16 0010a6f0 4 LDRH            R10, [R0,#0x2C]
+sub_10A5C0 17 0010a708 4 LDR             R0, [R1,#0]
+sub_10A5C0 18 0010a714 4 LDR             R0, [R1,#0x18]
+sub_10A5C0 19 0010a720 4 UBFX            R2, R0, #0x18, #3
+sub_10A5C0 20 0010a72c 4 UBFX            R0, R0, #0x15, #3
+sub_10A5C0 21 0010a744 4 LDR             R0, [R1,#0x14]
+sub_10A5C0 22 0010a754 4 MOV             R4, #0x11E
+sub_10A5C0 23 0010a760 4 LDR             R9, [R6,#0]
+sub_10A5C0 24 0010a774 4 LDR             R11, [R2,R0,LSL#3]
+sub_10A5C0 25 0010a780 4 ADD             R11, R12, R0,LSL#3
+sub_10A5C0 26 0010a790 4 ADD             R0, R0, #1
+sub_10A5C0 27 0010a79c 4 MOV             R4, #0x11D
+sub_10A5C0 28 0010a7a8 4 ADD             R3, R3, #1
+sub_10A5C0 29 0010a7b8 4 MOV             R4, #0
+sub_10A5C0 30 0010a7bc 4 CMP             R4, #0
+sub_10A5C0 31 0010a7c4 4 LDR             R0, [SP,#0]
+sub_10A5C0 32 0010a7dc 4 LDR             R0, [SP,#0]
+sub_10A5C0 33 0010a7f4 4 LDR             R0, [SP,#0]
+sub_10A5C0 34 0010a80c 4 LDR             R10, [R8,#0]
+sub_10A5C0 35 0010a82c 4 LDR             R2, [R0,#0]
+sub_10A5C0 36 0010a838 4 LDR             R2, [R0,#0x18]
+sub_10A5C0 37 0010a844 4 UBFX            R3, R2, #0x18, #3
+sub_10A5C0 38 0010a850 4 UBFX            R2, R2, #0x15, #3
+sub_10A5C0 39 0010a868 4 MOV             R2, #8
+sub_10A5C0 40 0010a890 4 CMP             R2, R12
+sub_10A5C0 41 0010a898 4 ADD             R2, R2, R4
+sub_10A5C0 42 0010a8a4 4 CMP             R3, #0
+sub_10A5C0 43 0010a8ac 4 ADD             R1, R1, #1
+sub_10A5C0 44 0010a8bc 4 MOV             R4, #0x123
+sub_10A5C0 45 0010a8c0 4 CMP             R4, #0
+sub_10A5C0 46 0010a8c8 4 MOV             R2, #0x3C
+sub_10A5C0 47 0010a8f8 4 CMP             R7, #0
+sub_10A5C0 48 0010a900 4 LDR             R0, =0x8004128
+sub_10A5C0 49 0010a90c 4 ADD             SP, SP, #0x10
+sub_10A5C0 50 0010a918 4 MOV             R4, #0
+sub_10A5C0 51 0010a920 4 MOV             R0, #2
+sub_10A934 0 0010a934 4 STMFD           SP!, {R4-R7,LR}
+sub_10A934 1 0010a960 4 LDR             R0, =loc_100AA0
+sub_10A934 2 0010a9a4 4 ADD             R1, SP, #0x10
+sub_10A934 3 0010a9b8 4 ADD             R1, SP, #0x254
+sub_10A934 4 0010a9cc 4 ADD             R1, SP, #0x258
+sub_10A934 5 0010a9e0 4 LDR             R0, [R4,#0xC]
+sub_10A934 6 0010aa4c 4 MOV             R5, R0
+sub_10A934 7 0010aa5c 4 ADD             R0, SP, #0x10
+sub_10A934 8 0010aa6c 4 MOV             R5, R0
+sub_10A934 9 0010aa70 4 ADD             SP, SP, #0x284
+sub_10A934 10 0010aa7c 4 LDR             R0, =dword_10F75C
+sub_10A934 11 0010aaac 4 LDR             R1, [R4,#4]
+sub_10A934 12 0010aae4 4 MOV             R2, #0x20
+sub_10A934 13 0010aafc 4 MOV             R5, R0
+sub_10A934 14 0010ab0c 4 B               loc_10AA70
+sub_10A934 15 0010f0d4 4 B               loc_10F0D4
+sub_10AB30 0 0010ab30 4 STMFD           SP!, {R4-R11,LR}
+sub_10AB30 1 0010ab50 4 LDR             R1, =0x50425342
+sub_10AB30 2 0010ab64 4 MOV             R2, #0
+sub_10AB30 3 0010ab78 4 MOV             R0, #2
+sub_10AB30 4 0010ab7c 4 ADD             SP, SP, #0x400
+sub_10AB30 5 0010ab88 4 CMP             R7, #0
+sub_10AB30 6 0010ab9c 4 LDR             R1, [R7,#4]
+sub_10AB30 7 0010abac 4 LDR             R0, [R7,#8]
+sub_10AB30 8 0010abb8 4 LDR             R1, [R7,#0xC]
+sub_10AB30 9 0010abc8 4 LDR             R0, [R7,#0x10]
+sub_10AB30 10 0010abd4 4 LDR             R1, [R7,#0x14]
+sub_10AB30 11 0010abe4 4 CMP             R1, #0xD800
+sub_10AB30 12 0010abec 4 LDR             R0, [R7,#0x18]
+sub_10AB30 13 0010abf8 4 LDR             R1, [R7,#0x1C]
+sub_10AB30 14 0010ac08 4 CMP             R1, #0x200
+sub_10AB30 15 0010ac10 4 MOV             R2, #0
+sub_10AB30 16 0010ac2c 4 MOV             R2, #0x50
+sub_10AB30 17 0010ac8c 4 LDR             R0, [R4,#0x68]
+sub_10AB30 18 0010ac98 4 MOV             R5, #0
+sub_10AB30 19 0010acb8 4 MOV             R2, #0x20
+sub_10AB30 20 0010acc8 4 ADD             R2, R6, #0x20
+sub_10AB30 21 0010ace0 4 MOV             R0, R4
+sub_10AB30 22 0010acf0 4 MOV             R1, R6
+sub_10AB30 23 0010ad04 4 MOV             R0, R4
+sub_10AB30 24 0010ad10 4 STR             R1, [R0,#0x28]!
+sub_10AB30 25 0010ad20 4 MOV             R5, #7
+sub_10AB30 26 0010ad24 4 MOVS            R0, R5
+sub_10AB30 27 0010ad2c 4 B               loc_10ADC0
+sub_10AB30 28 0010ad30 4 ADD             R1, R6, #0x28
+sub_10AB30 29 0010ad44 4 MOV             R0, R4
+sub_10AB30 30 0010ad54 4 ADD             R0, R6, #0x2C
+sub_10AB30 31 0010ad64 4 MOV             R0, R4
+sub_10AB30 32 0010ad74 4 ADD             R3, R6, #0x3C
+sub_10AB30 33 0010ad90 4 LDR             R1, [SP,#0x3D8]
+sub_10AB30 34 0010adb0 4 MOV             R2, #0x40
+sub_10AB30 35 0010adc0 4 LDR             R0, [SP,#0x3D4]
+sub_10AB30 36 0010adec 4 LDR             R2, [R7,#0x14]
+sub_10AB30 37 0010ae14 4 LDR             R0, [R7,#0x20]
+sub_10AB30 38 0010ae24 4 CMP             R1, R0,LSR#16
+sub_10AB30 39 0010ae34 4 LDR             R2, [SP,#0x3EC]
+sub_10AB30 40 0010ae4c 4 ADD             SP, SP, #0x400
+sub_10AB30 41 0010ae5c 4 CMP             R1, R0
+sub_10AB30 42 0010ae64 4 MOV             R2, R1
+sub_10AB30 43 0010ae84 4 LDR             R1, [SP,#0x3EC]
+sub_10AB30 44 0010ae9c 4 LDR             R1, [SP,#0x3E8]
+sub_10AB30 45 0010aec8 4 LDR             R0, [R7,#0x14]
+sub_10AB30 46 0010aeec 4 CMP             R4, #0
+sub_10AB30 47 0010aef4 4 CMP             R5, #0
+sub_10AB30 48 0010aefc 4 LDR             R0, [SP,#0x408]
+sub_10AB30 49 0010af0c 4 CMP             R8, #0
+sub_10AB30 50 0010af14 4 LDR             R0, [R8,#0x384]
+sub_10AB30 51 0010af24 4 MOV             R0, #2
+sub_10AB30 52 0010af38 4 STR             R9, [SP,#0x14]
+sub_10AB30 53 0010af54 4 LDR             R2, [R11,#8]
+sub_10AB30 54 0010af74 4 MOVS            R0, R4
+sub_10AB30 55 0010af80 4 STR             R1, [R0,#0x24]
+sub_10AB30 56 0010af90 4 MOV             R0, #2
+sub_10AB30 57 0010af98 4 RSB             R0, R6, R6,LSL#4
+sub_10AB30 58 0010afb0 4 LDR             R0, [SP,#0x14]
+sub_10AB30 59 0010afbc 4 RSB             R0, R6, R6,LSL#4
+sub_10AB30 60 0010b000 4 LDR             R2, [SP,#0x10]
+sub_10AB30 61 0010b020 4 RSB             R0, R6, R6,LSL#4
+sub_10AB30 62 0010b03c 4 CMP             R1, #3
+sub_10AB30 63 0010b048 4 RSB             R1, R6, R6,LSL#4
+sub_10AB30 64 0010b078 4 STR             R1, [SP,#0x10]
+sub_10AB30 65 0010b08c 4 LDR             R1, [SP,#0x40C]
+sub_10AB30 66 0010b0b4 4 CMP             R0, #0
+sub_10AB30 67 0010b0bc 4 ADD             R5, SP, #0x18
+sub_10AB30 68 0010b0d8 4 LDR             R0, [SP,#0x3C8]
+sub_10AB30 69 0010b0e4 4 LDR             R1, [SP,#0x3F0]
+sub_10AB30 70 0010b104 4 LDR             R0, [SP,#0x3F0]
+sub_10AB30 71 0010b11c 4 STR             R2, [R4,#0x30]
+sub_10AB30 72 0010b128 4 ADD             SP, SP, #0x400
+sub_10AB30 73 0010b138 4 LDR             R0, [SP,#0x3F8]
+sub_10AB30 74 0010b174 4 LDR             R1, [SP,#0x3E8]
+sub_10AB30 75 0010b1ac 4 EOR             R3, R1, #2
+sub_10AB30 76 0010b1c0 4 MOV             R0, R1
+sub_10AB30 77 0010b1d8 4 STR             R2, [R4,#0x30]
+sub_10AB30 78 0010b1e4 4 ADD             SP, SP, #0x400
+sub_10AB30 79 0010b1f4 4 EOR             R3, R1, #3
+sub_10AB30 80 0010b200 4 LDR             R2, [SP,#0x3E4]
+sub_10AB30 81 0010b210 4 CMP             R4, #0
+sub_10AB30 82 0010b224 4 STR             R3, [R4,#0x24]!
+sub_10AB30 83 0010b238 4 STR             R1, [R10,#0x18]
+sub_10AB30 84 0010b254 4 MOV             R0, R1
+sub_10AB30 85 0010b26c 4 STR             R2, [R4,#0x30]
+sub_10AB30 86 0010b278 4 ADD             SP, SP, #0x400
+sub_10AB30 87 0010b288 4 EOR             R3, R1, #1
+sub_10AB30 88 0010b294 4 LDR             R2, [SP,#0x404]
+sub_10AB30 89 0010b2a4 4 CMP             R4, #0
+sub_10AB30 90 0010b2b8 4 STR             R3, [R4,#0x24]!
+sub_10AB30 91 0010b2cc 4 STR             R1, [R10,#0x48]
+sub_10B368 0 0010b368 4 CMP             R0, #0
+sub_10B368 1 0010b374 4 STMFD           SP!, {R4,LR}
+sub_10B38C 0 0010b38c 4 CMP             R0, #0
+sub_10B38C 1 0010b398 4 LDR             R1, =sub_10B958
+sub_10B38C 2 0010b3bc 4 BX              LR
+sub_10B3D0 0 0010b3d0 4 STMFD           SP!, {R4-R11,LR}
+sub_10B3D0 1 0010b410 4 LDR             R0, [R4,#0]
+sub_10B3D0 2 0010b424 4 LDR             R1, =sub_100CA8
+sub_10B3D0 3 0010b434 4 MOV             R2, #0xD8
+sub_10B3D0 4 0010b450 4 MOV             R1, R11
+sub_10B3D0 5 0010b468 4 MOV             R11, #1
+sub_10B3D0 6 0010b494 4 LDR             R3, [R4,#0x10]
+sub_10B3D0 7 0010b4a8 4 B               loc_10B4C8
+sub_10B3D0 8 0010b4ac 4 LDR             R12, [R4,#0x18]
+sub_10B3D0 9 0010b4c4 4 B               loc_10B504
+sub_10B3D0 10 0010b4c8 4 STR             R5, [SP,#0xE0]
+sub_10B3D0 11 0010b4ec 4 LDR             R2, [R4,#0x14]
+sub_10B3D0 12 0010b504 4 LDR             R1, [R4,#0xC]
+sub_10B3D0 13 0010b51c 4 MOV             R5, #6
+sub_10B3D0 14 0010b520 4 LDR             R0, [R4,#4]
+sub_10B3D0 15 0010b534 4 ADD             SP, SP, #0xFC
+sub_10B540 0 0010b540 4 CMP             R0, #0
+sub_10B540 1 0010b54c 4 LDR             R1, =sub_10B59C
+sub_10B540 2 0010b580 4 BX              LR
+sub_10B59C 0 0010b59c 4 STMFD           SP!, {R4-R7,LR}
+sub_10B59C 1 0010b5c4 4 MOV             R7, #0xA6000
+sub_10B59C 2 0010b600 4 LDR             R1, =(loc_10D434+2)
+sub_10B59C 3 0010b618 4 LDR             R0, [R5,#0x30]
+sub_10B59C 4 0010b630 4 STR             R0, [SP,#0]
+sub_10B59C 5 0010b64c 4 ADD             SP, SP, #0xC
+sub_10B59C 6 0010b654 4 LDR             R0, [R7,#0x80]
+sub_10B660 0 0010b660 4 STMFD           SP!, {R3-R7,LR}
+sub_10B660 1 0010b688 4 CMP             R5, #0
+sub_10B660 2 0010b694 4 MOV             R2, #0xA6000
+sub_10B660 3 0010b6b0 4 LDR             R1, [R2,#0x1C]
+sub_10B660 4 0010b6c8 4 MOV             R0, R4
+sub_10B660 5 0010b6d8 4 LDR             R1, [R4,#0]
+sub_10B660 6 0010b6e8 4 MOV             R1, #1
+sub_10B660 7 0010b6fc 4 EOR             R2, R1, R1,LSR#4
+sub_10B660 8 0010b714 4 STR             R7, [R4,#0]
+sub_10B660 9 0010b720 4 LDMFD           SP!, {R3-R7,PC}
+sub_10B660 10 0010b724 4 MOV             R0, #2
+sub_10B660 11 0010b72c 4 STR             R7, [R6,#0]
+sub_10B660 12 0010b73c 4 STR             R7, [R6,#0]
+sub_10B660 13 0010b74c 4 LDR             R2, [R5,#0]
+sub_10B660 14 0010b758 4 LDMFD           SP!, {R3-R7,PC}
+sub_10B75C 0 0010b75c 4 CMP             R0, #0
+sub_10B75C 1 0010b76c 4 MOV             R2, #0xA6000
+sub_10B75C 2 0010b780 4 BX              LR
+sub_10B784 0 0010b784 4 STMFD           SP!, {R4-R6,LR}
+sub_10B784 1 0010b7b8 4 MOV             R6, #0xA6000
+sub_10B784 2 0010b7d4 4 LDR             R0, [R6,#0xC8]
+sub_10B784 3 0010b878 4 LDR             R0, [R0,#0x30]
+sub_10B784 4 0010b890 4 LDR             R1, =(loc_10D434+2)
+sub_10B784 5 0010b8a0 4 BL              sub_10F450
+sub_10B784 6 0010b8a4 4 MOV             R0, R5
+sub_10B784 7 0010b8a8 4 ADD             SP, SP, #0x10
+sub_10B8B4 0 0010b8b4 4 CMP             R0, #0
+sub_10B8B4 1 0010b8c4 4 MOV             R2, #0xA6000
+sub_10B8B4 2 0010b8d0 4 MOV             R0, R1
+sub_10B8D8 0 0010b8d8 4 CMP             R1, #0
+sub_10B8D8 1 0010b8ec 4 MOV             R3, #0xA6000
+sub_10B8D8 2 0010b900 4 MOV             R0, R2
+sub_10B908 0 0010b908 4 CMP             R1, #0
+sub_10B908 1 0010b91c 4 MOV             R12, #0xA6000
+sub_10B908 2 0010b938 4 CMP             R0, #2
+sub_10B908 3 0010b944 4 LDR             R0, [R12,#0x2C]
+sub_10B908 4 0010b950 4 MOV             R0, R3
+sub_10B908 5 0010b954 4 BX              LR
+sub_10B958 0 0010b958 4 CMP             R1, #0
+sub_10B958 1 0010b964 4 STMFD           SP!, {R4-R6,LR}
+sub_10B958 2 0010b990 4 LDR             R0, [R5,#0]
+sub_10B958 3 0010b9a4 4 LDR             R0, [R5,#8]
+sub_10B958 4 0010b9b8 4 LDR             R0, [R5,#0x14]
+sub_10B958 5 0010b9d4 4 MOV             R2, #0x1C
+sub_10B958 6 0010b9e8 4 MOV             R2, #0x200
+sub_10B958 7 0010ba00 4 LDR             R0, =sub_100F40
+sub_10B958 8 0010ba38 4 MOV             R0, #0
+sub_10BAB0 0 0010bab0 4 STMFD           SP!, {R0-R2,R4-R11,LR}
+sub_10BAB0 1 0010bad8 4 LDR             R0, [R9,#0x384]
+sub_10BAB0 2 0010bae4 4 CMP             R0, #3
+sub_10BAB0 3 0010baec 4 LDR             R0, [SP,#0xA38]
+sub_10BAB0 4 0010bafc 4 STR             R0, [R7,#0x30]
+sub_10BAB0 5 0010bb0c 4 MOV             R11, #2
+sub_10BAB0 6 0010bb14 4 SUB             R0, R0, #1
+sub_10BAB0 7 0010bb48 4 MOV             R1, #0
+sub_10BAB0 8 0010bb64 4 LDR             R0, [R9,#0x384]
+sub_10BAB0 9 0010bb70 4 MOV             R2, #0x20
+sub_10BAB0 10 0010bb90 4 MOV             R2, #0x14
+sub_10BAB0 11 0010bbac 4 LDR             R0, [SP,#0xA14]
+sub_10BAB0 12 0010bbb8 4 CMP             R9, #0
+sub_10BAB0 13 0010bbc8 4 CMP             R6, #3
+sub_10BAB0 14 0010bbd4 4 CMP             R7, #0
+sub_10BAB0 15 0010bbe0 4 STR             R0, [R7,#0x24]!
+sub_10BAB0 16 0010bbf4 4 RSB             R0, R6, R6,LSL#4
+sub_10BAB0 17 0010bc14 4 MOVS            R0, R7
+sub_10BAB0 18 0010bc20 4 STR             R10, [R0,#0x28]!
+sub_10BAB0 19 0010bc34 4 LDR             R1, [R8,#0xF4]
+sub_10BAB0 20 0010bc4c 4 MOVS            R1, R7
+sub_10BAB0 21 0010bc58 4 MOV             R4, #5
+sub_10BAB0 22 0010bc60 4 LDR             LR, [R8,#0xFC]
+sub_10BAB0 23 0010bc78 4 CMP             R1, #0
+sub_10BAB0 24 0010bc80 4 CMP             R2, R0
+sub_10BAB0 25 0010bc88 4 LDRB            R3, [R1,R0]
+sub_10BAB0 26 0010bc98 4 ADD             R3, R0, #1
+sub_10BAB0 27 0010bcac 4 ADD             R3, R0, #3
+sub_10BAB0 28 0010bcc0 4 ADD             R0, R0, LR
+sub_10BAB0 29 0010bcd8 4 MOV             R4, #1
+sub_10BAB0 30 0010bcdc 4 CMP             R4, #0
+sub_10BAB0 31 0010bce4 4 MOVS            R0, R7
+sub_10BAB0 32 0010bcf0 4 STR             R4, [R0,#0x28]!
+sub_10BAB0 33 0010bd00 4 MOV             R4, #3
+sub_10BAB0 34 0010bd08 4 MOV             R4, #0
+sub_10BAB0 35 0010bd10 4 ADD             R0, SP, #0x400
+sub_10BAB0 36 0010bd2c 4 MOVS            R1, R7
+sub_10BAB0 37 0010bd38 4 B               loc_10BE3C
+sub_10BAB0 38 0010bd3c 4 RSB             R0, R5, R5,LSL#4
+sub_10BAB0 39 0010bd68 4 MOVS            R1, R7
+sub_10BAB0 40 0010bd74 4 B               loc_10BE3C
+sub_10BAB0 41 0010bd78 4 LDR             R0, [SP,#0xA28]
+sub_10BAB0 42 0010bd8c 4 CMP             R0, #3
+sub_10BAB0 43 0010bd98 4 MOVS            R1, R7
+sub_10BAB0 44 0010bda4 4 STR             R0, [R1,#0x28]!
+sub_10BAB0 45 0010bdb4 4 MOV             R4, #4
+sub_10BAB0 46 0010bdbc 4 CMP             R8, #1
+sub_10BAB0 47 0010bdc8 4 CMP             R8, #2
+sub_10BAB0 48 0010bdd4 4 LDR             R0, [SP,#0xA28]
+sub_10BAB0 49 0010bdec 4 MOVS            R1, R7
+sub_10BAB0 50 0010bdf8 4 B               loc_10BE3C
+sub_10BAB0 51 0010bdfc 4 MOV             R2, #0x200
+sub_10BAB0 52 0010be30 4 MOVS            R1, R7
+sub_10BAB0 53 0010be3c 4 STR             R0, [R1,#0x28]!
+sub_10BAB0 54 0010be50 4 CMP             R8, #1
+sub_10BAB0 55 0010be5c 4 CMP             R8, #2
+sub_10BAB0 56 0010be68 4 MOV             R1, SP
+sub_10BAB0 57 0010be7c 4 MOVS            R0, R7
+sub_10BAB0 58 0010be88 4 STR             R4, [R0,#0x28]!
+sub_10BAB0 59 0010be9c 4 CMP             R8, #1
+sub_10BAB0 60 0010beac 4 CMP             R8, #2
+sub_10BAB0 61 0010bebc 4 ADD             R0, R0, R1
+sub_10BAB0 62 0010bed8 4 LDR             R3, [R2,R0,LSL#2]
+sub_10BAB0 63 0010bee4 4 MOVS            R1, R7
+sub_10BAB0 64 0010bef4 4 STR             R0, [R1,#0x28]!
+sub_10BAB0 65 0010bf04 4 ADD             R0, R0, #1
+sub_10BAB0 66 0010bf10 4 CMP             R4, #0
+sub_10BAB0 67 0010bf18 4 LDR             R1, [SP,R1,LSL#2]
+sub_10BAB0 68 0010bf28 4 MOVS            R0, R7
+sub_10BAB0 69 0010bf34 4 STR             R1, [R0,#0x28]!
+sub_10BAB0 70 0010bf44 4 MOV             R4, #9
+sub_10BAB0 71 0010bf4c 4 CMP             R8, #1
+sub_10BAB0 72 0010bf54 4 CMP             R8, #2
+sub_10BAB0 73 0010bf5c 4 MOVS            R0, R7
+sub_10BAB0 74 0010bf68 4 STR             R8, [R0,#0x28]!
+sub_10BAB0 75 0010bf7c 4 LDR             R1, [SP,#0x14]
+sub_10BAB0 76 0010bf8c 4 LDR             R1, [SP,#0x18]
+sub_10BAB0 77 0010bf9c 4 LDR             R1, [SP,#0x1C]
+sub_10BAB0 78 0010bfac 4 LDR             R1, [SP,#0x20]
+sub_10BAB0 79 0010bfbc 4 LDR             R2, [SP,#0x14]
+sub_10BAB0 80 0010bfcc 4 STR             R2, [R0,#0x28]!
+sub_10BAB0 81 0010bfe0 4 LDR             R1, [SP,#0x20]
+sub_10BAB0 82 0010bff0 4 LDR             R1, [SP,#0x24]
+sub_10BAB0 83 0010c000 4 LDR             R1, [SP,#0x28]
+sub_10BAB0 84 0010c010 4 LDR             R0, [SP,#0x2C]
+sub_10BAB0 85 0010c020 4 LDR             R0, [SP,#0x30]
+sub_10BAB0 86 0010c030 4 LDR             R2, [SP,#0x20]
+sub_10BAB0 87 0010c040 4 STR             R2, [R0,#0x28]!
+sub_10BAB0 88 0010c04c 4 STR             R3, [R7,#0x24]
+sub_10BAB0 89 0010c054 4 CMP             R4, #0
+sub_10BAB0 90 0010c05c 4 MOV             R11, #0xA
+sub_10BAB0 91 0010c064 4 LDR             R0, [SP,#0xA14]
+sub_10BAB0 92 0010c074 4 CMP             R11, #0
+sub_10BAB0 93 0010c07c 4 ADD             SP, SP, #0x800
+sub_10BAB0 94 0010c08c 4 LDR             R0, [R9,#0x384]
+sub_10C0EC 0 0010c0ec 4 STMFD           SP!, {R4-R12,LR}
+sub_10C0EC 1 0010c1a4 4 CMP             R5, #0
+sub_10C0EC 2 0010c1b0 4 LDR             R0, [R5,#0x1C]
+sub_10C0EC 3 0010c1c4 4 LDR             R2, [R7,#0xF0]
+sub_10C0EC 4 0010c1e4 4 CMP             R4, #0
+sub_10C0EC 5 0010c1f0 4 STR             R0, [R4,#0x24]!
+sub_10C0EC 6 0010c200 4 MOV             R4, #2
+sub_10C0EC 7 0010c208 4 LDRD            R2, [R5,#8]
+sub_10C0EC 8 0010c244 4 LDR             R1, [R5],#8
+sub_10C0EC 9 0010c254 4 MOV             R4, #6
+sub_10C0EC 10 0010c25c 4 LDR             R0, [R5,#8]
+sub_10C0EC 11 0010c278 4 CMP             R6, #2
+sub_10C0EC 12 0010c284 4 CMP             R2, #0x20
+sub_10C0EC 13 0010c290 4 MOV             R3, #0x3D4
+sub_10C0EC 14 0010c2b0 4 ADD             R1, SP, #0x800
+sub_10C0EC 15 0010c300 4 ADD             R0, SP, #0x800
+sub_10C0EC 16 0010c334 4 CMP             R6, #1
+sub_10C0EC 17 0010c34c 4 CMP             R6, #2
+sub_10C0EC 18 0010c358 4 ADD             R3, SP, #0x800
+sub_10C0EC 19 0010c394 4 LDR             R1, [R5],#8
+sub_10C0EC 20 0010c3a8 4 B               loc_10C450
+sub_10C0EC 21 0010c3ac 4 MOV             R2, #8
+sub_10C0EC 22 0010c3c0 4 ADD             R0, SP, #0xA90
+sub_10C0EC 23 0010c3e8 4 CMP             R6, #1
+sub_10C0EC 24 0010c400 4 CMP             R6, #2
+sub_10C0EC 25 0010c40c 4 ADD             R3, SP, #0x800
+sub_10C0EC 26 0010c43c 4 LDR             R1, [R5],#8
+sub_10C0EC 27 0010c450 4 STR             R2, [R4,#0x30]
+sub_10C0EC 28 0010c460 4 LDR             R1, [R7,#0xF4]
+sub_10C0EC 29 0010c46c 4 LDR             R3, [R7,#0xF0]
+sub_10C0EC 30 0010c47c 4 CMP             R3, #0x200
+sub_10C0EC 31 0010c484 4 LDR             R0, [R7,#0xFC]
+sub_10C0EC 32 0010c490 4 LDR             R2, [R7,#0xF8]
+sub_10C0EC 33 0010c4a0 4 CMP             R2, #4
+sub_10C0EC 34 0010c4a8 4 MOV             R1, #0
+sub_10C0EC 35 0010c4c0 4 STR             R2, [R4,#0x30]
+sub_10C0EC 36 0010c4cc 4 MOV             R4, #3
+sub_10C0EC 37 0010c4d4 4 MOV             R2, R3
+sub_10C0EC 38 0010c4e8 4 LDR             R1, [R7,#0xF0]!
+sub_10C0EC 39 0010c500 4 MOV             R4, #5
+sub_10C0EC 40 0010c508 4 LDR             R2, [R7,#0xF8]
+sub_10C0EC 41 0010c520 4 CMP             R1, #0
+sub_10C0EC 42 0010c528 4 CMP             R2, R0
+sub_10C0EC 43 0010c530 4 LDRB            R12, [R1,R0]
+sub_10C0EC 44 0010c540 4 ADD             R12, R0, #1
+sub_10C0EC 45 0010c554 4 ADD             R12, R0, #3
+sub_10C0EC 46 0010c568 4 ADD             R0, R0, R1
+sub_10C0EC 47 0010c580 4 MOV             R0, R8
+sub_10C0EC 48 0010c584 4 CMP             R0, #0
+sub_10C0EC 49 0010c58c 4 CMP             R4, #0
+sub_10C0EC 50 0010c598 4 STR             R0, [R4,#0x24]!
+sub_10C0EC 51 0010c5ac 4 MOV             R0, #0
+sub_10C0EC 52 0010c5b4 4 ADD             R10, SP, #0x400
+sub_10C0EC 53 0010c5cc 4 LDR             R2, [R7,#0xF8]!
+sub_10C0EC 54 0010c5e0 4 B               loc_10C6B8
+sub_10C0EC 55 0010c5e4 4 LDR             R1, [R5,#0x18]
+sub_10C0EC 56 0010c600 4 LDR             R1, [R5,#0x18]
+sub_10C0EC 57 0010c614 4 B               loc_10C6B8
+sub_10C0EC 58 0010c618 4 CMP             R6, #1
+sub_10C0EC 59 0010c624 4 CMP             R6, #2
+sub_10C0EC 60 0010c630 4 ADD             R5, SP, #0x800
+sub_10C0EC 61 0010c64c 4 CMP             R4, #0
+sub_10C0EC 62 0010c65c 4 STR             R2, [R4,#0x24]!
+sub_10C0EC 63 0010c670 4 ADD             R5, SP, #0x400
+sub_10C0EC 64 0010c6a4 4 MOV             R1, #0
+sub_10C0EC 65 0010c6b8 4 STR             R2, [R4,#0x30]
+sub_10C0EC 66 0010c6c8 4 CMP             R6, #1
+sub_10C0EC 67 0010c6d4 4 CMP             R6, #2
+sub_10C0EC 68 0010c6e0 4 BIC             R0, R0, #3
+sub_10C0EC 69 0010c6f0 4 LDR             R0, [SP,#0x438]
+sub_10C0EC 70 0010c708 4 MOV             R4, #0xC
+sub_10C0EC 71 0010c70c 4 LDR             R0, [SP,#0xAA0]
+sub_10C0EC 72 0010c718 4 ADD             SP, SP, #0xAB0
+sub_10C0EC 73 0010c724 4 CMP             R6, #1
+sub_10C0EC 74 0010c730 4 CMP             R6, #2
+sub_10C0EC 75 0010c73c 4 MOV             R1, #0xFFFFFFFF
+sub_10C0EC 76 0010c758 4 LDR             R3, [R5,R0,LSL#2]
+sub_10C0EC 77 0010c764 4 ADD             R0, R0, #1
+sub_10C0EC 78 0010c770 4 LDR             R3, [SP,#0xA24]
+sub_10C0EC 79 0010c77c 4 LDR             R2, [R5,R0,LSL#2]
+sub_10C0EC 80 0010c78c 4 STR             R2, [R4,#0x28]
+sub_10C0EC 81 0010c79c 4 LDR             R0, [R5,R1,LSL#2]
+sub_10C0EC 82 0010c7ac 4 CMP             R4, #0
+sub_10C0EC 83 0010c7b8 4 B               loc_10C804
+sub_10C0EC 84 0010c7bc 4 CMP             R6, #1
+sub_10C0EC 85 0010c7c8 4 CMP             R6, #2
+sub_10C0EC 86 0010c7d4 4 MOV             R1, R5
+sub_10C0EC 87 0010c7ec 4 MOV             R1, #0
+sub_10C0EC 88 0010c804 4 STR             R2, [R4,#0x30]
+sub_10C0EC 89 0010f0d4 4 B               loc_10F0D4
+sub_10C81C 0 0010c81c 4 STMFD           SP!, {R4-R7,LR}
+sub_10C81C 1 0010c85c 4 MOV             R5, #0
+sub_10C81C 2 0010c888 4 LDR             R6, [R1,#0x200]
+sub_10C81C 3 0010c8c0 4 LDR             R12, [R3,#0x200]
+sub_10C990 0 0010c990 4 STMFD           SP!, {R4-R8,LR}
+sub_10C990 1 0010c9b4 4 CMP             R7, #0x200
+sub_10C990 2 0010c9c0 4 MOV             R2, #0x200
+sub_10C990 3 0010c9dc 4 MOV             R2, #1
+sub_10C990 4 0010c9ec 4 LDRB            R1, [R6,R1]
+sub_10C990 5 0010ca00 4 SUB             R0, R7, R0
+sub_10C990 6 0010ca10 4 MOV             R12, R5,LSL#30
+sub_10C990 7 0010ca64 4 ADD             R0, R7, #3
+sub_10C990 8 0010ca6c 4 CMP             R0, #1
+sub_10C990 9 0010ca78 4 ADD             R1, R4, R0,LSL#2
+sub_10C990 10 0010ca8c 4 MOV             R0, #0
+sub_10C990 11 0010ca90 4 LDMFD           SP!, {R4-R8,PC}
+sub_10CBD0 0 0010cbd0 4 CMP             R0, #0
+sub_10CBD0 1 0010cbdc 4 CMP             R1, #0
+sub_10CBD0 2 0010cbe8 4 MOV             R12, #1
+sub_10CBD0 3 0010cbfc 4 BX              LR
+sub_10CBD0 4 0010cc00 4 MOV             R0, #6
+sub_10CBD0 5 0010cc08 4 MOV             R12, R0
+sub_10CBD0 6 0010cc14 4 LDRB            R1, [R2,#0]
+sub_10CBD0 7 0010cc54 4 ADD             R1, R0, R3,LSL#1
+sub_10CC68 0 0010cc68 4 SUBS            R2, R2, #1
+sub_10CC68 1 0010cc70 4 LDR             R3, [R0,R2,LSL#2]
+sub_10CC68 2 0010cc80 4 MOV             R0, #0xFFFFFFFF
+sub_10CC68 3 0010cc88 4 BLS             loc_10CC94
+sub_10CC68 4 0010cc8c 4 MOV             R0, #1
+sub_10CC68 5 0010cc94 4 SUBS            R2, R2, #1
+sub_10CC68 6 0010cc9c 4 MOV             R0, #0
+sub_10CCA4 0 0010cca4 4 STMFD           SP!, {R4-R10,LR}
+sub_10CCA4 1 0010ccc8 4 CMP             R7, #0
+sub_10CCA4 2 0010ccd4 4 MOV             R2, R1
+sub_10CCA4 3 0010ccec 4 LDRB            R3, [R0,#0]
+sub_10CCA4 4 0010ccf8 4 SUBS            R2, R2, #1
+sub_10CCA4 5 0010cd08 4 TST             R1, #1
+sub_10CCA4 6 0010cd14 4 MOV             R0, #6
+sub_10CCA4 7 0010cd1c 4 SUB             R1, R0, #0x30
+sub_10CCA4 8 0010cd2c 4 SUB             R1, R0, #0x41
+sub_10CCA4 9 0010cd3c 4 SUB             R1, R0, #0x61
+sub_10CCA4 10 0010cd4c 4 SXTB            R0, R0
+sub_10CCA4 11 0010cd50 4 CMP             R0, #0xF
+sub_10CCA4 12 0010cd5c 4 TST             R4, #1
+sub_10CCA4 13 0010cd74 4 LDRB            R0, [R6,R5]
+sub_10CCA4 14 0010cd84 4 MOV             R0, R4,LSR#1
+sub_10CCA4 15 0010cd94 4 MOV             R0, #1
+sub_10CDC4 0 0010cdc4 4 MOV             R3, R0
+sub_10CDC4 1 0010cddc 4 LDR             R4, [R3,#0]
+sub_10CDC4 2 0010ce04 4 LDMFD           SP!, {R4,R5}
+memcpy 0 0010f000 4 STMFD           SP!, {R4-R10,LR}
+memcpy 1 0010f010 4 CMP             R10, #0x20
+memcpy 2 0010f018 4 CMP             R10, #4
+memcpy 3 0010f020 4 CMP             R10, #0
+memcpy 4 0010f028 4 MOV             R0, #1
+memcpy 5 0010f030 4 LDMIA           R9!, {R0-R7}
+memcpy 6 0010f040 4 LDMIA           R9!, {R0}
+memcpy 7 0010f050 4 LDRB            R0, [R9],#1
+memcpy 8 0010f064 4 BLE             loc_10F028
+memcpy 9 0010f068 4 STMFD           SP!, {R4-R9,LR}
+sub_10F068 0 0010f068 4 STMFD           SP!, {R4-R9,LR}
+sub_10F068 1 0010f09c 4 CMP             R9, #0
+sub_10F068 2 0010f0a4 4 MOV             R0, #1
+sub_10F068 3 0010f0ac 4 STMIA           R8!, {R0-R7}
+sub_10F068 4 0010f0bc 4 BLT             loc_10F09C
+sub_10F068 5 0010f0c0 4 STRB            R0, [R8],#1
+sub_10F068 6 0010f0d0 4 BLE             loc_10F0A4
+sub_10F068 7 0010f0d4 4 B               loc_10F0D4
+sub_10F0D8 0 0010f0d8 4 CMP             R2, #0
+sub_10F0D8 1 0010f0e8 4 MOV             R12, R0
+sub_10F0D8 2 0010f130 4 LDMFD           SP!, {R4,R5}
+sub_10F0D8 3 0010f13c 4 ADD             R3, R3, #1
+sub_10F0D8 4 0010f148 4 LDMFD           SP!, {R4,R5}
+sub_10F154 0 0010f154 4 BIC             R1, R0, #3
+sub_10F170 0 0010f170 4 BIC             R2, R0, #3
+sub_10F1C8 0 0010f1c8 4 CMP             R0, #0
+sub_10F1C8 1 0010f1d4 4 SUB             R2, R0, #1
+sub_10F1C8 2 0010f1e4 4 MOV             R0, R1
+sub_10F1EC 0 0010f1ec 4 LDR             R0, =0xB123000
+sub_10F204 0 0010f204 4 MOV             R1, #0xA6000
+sub_10F21C 0 0010f21c 4 LDR             R0, =0x4A1000
+sub_10F288 0 0010f288 4 NOP
+sub_10F2B0 0 0010f2b0 4 LDR             R0, =0xB123000
+sub_10F2C0 0 0010f2c0 4 LDR             R0, =0xB123000
+sub_10F2C0 1 0010f2d4 4 LDR             R1, [R0,#0x2C]
+sub_10F2C0 2 0010f2e4 4 BX              LR
+sub_10F2EC 0 0010f2ec 4 STMFD           SP!, {R4,LR}
+sub_10F2EC 1 0010f300 4 MOV             R3, R4
+sub_10F2EC 2 0010f314 4 LDR             R0, =0xB123000
+sub_10F364 0 0010f364 4 LDR             R0, =0xB121000
+sub_10F38C 0 0010f38c 4 NOP
+sub_10F39C 0 0010f39c 4 CMP             R0, #0xA
+sub_10F39C 1 0010f3b0 4 CMP             R4, #0x3E8
+sub_10F39C 2 0010f3bc 4 MOV             R0, #0x1388
+sub_10F39C 3 0010f3cc 4 LDR             R0, =0x3531DEC
+sub_10F39C 4 0010f3d8 4 MOV             R3, R4
+sub_10F39C 5 0010f3ec 4 MOV             R0, #0x4D
+sub_10F39C 6 0010f3f8 4 LDR             R1, =0xB121000
+sub_10F39C 7 0010f410 4 LDR             R0, [R1,#0x2C]
+sub_10F39C 8 0010f41c 4 LDR             R0, [R1,#0x2C]
+sub_10F450 0 0010f450 4 CMP             R2, #0
+sub_10F450 1 0010f458 4 CMP             R0, R1
+sub_10F450 2 0010f468 4 BCS             loc_10F56C
+sub_10F450 3 0010f46c 4 ORR             R3, R1, R0
+sub_10F450 4 0010f478 4 EOR             R3, R1, R0
+sub_10F450 5 0010f484 4 CMP             R2, #4
+sub_10F450 6 0010f494 4 MOV             R3, R2
+sub_10F450 7 0010f498 4 CMP             R3, #0
+sub_10F450 8 0010f4a4 4 MOV             R4, R1
+sub_10F450 9 0010f4f4 4 MOVS            R3, R2,LSR#2
+sub_10F450 10 0010f4fc 4 LDR             R12, [R1],#4
+sub_10F450 11 0010f50c 4 ANDS            R12, R2, #3
+sub_10F450 12 0010f514 4 MOV             R3, R1
+sub_10F450 13 0010f564 4 LDMFD           SP!, {R4-R7}
+sub_10F450 14 0010f56c 4 ADD             R1, R1, R2
+sub_10F450 15 0010f580 4 EOR             R3, R1, R0
+sub_10F450 16 0010f58c 4 CMP             R2, #4
+sub_10F450 17 0010f598 4 MOV             R3, R2
+sub_10F450 18 0010f59c 4 CMP             R3, #0
+sub_10F450 19 0010f5a8 4 SUB             R1, R1, #1
+sub_10F450 20 0010f5f0 4 MOVS            R3, R2,LSR#2
+sub_10F450 21 0010f5f8 4 LDR             R12, [R1,#-4]!
+sub_10F450 22 0010f608 4 ANDS            R2, R2, #3
+sub_10F450 23 0010f610 4 SUB             R1, R1, #1
+sub_10F450 24 0010f658 4 LDMFD           SP!, {R4-R7}
+sub_10F660 0 0010f660 4 CMP             R2, #0
+sub_10F660 1 0010f668 4 ANDS            R3, R0, #3
+sub_10F660 2 0010f684 4 B               loc_10F6B8
+sub_10F660 3 0010f688 4 MOV             R12, R0
+sub_10F660 4 0010f6b8 4 CMP             R8, R3
+sub_10F660 5 0010f6c0 4 CMP             R2, #0
+sub_10F660 6 0010f6c8 4 LDMFD           SP!, {R4-R9}
+sub_10F660 7 0010f6d0 4 CMP             R2, #0
+sub_10F660 8 0010f6d8 4 AND             R3, R2, #3
+sub_10F660 9 0010f6e8 4 ORR             R12, R1, R1,LSL#8
+sub_10F660 10 0010f6f4 4 SUBS            R2, R2, #1
+sub_10F660 11 0010f700 4 CMP             R3, #0
+sub_10F660 12 0010f708 4 MOV             R1, R0
+sub_10F660 13 0010f738 4 LDMFD           SP!, {R4-R9}
+sub_10F760 0 0010f760 4 STMFD           SP!, {R4-R6,LR}
+sub_10F760 1 0010f798 4 CMP             R3, #0
+sub_10F760 2 0010f7b4 4 RSBPLS          R0, R6, #4
+sub_10F760 3 0010f7bc 4 SUB             R0, LR, #0x20
+sub_10F760 4 0010f7e4 4 UMULL           R0, R1, R12, R5
+sub_10F760 5 0010f82c 4 UMULL           R0, R1, R12, R5
+sub_10F760 6 0010f84c 4 UMULL           R1, R0, R12, R2
+sub_10F760 7 0010f880 4 UMULL           R4, R6, R12, R2
+sub_10F760 8 0010f8b8 4 ADDS            R0, R0, #1
+sub_10F760 9 0010f8e8 4 UMULL           R1, R0, R12, R5
+sub_10F760 10 0010f96c 4 UMULL           R6, R1, R12, R2
+sub_10F760 11 0010f9a0 4 ADD             R0, R0, #1
+sub_10F760 12 0010f9b0 4 STMFD           SP!, {R2,R3}
+sub_10F760 13 0010f9c0 4 LDMFD           SP!, {R2-R6,PC}
+sub_10F760 14 0010f9c4 4 MOV             R1, #0
+sub_10F760 15 0010f9d0 4 RSB             LR, R6, #0x20
+sub_10F760 16 0010f9e8 4 SUBS            LR, R2, R5
+sub_10F760 17 0010fa04 4 MOVS            R4, R4,LSR#1
+sub_10FA50 0 0010fa50 4 SUBS            R3, R2, #0x20
+sub_10FA50 1 0010fa58 4 RSB             R3, R2, #0x20
+sub_10FA50 2 0010fa6c 4 MOV             R1, R0,LSL R3
+sub_10FA78 0 0010fa78 4 B               loc_10FA80
+sub_10FA78 1 0010fa80 4 STMFD           SP!, {R0-R2,LR}
+sub_10FA7C 0 0010fa7c 4 NOP
+sub_10FA7C 1 0010fa80 4 STMFD           SP!, {R0-R2,LR}
+sub_10FA90 0 0010fa90 2 MOVS            R1, R0
+sub_10FA9C 0 0010fa9c 4 CLZ             R2, R1
+sub_10FA9C 1 0010fac0 4 SMLAWT          R1, R1, R12, R1
+sub_10FA9C 2 0010fad8 4 UMULL           R2, R12, R0, R1
+sub_10FA9C 3 0010fb00 4 RSB             R2, R2, #0
+sub_10FA9C 4 0010fb34 4 MOVCS           R0, R0
+sub_10FA9C 5 0010fb40 4 STMFD           SP!, {R0,LR}
+do_some_system_control 0 00110004 4 STMFD           SP!, {LR}
+do_some_system_control 1 00110038 4 MOV             R1, #0
+do_some_system_control 2 0011003c 4 ORR             R2, R1, R0
+do_some_system_control 3 00110050 4 ADD             R0, R0, #0x20
+do_some_system_control 4 0011005c 4 MOV             R0, #0
+reset_mmu_and_other_stuff 0 001100a4 4 LDR             R0, =off_110400
+reset_mmu_and_other_stuff 1 001100c4 4 BL              do_some_system_control
+reset_mmu_and_other_stuff 2 001100cc 4 LDMFD           SP!, {R4,PC}
+sub_110414 0 00110414 4 MOV             R0, #0
+sub_110420 0 00110420 4 MOV             R0, #0
+sub_110420 1 00110424 4 MOV             R1, #0
+sub_110420 2 00110428 4 ORR             R2, R1, R0
+sub_110420 3 0011043c 4 ADD             R0, R0, #0x20
+sub_110420 4 00110448 4 BX              LR
+sub_11044C 0 0011044c 4 STMFD           SP!, {R4-R12,LR}
+sub_110478 0 00110478 4 STMFD           SP!, {R4-R12,LR}
+sub_1104D0 0 001104d0 4 DSB             SY
+sub_1104E8 0 001104e8 4 MOV             R0, #2
+l2cachecontrol 0 00110524 4 MRC             p15, 0, R0,c0,c0, 5
+sub_110534 0 00110534 4 CMP             R0, #0
+sub_110534 1 00110540 4 STMFD           SP!, {R4-R6,LR}
+sub_110534 2 0011056c 4 ADD             R5, R0, R3,LSL#8
+sub_110534 3 00110588 4 MOV             R4, #0
+sub_11059C 0 0011059c 4 STMFD           SP!, {R4-R8,LR}
+sub_11059C 1 001105b0 4 LDR             R0, [R4,#0x38]
+sub_11059C 2 001105bc 4 BL              sub_1104E8
+sub_11059C 3 001105d4 4 CMP             R0, #j_reset
+sub_11059C 4 00110624 4 CMP             R0, #1
+sub_11059C 5 00110630 4 B               loc_11064C
+sub_11059C 6 00110634 4 LDR             R1, =0xB110000
+sub_11059C 7 0011064c 4 LDR             R0, =0xB010000
+sub_11059C 8 00110660 4 BL              sub_10F288
+sub_11059C 9 00110668 4 CMP             R0, #0
+sub_11059C 10 00110670 4 MOV             R1, #0x4000
+sub_11059C 11 00110688 4 MOV             R1, #0x1000
+sub_11059C 12 0011069c 4 MOV             R0, #0
+sub_11059C 13 001106a8 4 ORR             R2, R1, R0,LSL#20
+sub_11059C 14 001106bc 4 MOV             R0, #0x81
+sub_11059C 15 001106c0 4 ORR             R2, R1, R0,LSL#20
+sub_11059C 16 001106d4 4 MOV             R1, #j_reset
+sub_11059C 17 001106f0 4 ADD             R8, R0, R6,LSL#8
+sub_11059C 18 0011070c 4 LDR             R2, [R4,#8]
+sub_11059C 19 0011072c 4 ADD             R8, R0, LR,LSL#8
+sub_11059C 20 00110748 4 MOV             R1, #0x200000
+sub_11059C 21 00110760 4 ADD             R8, R0, LR,LSL#8
+sub_11059C 22 0011077c 4 BIC             R0, R12, #0x3FC
+sub_11059C 23 001107ac 4 MOVS            R5, R6
+sub_11059C 24 001107b8 4 BL              sub_110478
+sub_11059C 25 001107c4 4 MOV             R0, R5
+sub_11059C 26 001107c8 4 LDMFD           SP!, {R4-R8,PC}
+sub_1107F0 0 001107f0 4 CMP             R0, #0
+sub_1107F0 1 00110804 4 LDR             R2, =0x200000
+sub_1107F0 2 0011081c 4 BX              LR
+sub_110824 0 00110824 4 CMP             R0, #0
+sub_110824 1 00110830 4 STMFD           SP!, {R4,LR}
+sub_1115E0 0 001115e0 4 STMFD           SP!, {R4,R5,LR}
+sub_1115E0 1 001115f0 4 LDR             R0, [R5,#0xC]
+sub_1115E0 2 00111604 4 LDRB            R12, [R3,#2]
+sub_1115E0 3 0011161c 4 LDR             R4, [R0,#0xC]
+sub_1115E0 4 00111628 4 LDR             R0, [R4,#4]
+sub_1115E0 5 00111634 4 LDRB            R1, [R0,#2]
+sub_1115E0 6 0011166c 4 MOV             R0, #0
+sub_1115E0 7 00111670 4 ADD             SP, SP, #0xC
+sub_1115E0 8 00111678 4 MOV             R2, #0xD3
+sub_1115E0 9 00111694 4 MOV             R2, #0xDA
+sub_1115E0 10 001116b0 4 MOV             R2, #0xE6
+sub_1116CC 0 001116cc 4 STR             R1, [R0,#0x28]
+sub_1116CC 1 001116e0 4 BX              R2
+sub_1116CC 2 001116e4 4 MOV             R2, #0xA3
+sub_1116CC 3 001130d8 4 LDR             R3, =0x2092E8
+sub_1116F4 0 001116f4 4 LDR             R1, =0x1841000
+sub_1116F4 1 0011170c 4 CMP             R0, #1
+sub_1116F4 2 0011171c 4 CMP             R0, #2
+sub_1116F4 3 0011172c 4 MOV             R2, R0
+sub_1116F4 4 0011173c 4 BX              LR
+sub_1116F4 5 001130d8 4 LDR             R3, =0x2092E8
+sub_111744 0 00111744 4 LDR             R1, =0x1841000
+sub_111744 1 0011175c 4 CMP             R0, #1
+sub_111744 2 0011176c 4 CMP             R0, #2
+sub_111744 3 0011177c 4 MOV             R2, R0
+sub_111744 4 0011178c 4 BX              LR
+sub_111744 5 001130d8 4 LDR             R3, =0x2092E8
+sub_111794 0 00111794 4 STMFD           SP!, {R3-R11,LR}
+sub_111794 1 00111800 4 STRB            R10, [R5,#0xC4]
+sub_111794 2 0011184c 4 MOV             R0, #2
+sub_111794 3 00111860 4 MOV             R0, #0
+sub_111794 4 0011187c 4 STRB            R10, [R5,#0xC4]
+sub_111794 5 001118a4 4 BL              sub_112800
+sub_111794 6 001118f0 4 MOV             R3, #0xFF
+sub_111794 7 00111908 4 LDR             R0, [R5,#0x8C]
+sub_111794 8 00111928 4 LDR             R0, [R6,#0xA0]
+sub_11195C 0 0011195c 4 LDR             R1, =0x209270
+sub_11195C 1 00111980 4 ADD             R2, R0, R0,LSL#1
+sub_11195C 2 00111994 4 ADD             R0, R0, #1
+sub_11195C 3 001119a0 4 LDMFD           SP!, {R4-R6,PC}
+sub_11195C 4 001119a4 4 MOV             R0, R4
+sub_11195C 5 001119b4 4 LDR             R0, =0x205768
+sub_11195C 6 001119c8 4 MOV             R0, R4
+sub_11195C 7 001119d8 4 LDMFD           SP!, {R4-R6,PC}
+sub_111A88 0 00111a88 4 STMFD           SP!, {R4,LR}
+sub_111A88 1 00111aa8 4 MOV             R0, R4
+sub_111A88 2 00111ab4 4 LDMFD           SP!, {R4,PC}
+sub_111AE0 0 00111ae0 4 STMFD           SP!, {R4,R5,LR}
+sub_111AE0 1 00111b50 4 MOV             R0, #0x3E8
+sub_111AE0 2 00111b60 4 LDR             R0, [R5,#0x14]
+sub_111AE0 3 00111b6c 4 CMP             R4, #0
+sub_111AE0 4 00111b74 4 BL              sub_10F2C0
+sub_111AE0 5 00111b80 4 ADD             SP, SP, #0xC
+sub_111AE0 6 00111b8c 4 LDR             R0, [R5,#0x10]
+sub_111AE0 7 00111ba0 4 BL              sub_10F1EC
+sub_111BE8 0 00111be8 4 LDR             R0, =dword_1135D4
+sub_111BE8 1 00111c00 4 LDR             R0, =dword_1135D0
+sub_111BE8 2 00111c10 4 LDR             R0, =dword_1135DC
+sub_111BE8 3 00111c20 4 LDR             R0, =dword_1135D8
+sub_111BE8 4 00111c30 4 MOV             R0, R4
+sub_111C48 0 00111c48 4 LDR             R0, =dword_1135D4
+sub_111C48 1 00111c60 4 LDR             R0, =loc_1135CC
+sub_111C48 2 00111c78 4 LDR             R0, =dword_1135DC
+sub_111C48 3 00111c88 4 LDR             R0, =dword_1135D8
+sub_111C48 4 00111c98 4 MOV             R0, R4
+sub_111E00 0 00111e00 4 CMP             R0, #0
+sub_111E00 1 00111e08 4 B               loc_1132FC
+sub_111E00 2 00111e0c 4 LDR             R0, =0x20563C
+sub_111E00 3 001130c0 4 LDR             R0, =0x78DB000
+sub_111E00 4 001132fc 4 LDR             R0, =0x205768
+sub_111E00 5 001122d8 4 STMFD           SP!, {R4,LR}
+sub_111EC4 0 00111ec4 4 CMP             R1, #0
+sub_111EC4 1 00111ee8 4 STR             R2, [R0,#0x14]
+sub_111EC4 2 00111f10 4 LDR             R1, [R1,#0x14]
+sub_111EC4 3 00111f28 4 LDRB            R1, [R0,#0x10]
+sub_111EC4 4 00111f34 4 MOV             R1, #3
+sub_111EC4 5 00111f40 4 CMP             R3, #0
+sub_111EC4 6 00111f4c 4 MOV             R0, R3
+sub_111EC4 7 00111f50 4 LDMFD           SP!, {R4,PC}
+sub_111EC4 8 00111f54 4 BL              sub_112D5C
+sub_111F64 0 00111f64 4 STMFD           SP!, {R4-R6,LR}
+sub_111F64 1 00112cb4 4 CMP             R1, #2
+sub_111F64 2 00112cc8 4 STR             R4, [SP,#-4]!
+sub_111F64 3 00112ce0 4 CMP             R2, #0
+sub_111F64 4 00112d14 4 LDR             R4, [SP],#4
+sub_111FFC 0 00111ffc 4 CMP             R0, #0
+sub_111FFC 1 00112004 4 LDR             R0, [R0,#0x14]
+sub_111FFC 2 0011200c 4 BX              LR
+sub_111FFC 3 001128c8 4 STMFD           SP!, {R3-R11,LR}
+sub_112010 0 00112010 4 STMFD           SP!, {R4-R6,LR}
+sub_112010 1 00112034 4 CMP             R5, #0
+sub_112010 2 00112040 4 STR             R6, [R4,#0x2C]
+sub_112010 3 00112060 4 MOV             R1, #0x5DC
+sub_112010 4 00112070 4 MOV             R1, #0
+sub_112010 5 00112088 4 MOV             R1, #0
+sub_112010 6 00112094 4 STR             R5, [R4,#0x20]
+sub_112010 7 001120ac 4 BLX             R2
+sub_112010 8 001120b4 4 MOV             R2, #0xA3
+sub_112010 9 001120c4 4 LDR             R0, [R4,#0x14]
+sub_112010 10 001120dc 4 CMP             R0, #2
+sub_112010 11 001120e8 4 LDR             R1, [R4,#0x24]
+sub_112010 12 001120f4 4 STR             R0, [R4,#0x24]
+sub_112010 13 00112110 4 BLX             R2
+sub_112010 14 00112118 4 MOV             R2, #0xA3
+sub_112010 15 00112128 4 LDR             R0, [R4,#0x14]
+sub_112010 16 00112140 4 CMP             R5, #0
+sub_112010 17 00112148 4 LDR             R0, [R4,#0x34]
+sub_112010 18 00112154 4 LDR             R0, [R0,#4]
+sub_112010 19 0011216c 4 MOV             R1, #0
+sub_112010 20 00112178 4 STR             R5, [R4,#0x2C]
+sub_112010 21 00112190 4 LDMFD           SP!, {R4-R6,LR}
+sub_112010 22 00112198 4 LDMFD           SP!, {R4-R6,LR}
+sub_112010 23 001121ac 4 LDMFD           SP!, {R4-R6,PC}
+sub_112010 24 001130d8 4 LDR             R3, =0x2092E8
+sub_1121B0 0 001121b0 4 STMFD           SP!, {R4-R8,LR}
+sub_1121B0 1 001121d0 4 CMP             R0, R5
+sub_1121B0 2 001121d8 4 CMP             R5, #0
+sub_1121B0 3 001121e4 4 LDR             R6, [R4,#4]
+sub_1121B0 4 001121f0 4 LDR             R0, [R6,#0xC]
+sub_1121B0 5 00112210 4 MOV             R0, #0xFFFFFFFF
+sub_1121B0 6 00112218 4 STRB            R5, [R4,#0x31]
+sub_1121B0 7 0011223c 4 STRB            R7, [R4,#0x31]
+sub_1121B0 8 00112254 4 LDR             R0, [R4,#0x14]
+sub_1121B0 9 001122a4 4 LDR             R2, [R4,#0x18]
+sub_1121B0 10 001122b8 4 BLX             R2
+sub_1121B0 11 001122c0 4 MOV             R2, #0xA3
+sub_1121B0 12 001122d0 4 MOV             R0, #0
+sub_1122D8 0 001122d8 4 STMFD           SP!, {R4,LR}
+sub_1122D8 1 001122ec 4 CMP             R4, #0
+sub_1122D8 2 00112304 4 MOV             R1, #0
+sub_11232C 0 0011232c 4 CMP             R1, #3
+sub_11232C 1 00112340 4 ADD             R0, R1, R2,LSL#4
+sub_11232C 2 00112360 4 LDR             R0, =0x206000
+sub_11232C 3 00112374 4 STR             R3, [R12,#0x1B4]
+sub_11232C 4 00112378 4 LDR             R1, [R12,#0x1B4]
+sub_11232C 5 00112384 4 LDR             R1, [R12,#0x1B8]
+sub_11232C 6 00112390 4 MOV             R1, #3
+sub_11232C 7 001123a4 4 MOV             R0, #0
+sub_1123B4 0 001123b4 4 STMFD           SP!, {R4-R6}
+sub_1123B4 1 001123d0 4 CMP             R1, #3
+sub_1123B4 2 001123e4 4 CMP             R2, #1
+sub_1123B4 3 00112444 4 LDMFD           SP!, {R4-R6}
+sub_112454 0 00112454 4 LDR             R1, =0x2058B4
+sub_11247C 0 0011247c 4 STMFD           SP!, {R4-R6,LR}
+sub_11247C 1 0011248c 4 MOV             R0, #0x3E8
+sub_11247C 2 001124a0 4 LDMFD           SP!, {R4-R6,PC}
+sub_1124A4 0 001124a4 4 B               sub_10F39C
+sub_1124A4 1 0010f39c 4 CMP             R0, #0xA
+sub_112518 0 00112518 4 LDR             R0, =0x78DB000
+sub_112570 0 00112570 4 MOV             R0, #0xA6000
+sub_112584 0 00112584 4 MOV             R2, #0xA6000
+sub_112584 1 0011259c 4 CMP             R0, #1
+sub_112584 2 001125a8 4 UXTH            R0, R1
+sub_1125B0 0 001125b0 4 STMFD           SP!, {R4-R10,LR}
+sub_1125B0 1 001125c8 4 LDR             R7, =0x205670
+sub_1125B0 2 001125f0 4 ADD             R0, R2, R4,LSL#3
+sub_1125B0 3 00112600 4 CMN             R1, #1
+sub_1125B0 4 00112618 4 MOV             R2, R12
+sub_1125B0 5 00112664 4 ADD             R0, R2, R4,LSL#3
+sub_1125B0 6 00112674 4 CMN             R1, #1
+sub_1125B0 7 0011268c 4 MOV             R2, R12
+sub_1125B0 8 001126dc 4 MOV             R0, #0
+sub_1125B0 9 001126e8 4 ADD             R10, R3, R0,LSL#6
+sub_1125B0 10 00112704 4 ADD             R1, R1, #1
+sub_1125B0 11 00112710 4 MOV             R0, #0x400000
+sub_1125B0 12 00112764 4 B               loc_112780
+sub_1125B0 13 00112768 4 MOV             R2, #0xC4
+sub_1125B0 14 00112780 4 LDR             R0, [R5,#0x140]
+sub_1125B0 15 0011278c 4 MOV             R0, R6
+sub_1127AC 0 001127ac 4 LDR             R0, =0x78DB000
+sub_1127E0 0 001127e0 4 LDR             R0, =0x78DB000
+sub_1127F8 0 001127f8 4 MOV             R0, #0
+sub_112800 0 00112800 4 STMFD           SP!, {R4-R10,LR}
+sub_112800 1 00112828 4 CMP             R6, R4
+sub_112800 2 00112830 4 LDR             R1, [R7,R4,LSL#2]
+sub_112800 3 0011283c 4 CMN             R1, #1
+sub_112800 4 00112844 4 CMP             R8, #0
+sub_112800 5 0011284c 4 CMP             R8, #1
+sub_112800 6 00112860 4 MOV             R2, #0
+sub_112800 7 00112870 4 ADD             R4, R4, #1
+sub_112800 8 0011287c 4 MOV             R2, R9
+sub_112800 9 001128a0 4 MOV             R2, R0
+sub_112800 10 001128b4 4 LDRB            R2, [R5,R4]
+sub_112800 11 001130d8 4 LDR             R3, =0x2092E8
+sub_1128C8 0 001128c8 4 STMFD           SP!, {R3-R11,LR}
+sub_1128C8 1 001128f8 4 LDR             R1, =0x205670
+sub_1128C8 2 00112910 4 BLX             R1
+sub_1128C8 3 00112918 4 MOV             R2, #0x273
+sub_1128C8 4 00112928 4 TST             R4, #0x100
+sub_1128C8 5 00112930 4 LDR             R0, =0x205670
+sub_1128C8 6 00112944 4 LDR             R0, [R5,#8]
+sub_1128C8 7 00112950 4 MOV             R2, #0x294
+sub_1128C8 8 00112960 4 TST             R4, #4
+sub_1128C8 9 00112968 4 LDR             R0, =0x205670
+sub_1128C8 10 0011297c 4 LDR             R0, [R5,#8]
+sub_1128C8 11 00112988 4 MOV             R2, #0x294
+sub_1128C8 12 00112998 4 TST             R4, #1
+sub_1128C8 13 001129a4 4 LDR             R0, =0x78DB000
+sub_1128C8 14 001129bc 4 LDR             R0, =0x206180
+sub_1128C8 15 001129c8 4 ADD             R0, R5, R4,LSL#4
+sub_1128C8 16 001129d4 4 ADD             R0, R7, R4,LSL#5
+sub_1128C8 17 00112a08 4 ADD             R0, R4, #1
+sub_1128C8 18 00112a18 4 ADD             R0, R5, #1
+sub_1128C8 19 00112a28 4 LDR             R0, [SP,#0]
+sub_1128C8 20 00112a3c 4 LDR             R0, [R4,#0x1AC]
+sub_1128C8 21 00112a48 4 LDR             R5, =0x206000
+sub_1128C8 22 00112a4c 4 LDR             R0, [R4,#0x140]
+sub_1128C8 23 00112a74 4 LDR             R0, [R4,#0x140]
+sub_1128C8 24 00112a94 4 ADD             R1, R8, R8,LSL#1
+sub_1128C8 25 00112ab4 4 LDMFD           SP!, {R3-R11,PC}
+sub_112B00 0 00112b00 4 LDR             R2, =0x78DB000
+sub_112B24 0 00112b24 4 LDR             R1, =0x205670
+sub_112B4C 0 00112b4c 4 STMFD           SP!, {R4-R12,LR}
+sub_112B4C 1 00112b68 4 MOV             R4, #0
+sub_112B4C 2 00112b70 4 CMP             R5, #3
+sub_112B4C 3 00112b84 4 ADD             R0, R5, R1,LSL#4
+sub_112B4C 4 00112b98 4 ADD             R1, R7, R1,LSL#6
+sub_112B4C 5 00112ba4 4 STR             R0, [R8,#0x1B4]
+sub_112B4C 6 00112ba8 4 LDR             R1, [R8,#0x1B4]
+sub_112B4C 7 00112bb4 4 LDR             R1, [R8,#0x1B8]
+sub_112B4C 8 00112bc0 4 STR             R10, [R2,#4]
+sub_112B4C 9 00112bd4 4 ADD             R4, R4, #1
+sub_112B4C 10 00112be0 4 ADD             R0, R5, #1
+sub_112B4C 11 00112bf0 4 MOV             R2, #0
+sub_112B4C 12 00112bf8 4 MOV             R0, #0
+sub_112B4C 13 00112c04 4 CMP             R2, #3
+sub_112B4C 14 00112c18 4 STR             R4, [R12,R1,LSL#6]
+sub_112B4C 15 00112c24 4 LDR             R5, [R3,#0x1C0]
+sub_112B4C 16 00112c3c 4 ADD             R0, R0, #1
+sub_112B4C 17 00112c48 4 ADD             R0, R2, #1
+sub_112B4C 18 00112c58 4 MOV             R0, #0
+sub_112C68 0 00112c68 4 CMP             R1, #3
+sub_112C68 1 00112c78 4 CMP             R1, #0
+sub_112C68 2 00112c84 4 CMP             R2, #0
+sub_112C68 3 00112c90 4 LDR             R3, =0x78DB000
+sub_112C68 4 00112ca8 4 BX              LR
+sub_112D5C 0 00112d5c 4 STMFD           SP!, {R4-R12,LR}
+sub_112D5C 1 00112d68 4 LDRB            R1, [R5,#0x10]
+sub_112D5C 2 00112d88 4 LDR             R2, =0x78DB000
+sub_112D5C 3 00112dac 4 LDR             R3, =0x206000
+sub_112D5C 4 00112ddc 4 B               loc_112E08
+sub_112D5C 5 00112de0 4 MOV             R2, #0x4BC
+sub_112D5C 6 00112df4 4 LDMFD           SP!, {R4-R12,PC}
+sub_112D5C 7 00112df8 4 LDR             R0, [R2,#0x1AC]
+sub_112D5C 8 00112e08 4 CMP             R7, #0x4000
+sub_112D5C 9 00112e14 4 LDR             R0, =0x78DB000
+sub_112D5C 10 00112e28 4 MOV             R2, #0x20
+sub_112D5C 11 00112e98 4 MOVS            R0, R4
+sub_112D5C 12 00112ea8 4 MOV             R1, #1
+sub_112F24 0 00112f24 4 STMFD           SP!, {R4-R12,LR}
+sub_112F24 1 00112f44 4 MOV             R1, #0x40000000
+sub_112F24 2 00112f60 4 LDR             R0, =0x78DB000
+sub_112F24 3 00112f7c 4 MOV             R0, R5
+sub_112F24 4 00112f8c 4 AND             R1, R9, R10
+sub_112F24 5 00112f9c 4 LDR             R5, =0x78DB000
+sub_112F24 6 00112fb0 4 LDR             R0, [R5,#0x170]
+sub_112F24 7 00112fc0 4 CMP             R7, #0x40000000
+sub_112F24 8 00112fc8 4 MOV             R0, R4
+sub_112F24 9 00112fd8 4 LDMFD           SP!, {R4-R12,PC}
+sub_112FE0 0 00112fe0 4 CMP             R1, #3
+sub_112FE0 1 00112ffc 4 LDR             R12, =0x206000
+sub_112FE0 2 00113014 4 CMP             R2, #1
+sub_112FE0 3 00113034 4 BX              LR
+sub_113040 0 00113040 4 CMP             R1, #3
+sub_113040 1 00113050 4 LDR             R3, =0x78DB000
+sub_113040 2 0011305c 4 CMP             R2, #0
+sub_113040 3 00113084 4 BX              LR
+sub_113040 4 00113088 4 LDR             R1, [R3,#0x1C0]
+sub_1130D8 0 001130d8 4 LDR             R3, =0x2092E8
+sub_113134 0 00113134 4 STMFD           SP!, {R4-R6,LR}
+sub_113134 1 00113144 4 MOV             R0, #0
+sub_113134 2 00113150 4 CMP             R5, #0
+sub_113134 3 00113158 4 MOV             R0, #1
+sub_113134 4 00113164 4 LDMFD           SP!, {R4-R6,PC}
+sub_113168 0 00113168 4 STMFD           SP!, {R4-R10,LR}
+sub_113168 1 00113244 4 ADD             R0, R1, R1,LSL#1
+sub_113168 2 0011327c 4 LDR             R0, =0x205768
+sub_1132D4 0 001132d4 4 MOV             R1, #0
+sub_1132D4 1 0011195c 4 LDR             R1, =0x209270
+sub_1132E4 0 001132e4 4 LDR             R1, =0x205768
+sub_113380 0 00113380 4 STMFD           SP!, {R4-R6,LR}
+sub_113380 1 0011339c 4 LDR             R0, =0x205768
+sub_113380 2 001133b0 4 CMP             R5, #0x1000
+sub_113380 3 001133fc 4 LDR             R1, =0x42525551
+sub_1133E0 0 001133e0 4 LDR             R2, =0x2056AC
+sub_1133FC 0 001133fc 4 LDR             R1, =0x42525551
+sub_1133FC 1 0011341c 4 LDR             R2, [R1,#0x14]
+sub_1133FC 2 00113430 4 LDRB            R1, [R0,#0x10]
+sub_1133FC 3 0011343c 4 MOV             R1, #3
+sub_1133FC 4 0011344c 4 B               sub_112D5C
+sub_1133FC 5 00112d5c 4 STMFD           SP!, {R4-R12,LR}
+sub_11643C 0 0011643c 4 CMP             R0, #0
+sub_11643C 1 00116444 4 STMFD           SP!, {R4-R7}
+sub_11643C 2 00116498 4 STR             R12, [R3,#8]
+sub_11643C 3 001164c0 4 STR             R1, [R2,#0]
+sub_11643C 4 001164e8 4 MOV             R1, R2
+sub_11643C 5 001164f8 4 MOV             R0, #0
+sub_11643C 6 00116504 4 STR             R4, [R0,#0x28]
+sub_11643C 7 00116518 4 LDR             R1, [R0,#0x2C]
+sub_11643C 8 00116524 4 LDR             R1, [R0,#0x2C]
+sub_11643C 9 0011653c 4 MOV             R0, #1
+sub_116564 0 00116564 4 STMFD           SP!, {R4-R9,LR}
+sub_116564 1 001165c0 4 BL              sub_1168AC
+sub_116564 2 001165cc 4 STR             R6, [SP,#0]
+sub_116564 3 001165f8 4 MOV             R8, #1
+sub_116564 4 00116620 4 LDR             R0, =0x1846000
+sub_116564 5 00116640 4 MOV             R7, #5
+sub_116564 6 00116660 4 LDR             R0, =0x1845000
+sub_116564 7 00116688 4 LDR             R0, =0x1827000
+sub_116564 8 001166a8 4 MOV             R2, #4
+sub_116564 9 001166c4 4 CMP             R0, #2
+sub_116564 10 001166d4 4 B               loc_116844
+sub_116564 11 001166d8 4 LDR             R0, =0x1832024
+sub_116564 12 001166f0 4 LDR             R6, =0x1831000
+sub_116564 13 00116714 4 CMP             R0, #1
+sub_116564 14 0011671c 4 CMP             R0, #2
+sub_116564 15 00116724 4 B               loc_1167A0
+sub_116564 16 00116728 4 LDR             R0, [R1,#0x40]
+sub_116564 17 00116770 4 LDR             R0, [R6,#0x18]
+sub_116564 18 001167a0 4 MOV             R0, SP
+sub_116564 19 001167b0 4 LDR             R1, [R4,#0]
+sub_116564 20 001167c4 4 CMP             R1, #2
+sub_116564 21 001167cc 4 B               loc_116844
+sub_116564 22 001167d0 4 LDR             R1, [R6,#0x18]
+sub_116564 23 001167f0 4 B               loc_116814
+sub_116564 24 001167f4 4 LDR             R1, [R6,#0x18]
+sub_116564 25 00116814 4 STR             R8, [SP,#0x1C]
+sub_116564 26 00116830 4 CMP             R0, #1
+sub_116564 27 00116844 4 MOV             R0, #0
+sub_116564 28 00116848 4 ADD             SP, SP, #0x34
+sub_116564 29 00116850 4 ADD             R0, SP, #0x18
+sub_116564 30 00116860 4 ADD             SP, SP, #0x34
+sub_1168AC 0 001168ac 4 STMFD           SP!, {R4-R12,LR}
+sub_1168AC 1 001168c0 4 ADD             R11, R7, #0xC
+sub_1168AC 2 001168d8 4 ADD             R0, R11, #0x20
+sub_1168AC 3 001168e8 4 MOV             R8, #0x81F
+sub_1168AC 4 00116904 4 LDR             R0, =loc_11739C
+sub_1168AC 5 0011691c 4 CMP             R1, #1
+sub_1168AC 6 00116928 4 MOV             R0, #0
+sub_1168AC 7 0011692c 4 LDMFD           SP!, {R4-R12,PC}
+sub_1168AC 8 00116930 4 LDR             R1, [R10,#0x54]
+sub_1168AC 9 00116984 4 B               loc_1169DC
+sub_1168AC 10 00116988 4 LDR             R1, [R6,#0x54]
+sub_1168AC 11 001169dc 4 LDRB            R5, [R11,#0x18]
+sub_1168AC 12 001169e8 4 LDR             R0, [R7,#0]
+sub_1168AC 13 001169f4 4 CMP             R0, #1
+sub_1168AC 14 00116a00 4 LDR             R0, [R6,#0x54]
+sub_1168AC 15 00116a58 4 LDR             R0, [R7,#0]
+sub_1168AC 16 00116a64 4 LDR             R0, =loc_117390
+sub_1168AC 17 00116a78 4 B               loc_116AD8
+sub_1168AC 18 00116a7c 4 LDR             R0, [R10,#0x54]
+sub_1168AC 19 00116ad4 4 B               loc_116A58
+sub_1168AC 20 00116ad8 4 LDR             R1, [R0,#0x4C]
+sub_1168AC 21 00116ae4 4 LDR             R1, [R0,#0x54]
+sub_1168AC 22 00116b20 4 MOV             R0, #1
+sub_116B44 0 00116b44 4 STR             LR, [SP,#-4]!
+sub_116B44 1 00116b70 4 CMP             R0, #1
+sub_116B44 2 00116b7c 4 LDR             R0, =loc_1173BC
+sub_116B44 3 00116b8c 4 MOV             R0, #1
+sub_116B44 4 00116b9c 4 LDR             R0, =0x1816004
+sub_116B44 5 00116bb4 4 LDR             R0, =0x1845000
+sub_116B44 6 00116bec 4 ADD             SP, SP, #0x1C
+sub_116C00 0 00116c00 4 STMFD           SP!, {R4-R8,LR}
+sub_116C00 1 00116c10 4 LDR             R5, [R0,#0]
+sub_116C00 2 00116c28 4 TST             R1, #j_reset
+sub_116C00 3 00116c30 4 CMP             R3, #0
+sub_116C00 4 00116c38 4 LDR             R1, [R3,#0]
+sub_116C00 5 00116c4c 4 LDR             R12, =loc_117390
+sub_116C00 6 00116c94 4 CMP             R12, #1
+sub_116C00 7 00116ca0 4 LDR             R12, [R0,#0x10]
+sub_116C00 8 00116cb0 4 LDR             LR, =0xFFFFF000
+sub_116C00 9 00116cbc 4 LDR             R12, [R0,#0x14]
+sub_116C00 10 00116ccc 4 CMP             R12, #8
+sub_116C00 11 00116cd8 4 MOV             LR, #0xFFFFFF00
+sub_116C00 12 00116ce4 4 LDR             R12, [R0,#0x1C]
+sub_116C00 13 00116d0c 4 MOV             R1, #0x200000
+sub_116C00 14 00116d24 4 LDR             R1, [R5,#0]
+sub_116C00 15 00116d38 4 LDR             R1, [R3,#0]
+sub_116C00 16 00116d54 4 MOV             R0, R4
+sub_116C00 17 00116d64 4 STR             R8, [R7,#0x28]
+sub_116C00 18 00116d78 4 LDR             R0, [R7,#0x2C]
+sub_116C00 19 00116d84 4 LDR             R0, [R7,#0x2C]
+sub_116C00 20 00116d9c 4 B               loc_116E4C
+sub_116C00 21 00116da0 4 ORR             R1, R1, #2
+sub_116C00 22 00116dc0 4 LDR             R0, [R7,#0x2C]
+sub_116C00 23 00116dcc 4 LDR             R0, [R7,#0x2C]
+sub_116C00 24 00116df4 4 MOV             R0, R4
+sub_116C00 25 00116e04 4 MOV             R0, #0
+sub_116C00 26 00116e08 4 LDMFD           SP!, {R4-R8,PC}
+sub_116C00 27 00116e0c 4 STR             R8, [R7,#0x28]
+sub_116C00 28 00116e20 4 LDR             R0, [R7,#0x2C]
+sub_116C00 29 00116e2c 4 LDR             R0, [R7,#0x2C]
+sub_116C00 30 00116e44 4 ORR             R0, R6, #1
+sub_116C00 31 00116e4c 4 MOV             R0, #1
+sub_116E64 0 00116e64 4 STMFD           SP!, {R4-R7,LR}
+sub_116E64 1 00116e98 4 CMP             R1, #1
+sub_116E64 2 00116ea0 4 CMP             R1, #2
+sub_116E64 3 00116ea8 4 B               loc_116EC8
+sub_116E64 4 00116eac 4 MOV             R0, #0x18
+sub_116E64 5 00116ec8 4 LDR             R0, =loc_1173BC
+sub_116E64 6 00116ed8 4 MOV             R0, #0x20
+sub_116E64 7 00116ef4 4 LDR             R0, =0x1826000
+sub_116E64 8 00116f1c 4 LDR             R0, =0x1827000
+sub_116E64 9 00116f44 4 CMP             R4, #0
+sub_116E64 10 00116f54 4 CMP             R4, #1
+sub_116E64 11 00116f5c 4 MOV             R0, #0
+sub_116E64 12 00116f60 4 ADD             SP, SP, #0x1C
+sub_116E64 13 00116f68 4 LDR             R0, =0x1842004
+sub_116E64 14 00116fa4 4 LDR             R0, [R5,#0x1C]
+sub_116E64 15 00116fc8 4 B               loc_11702C
+sub_116E64 16 00116fcc 4 LDR             R0, =0x1843004
+sub_116E64 17 00117008 4 LDR             R0, [R5,#0x1C]
+sub_116E64 18 0011702c 4 ADD             SP, SP, #0x1C
+sub_11705C 0 0011705c 4 STMFD           SP!, {R4,LR}
+sub_11705C 1 0011709c 4 MOV             R0, SP
+sub_11705C 2 001170ac 4 MOV             R0, #0x1840000
+sub_11705C 3 001170ec 4 ADD             SP, SP, #0x18
+sub_117310 0 00117310 4 STR             R4, [SP,#-4]!
+sub_117310 1 0011732c 4 MOV             R3, R12
+sub_117310 2 0011733c 4 LDR             R4, [SP],#4
+sub_117310 3 00117348 4 STR             R4, [R2,#0x28]
+sub_117310 4 0011735c 4 LDR             R3, [R2,#0x2C]
+sub_117310 5 00117368 4 LDR             R3, [R2,#0x2C]
+sub_117310 6 00117380 4 LDR             R4, [SP],#4

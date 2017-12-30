@@ -1,0 +1,2919 @@
+sub_FC010020 0 fc010020 4 STMFD           SP!, {R4-R6,LR}
+sub_FC010020 1 fc010058 4 CMP             R3, #0
+sub_FC010020 2 fc010074 4 RSBPLS          R0, R6, #4
+sub_FC010020 3 fc01007c 4 SUB             R0, LR, #0x20
+sub_FC010020 4 fc0100a4 4 UMULL           R0, R1, R12, R5
+sub_FC010020 5 fc0100ec 4 UMULL           R0, R1, R12, R5
+sub_FC010020 6 fc01010c 4 UMULL           R1, R0, R12, R2
+sub_FC010020 7 fc010140 4 UMULL           R4, R6, R12, R2
+sub_FC010020 8 fc010178 4 ADDS            R0, R0, #1
+sub_FC010020 9 fc0101a8 4 UMULL           R1, R0, R12, R5
+sub_FC010020 10 fc01022c 4 UMULL           R6, R1, R12, R2
+sub_FC010020 11 fc010260 4 ADD             R0, R0, #1
+sub_FC010020 12 fc010270 4 STMFD           SP!, {R2,R3}
+sub_FC010020 13 fc010280 4 LDMFD           SP!, {R2-R6,PC}
+sub_FC010020 14 fc010284 4 MOV             R1, #0
+sub_FC010020 15 fc010290 4 RSB             LR, R6, #0x20
+sub_FC010020 16 fc0102a8 4 SUBS            LR, R2, R5
+sub_FC010020 17 fc0102c4 4 MOVS            R4, R4,LSR#1
+sub_FC010310 0 fc010310 4 SUBS            R3, R2, #0x20
+sub_FC010310 1 fc010318 4 RSB             R3, R2, #0x20
+sub_FC010310 2 fc01032c 4 MOV             R1, R0,LSL R3
+sub_FC010338 0 fc010338 4 B               loc_FC010340
+sub_FC010338 1 fc010340 4 STMFD           SP!, {R0-R2,LR}
+sub_FC01033C 0 fc01033c 4 NOP
+sub_FC01033C 1 fc010340 4 STMFD           SP!, {R0-R2,LR}
+sub_FC010350 0 fc010350 2 MOVS            R1, R0
+sub_FC010370 0 fc010370 4 MRC             p15, 0, R0,c1,c0, 0
+sub_FC0103BC 0 fc0103bc 4 STMFD           SP!, {R0-R12,LR}
+sub_FC0103F4 0 fc0103f4 4 DSB             SY
+sub_FC01046C 0 fc01046c 4 DSB             SY
+sub_FC01046C 1 fc010480 4 MOV             R10, #0
+sub_FC01046C 2 fc010484 4 ADD             R2, R10, R10,LSR#1
+sub_FC01046C 3 fc010498 4 MCR             p15, 2, R10,c0,c0, 0
+sub_FC01046C 4 fc0104c0 4 MOV             R9, R4
+sub_FC01046C 5 fc0104c4 4 ORR             R11, R10, R9,LSL R5
+sub_FC01046C 6 fc0104d8 4 SUBS            R7, R7, #1
+sub_FC01046C 7 fc0104e0 4 ADD             R10, R10, #2
+sub_FC01046C 8 fc0104ec 4 MOV             R10, #0
+sub_FC0105CC 0 fc0105cc 4 STMFD           SP!, {R0-R12,LR}
+sub_FC0105E4 0 fc0105e4 4 STMFD           SP!, {R4-R12,LR}
+sub_FC0105E4 1 fc0105f8 4 PLI             [R10]
+sub_FC0105E4 2 fc010608 4 DSB             SY
+sub_FC0105E4 3 fc0106bc 4 LDMFD           SP!, {R4-R12,PC}
+sub_FC0106D0 0 fc0106d0 4 STMFD           SP!, {R1,LR}
+sub_FC010714 0 fc010714 4 STMFD           SP!, {R0-R12,LR}
+sub_FC010744 0 fc010744 4 ISB             SY
+sub_FC010754 0 fc010754 4 MCR             p15, 3, R0,c15,c0, 7
+sub_FC01075C 0 fc01075c 4 MRC             p15, 3, R0,c15,c0, 7
+sub_FC010918 0 fc010918 4 MOV             R0, #0
+sub_FC010918 1 fc01094c 4 B               loc_FC01094C
+sub_FC010984 0 fc010984 4 CMP             R2, #0x80
+sub_FC010984 1 fc01098c 4 CMP             R2, #0x20
+sub_FC010984 2 fc010994 4 CMP             R2, #4
+sub_FC010984 3 fc01099c 4 CMP             R2, #0
+sub_FC010984 4 fc0109a4 4 BX              LR
+sub_FC010984 5 fc0109a8 4 VLDMIA          R1!, {D0-D15}
+sub_FC010984 6 fc0109bc 4 BLT             loc_FC01098C
+sub_FC010984 7 fc0109c0 4 VLDMIA          R1!, {D0-D3}
+sub_FC010984 8 fc0109d4 4 BLT             loc_FC010994
+sub_FC010984 9 fc0109d8 4 LDMIA           R1!, {R3}
+sub_FC010984 10 fc0109ec 4 BLT             loc_FC01099C
+sub_FC010984 11 fc0109f0 4 LDRB            R3, [R1],#1
+sub_FC010984 12 fc010a04 4 BLE             locret_FC0109A4
+sub_FC010984 13 fc010a08 4 VMOV.I64        Q0, #0
+sub_FC010A08 0 fc010a08 4 VMOV.I64        Q0, #0
+sub_FC010A08 1 fc010a1c 4 VMOV            Q2, Q0
+sub_FC010A08 2 fc010a38 4 CMP             R1, #0x20
+sub_FC010A08 3 fc010a40 4 CMP             R1, #0
+sub_FC010A08 4 fc010a48 4 BX              LR
+sub_FC010A08 5 fc010a4c 4 VSTMIA          R0!, {D0-D15}
+sub_FC010A08 6 fc010a5c 4 BLT             loc_FC010A38
+sub_FC010A08 7 fc010a60 4 VSTMIA          R0!, {D0-D3}
+sub_FC010A08 8 fc010a70 4 BLT             loc_FC010A40
+sub_FC010A08 9 fc010a74 4 STRB            R2, [R0],#1
+sub_FC010A08 10 fc010a84 4 BLE             locret_FC010A48
+sub_FC010A08 11 fc010a88 4 STMFD           SP!, {R4,LR}
+sub_FC010A08 12 fc010aa0 4 SUB             R0, R0, R2
+sub_FC010A08 13 fc010ab8 4 LDMFD           SP!, {R4,PC}
+sub_FC010ABC 0 fc010abc 4 LDR             R12, =0xFC102060
+sub_FC010BA0 0 fc010ba0 4 STMFD           SP!, {R4-R11,LR}
+sub_FC010BA0 1 fc010bd4 4 LDR             R1, [R0,#4]
+sub_FC010BA0 2 fc010bf0 4 LDR             R3, [R0,#0]
+sub_FC010BA0 3 fc010c10 4 TST             R4, #3
+sub_FC010BA0 4 fc010c2c 4 LDR             R0, [R11,#0x100]
+sub_FC010BA0 5 fc010c38 4 CMP             R9, #0
+sub_FC010BA0 6 fc010c44 4 MOV             R2, #4
+sub_FC010BA0 7 fc010c58 4 STR             R0, [R11,#0x10]
+sub_FC010BA0 8 fc010c6c 4 CMP             R7, #0
+sub_FC010BA0 9 fc010c7c 4 LDR             R0, [R11,#0x100]
+sub_FC010BA0 10 fc010c88 4 ADD             R1, R5, R4,LSL#2
+sub_FC010BA0 11 fc010cac 4 LDR             R0, [R11,#0x100]
+sub_FC010BA0 12 fc010cb8 4 LDR             R0, [R11,#0x100]
+sub_FC010BA0 13 fc010cc4 4 LDR             R0, [SP,#0x18]
+sub_FC010CEC 0 fc010cec 4 MOV             R1, #0
+sub_FC010CEC 1 fc010d00 4 LDRB            R2, [R0,#0]
+sub_FC010CEC 2 fc010d14 4 CMP             R2, #2
+sub_FC010CEC 3 fc010d24 4 MOV             R0, #2
+sub_FC010CEC 4 fc010d30 4 LDR             R12, [R0,#0x2D]
+sub_FC010CEC 5 fc010d48 4 ADD             R5, R0, R1,LSL#2
+sub_FC010CEC 6 fc010d64 4 STR             R2, [R12,#0x300]
+sub_FC010CEC 7 fc010d98 4 AND             R1, R0, #0xF
+sub_FC010CEC 8 fc010da8 4 MOV             R0, #1
+sub_FC010CEC 9 fc010db0 4 LDR             R0, [R12,#0x100]
+sub_FC010CEC 10 fc010dc0 4 MOV             R0, R4
+sub_FC010DD8 0 fc010dd8 4 CMP             R0, #0
+sub_FC010DD8 1 fc010de4 4 LDR             R1, =0xFD41A000
+sub_FC010DD8 2 fc010df8 4 BX              LR
+sub_FC010E00 0 fc010e00 4 CMP             R1, #0
+sub_FC010E00 1 fc010e14 4 CMP             R3, #6; switch 6 cases
+sub_FC010E00 2 fc010e20 4 B               loc_FC010E50; jumptable FC010E1C default case
+sub_FC010E00 3 fc010e3c 4 MOV             R2, #0xD; jumptable FC010E1C case 2
+sub_FC010E00 4 fc010e44 4 MOV             R2, #0xE; jumptable FC010E1C case 3
+sub_FC010E00 5 fc010e48 4 STR             R2, [R1,#0]; jumptable FC010E1C cases 0,1,4,5
+sub_FC010E00 6 fc010e4c 4 BX              LR
+sub_FC010E00 7 fc010e50 4 MOV             R0, #1; jumptable FC010E1C default case
+sub_FC010E58 0 fc010e58 4 STMFD           SP!, {R4-R6,LR}
+sub_FC010E58 1 fc010e7c 4 B               loc_FC010FD8; jumptable FC010E78 default case
+sub_FC010E58 2 fc010ea0 4 CMP             R3, #0; jumptable FC010E78 case 1
+sub_FC010E58 3 fc010eac 4 CMP             R4, #0
+sub_FC010E58 4 fc010ebc 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC010E58 5 fc010ec0 4 CMP             R1, #0; jumptable FC010E78 case 2
+sub_FC010E58 6 fc010ec8 4 CMP             R2, #0x35
+sub_FC010E58 7 fc010ed0 4 MOV             R0, R1
+sub_FC010E58 8 fc010edc 4 CMP             R3, #0; jumptable FC010E78 case 3
+sub_FC010E58 9 fc010ee4 4 CMP             R12, #0x35
+sub_FC010E58 10 fc010eec 4 CMP             R4, #0
+sub_FC010E58 11 fc010ef4 4 LDRB            R2, [R3,#0]
+sub_FC010E58 12 fc010f10 4 LDR             R2, =0xFD41A000
+sub_FC010E58 13 fc010f24 4 ADD             R12, R2, R1,LSL#2
+sub_FC010E58 14 fc010f40 4 MOV             R1, #0x35
+sub_FC010E58 15 fc010f48 4 CMP             R1, #0; jumptable FC010E78 case 4
+sub_FC010E58 16 fc010f50 4 CMP             R2, #8
+sub_FC010E58 17 fc010f58 4 CMP             R4, #0
+sub_FC010E58 18 fc010f60 4 MOV             R0, R1
+sub_FC010E58 19 fc010f6c 4 STR             R1, [R4,#0]
+sub_FC010E58 20 fc010f74 4 CMP             R1, #0; jumptable FC010E78 case 5
+sub_FC010E58 21 fc010f7c 4 CMP             R2, R5
+sub_FC010E58 22 fc010f88 4 B               loc_FC010FD8; jumptable FC010E78 default case
+sub_FC010E58 23 fc010f8c 4 CMP             R3, #0; jumptable FC010E78 case 6
+sub_FC010E58 24 fc010f94 4 CMP             R5, R12
+sub_FC010E58 25 fc010f9c 4 CMP             R4, #0
+sub_FC010E58 26 fc010fac 4 B               loc_FC010FD8; jumptable FC010E78 default case
+sub_FC010E58 27 fc010fb0 4 CMP             R1, #0; jumptable FC010E78 case 7
+sub_FC010E58 28 fc010fb8 4 CMP             R2, #0xC
+sub_FC010E58 29 fc010fc0 4 CMP             R4, #0
+sub_FC010E58 30 fc010fc8 4 MOV             R1, #0xC
+sub_FC010E58 31 fc010fd8 4 MOV             R0, #1; jumptable FC010E78 default case
+sub_FC010E58 32 fc010cec 4 MOV             R1, #0
+sub_FC010FE4 0 fc010fe4 4 CMP             R0, #0
+sub_FC010FE4 1 fc010ff0 4 LDR             R1, =0xFD41A400
+sub_FC010FE4 2 fc011000 4 BX              LR
+sub_FC011018 0 fc011018 4 STR             LR, [SP,#-4]!
+sub_FC01109C 0 fc01109c 4 CMP             R0, #0
+sub_FC01109C 1 fc0110a8 4 LDR             R2, [R1,#0]
+sub_FC01109C 2 fc0110b4 4 MOV             R0, #1
+sub_FC01109C 3 fc0110bc 4 MOV             R2, #0
+sub_FC0110D4 0 fc0110d4 4 CMP             R1, #0
+sub_FC0110D4 1 fc0110e0 4 CMP             R0, #0
+sub_FC0110D4 2 fc0110f4 4 BX              LR
+sub_FC011114 0 fc011114 4 STMFD           SP!, {R4,LR}
+sub_FC01112C 0 fc01112c 4 STMFD           SP!, {R4,LR}
+sub_FC011160 0 fc011160 4 STMFD           SP!, {R4,LR}
+sub_FC011160 1 fc011168 4 LDR             R0, [R0,#0]
+sub_FC011160 2 fc01117c 4 CMP             R2, #1
+sub_FC011160 3 fc011184 4 B               loc_FC0111A8
+sub_FC011160 4 fc011188 4 MOV             R0, #2
+sub_FC011160 5 fc011190 4 LDR             R3, [R1,#4]
+sub_FC011160 6 fc0111a8 4 MOV             R0, R3
+sub_FC011200 0 fc011200 4 STMFD           SP!, {R4-R8,LR}
+sub_FC011200 1 fc01121c 4 LDR             R0, [R5,#4]
+sub_FC011200 2 fc011228 4 LDR             R0, [R5,#0]
+sub_FC011200 3 fc011234 4 CMP             R2, #1
+sub_FC011200 4 fc01123c 4 CMP             R1, #0
+sub_FC011200 5 fc011244 4 LDRB            R2, [R8,#0]
+sub_FC011200 6 fc011254 4 CMP             R2, #2
+sub_FC011200 7 fc011260 4 LDR             R0, [R0,#4]
+sub_FC011200 8 fc011274 4 MOV             R0, #2
+sub_FC011200 9 fc011278 4 LDMFD           SP!, {R4-R8,PC}
+sub_FC011200 10 fc01127c 4 CMN             R4, #4
+sub_FC011200 11 fc011284 4 MOV             R3, #0
+sub_FC011200 12 fc0112a0 4 ADDS            R4, R4, #4
+sub_FC011200 13 fc0112ac 4 B               loc_FC0112C4
+sub_FC011200 14 fc0112b0 4 MOV             R3, #1
+sub_FC011200 15 fc0112c4 4 LDR             R0, [R5,#0]
+sub_FC011200 16 fc0112e0 4 MOV             R1, #1
+sub_FC0112F4 0 fc0112f4 4 CMP             R0, #0
+sub_FC0112F4 1 fc011308 4 MOV             R2, #0
+sub_FC0112F4 2 fc011318 4 BX              LR
+sub_FC01131C 0 fc01131c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01131C 1 fc011338 4 LDR             R0, [R5,#4]
+sub_FC01131C 2 fc011344 4 LDR             R1, [R5,#0]
+sub_FC01131C 3 fc011350 4 LDRB            R0, [R4,#0]
+sub_FC01131C 4 fc011360 4 CMP             R0, #2
+sub_FC01131C 5 fc01136c 4 LDR             R0, [R1,#4]
+sub_FC01131C 6 fc011378 4 MOV             R0, #2
+sub_FC01131C 7 fc01137c 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC01131C 8 fc011380 4 LDR             R0, [R4,#0x75]
+sub_FC01131C 9 fc01138c 4 CMP             R0, #0x40
+sub_FC01131C 10 fc011398 4 ADD             R1, R4, #0x35
+sub_FC01131C 11 fc0113b4 4 LDR             R2, [R4,#0x75]
+sub_FC01131C 12 fc0113d0 4 LDR             R0, [R5,#0]
+sub_FC01131C 13 fc0113ec 4 MOV             R1, #1
+sub_FC011400 0 fc011400 4 CMP             R1, #1
+sub_FC011400 1 fc011410 4 CMP             R0, #0
+sub_FC011400 2 fc011420 4 LDR             R0, [R0,#0]
+sub_FC011400 3 fc01142c 4 CMP             R1, #1
+sub_FC011400 4 fc011438 4 MOV             R0, #2
+sub_FC011400 5 fc011440 4 MOV             R2, #0
+sub_FC011400 6 fc011460 4 CMP             R1, #2
+sub_FC011400 7 fc011468 4 B               loc_FC0114E4
+sub_FC011400 8 fc01146c 4 LDR             R1, =0x1234567
+sub_FC011400 9 fc01149c 4 MOV             R1, #2
+sub_FC011400 10 fc0114e4 4 MOV             R0, R3
+sub_FC011520 0 fc011520 4 STMFD           SP!, {R4-R10,LR}
+sub_FC011520 1 fc011534 4 CMP             R2, #1
+sub_FC011520 2 fc01153c 4 CMP             R1, #0
+sub_FC011520 3 fc011544 4 LDR             R5, [R1,#4]
+sub_FC011520 4 fc01155c 4 MOV             R0, #1
+sub_FC011520 5 fc011560 4 LDMFD           SP!, {R4-R10,PC}
+sub_FC011520 6 fc011564 4 MOV             R0, #2
+sub_FC011520 7 fc01156c 4 CMP             R1, #0x40
+sub_FC011520 8 fc011574 4 ADD             R1, R4, #0x35
+sub_FC011520 9 fc011590 4 LDR             R1, [R4,#0x75]
+sub_FC011520 10 fc0115a0 4 CMP             R0, #0x40
+sub_FC011520 11 fc0115ac 4 ADD             R1, R4, #0x35
+sub_FC011520 12 fc0115c8 4 MOV             R2, #0x40
+sub_FC011520 13 fc0115e8 4 CMP             R8, R5
+sub_FC011520 14 fc0115f0 4 SUB             R0, R5, R8
+sub_FC011520 15 fc011624 4 CMP             R7, #0
+sub_FC011520 16 fc011638 4 CMN             R5, #4
+sub_FC011520 17 fc011644 4 MOV             R2, #0xFFFFFFFC
+sub_FC011520 18 fc01165c 4 ADDS            R5, R5, #4
+sub_FC011520 19 fc011668 4 LDMFD           SP!, {R4-R10,PC}
+sub_FC011520 20 fc01166c 4 MOV             R2, R5
+sub_FC011520 21 fc011718 4 STMFD           SP!, {R4-R9,LR}
+sub_FC011688 0 fc011688 4 LDR             R0, =loc_FC021C80
+sub_FC011688 1 fc01168c 4 STMFD           SP!, {R4,R5,LR}
+sub_FC01168C 0 fc01168c 4 STMFD           SP!, {R4,R5,LR}
+sub_FC01168C 1 fc0116c8 4 MOV             R1, SP
+sub_FC01168C 2 fc0116dc 4 LDR             R0, [SP,#0]
+sub_FC01168C 3 fc0116e8 4 LDRB            R0, [SP,#8]
+sub_FC01168C 4 fc0116f0 4 MOV             R5, R0
+sub_FC01168C 5 fc01170c 4 MOV             R0, #1
+sub_FC011718 0 fc011718 4 STMFD           SP!, {R4-R9,LR}
+sub_FC011718 1 fc011754 4 CMP             R3, #1
+sub_FC011718 2 fc011790 4 TST             R5, #0xF
+sub_FC011718 3 fc011798 4 AND             R0, R5, #0xF
+sub_FC011718 4 fc0117a4 4 ADD             R0, SP, #0x18
+sub_FC011718 5 fc0117dc 4 CMP             R0, #2
+sub_FC011718 6 fc0117e8 4 STR             R0, [SP,#0xC]
+sub_FC011718 7 fc0117ec 4 ADD             R1, SP, #0x28
+sub_FC011718 8 fc011800 4 LDR             R0, [SP,#0x28]
+sub_FC011718 9 fc011810 4 LDRB            R0, [SP,#0x34]
+sub_FC011718 10 fc011824 4 LDR             R3, [SP,#0x30]
+sub_FC011718 11 fc011840 4 MOV             R0, #0x35
+sub_FC011718 12 fc011864 4 MOV             R6, R0
+sub_FC011718 13 fc011868 4 LDR             R0, [SP,#0x38]
+sub_FC011884 0 fc011884 4 LDR             R2, =0x10700
+sub_FC011884 1 fc015e70 4 STMFD           SP!, {R4-R8,LR}
+sub_FC0118B4 0 fc0118b4 4 B               sub_FC0118B4
+sub_FC0118B8 0 fc0118b8 4 MOV             R3, R0
+sub_FC0118B8 1 fc0118d0 4 LDR             R4, [R3,#0]
+sub_FC0118B8 2 fc0118f8 4 LDMFD           SP!, {R4,R5}
+sub_FC011900 0 fc011900 4 CMP             R2, #0
+sub_FC011900 1 fc011910 4 MOV             R12, R0
+sub_FC011900 2 fc011958 4 LDMFD           SP!, {R4,R5}
+sub_FC011900 3 fc011964 4 ADD             R3, R3, #1
+sub_FC011900 4 fc011970 4 LDMFD           SP!, {R4,R5}
+sub_FC01197C 0 fc01197c 4 BIC             R1, R0, #3
+sub_FC011998 0 fc011998 4 BIC             R2, R0, #3
+sub_FC0119C4 0 fc0119c4 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0119C4 1 fc0119dc 4 BL              sub_FC011AB8
+sub_FC0119C4 2 fc0119f0 4 MOV             R0, R4
+sub_FC0119FC 0 fc0119fc 4 STMFD           SP!, {R3-R7,LR}
+sub_FC0119FC 1 fc011a74 4 CMP             R0, #0
+sub_FC0119FC 2 fc011a80 4 LDR             R0, [R4,#4]
+sub_FC0119FC 3 fc011a8c 4 ORRS            R0, R6, R5
+sub_FC0119FC 4 fc011aa0 4 LDR             R0, [R7,#4]
+sub_FC0119FC 5 fc011aac 4 LDMFD           SP!, {R3-R7,PC}
+sub_FC0119FC 6 fc013188 4 LDR             R5, =0xF800224C
+sub_FC011AB8 0 fc011ab8 4 STMFD           SP!, {R3-R7,LR}
+sub_FC011AB8 1 fc011b14 4 MOV             R2, #0
+sub_FC011AB8 2 fc011b44 4 CMP             R0, #0
+sub_FC011AB8 3 fc011b4c 4 LDR             R0, [R4,#4]
+sub_FC011AB8 4 fc011b58 4 STRB            R6, [R5,#0]
+sub_FC011B68 0 fc011b68 4 STMFD           SP!, {R4-R6,LR}
+sub_FC011B68 1 fc011ba4 4 LDR             R0, [R5,#0x38]
+sub_FC011B68 2 fc011bbc 4 LDRD            R0, [R5,#0x58]
+sub_FC011BD0 0 fc011bd0 4 STMFD           SP!, {R4-R6,LR}
+sub_FC011BD0 1 fc011bec 4 LDR             R1, [R0,#8]
+sub_FC011BD0 2 fc011c00 4 STR             R0, [R6,#0x38]
+sub_FC011BD0 3 fc011c1c 4 LDR             R1, [R0,#8]
+sub_FC011BD0 4 fc011c30 4 LDR             R1, [R0,#0x10]
+sub_FC011BD0 5 fc011c44 4 LDR             R1, [R0,#0x18]
+sub_FC011BD0 6 fc011c58 4 LDR             R1, [R0,#0x20]
+sub_FC011BD0 7 fc011c6c 4 LDR             R1, [R0,#0x28]
+sub_FC011BD0 8 fc011c80 4 LDR             R2, [R0,#0x30]
+sub_FC011BD0 9 fc011c94 4 LDR             R2, [R0,#0x38]
+sub_FC011BD0 10 fc011ca8 4 LDR             R2, [R0,#0x40]
+sub_FC011BD0 11 fc011cbc 4 LDR             R2, [R0,#0x48]
+sub_FC011BD0 12 fc011cd8 4 BLX             R1
+sub_FC011BD0 13 fc011d00 4 LDR             R0, [R1,#4]
+sub_FC011BD0 14 fc011d0c 4 LDR             R0, [R2,#0x18]
+sub_FC011BD0 15 fc011d20 4 LDR             R2, [R0,#0]
+sub_FC011BD0 16 fc011d34 4 LDR             R2, [R0,#0x10]
+sub_FC011BD0 17 fc011d48 4 LDR             R2, [R0,#0xC]
+sub_FC011BD0 18 fc011d5c 4 LDR             R0, [R0,#0x18]
+sub_FC011BD0 19 fc011d6c 4 LDR             R0, [R1,#4]
+sub_FC011BD0 20 fc011d78 4 CMP             R0, #1
+sub_FC011BD0 21 fc011d80 4 B               loc_FC011E78
+sub_FC011BD0 22 fc011d84 4 MOV             R4, #0
+sub_FC011BD0 23 fc011d8c 4 CMP             R3, #0
+sub_FC011BD0 24 fc011d9c 4 LDR             R0, [R1,#8]
+sub_FC011BD0 25 fc011db4 4 LDR             R0, [R6,#0x38]
+sub_FC011BD0 26 fc011de0 4 LDR             R0, [R1,#8]
+sub_FC011BD0 27 fc011df4 4 STR             R5, [R0],#4
+sub_FC011BD0 28 fc011e44 4 BLX             R3
+sub_FC011BD0 29 fc011e78 4 MOV             R4, #0
+sub_FC011BD0 30 fc011e7c 4 LDR             R0, [R6,#4]
+sub_FC011BD0 31 fc011e88 4 CMP             R4, #0
+sub_FC011BD0 32 fc011e94 4 MOV             R0, R4
+sub_FC011BD0 33 fc011e9c 4 LDR             R1, [R6,#4]
+sub_FC011EB0 0 fc011eb0 4 LDR             R12, =0xF800224C
+sub_FC011F14 0 fc011f14 4 STMFD           SP!, {R4-R11,LR}
+sub_FC011F14 1 fc011f3c 4 MOV             R7, #0
+sub_FC011F14 2 fc011f74 4 SUB             R0, R5, R1
+sub_FC011F14 3 fc011f8c 4 STR             R9, [R8,#0x4C]
+sub_FC011F14 4 fc011fc4 4 LDR             R0, [R8,#0x68]
+sub_FC011F14 5 fc011fd8 4 LDR             R0, [R8,#0x54]
+sub_FC011F14 6 fc011fe4 4 LDR             R0, [R8,#0x38]
+sub_FC011F14 7 fc011ffc 4 LDR             R0, [R8,#0x50]
+sub_FC011F14 8 fc012008 4 CMP             R5, #0
+sub_FC011F14 9 fc012010 4 MOV             R2, #1
+sub_FC011F14 10 fc012034 4 B               loc_FC0127BC; jumptable FC012030 default case
+sub_FC011F14 11 fc012070 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 0
+sub_FC011F14 12 fc01207c 4 CMP             R5, #0x30
+sub_FC011F14 13 fc012088 4 CMP             R5, #0x14
+sub_FC011F14 14 fc012098 4 B               loc_FC0120B0
+sub_FC011F14 15 fc01209c 4 LDR             R0, [R1,#4]
+sub_FC011F14 16 fc0120a8 4 MOV             R0, #5
+sub_FC011F14 17 fc0120b0 4 LDR             R0, [R1,#0x10]
+sub_FC011F14 18 fc0120bc 4 LDR             R0, [R1,#8]
+sub_FC011F14 19 fc0120d0 4 LDR             R2, [R8,#0x3C]
+sub_FC011F14 20 fc0120e8 4 CMP             R5, #0x14
+sub_FC011F14 21 fc0120f4 4 LDR             R0, [R1,#0x14]
+sub_FC011F14 22 fc012108 4 CMP             R0, #2
+sub_FC011F14 23 fc012110 4 CMP             R0, #3
+sub_FC011F14 24 fc012118 4 LDR             R0, [R8,#8]
+sub_FC011F14 25 fc012128 4 CMP             R0, #1
+sub_FC011F14 26 fc012134 4 B               loc_FC0123FC
+sub_FC011F14 27 fc012138 4 LDR             R0, [R8,#0x34]
+sub_FC011F14 28 fc012144 4 LDR             R0, [R8,#0x30]
+sub_FC011F14 29 fc012158 4 STR             R9, [SP,#0]
+sub_FC011F14 30 fc0121cc 4 CMP             R0, #0
+sub_FC011F14 31 fc0121d4 4 MOV             R0, #0xC
+sub_FC011F14 32 fc0121dc 4 MOV             R0, #0x1B
+sub_FC011F14 33 fc0121e4 4 MOV             R0, #0x17
+sub_FC011F14 34 fc0121ec 4 LDR             R0, [R4,#4]
+sub_FC011F14 35 fc0121fc 4 MOV             R0, #0xA
+sub_FC011F14 36 fc012204 4 LDR             R4, =0xF8002558
+sub_FC011F14 37 fc012248 4 CMP             R0, #0
+sub_FC011F14 38 fc012250 4 LDR             R0, [R4,#4]
+sub_FC011F14 39 fc012260 4 B               loc_FC012728
+sub_FC011F14 40 fc012264 4 LDR             R0, [R8,#0x38]
+sub_FC011F14 41 fc0122bc 4 LDR             R1, [R8,#0x38]
+sub_FC011F14 42 fc012330 4 SUB             R0, R6, R1
+sub_FC011F14 43 fc012340 4 LDR             R0, [R8,#0x38]
+sub_FC011F14 44 fc01235c 4 LDR             R0, [R8,#0x38]
+sub_FC011F14 45 fc0123a0 4 AND             R1, R0, #3
+sub_FC011F14 46 fc0123b4 4 MOV             R0, #0x13
+sub_FC011F14 47 fc0123bc 4 MOV             R0, #0x12
+sub_FC011F14 48 fc0123c4 4 CMP             R5, R0
+sub_FC011F14 49 fc0123cc 4 LDR             R3, [SP,#8]
+sub_FC011F14 50 fc0123e0 4 CMP             R0, #0x16
+sub_FC011F14 51 fc0123e8 4 B               loc_FC0123F0
+sub_FC011F14 52 fc0123ec 4 BL              sub_FC012BB4
+sub_FC011F14 53 fc0123f0 4 LDRB            R1, [R8,#0]
+sub_FC011F14 54 fc0123fc 4 BL              sub_FC0119FC
+sub_FC011F14 55 fc01240c 4 LDR             R0, [R8,#8]
+sub_FC011F14 56 fc012418 4 STRB            R0, [R8,#0]
+sub_FC011F14 57 fc012420 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 3
+sub_FC011F14 58 fc01242c 4 CMP             R5, #8
+sub_FC011F14 59 fc012440 4 MOV             R0, #6
+sub_FC011F14 60 fc012460 4 MOV             R2, #0
+sub_FC011F14 61 fc012490 4 CMP             R0, #0
+sub_FC011F14 62 fc012498 4 LDR             R0, [R4,#4]
+sub_FC011F14 63 fc0124a4 4 LDR             R0, [R8,#0x1C]
+sub_FC011F14 64 fc0124b0 4 B               loc_FC0124C0
+sub_FC011F14 65 fc0124b4 4 MOV             R0, #2
+sub_FC011F14 66 fc0124c0 4 LDR             R0, [R8,#0x38]
+sub_FC011F14 67 fc0124d8 4 CMP             R0, #1
+sub_FC011F14 68 fc0124e4 4 CMP             R0, #0xB
+sub_FC011F14 69 fc0124ec 4 STRB            R9, [R8,#0]
+sub_FC011F14 70 fc0124f4 4 STR             R10, [R8,#0x18]
+sub_FC011F14 71 fc0124fc 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 5
+sub_FC011F14 72 fc01250c 4 CMP             R0, #0xA
+sub_FC011F14 73 fc012518 4 CMP             R5, #8
+sub_FC011F14 74 fc01252c 4 STR             R9, [SP,#0]
+sub_FC011F14 75 fc012560 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 8
+sub_FC011F14 76 fc01256c 4 CMP             R5, #0x10
+sub_FC011F14 77 fc012588 4 LDRD            R0, [R4,#8]
+sub_FC011F14 78 fc0125a4 4 LDRD            R0, [R4,#8]
+sub_FC011F14 79 fc0125c4 4 CMP             R5, #0
+sub_FC011F14 80 fc0125cc 4 LDR             R0, [R8,#0x30]
+sub_FC011F14 81 fc0125f8 4 MOV             R6, #0x19
+sub_FC011F14 82 fc012604 4 LDR             R0, [R8,#0x2C]
+sub_FC011F14 83 fc012624 4 CMP             R0, #0
+sub_FC011F14 84 fc01262c 4 MOV             R6, #0xC
+sub_FC011F14 85 fc012634 4 MOV             R6, #0x17
+sub_FC011F14 86 fc01263c 4 CMP             R1, R4
+sub_FC011F14 87 fc012644 4 MOV             R6, #0xA
+sub_FC011F14 88 fc012648 4 MOV             R0, R6
+sub_FC011F14 89 fc012650 4 CMP             R6, #0
+sub_FC011F14 90 fc012660 4 B               loc_FC012648
+sub_FC011F14 91 fc012664 4 LDRD            R0, [R4,#8]
+sub_FC011F14 92 fc01267c 4 CMP             R1, #0
+sub_FC011F14 93 fc012684 4 LDR             R1, [R4,#0xC]
+sub_FC011F14 94 fc012690 4 B               loc_FC012728
+sub_FC011F14 95 fc012694 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 10
+sub_FC011F14 96 fc0126a4 4 CMP             R5, #0xC
+sub_FC011F14 97 fc0126b8 4 LDR             R0, [R0,#8]
+sub_FC011F14 98 fc0126c8 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 11
+sub_FC011F14 99 fc0126d4 4 CMP             R5, #0xC
+sub_FC011F14 100 fc0126f4 4 LDR             R1, [R8,#0x38]
+sub_FC011F14 101 fc012724 4 BL              sub_FC0119FC
+sub_FC011F14 102 fc012728 4 LDRB            R0, [R8,#0]
+sub_FC011F14 103 fc012734 4 B               loc_FC0128D4
+sub_FC011F14 104 fc012738 4 LDR             R4, =0xF8002558
+sub_FC011F14 105 fc012788 4 CMP             R0, #0
+sub_FC011F14 106 fc012790 4 LDR             R0, [R4,#4]
+sub_FC011F14 107 fc01279c 4 LDR             R0, [R8,#0x24]
+sub_FC011F14 108 fc0127ac 4 B               loc_FC012728
+sub_FC011F14 109 fc0127b0 4 LDRB            R0, [R8,#0]; jumptable FC012030 case 13
+sub_FC011F14 110 fc0127bc 4 CMP             R7, #0; jumptable FC012030 default case
+sub_FC011F14 111 fc0127c8 4 B               loc_FC012724
+sub_FC011F14 112 fc0127cc 4 LDR             R0, =0xF8002558
+sub_FC011F14 113 fc0127e4 4 LDR             R0, [R0,#8]
+sub_FC011F14 114 fc0127f8 4 LDR             R0, [R8,#0x28]
+sub_FC011F14 115 fc012824 4 CMP             R1, #0
+sub_FC011F14 116 fc01282c 4 LDR             R1, [R8,#0x24]
+sub_FC011F14 117 fc01283c 4 B               loc_FC012418
+sub_FC011F14 118 fc012840 4 LDR             R4, =0xF8002558
+sub_FC011F14 119 fc01288c 4 MOV             R2, #0
+sub_FC011F14 120 fc0128bc 4 CMP             R0, #0
+sub_FC011F14 121 fc0128c4 4 LDR             R0, [R4,#4]
+sub_FC011F14 122 fc0128d0 4 STRB            R10, [R8,#0]
+sub_FC011F14 123 fc0128d4 4 LDR             R0, [R8,#0x18]
+sub_FC011F14 124 fc0128e0 4 STRB            R9, [R8,#0]
+sub_FC011F14 125 fc013188 4 LDR             R5, =0xF800224C
+sub_FC0128FC 0 fc0128fc 4 STMFD           SP!, {R4-R11,LR}
+sub_FC0128FC 1 fc012920 4 CMP             R6, #0
+sub_FC0128FC 2 fc012928 4 LDR             R0, [R11,#0x38]
+sub_FC0128FC 3 fc012940 4 LDR             R0, [R11,#0x38]
+sub_FC0128FC 4 fc012950 4 LDR             R0, [R11,#8]
+sub_FC0128FC 5 fc0129b0 4 CMP             R0, #0
+sub_FC0128FC 6 fc0129bc 4 BL              sub_FC0119FC
+sub_FC0128FC 7 fc0129c0 4 LDRB            R0, [R11,#0]
+sub_FC0128FC 8 fc0129cc 4 ADD             R0, SP, #4
+sub_FC0128FC 9 fc012a04 4 LDR             R0, [SP,#0]
+sub_FC0128FC 10 fc012a10 4 CMP             R5, R10
+sub_FC0128FC 11 fc012a18 4 MOV             R0, #8
+sub_FC0128FC 12 fc012a28 4 LDR             R0, [R5,#4]
+sub_FC0128FC 13 fc012a38 4 B               loc_FC0129BC
+sub_FC0128FC 14 fc012a3c 4 MOV             R0, #0
+sub_FC0128FC 15 fc012a7c 4 LDR             R0, [R11,#0x68]
+sub_FC0128FC 16 fc012a94 4 LDR             R0, [R11,#0x54]
+sub_FC0128FC 17 fc012aa0 4 LDR             R0, [R11,#0x38]
+sub_FC0128FC 18 fc012ab8 4 LDR             R1, [SP,#8]
+sub_FC0128FC 19 fc012ac8 4 MOV             R5, #0
+sub_FC0128FC 20 fc012b28 4 CMP             R1, #0
+sub_FC0128FC 21 fc012b30 4 MOV             R8, #0xC
+sub_FC0128FC 22 fc012b38 4 MOV             R8, #0x16
+sub_FC0128FC 23 fc012b40 4 CMP             R0, R4
+sub_FC0128FC 24 fc012b48 4 MOV             R8, #8
+sub_FC0128FC 25 fc012b50 4 LDR             R0, [R11,#0x64]
+sub_FC0128FC 26 fc012b5c 4 LDR             R0, [R11,#0x6C]
+sub_FC0128FC 27 fc012b68 4 MOV             R0, #1
+sub_FC0128FC 28 fc012b78 4 CMP             R8, #0
+sub_FC0128FC 29 fc012b90 4 B               loc_FC012B98
+sub_FC0128FC 30 fc012b94 4 MOV             R8, #0xD
+sub_FC0128FC 31 fc012b98 4 ADD             SP, SP, #0x14
+sub_FC012BB4 0 fc012bb4 4 STMFD           SP!, {R4-R11,LR}
+sub_FC012BB4 1 fc012bec 4 LDR             R0, =0xF800224C
+sub_FC012BB4 2 fc012c28 4 MOV             R2, #0x34
+sub_FC012BB4 3 fc012c64 4 UBFX            R3, R0, #0x10, #8
+sub_FC012BB4 4 fc012c78 4 AND             R0, R1, #0xFF
+sub_FC012BB4 5 fc012c8c 4 UXTH            R0, R2
+sub_FC012BB4 6 fc012ca0 4 MOV             R4, #0x14
+sub_FC012BB4 7 fc012ca8 4 LDRH            R0, [R8,#0x2C]
+sub_FC012BB4 8 fc012cb8 4 MOV             R1, #7
+sub_FC012BB4 9 fc012ce4 4 LDR             R0, =0xEFBEADDE
+sub_FC012BB4 10 fc012d30 4 LDRH            R1, [R8,#0x2C]
+sub_FC012BB4 11 fc012d3c 4 LDR             R1, [SP,#4]
+sub_FC012BB4 12 fc012d54 4 LDR             R1, [R1,#0xC]
+sub_FC012BB4 13 fc012d60 4 CMP             R9, #0
+sub_FC012BB4 14 fc012d6c 4 B               loc_FC012D7C
+sub_FC012BB4 15 fc012d70 4 CMP             R9, #0
+sub_FC012BB4 16 fc012d7c 4 LDR             R0, [SP,#4]
+sub_FC012BB4 17 fc012dac 4 LDR             R0, [SP,#0]
+sub_FC012BB4 18 fc012dc0 4 LDR             R0, [R11,#0x38]
+sub_FC012BB4 19 fc012ddc 4 CMP             R7, #0
+sub_FC012BB4 20 fc012de4 4 LDR             R0, [SP,#8]
+sub_FC012BB4 21 fc012e00 4 B               loc_FC013154
+sub_FC012BB4 22 fc012e04 4 MOV             R4, #0x12
+sub_FC012BB4 23 fc012e0c 4 LDR             R0, [R11,#0x68]
+sub_FC012BB4 24 fc012e28 4 LDR             R0, [R11,#0x38]
+sub_FC012BB4 25 fc012e4c 4 MOV             R7, #0
+sub_FC012BB4 26 fc012e54 4 CMP             R9, R7
+sub_FC012BB4 27 fc012e5c 4 LDR             R0, =0xF800224C
+sub_FC012BB4 28 fc012e6c 4 LDR             R0, [SP,#4]
+sub_FC012BB4 29 fc012e8c 4 UBFX            R2, R1, #0x15, #3
+sub_FC012BB4 30 fc012e9c 4 LDR             R0, [R5,#4]
+sub_FC012BB4 31 fc012ec8 4 LDR             R0, [SP,#0]
+sub_FC012BB4 32 fc012edc 4 MOV             R1, R10
+sub_FC012BB4 33 fc012efc 4 CMP             R11, #0
+sub_FC012BB4 34 fc012f04 4 LDR             R0, =0xF800224C
+sub_FC012BB4 35 fc012f14 4 LDR             R0, [R5,#0x18]
+sub_FC012BB4 36 fc012f24 4 LDR             R4, =0xF800224C
+sub_FC012BB4 37 fc012f44 4 LDR             R0, [SP,#8]
+sub_FC012BB4 38 fc012f60 4 B               loc_FC012F8C
+sub_FC012BB4 39 fc012f64 4 UBFX            R2, R1, #0x15, #3
+sub_FC012BB4 40 fc012f70 4 CMP             R0, #6
+sub_FC012BB4 41 fc012f78 4 CMP             R0, #0
+sub_FC012BB4 42 fc012f80 4 B               loc_FC01313C
+sub_FC012BB4 43 fc012f84 4 MOV             R4, #0x22
+sub_FC012BB4 44 fc012f8c 4 LDR             R10, =0xF800224C
+sub_FC012BB4 45 fc012fa0 4 LDR             R0, [R5,#0x18]
+sub_FC012BB4 46 fc012fb4 4 LDR             R0, [R8,#0x18]
+sub_FC012BB4 47 fc012fc4 4 LDR             R3, [R5,#0x10]
+sub_FC012BB4 48 fc012fd8 4 LDR             R3, [R5,#8]
+sub_FC012BB4 49 fc012fe4 4 LDR             R12, [R5,#0x10]
+sub_FC012BB4 50 fc012ff4 4 ADD             R0, R0, R2
+sub_FC012BB4 51 fc013000 4 LDR             R0, [R10,#0x64]
+sub_FC012BB4 52 fc01300c 4 LDR             R0, [R5,#0x18]
+sub_FC012BB4 53 fc01301c 4 LDR             R0, [R10,#0x70]
+sub_FC012BB4 54 fc013028 4 LDR             R0, [R10,#0x68]
+sub_FC012BB4 55 fc013038 4 LDR             R0, [R10,#0x68]
+sub_FC012BB4 56 fc013050 4 LDR             R1, [R10,#0x68]
+sub_FC012BB4 57 fc013068 4 MOV             R0, #0
+sub_FC012BB4 58 fc013078 4 LDR             R0, =0xF800224C
+sub_FC012BB4 59 fc013088 4 MOV             R4, #0x10
+sub_FC012BB4 60 fc013090 4 MOV             R1, #1
+sub_FC012BB4 61 fc0130a4 4 UBFX            R0, R1, #0x18, #3
+sub_FC012BB4 62 fc0130b0 4 LDR             R5, =0xF800224C
+sub_FC012BB4 63 fc0130c0 4 LDR             R0, [R5,#0x68]
+sub_FC012BB4 64 fc0130d4 4 LDR             R0, [R5,#0x68]
+sub_FC012BB4 65 fc0130f0 4 LDR             R0, [R6,#0xC]
+sub_FC012BB4 66 fc013110 4 LDR             R0, [R5,#0x68]
+sub_FC012BB4 67 fc013124 4 LDR             R1, [R5,#0x68]
+sub_FC012BB4 68 fc01313c 4 ADD             R7, R7, #1
+sub_FC012BB4 69 fc013140 4 LDRH            R0, [R8,#0x2C]
+sub_FC012BB4 70 fc01314c 4 CMP             R4, #0
+sub_FC012BB4 71 fc013154 4 CMP             R4, #0x16
+sub_FC012BB4 72 fc01315c 4 ADD             SP, SP, #0x14
+sub_FC012BB4 73 fc013168 4 LDR             R0, =0xF800224C
+sub_FC012BB4 74 fc013188 4 LDR             R5, =0xF800224C
+sub_FC012BB4 75 fc0131b0 4 CMP             R0, #0xA
+sub_FC012BB4 76 fc0131bc 4 MOV             R0, #1
+sub_FC012BB4 77 fc0131cc 4 B               loc_FC0131CC
+sub_FC013204 0 fc013204 4 LDR             R0, =0xFC4BA000
+sub_FC013204 1 fc013218 4 LDR             R1, [R0,#0x80]
+sub_FC013204 2 fc01322c 4 BX              LR
+sub_FC0136F8 0 fc0136f8 4 STR             R1, [R0,#0x20]
+sub_FC0136F8 1 fc01370c 4 BX              R2
+sub_FC0136F8 2 fc013710 4 BX              LR
+nullsub_1 0 fc0137c8 4 BX              LR
+nullsub_2 0 fc0137cc 4 BX              LR
+sub_FC0137D0 0 fc0137d0 4 STMFD           SP!, {R4-R8,LR}
+sub_FC0137D0 1 fc0137e8 4 CMP             R4, #7
+sub_FC0137D0 2 fc0137f4 4 BGT             loc_FC013820
+sub_FC0137D0 3 fc0137f8 4 CMP             R4, #1
+sub_FC0137D0 4 fc013800 4 CMP             R4, #2
+sub_FC0137D0 5 fc01380c 4 CMP             R4, #5
+sub_FC0137D0 6 fc013814 4 CMP             R4, #6
+sub_FC0137D0 7 fc01381c 4 B               loc_FC013AA8
+sub_FC0137D0 8 fc013820 4 CMP             R4, #9
+sub_FC0137D0 9 fc01382c 4 CMP             R4, #0x10
+sub_FC0137D0 10 fc013834 4 CMP             R4, #0x11
+sub_FC0137D0 11 fc01383c 4 CMP             R4, #0x12
+sub_FC0137D0 12 fc013844 4 MOV             R7, #7
+sub_FC0137D0 13 fc013850 4 MOV             R3, #0x18
+sub_FC0137D0 14 fc0138e8 4 MOV             R1, #0x87
+sub_FC0137D0 15 fc013900 4 MOV             R0, #0x96
+sub_FC0137D0 16 fc013918 4 CMP             R4, #2
+sub_FC0137D0 17 fc013924 4 MOV             R0, #0xA
+sub_FC0137D0 18 fc013930 4 MOV             R3, #0x10
+sub_FC0137D0 19 fc01394c 4 CMP             R4, #0x12
+sub_FC0137D0 20 fc013954 4 MOV             R0, R8
+sub_FC0137D0 21 fc013964 4 CMP             R8, #0x64
+sub_FC0137D0 22 fc01396c 4 CMP             R4, #0x12
+sub_FC0137D0 23 fc013974 4 MOV             R7, #7
+sub_FC0137D0 24 fc0139ec 4 MOV             R0, R7
+sub_FC0137D0 25 fc0139f4 4 MOV             R3, #0xFF
+sub_FC0137D0 26 fc013a98 4 MOV             R4, #9
+sub_FC0137D0 27 fc013aa0 4 MOV             R4, #7
+sub_FC0137D0 28 fc013aa8 4 MOV             R3, #0xFF
+sub_FC0137D0 29 fc013b4c 4 B               loc_FC013A98
+sub_FC0137D0 30 fc013b50 4 MOV             R4, #0x11
+sub_FC0137D0 31 fc013b58 4 MOV             R3, #0xFF
+sub_FC013BD8 0 fc013bd8 4 STMFD           SP!, {R4-R6,LR}
+sub_FC013BD8 1 fc01c0a4 4 BX              LR
+sub_FC013C6C 0 fc013c6c 4 STMFD           SP!, {R4-R12,LR}
+sub_FC013C6C 1 fc013c8c 4 BNE             loc_FC013D6C
+sub_FC013C6C 2 fc013c90 4 LDR             R0, [R4,#4]
+sub_FC013C6C 3 fc013ca0 4 CMN             R2, #1
+sub_FC013C6C 4 fc013cac 4 CMP             R2, #0
+sub_FC013C6C 5 fc013cb8 4 CMP             R6, R2
+sub_FC013C6C 6 fc013cc4 4 LDR             R1, [R4,#4]
+sub_FC013C6C 7 fc013cdc 4 LDR             R2, [R5,#0]
+sub_FC013C6C 8 fc013ce8 4 LDR             R1, [R4,#0]
+sub_FC013C6C 9 fc013d00 4 BL              sub_FC010020
+sub_FC013C6C 10 fc013d04 4 LDR             R2, [R5,#0]
+sub_FC013C6C 11 fc013d68 4 B               loc_FC013DEC
+sub_FC013C6C 12 fc013d6c 4 MOV             R0, #0xFFFFFFFF
+sub_FC013C6C 13 fc013d74 4 LDR             R3, [R4,#0]
+sub_FC013C6C 14 fc013dbc 4 MOVS            R2, R1
+sub_FC013C6C 15 fc013dc4 4 LDR             R1, [R4,#4]
+sub_FC013C6C 16 fc013dd4 4 BNE             loc_FC013E3C
+sub_FC013C6C 17 fc013dd8 4 LDR             R1, [R4,#0]
+sub_FC013C6C 18 fc013de8 4 B               loc_FC013D74
+sub_FC013C6C 19 fc013dec 4 LDR             R2, [R4,#0]
+sub_FC013C6C 20 fc013e3c 4 STR             R0, [R7,#0]
+sub_FC013E8C 0 fc013e8c 4 CMN             R1, #0xFC000001
+sub_FC013E8C 1 fc013e98 4 CMP             R1, #0
+sub_FC013E8C 2 fc013ea0 4 ADD             R2, R0, R1,LSL#2
+sub_FC013E8C 3 fc013eb4 4 MOV             R2, #0
+sub_FC013E8C 4 fc013f00 4 BX              LR
+sub_FC013E8C 5 fc013f04 4 MOV             R0, #0xFFFFFFFF
+sub_FC013F0C 0 fc013f0c 4 LDR             R1, =0xFC106A88
+sub_FC013F0C 1 fc013f10 4 STMFD           SP!, {R4-R6,LR}
+sub_FC013F10 0 fc013f10 4 STMFD           SP!, {R4-R6,LR}
+sub_FC013F10 1 fc013f30 4 ADD             R2, R0, R0,LSL#1
+sub_FC013F10 2 fc013f44 4 ADD             R0, R0, #1
+sub_FC013F10 3 fc013f50 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC013F10 4 fc013f54 4 MOV             R0, R4
+sub_FC013F10 5 fc013f64 4 LDR             R0, =0xFC10317C
+sub_FC013F10 6 fc013f78 4 MOV             R0, R4
+sub_FC013F10 7 fc013f88 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC013F98 0 fc013f98 4 STMFD           SP!, {R4,LR}
+sub_FC013F98 1 fc013fa0 4 CMP             R1, #3
+sub_FC013F98 2 fc013fa8 4 BL              sub_FC013F0C
+sub_FC013F98 3 fc013fbc 4 LDMFD           SP!, {R4,LR}
+sub_FC013F98 4 fc013fc4 4 LDR             R0, [R0,#0x1C]
+sub_FC013F98 5 fc013fd8 4 CMP             R0, #0x1E0
+sub_FC013F98 6 fc013fe0 4 LDR             R0, =0xFC10312C
+sub_FC013F98 7 fc013ff4 4 LDMFD           SP!, {R4,PC}
+sub_FC014000 0 fc014000 4 STMFD           SP!, {R4,LR}
+sub_FC014000 1 fc014020 4 MOV             R0, R4
+sub_FC014000 2 fc01402c 4 LDMFD           SP!, {R4,PC}
+sub_FC014058 0 fc014058 4 TST             R0, #2
+sub_FC014058 1 fc014080 4 TST             R0, R1
+sub_FC014058 2 fc0140b0 4 LDMFD           SP!, {R4,R5}
+sub_FC0140BC 0 fc0140bc 4 STMFD           SP!, {R0-R11,LR}
+sub_FC0140BC 1 fc0140dc 4 LDR             R1, [SP,#0x28]
+sub_FC0140BC 2 fc0140f4 4 LDR             R0, [SP,#0x28]
+sub_FC0140BC 3 fc014108 4 LDR             R0, [SP,#0x24]
+sub_FC0140BC 4 fc01411c 4 MOV             R1, R8,LSL#2
+sub_FC0140BC 5 fc014130 4 CMP             R0, #0
+sub_FC0140BC 6 fc014138 4 MOV             R1, #0
+sub_FC0140BC 7 fc01417c 4 ADD             SP, SP, #0x2C
+sub_FC0140BC 8 fc014188 4 LDR             R0, [SP,#0x1C]
+sub_FC0140BC 9 fc0141a4 4 LDR             R0, [SP,#0x1C]
+sub_FC0140BC 10 fc0141b4 4 ADD             SP, SP, #0x2C
+sub_FC0140BC 11 fc0141c0 4 LDR             R0, [SP,#0xC]
+sub_FC0140BC 12 fc014208 4 AND             R0, R4, #1
+sub_FC0140BC 13 fc014218 4 LDR             R3, [R2,R1,LSL#2]
+sub_FC0140BC 14 fc014228 4 ADD             R1, R1, #1
+sub_FC0140BC 15 fc014234 4 CMP             R0, R4
+sub_FC0140BC 16 fc01423c 4 LDR             R1, [R2,R0,LSL#2]
+sub_FC0140BC 17 fc01424c 4 ADD             R1, R2, R0,LSL#2
+sub_FC0140BC 18 fc014260 4 LDR             R0, [R7,#0xC]
+sub_FC0140BC 19 fc014280 4 MOV             R0, R10,ASR#31
+sub_FC0140BC 20 fc0142c4 4 B               loc_FC014380
+sub_FC0140BC 21 fc0142c8 4 ADD             R0, R0, #2
+sub_FC0140BC 22 fc0142d4 4 B               loc_FC014280
+sub_FC0140BC 23 fc0142d8 4 MOV             R0, R10,ASR#31
+sub_FC0140BC 24 fc014304 4 LDR             R6, [R7,#0]
+sub_FC0140BC 25 fc014338 4 CMP             R11, #0
+sub_FC0140BC 26 fc014340 4 LDR             R6, [R7,#0]
+sub_FC0140BC 27 fc014374 4 SUBS            R10, R10, #2
+sub_FC0140BC 28 fc014380 4 STR             R9, [SP,#0]
+sub_FC0140BC 29 fc01439c 4 LDR             R0, [SP,#0x1C]
+sub_FC0140BC 30 fc0143ac 4 ADD             SP, SP, #0x2C
+sub_FC0143BC 0 fc0143bc 4 STMFD           SP!, {R0-R11,LR}
+sub_FC0143BC 1 fc0143ec 4 LDR             R1, [SP,#4]
+sub_FC0143BC 2 fc01441c 4 LDR             R0, [SP,#0x10]
+sub_FC0143BC 3 fc014430 4 MOV             R7, #0
+sub_FC0143BC 4 fc01444c 4 LDR             R0, [SP,#0]
+sub_FC0143BC 5 fc014458 4 LDR             R9, [R12,#4]
+sub_FC0143BC 6 fc014498 4 LDR             R0, [SP,#0x10]
+sub_FC0143BC 7 fc01449c 4 ADD             R3, R3, #1
+sub_FC0143BC 8 fc0144b8 4 LDR             R0, [SP,#4]
+sub_FC0143BC 9 fc0144d4 4 LDR             R0, [SP,#4]
+sub_FC0143BC 10 fc0144e8 4 ADD             SP, SP, #0x14
+sub_FC0144F4 0 fc0144f4 4 STMFD           SP!, {R0-R11,LR}
+sub_FC0144F4 1 fc01452c 4 LDR             R0, [SP,#0x70]
+sub_FC0144F4 2 fc014584 4 LDR             R0, [SP,#0x44]
+sub_FC0144F4 3 fc0145a4 4 MOV             R10, #0
+sub_FC0144F4 4 fc014610 4 LDR             R0, [SP,#0x70]
+sub_FC0144F4 5 fc014614 4 ADDS            R3, R12, R4
+sub_FC0144F4 6 fc014658 4 LDR             R0, [SP,#0]
+sub_FC0144F4 7 fc014664 4 LDR             R0, [SP,#0x3C]
+sub_FC0144F4 8 fc014688 4 ADD             SP, SP, #0x4C
+sub_FC014694 0 fc014694 4 STMFD           SP!, {R0-R11,LR}
+sub_FC014694 1 fc0146d4 4 LDREQ           R0, [R9,#0]
+sub_FC014694 2 fc0146e0 4 MOV             R0, #0x40000000
+sub_FC014694 3 fc014720 4 LDR             R1, [SP,#0x18]
+sub_FC014694 4 fc01474c 4 LDR             R0, [SP,#0x24]
+sub_FC014694 5 fc014758 4 MOV             R5, #0
+sub_FC014694 6 fc0147f0 4 LDR             R0, [SP,#4]
+sub_FC014694 7 fc014804 4 LDR             R1, [R11],#4
+sub_FC014694 8 fc014844 4 MOV             R1, R6
+sub_FC014694 9 fc014848 4 LDR             R0, [SP,#0]
+sub_FC014694 10 fc01486c 4 BLE             loc_FC0148A8
+sub_FC014694 11 fc014870 4 MOV             R2, R6
+sub_FC014694 12 fc01488c 4 CMP             R5, #0
+sub_FC014694 13 fc014894 4 B               loc_FC0148CC
+sub_FC014694 14 fc014898 4 MOV             R0, #0
+sub_FC014694 15 fc0148a8 4 LDRD            R0, [SP,#0]
+sub_FC014694 16 fc0148c4 4 CMP             R5, #0
+sub_FC014694 17 fc0148cc 4 CMP             R4, #0x10
+sub_FC014694 18 fc0148d4 4 MOV             R1, #0xFFFFFFFF
+sub_FC014694 19 fc0148dc 4 LDRD            R0, [SP,#0]
+sub_FC014694 20 fc0148f0 4 MOV             R2, R6
+sub_FC014694 21 fc014900 4 MOV             R1, #0
+sub_FC014694 22 fc014904 4 LDR             R0, [SP,#0x20]
+sub_FC014694 23 fc01492c 4 LDR             R0, [SP,#8]
+sub_FC014938 0 fc014938 4 CMP             R0, #0
+sub_FC014938 1 fc014944 4 SUB             R2, R0, #1
+sub_FC014938 2 fc014954 4 MOV             R0, R1
+sub_FC01495C 0 fc01495c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01495C 1 fc014978 4 BL              sub_FC017A80
+sub_FC01495C 2 fc014984 4 LDR             R1, [R5,#0]
+sub_FC01495C 3 fc0149ac 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC0149B8 0 fc0149b8 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0149B8 1 fc0149c4 4 CMP             R1, #0x60
+sub_FC0149B8 2 fc0149cc 4 AND             R0, R1, #0xFF
+sub_FC0149B8 3 fc0149e0 4 BL              sub_FC010A08
+sub_FC0149B8 4 fc0149fc 4 ADD             R5, R5, #0x20
+sub_FC0149B8 5 fc014a14 4 ADD             R1, R5, #0x20
+sub_FC0149B8 6 fc014a28 4 ORR             R0, R4, #0xC0000
+sub_FC0149B8 7 fc014a2c 4 BL              sub_FC01495C
+sub_FC0149B8 8 fc014a30 4 MOV             R0, R4
+sub_FC014A3C 0 fc014a3c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC014A3C 1 fc014a48 4 CMP             R1, #0x18
+sub_FC014A3C 2 fc014a50 4 AND             R0, R1, #0xFF
+sub_FC014A3C 3 fc014a64 4 BL              sub_FC010A08
+sub_FC014A3C 4 fc014a6c 4 LDR             R0, =0xF8002B80
+sub_FC014A3C 5 fc014a8c 4 MOV             R2, R6
+sub_FC014A3C 6 fc014aa4 4 ORR             R0, R4, #0xC0000
+sub_FC014A3C 7 fc014aa8 4 BL              sub_FC01495C
+sub_FC014A3C 8 fc014ab0 4 ADD             R5, R5, #1
+sub_FC014A3C 9 fc014ac0 4 MOV             R0, R4
+sub_FC014AD0 0 fc014ad0 4 STMFD           SP!, {R4,LR}
+sub_FC014AD0 1 fc014adc 4 CMP             R1, #4
+sub_FC014AD0 2 fc014ae4 4 AND             R0, R1, #0xFF
+sub_FC014AD0 3 fc014af4 4 BL              sub_FC01495C
+sub_FC014AD0 4 fc014af8 4 MOV             R0, R4
+sub_FC014AD0 5 fc014b00 4 BL              sub_FC010A08
+sub_FC014AD0 6 fc014b18 4 B               loc_FC014AF4
+sub_FC014B20 0 fc014b20 4 STMFD           SP!, {R3-R5,LR}
+sub_FC014B20 1 fc014b34 4 LDR             R2, =0xA00100
+sub_FC014B20 2 fc014b44 4 MOV             R1, SP
+sub_FC014B20 3 fc014b58 4 ORR             R2, R0, #0xC0000
+sub_FC014B20 4 fc014b68 4 B               loc_FC014C78
+sub_FC014B20 5 fc014b6c 4 LDR             R1, [R4,#0x14]
+sub_FC014B20 6 fc014b80 4 MOV             R1, #0x71
+sub_FC014B20 7 fc014b90 4 LDR             R0, [SP,#0]
+sub_FC014B20 8 fc014b9c 4 MOV             R0, R4
+sub_FC014B20 9 fc014bb0 4 MOV             R0, #1
+sub_FC014B20 10 fc014bc0 4 MOV             R2, #0xC10000
+sub_FC014B20 11 fc014bd0 4 B               loc_FC014BF4
+sub_FC014B20 12 fc014bd4 4 MOV             R0, #0
+sub_FC014B20 13 fc014be4 4 MOV             R2, #0xC10000
+sub_FC014B20 14 fc014bf4 4 LDR             R1, =0xF8002C40
+sub_FC014B20 15 fc014c08 4 MOV             R1, #1
+sub_FC014B20 16 fc014c24 4 LDR             R5, =0xF8002C00
+sub_FC014B20 17 fc014c48 4 CMP             R0, #3
+sub_FC014B20 18 fc014c54 4 BL              sub_FC017A9C
+sub_FC014B20 19 fc014c58 4 LDR             R0, =0xF8002C40
+sub_FC014B20 20 fc014c68 4 ORR             R2, R0, #0xB0000
+sub_FC014B20 21 fc014c78 4 LDR             R0, [R4,#0x14]
+sub_FC014CB4 0 fc014cb4 4 STMFD           SP!, {R4,LR}
+sub_FC014CB4 1 fc014cc8 4 MOV             R1, #0x101
+sub_FC014CB4 2 fc014cd8 4 LDR             R0, [R4,#0x28]
+sub_FC014CB4 3 fc014cf4 4 ORR             R2, R0, #0xB0000
+sub_FC014CB4 4 fc014d04 4 ADD             R0, R4, #0x4C
+sub_FC014CB4 5 fc014d14 4 ORR             R2, R0, #0xC0000
+sub_FC014CB4 6 fc014d24 4 LDR             R1, =0xF8002C00
+sub_FC014D5C 0 fc014d5c 4 STMFD           SP!, {R4-R8,LR}
+sub_FC014D5C 1 fc014d80 4 CMP             R0, #3
+sub_FC014D5C 2 fc014d8c 4 LDR             R6, =loc_FC0216A8
+sub_FC014D5C 3 fc014d98 4 LDR             R1, [R6,R4,LSL#2]
+sub_FC014D5C 4 fc014da4 4 LDR             R0, =0xFC106AE8
+sub_FC014D5C 5 fc014db0 4 ORR             R0, R4, #0x10800
+sub_FC014D5C 6 fc014dc0 4 MOV             R2, R5
+sub_FC014D5C 7 fc014dd0 4 LDR             R0, [R7,#0x18]
+sub_FC014D5C 8 fc014ddc 4 B               loc_FC014DF0
+sub_FC014D5C 9 fc014de0 4 ADD             R4, R4, #1
+sub_FC014D5C 10 fc014dec 4 B               loc_FC014DD0
+sub_FC014D5C 11 fc014df0 4 LDR             R2, =0x10100
+sub_FC014D5C 12 fc014e00 4 LDR             R1, [R7,#0x18]!
+sub_FC014D5C 13 fc014e0c 4 B               loc_FC014E0C
+sub_FC014D5C 14 fc014e10 4 LDMFD           SP!, {R4-R8,PC}
+sub_FC014E30 0 fc014e30 4 LDR             R1, =0xF8004000
+sub_FC014E30 1 fc014e38 4 STMFD           SP!, {R4,LR}
+sub_FC014E38 0 fc014e38 4 STMFD           SP!, {R4,LR}
+sub_FC014ECC 0 fc014ecc 4 STMFD           SP!, {R4,LR}
+sub_FC014ECC 1 fc014ee0 4 MOV             R1, #0x20C
+sub_FC014ECC 2 fc014ef0 4 LDR             R1, [R4,#0x28]
+sub_FC014F30 0 fc014f30 4 LDR             R3, =0xF8004000
+sub_FC014F30 1 fc014f48 4 LDR             R0, =0xF8070000
+sub_FC014F30 2 fc014f54 4 MOV             R0, R2
+sub_FC014F64 0 fc014f64 4 CMP             R0, #0
+sub_FC014F64 1 fc014f70 4 LDR             R1, [R0,#0]
+sub_FC014F64 2 fc014f80 4 MOV             R2, #0x833
+sub_FC014F64 3 fc014f8c 4 LDR             R2, [R0,#4]
+sub_FC014F64 4 fc014f98 4 CMP             R2, #0xC
+sub_FC014F64 5 fc014fa0 4 LDR             R3, [R0,#8]
+sub_FC014F64 6 fc014fac 4 CMP             R3, #0x1F
+sub_FC014F64 7 fc014fbc 4 LDR             R12, [R0,#0x10]
+sub_FC014F64 8 fc014fd0 4 CMP             R1, R4
+sub_FC014F64 9 fc014fdc 4 CMP             R3, #6
+sub_FC014F64 10 fc014fe4 4 CMP             R3, #0x1E
+sub_FC014F64 11 fc014fec 4 CMP             R2, #4
+sub_FC014F64 12 fc014ff8 4 CMP             R2, #9
+sub_FC014F64 13 fc015004 4 TST             R1, #3
+sub_FC014F64 14 fc015018 4 ADD             R5, R12, #0x1C
+sub_FC014F64 15 fc015024 4 SUB             R1, R1, R4
+sub_FC014F64 16 fc015048 4 B               loc_FC01511C; jumptable FC015044 default case
+sub_FC014F64 17 fc015080 4 ADD             R1, R1, #0x1F; jumptable FC015044 case 2
+sub_FC014F64 18 fc015088 4 ADD             R1, R1, #0x3B; jumptable FC015044 case 3
+sub_FC014F64 19 fc015090 4 ADD             R1, R1, #0x5A; jumptable FC015044 case 4
+sub_FC014F64 20 fc015098 4 ADD             R1, R1, #0x78; jumptable FC015044 case 5
+sub_FC014F64 21 fc0150a0 4 ADD             R1, R1, #0x97; jumptable FC015044 case 6
+sub_FC014F64 22 fc0150a8 4 ADD             R1, R1, #0xB5; jumptable FC015044 case 7
+sub_FC014F64 23 fc0150b0 4 ADD             R1, R1, #0xD4; jumptable FC015044 case 8
+sub_FC014F64 24 fc0150b8 4 ADD             R1, R1, #0xF3; jumptable FC015044 case 9
+sub_FC014F64 25 fc0150c0 4 MOV             R4, #0x111; jumptable FC015044 case 10
+sub_FC014F64 26 fc0150c8 4 ADD             R1, R1, #0x130; jumptable FC015044 case 11
+sub_FC014F64 27 fc0150d0 4 MOV             R4, #0x14E; jumptable FC015044 case 12
+sub_FC014F64 28 fc0150d4 4 ADD             R1, R1, R4
+sub_FC014F64 29 fc0150d8 4 CMP             R12, #0; jumptable FC015044 case 1
+sub_FC014F64 30 fc01511c 4 LDMFD           SP!, {R4,R5}; jumptable FC015044 default case
+sub_FC015128 0 fc015128 4 CMP             R0, #0
+sub_FC015128 1 fc015134 4 STMFD           SP!, {R4-R8}
+sub_FC015128 2 fc015188 4 STR             R4, [R3,#8]
+sub_FC015128 3 fc0151b0 4 STR             R1, [R12,#0]
+sub_FC015128 4 fc0151d0 4 MOV             R1, R2
+sub_FC015128 5 fc0151e0 4 MOV             R0, #0
+sub_FC015128 6 fc0151ec 4 STR             R12, [R0,#0x28]
+sub_FC015128 7 fc015200 4 LDR             R1, [R0,#0x2C]
+sub_FC015128 8 fc01520c 4 LDR             R1, [R0,#0x2C]
+sub_FC015128 9 fc015224 4 MOV             R0, #1
+sub_FC015234 0 fc015234 4 STMFD           SP!, {R4-R9,LR}
+sub_FC015234 1 fc0152bc 4 CMP             R6, #1
+sub_FC015234 2 fc0152c8 4 CMP             R6, #2
+sub_FC015234 3 fc0152d0 4 CMP             R6, #3
+sub_FC015234 4 fc0152e0 4 B               loc_FC015308
+sub_FC015234 5 fc0152e4 4 MOV             R5, #2
+sub_FC015234 6 fc0152f8 4 MOV             R0, #0x20
+sub_FC015234 7 fc015308 4 STR             R0, [SP,#0x3C]
+sub_FC015234 8 fc01530c 4 MOV             R0, SP
+sub_FC015234 9 fc01532c 4 ADD             R0, SP, #0x24
+sub_FC015234 10 fc01533c 4 LDR             R0, [R7,#0x10]
+sub_FC015234 11 fc015354 4 MOV             R0, #0x500
+sub_FC015234 12 fc0153b8 4 STR             R8, [SP,#0]
+sub_FC015234 13 fc0153e4 4 SUB             R0, R4, #0x3C00000
+sub_FC015234 14 fc0154b8 4 MOV             R1, R4
+sub_FC015234 15 fc0154c8 4 STR             R12, [R0,#0x28]
+sub_FC015234 16 fc0154dc 4 LDR             R1, [R0,#0x2C]
+sub_FC015234 17 fc0154e8 4 LDR             R1, [R0,#0x2C]
+sub_FC015234 18 fc015500 4 LDR             R1, [R8,#0x16C]
+sub_FC015234 19 fc015520 4 MOV             R1, R2
+sub_FC015234 20 fc015530 4 STR             R12, [R0,#0x28]
+sub_FC015234 21 fc015544 4 LDR             R1, [R0,#0x2C]
+sub_FC015234 22 fc015550 4 LDR             R1, [R0,#0x2C]
+sub_FC015234 23 fc015568 4 CMP             R3, #0
+sub_FC015234 24 fc015570 4 STR             R7, [SP,#0x4C]
+sub_FC015234 25 fc015590 4 MOV             R0, #1
+sub_FC015234 26 fc015594 4 ADD             SP, SP, #0x64
+sub_FC015234 27 fc01559c 4 ADD             SP, SP, #0x64
+sub_FC0155CC 0 fc0155cc 4 LDR             R1, =0xFC400000
+sub_FC0155CC 1 fc0155f8 4 CMP             R0, #1
+sub_FC0155CC 2 fc015604 4 LDR             R0, =0xFC4006C4
+sub_FC0155CC 3 fc015618 4 LDR             R0, =0xFC401484
+sub_FC0155CC 4 fc015630 4 BX              LR
+sub_FC0155CC 5 fc015634 4 LDR             R0, =0xFC400644
+sub_FC01565C 0 fc01565c 4 STR             LR, [SP,#-4]!
+sub_FC01565C 1 fc015688 4 CMP             R0, #1
+sub_FC01565C 2 fc015694 4 LDR             R0, =dword_FC021624
+sub_FC01565C 3 fc0156a4 4 MOV             R0, #1
+sub_FC01565C 4 fc0156b4 4 LDR             R0, =0xFC401050
+sub_FC01565C 5 fc0156cc 4 LDR             R0, =0xFC401484
+sub_FC01565C 6 fc015704 4 ADD             SP, SP, #0x1C
+sub_FC015718 0 fc015718 4 STMFD           SP!, {R4-R10,LR}
+sub_FC015718 1 fc015728 4 LDR             R6, [R0,#0]
+sub_FC015718 2 fc015740 4 TST             R3, #0x100000
+sub_FC015718 3 fc015748 4 LDR             R1, [R0,#4]
+sub_FC015718 4 fc015754 4 LDR             R2, [R1,#0]
+sub_FC015718 5 fc015768 4 LDR             R7, [R6,#0]
+sub_FC015718 6 fc0157ac 4 LDR             R8, =0xFFFFF000
+sub_FC015718 7 fc0157b8 4 LDR             R12, [R0,#0x14]
+sub_FC015718 8 fc0157c8 4 CMP             R12, #4
+sub_FC015718 9 fc0157d0 4 LDR             R12, [R0,#0x1C]
+sub_FC015718 10 fc01581c 4 LDR             R2, [R1,#0]
+sub_FC015718 11 fc015838 4 MOV             R0, R4
+sub_FC015718 12 fc015848 4 STR             R9, [R8,#0x28]
+sub_FC015718 13 fc01585c 4 LDR             R0, [R8,#0x2C]
+sub_FC015718 14 fc015868 4 LDR             R0, [R8,#0x2C]
+sub_FC015718 15 fc015880 4 B               loc_FC015930
+sub_FC015718 16 fc015884 4 ORR             R1, R3, #2
+sub_FC015718 17 fc0158a4 4 LDR             R0, [R8,#0x2C]
+sub_FC015718 18 fc0158b0 4 LDR             R0, [R8,#0x2C]
+sub_FC015718 19 fc0158d8 4 MOV             R0, R4
+sub_FC015718 20 fc0158e8 4 MOV             R0, #0
+sub_FC015718 21 fc0158ec 4 LDMFD           SP!, {R4-R10,PC}
+sub_FC015718 22 fc0158f0 4 STR             R9, [R8,#0x28]
+sub_FC015718 23 fc015904 4 LDR             R0, [R8,#0x2C]
+sub_FC015718 24 fc015910 4 LDR             R0, [R8,#0x2C]
+sub_FC015718 25 fc015928 4 ORR             R0, R7, #1
+sub_FC015718 26 fc015930 4 MOV             R0, #1
+sub_FC015944 0 fc015944 4 STMFD           SP!, {R4-R6,LR}
+sub_FC015944 1 fc01597c 4 CMP             R1, #1
+sub_FC015944 2 fc015984 4 CMP             R1, #2
+sub_FC015944 3 fc01598c 4 B               loc_FC0159A8
+sub_FC015944 4 fc015990 4 MOV             R0, #4
+sub_FC015944 5 fc0159a8 4 LDR             R0, =dword_FC021624
+sub_FC015944 6 fc0159b8 4 MOV             R0, #2
+sub_FC015944 7 fc0159d0 4 LDR             R0, =0xFC400000
+sub_FC015944 8 fc015a04 4 CMP             R4, #3
+sub_FC015944 9 fc015a0c 4 CMP             R4, #4
+sub_FC015944 10 fc015a14 4 MOV             R0, #0
+sub_FC015944 11 fc015a18 4 ADD             SP, SP, #0x18
+sub_FC015944 12 fc015a20 4 LDR             R0, =0xFC4004D0
+sub_FC015944 13 fc015a60 4 LDR             R0, =0xFC400510
+sub_FC015944 14 fc015aa0 4 LDR             R0, =0xFC400550
+sub_FC015B08 0 fc015b08 4 STMFD           SP!, {R4,LR}
+sub_FC015B08 1 fc015b48 4 MOV             R0, SP
+sub_FC015B08 2 fc015b58 4 LDR             R0, =0xFC401A00
+sub_FC015B08 3 fc015b88 4 ADD             SP, SP, #0x18
+sub_FC015C08 0 fc015c08 4 LDR             R1, =0xFD512000
+sub_FC015C08 1 fc015c14 4 CMP             R0, #1
+sub_FC015C08 2 fc015c1c 4 CMP             R0, #2
+sub_FC015C08 3 fc015c24 4 MOV             R1, #0x1C8
+sub_FC015C08 4 fc015c48 4 BX              LR
+sub_FC015C08 5 fc015c4c 4 LDR             R0, [R1,#0x44]
+sub_FC015C08 6 fc015c60 4 LDR             R0, [R1,#0x48]
+sub_FC015C7C 0 fc015c7c 4 LDR             R1, =0xFD511000
+sub_FC015C7C 1 fc015c90 4 STMFD           SP!, {R4,LR}
+sub_FC015C90 0 fc015c90 4 STMFD           SP!, {R4,LR}
+sub_FC015C90 1 fc015c98 4 CMP             R0, #1
+sub_FC015C90 2 fc015ca0 4 LDMFD           SP!, {R4,LR}
+sub_FC015C90 3 fc015cb8 4 STR             R3, [R1,#0x30]
+sub_FC015C90 4 fc015cd8 4 LDMFD           SP!, {R4,LR}
+sub_FC015C90 5 fc015cec 4 STR             R3, [R1,#0x70]
+sub_FC015C90 6 fc015d0c 4 LDMFD           SP!, {R4,LR}
+sub_FC015C90 7 fc015d20 4 LDMFD           SP!, {R4,PC}
+sub_FC015C90 8 fc015e70 4 STMFD           SP!, {R4-R8,LR}
+sub_FC015D58 0 fc015d58 4 STMFD           SP!, {R4,LR}
+sub_FC015E30 0 fc015e30 4 LDR             R0, =0xF9023000
+sub_FC015E48 0 fc015e48 4 LDR             R0, =0xFC102080
+sub_FC015E48 1 fc010a08 4 VMOV.I64        Q0, #0
+sub_FC015E70 0 fc015e70 4 STMFD           SP!, {R4-R8,LR}
+sub_FC015E70 1 fc015e9c 4 BL              sub_FC017A80
+sub_FC015E70 2 fc015ea8 4 LDR             R0, [R7,#0]
+sub_FC015E70 3 fc015ed0 4 LDR             R7, =0xFC102080
+sub_FC015E70 4 fc015ee0 4 ADD             R0, R0, R0,LSL#2
+sub_FC015E70 5 fc015f24 4 BL              sub_FC017A3C
+sub_FC015E70 6 fc015f40 4 LDR             R1, =dword_FC021FA8
+sub_FC015E70 7 fc015f84 4 STR             R1, [R0],#4
+sub_FC015E70 8 fc015f90 4 MOV             R0, #0xF8000000
+sub_FC015E70 9 fc015f98 4 STR             R1, [R0],#4
+sub_FC015E70 10 fc015fa4 4 LDMFD           SP!, {R4-R8,LR}
+sub_FC015E70 11 fc010918 4 MOV             R0, #0
+sub_FC016150 0 fc016150 4 STMFD           SP!, {R4-R6,LR}
+sub_FC016150 1 fc016168 4 MOV             R1, #0xD4
+sub_FC016150 2 fc016178 4 LDR             R2, [R4,#0x18]
+sub_FC0161A4 0 fc0161a4 4 STMFD           SP!, {R4-R8,LR}
+sub_FC0161A4 1 fc0161bc 4 LDR             R2, =0x10100
+sub_FC0161A4 2 fc0161cc 4 LDR             R4, [R4,#0x1C]
+sub_FC0161A4 3 fc0161dc 4 ORR             R2, R0, #0x10400
+sub_FC0161A4 4 fc0161ec 4 LDR             R12, [R4,#0x1C]
+sub_FC016220 0 fc016220 4 STMFD           SP!, {R4-R6,LR}
+sub_FC016220 1 fc016238 4 MOV             R1, #0xBD0
+sub_FC016220 2 fc016248 4 LDR             R0, [R5,#0x1C]
+sub_FC016220 3 fc0162a8 4 LDR             R0, [R0,#4]
+sub_FC016220 4 fc0162c0 4 LDR             R1, [R0,#0]
+sub_FC016220 5 fc0162cc 4 LDR             R1, [R0,#0]
+sub_FC016220 6 fc022400 4 MOV             R0, #0x64
+sub_FC01633C 0 fc01633c 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01633C 1 fc016350 4 MOV             R1, #0xB4B
+sub_FC01633C 2 fc016360 4 ADD             R5, R5, #0x24
+sub_FC01633C 3 fc016380 4 CMP             R1, #1
+sub_FC01633C 4 fc01638c 4 LDR             R1, [R4,#4]
+sub_FC01633C 5 fc0163a8 4 MOV             R2, R8
+sub_FC01633C 6 fc0163b8 4 LDR             R4, [R4,#0xC]
+sub_FC01633C 7 fc0163c4 4 MOV             R2, R8
+sub_FC01633C 8 fc0163d4 4 TST             R7, #3
+sub_FC01633C 9 fc0163dc 4 MOV             R2, R8
+sub_FC01633C 10 fc0163ec 4 MOV             R3, R7
+sub_FC01633C 11 fc016408 4 LDR             R0, =0x5D0C00
+sub_FC01633C 12 fc016414 4 LDMFD           SP!, {R4-R8,PC}
+sub_FC01633C 13 fc016418 4 LDR             R1, [R4,#4]
+sub_FC016454 0 fc016454 4 STMFD           SP!, {R4-R6,LR}
+sub_FC016454 1 fc01646c 4 LDR             R2, =0x5D0F00
+sub_FC016454 2 fc01647c 4 LDR             R0, =0xF8002340
+sub_FC016454 3 fc016490 4 MOV             R2, #0x50
+sub_FC016454 4 fc0164b4 4 MOV             R0, R4
+sub_FC0164E0 0 fc0164e0 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0164E0 1 fc0164f4 4 MOV             R1, #0xB16
+sub_FC0164E0 2 fc016504 4 LDR             R2, [R4,#0x24]
+sub_FC0165AC 0 fc0165ac 4 STMFD           SP!, {R4,LR}
+sub_FC0165AC 1 fc0165b8 4 MOV             R1, #0xDB4
+sub_FC0165AC 2 fc0165c8 4 LDR             R0, [R4,#4]
+sub_FC0165AC 3 fc0165d4 4 BGT             loc_FC0165F0
+sub_FC0165AC 4 fc0165d8 4 CMP             R0, #0
+sub_FC0165AC 5 fc0165e0 4 CMP             R0, #1
+sub_FC0165AC 6 fc0165e8 4 MOV             R0, #4
+sub_FC0165AC 7 fc0165ec 4 LDMFD           SP!, {R4,PC}
+sub_FC0165AC 8 fc0165f0 4 CMP             R0, #0x80
+sub_FC0165AC 9 fc0165fc 4 B               loc_FC0165E8
+sub_FC0165AC 10 fc016600 4 MOV             R1, #0
+sub_FC0165AC 11 fc016614 4 MOV             R0, R4
+sub_FC0165AC 12 fc016624 4 MOV             R1, #1
+sub_FC0165AC 13 fc016638 4 MOV             R0, R4
+sub_FC0165AC 14 fc016c68 4 STMFD           SP!, {R4-R11,LR}
+sub_FC0165AC 15 fc016768 4 STMFD           SP!, {R4-R11,LR}
+sub_FC016664 0 fc016664 4 STMFD           SP!, {R4-R8,LR}
+sub_FC016664 1 fc016680 4 MOV             R1, #0xC91
+sub_FC016664 2 fc016690 4 LDR             R4, [R4,#0x1C]
+sub_FC016664 3 fc0166b8 4 LDR             R1, =0x844BDCD1
+sub_FC016664 4 fc0166c8 4 MOV             R0, #4
+sub_FC016664 5 fc0166d0 4 STR             R6, [R4,#0]
+sub_FC016664 6 fc01672c 4 CMP             R0, #0x800
+sub_FC016664 7 fc01673c 4 MOV             R0, R2
+sub_FC016664 8 fc016744 4 STR             R0, [R4,#0x10]
+sub_FC016768 0 fc016768 4 STMFD           SP!, {R4-R11,LR}
+sub_FC016768 1 fc016788 4 CMP             R5, #3
+sub_FC016768 2 fc016790 4 MOV             R1, #0xD4D
+sub_FC016768 3 fc0167a0 4 LDR             R0, =0x5D0200
+sub_FC016768 4 fc0167e0 4 STR             R11, [SP,#8]
+sub_FC016768 5 fc016808 4 LDR             R0, =0x40FF8080
+sub_FC016768 6 fc01682c 4 CMP             R0, #2
+sub_FC016768 7 fc016834 4 B               loc_FC016874
+sub_FC016768 8 fc016838 4 LDR             R0, [SP,#0xC]
+sub_FC016768 9 fc016844 4 LDR             R0, [SP,#0xC]
+sub_FC016768 10 fc016854 4 LDR             R0, [SP,#0xC]
+sub_FC016768 11 fc01686c 4 CMP             R5, #2
+sub_FC016768 12 fc016874 4 MOV             R0, #0x1388
+sub_FC016768 13 fc016888 4 LDR             R0, =0x5D0400
+sub_FC016768 14 fc016898 4 LDR             R0, [R4,#0]
+sub_FC016768 15 fc0168ac 4 MOV             R0, R4
+sub_FC016768 16 fc0168cc 4 LDR             R0, =0x5D0700
+sub_FC016768 17 fc016930 4 MOV             R0, #1
+sub_FC016768 18 fc016968 4 LDR             R1, [SP,#0xC]
+sub_FC016768 19 fc016978 4 MOV             R1, #9
+sub_FC016768 20 fc016998 4 MOV             R5, R0
+sub_FC016768 21 fc0169ac 4 LDR             R0, [R4,#0x20]
+sub_FC016768 22 fc0169b8 4 LDR             R1, =0x5D0500
+sub_FC016768 23 fc0169cc 4 MOV             R0, #6
+sub_FC016768 24 fc016a0c 4 MOV             R5, R8
+sub_FC016768 25 fc016a18 4 MOV             R0, #0xD
+sub_FC016768 26 fc016a5c 4 MOV             R0, #0x64
+sub_FC016768 27 fc016a74 4 MOVS            R6, R9
+sub_FC016768 28 fc016a80 4 B               loc_FC016AC8
+sub_FC016768 29 fc016ac0 4 MOV             R9, #0
+sub_FC016768 30 fc016ac8 4 LDR             R0, [R8,#0x30]
+sub_FC016768 31 fc016adc 4 CMP             R0, #1
+sub_FC016768 32 fc016ae8 4 CMP             R0, #2
+sub_FC016768 33 fc016af4 4 CMP             R0, #3
+sub_FC016768 34 fc016afc 4 ORR             R2, R0, R9
+sub_FC016768 35 fc016b0c 4 ORR             R0, R5, R9
+sub_FC016768 36 fc016b34 4 CMP             R5, #0
+sub_FC016768 37 fc016b3c 4 MOV             R0, R4
+sub_FC016768 38 fc016b4c 4 CMP             R5, #0
+sub_FC016768 39 fc016b54 4 LDR             R0, =0x5D0A00
+sub_FC016768 40 fc016ba4 4 LDRB            R0, [SP,#0xFB]
+sub_FC016768 41 fc016bb8 4 CMP             R1, #1
+sub_FC016768 42 fc016bc4 4 CMP             R1, #2
+sub_FC016768 43 fc016bd0 4 LDR             R0, [R4,#0]
+sub_FC016768 44 fc016bdc 4 B               loc_FC016C00
+sub_FC016768 45 fc016be0 4 STR             R0, [R4,#0x40]
+sub_FC016768 46 fc016bf0 4 LDRB            R1, [SP,#0x11F]
+sub_FC016768 47 fc016bfc 4 STR             R0, [R4,#0x24]
+sub_FC016768 48 fc016c00 4 LDR             R0, [R7,#0xC]
+sub_FC016768 49 fc016c1c 4 LDR             R0, [SP,#0x248]
+sub_FC016768 50 fc016c30 4 LDR             R0, =0x5D1600
+sub_FC016768 51 fc016c4c 4 ADD             SP, SP, #0x24C
+sub_FC016C68 0 fc016c68 4 STMFD           SP!, {R4-R11,LR}
+sub_FC016C68 1 fc016c84 4 MOV             R1, #0xCE0
+sub_FC016C68 2 fc016c94 4 LDR             R0, [R6,#0x1C]
+sub_FC016C68 3 fc016d04 4 MOV             R0, #8
+sub_FC016C68 4 fc016d34 4 MOV             R0, #0x3E8
+sub_FC016C68 5 fc016d48 4 LDR             R0, [SP,#0]
+sub_FC016C68 6 fc016d54 4 MOV             R5, #0
+sub_FC016C68 7 fc016d58 4 MOV             R0, #0x37
+sub_FC016C68 8 fc016d7c 4 B               loc_FC016DEC
+sub_FC016C68 9 fc016d80 4 LDR             R1, [SP,#0x10]
+sub_FC016C68 10 fc016d94 4 MOV             R8, R9
+sub_FC016C68 11 fc016d9c 4 MOV             R0, #0x29
+sub_FC016C68 12 fc016dc0 4 LDR             R0, [SP,#0x10]
+sub_FC016C68 13 fc016dcc 4 LDR             R0, [SP,#0x10]
+sub_FC016C68 14 fc016dec 4 MOV             R0, #0x1388
+sub_FC016C68 15 fc016e00 4 CMP             R8, #1
+sub_FC016C68 16 fc016e14 4 MOV             R0, R4
+sub_FC016C68 17 fc016e24 4 LDR             R0, =0x5D0600
+sub_FC016C68 18 fc016e3c 4 LDR             R0, =0x5D0700
+sub_FC016C68 19 fc016ea8 4 MOV             R0, #1
+sub_FC016C68 20 fc016ee4 4 LDR             R1, [SP,#0xC]
+sub_FC016C68 21 fc016ef4 4 MOV             R1, #9
+sub_FC016C68 22 fc016f14 4 MOV             R5, R0
+sub_FC016C68 23 fc016f28 4 MOV             R5, #1
+sub_FC016C68 24 fc016f74 4 LDRB            R1, [R7,#0]
+sub_FC016C68 25 fc016f8c 4 MOV             R5, R0
+sub_FC016C68 26 fc016f94 4 LDR             R0, [SP,#0x28]
+sub_FC016C68 27 fc016fa0 4 MOV             R1, #0x7DA
+sub_FC016C68 28 fc016fb0 4 LDR             R0, [SP,#0x2C]
+sub_FC016C68 29 fc016fbc 4 LDR             R0, [R4,#0x34]
+sub_FC016C68 30 fc016fd0 4 MOV             R0, R4
+sub_FC016C68 31 fc016fe0 4 CMP             R5, #0
+sub_FC016C68 32 fc016fe8 4 B               loc_FC017098
+sub_FC016C68 33 fc017020 4 MOV             R0, #1
+sub_FC016C68 34 fc017074 4 LDR             R1, [R7,#0x34]
+sub_FC016C68 35 fc01708c 4 MOV             R5, R0
+sub_FC016C68 36 fc017094 4 B               loc_FC016FD0
+sub_FC016C68 37 fc017098 4 LDR             R0, =0x5D0A00
+sub_FC016C68 38 fc0170d8 4 ADD             SP, SP, #0x34
+sub_FC0170EC 0 fc0170ec 4 STMFD           SP!, {R4,LR}
+sub_FC0170EC 1 fc017108 4 MOV             R1, #0xF9
+sub_FC0170EC 2 fc017118 4 LDR             R0, [R4,#0x28]
+sub_FC017180 0 fc017180 4 STMFD           SP!, {R4,LR}
+sub_FC017180 1 fc01718c 4 MOV             R1, #0x264
+sub_FC017180 2 fc01719c 4 LDR             R0, [R4,#4]
+sub_FC017180 3 fc0171a8 4 CMP             R0, #7
+sub_FC017180 4 fc0171b0 4 MOV             R4, #4
+sub_FC017180 5 fc0171c0 4 MOV             R0, R4
+sub_FC017180 6 fc0171c8 4 MOV             R1, #0
+sub_FC017180 7 fc0171dc 4 MOV             R1, #1
+sub_FC017210 0 fc017210 4 STMFD           SP!, {R4-R11,LR}
+sub_FC017210 1 fc017234 4 MOV             R1, #0x1E1
+sub_FC017210 2 fc017244 4 CMP             R4, #2
+sub_FC017210 3 fc01724c 4 MOV             R1, #0x1E4
+sub_FC017210 4 fc017260 4 LDR             R5, [R6,#0x1C]
+sub_FC017210 5 fc0172ac 4 MOV             R0, R7
+sub_FC017210 6 fc01732c 4 MOV             R0, R7
+sub_FC017210 7 fc017340 4 MOV             R4, #0
+sub_FC017210 8 fc017344 4 MOV             R1, #0
+sub_FC017210 9 fc01735c 4 MOV             R4, #0
+sub_FC017210 10 fc017360 4 MOV             R0, R7
+sub_FC017210 11 fc017378 4 MOV             R1, #0
+sub_FC017210 12 fc017394 4 LDR             R2, [SP,#4]
+sub_FC017210 13 fc0173a4 4 MOV             R0, #2
+sub_FC017210 14 fc0173d4 4 LDR             R0, [SP,#0]
+sub_FC017210 15 fc017404 4 LDR             R1, [SP,#4]
+sub_FC017210 16 fc017414 4 MOV             R0, #3
+sub_FC017210 17 fc01743c 4 ADDS            R6, R6, #1
+sub_FC017210 18 fc017444 4 CMP             R9, #3
+sub_FC017210 19 fc01744c 4 MOV             R0, #5
+sub_FC017210 20 fc01747c 4 ADD             SP, SP, #0x14
+sub_FC0174C4 0 fc0174c4 4 STMFD           SP!, {R4-R9,LR}
+sub_FC0174C4 1 fc0174f0 4 MOV             R1, #0x12A
+sub_FC0174C4 2 fc017500 4 LDR             R0, [R5,#0]
+sub_FC0174C4 3 fc01750c 4 LDR             R1, =0x40200
+sub_FC0174C4 4 fc017520 4 LDR             R4, [R5,#4]
+sub_FC0174C4 5 fc017544 4 ADD             R0, R0, R1
+sub_FC0174C4 6 fc017554 4 MOV             R1, #0x13B
+sub_FC0174C4 7 fc017568 4 LDR             R1, [R7,#0xC]
+sub_FC0174C4 8 fc017588 4 MOV             R0, R4,LSR#8
+sub_FC0174C4 9 fc017594 4 ADD             R3, SP, #8
+sub_FC0174C4 10 fc0175d4 4 MOV             R0, R4,LSR#16
+sub_FC017614 0 fc017614 4 STMFD           SP!, {R4-R7,LR}
+sub_FC017614 1 fc017638 4 MOV             R1, #0x181
+sub_FC017614 2 fc017648 4 CMP             R7, #0x200
+sub_FC017614 3 fc017650 4 MOV             R1, #0x186
+sub_FC017614 4 fc017660 4 MOV             R1, #1
+sub_FC017614 5 fc017690 4 MOV             R2, #0x50
+sub_FC017614 6 fc0176a0 4 ADD             SP, SP, #0x14
+sub_FC0176CC 0 fc0176cc 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0176CC 1 fc0176e0 4 MOV             R1, #0x1B5
+sub_FC0176CC 2 fc0176f0 4 LDR             R2, [R4,#0x34]
+sub_FC017864 0 fc017864 4 LDR             R0, =0xFC106AE8
+sub_FC017924 0 fc017924 4 LDR             R0, =0xFD4AA000
+sub_FC017924 1 fc017928 4 STMFD           SP!, {R4,LR}
+sub_FC017928 0 fc017928 4 STMFD           SP!, {R4,LR}
+sub_FC017928 1 fc01793c 4 LDR             R0, [R0,#0]
+sub_FC017928 2 fc01794c 4 LDR             R0, =0xFC4BE000
+sub_FC017928 3 fc017964 4 MOV             R0, R4
+sub_FC017980 0 fc017980 4 LDR             R0, =0xFC4BC000
+sub_FC017980 1 fc017984 4 STMFD           SP!, {R4,LR}
+sub_FC017984 0 fc017984 4 STMFD           SP!, {R4,LR}
+sub_FC0179B4 0 fc0179b4 4 LDR             R0, =0xFC4BE000
+sub_FC0179B4 1 fc0179b8 4 STMFD           SP!, {R4,LR}
+sub_FC0179B8 0 fc0179b8 4 STMFD           SP!, {R4,LR}
+sub_FC0179EC 0 fc0179ec 4 STMFD           SP!, {R4,LR}
+sub_FC0179EC 1 fc0179f8 4 CMP             R0, #1
+sub_FC0179EC 2 fc017a00 4 B               loc_FC017A20
+sub_FC0179EC 3 fc017a04 4 LDR             R0, =0xFC4BC43C
+sub_FC0179EC 4 fc017a14 4 LDR             R0, =0xFC4BC438
+sub_FC0179EC 5 fc017a20 4 BL              sub_FC013204
+sub_FC017A3C 0 fc017a3c 4 LDR             R0, =0xFC4BE000
+sub_FC017A54 0 fc017a54 4 LDR             R0, =0xFC4BE000
+sub_FC017A54 1 fc017a64 4 LDR             R0, [R0,#0xC4]
+sub_FC017A54 2 fc017a74 4 MOV             R0, #0
+sub_FC017A54 3 fc017a78 4 BX              LR
+sub_FC017A80 0 fc017a80 4 LDR             R1, =0xFC4BE000
+sub_FC017A9C 0 fc017a9c 4 CMP             R0, #0
+sub_FC017AC8 0 fc017ac8 4 LDR             R1, =0xFD4AA000
+sub_FC017AE0 0 fc017ae0 4 STMFD           SP!, {R4-R8,LR}
+sub_FC017AE0 1 fc017b04 4 MOV             R0, #1
+sub_FC017AE0 2 fc017b10 4 MOV             R1, #0x121
+sub_FC017AE0 3 fc017b20 4 UBFX            R0, R6, #0xC, #8
+sub_FC017AE0 4 fc017b34 4 ADD             R12, R0, R5,LSL#8
+sub_FC017AE0 5 fc017b50 4 LDMFD           SP!, {R4-R8,PC}
+sub_FC017B60 0 fc017b60 4 LDR             R0, =0xFE800000
+sub_FC017B60 1 fc017b68 4 STMFD           SP!, {R4,LR}
+sub_FC017B68 0 fc017b68 4 STMFD           SP!, {R4,LR}
+sub_FC017B68 1 fc017b88 4 ORR             R3, R1, R0,LSL#20
+sub_FC017B68 2 fc017b9c 4 MOV             R3, #0x33A
+sub_FC017C48 0 fc017c48 4 LDR             R0, =0xFC4A1000
+sub_FC017E8C 0 fc017e8c 4 STMFD           SP!, {R4,LR}
+sub_FC017E8C 1 fc017ea0 4 MOV             R1, #0xCD
+sub_FC017E8C 2 fc017eb0 4 LDR             R1, [R4,#0x28]
+sub_FC017F9C 0 fc017f9c 4 LDR             R0, =loc_FC021FC4
+sub_FC017F9C 1 fc010a08 4 VMOV.I64        Q0, #0
+sub_FC018024 0 fc018024 4 STMFD           SP!, {R4,LR}
+sub_FC018024 1 fc01803c 4 LDR             R0, =0xFC100080
+sub_FC018024 2 fc01804c 4 LDMFD           SP!, {R4,PC}
+sub_FC01805C 0 fc01805c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01805C 1 fc018068 4 MOV             R1, #0x13E
+sub_FC01805C 2 fc018078 4 LDR             R5, =0xF8002100
+sub_FC01805C 3 fc0180f8 4 MOV             R0, R4
+sub_FC01805C 4 fc018108 4 MOV             R0, R4
+sub_FC01805C 5 fc018118 4 MOV             R0, R4
+sub_FC01805C 6 fc018128 4 MOV             R0, R4
+sub_FC01805C 7 fc018134 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC01805C 8 fc014ecc 4 STMFD           SP!, {R4,LR}
+sub_FC018178 0 fc018178 4 LDR             R0, =loc_FC021FB0
+sub_FC018178 1 fc01817c 4 STMFD           SP!, {R4,LR}
+sub_FC01817C 0 fc01817c 4 STMFD           SP!, {R4,LR}
+sub_FC01817C 1 fc010a08 4 VMOV.I64        Q0, #0
+sub_FC018298 0 fc018298 4 STMFD           SP!, {R4-R7,LR}
+sub_FC018298 1 fc0182ac 4 MOV             R1, #0x312
+sub_FC018298 2 fc0182bc 4 BL              sub_FC018178
+sub_FC018298 3 fc0182cc 4 MOV             R2, R7
+sub_FC018298 4 fc0182dc 4 LDR             R0, =0xFC4BE000
+sub_FC018298 5 fc0182f4 4 MOV             R1, #0x2BD
+sub_FC018298 6 fc018308 4 BL              sub_FC017864
+sub_FC018298 7 fc018318 4 CMP             R4, #3
+sub_FC018298 8 fc018320 4 B               loc_FC018424
+sub_FC018298 9 fc018324 4 LDR             R0, [R0,#0x2C]
+sub_FC018298 10 fc018330 4 CMP             R0, #2
+sub_FC018298 11 fc018338 4 CMP             R4, #3
+sub_FC018298 12 fc018340 4 CMP             R4, #0
+sub_FC018298 13 fc018348 4 MOV             R1, #0x2E9
+sub_FC018298 14 fc018358 4 LDR             R0, =0xF800201C
+sub_FC018298 15 fc018374 4 MOV             R0, #0
+sub_FC018298 16 fc018398 4 MOV             R1, #0x327
+sub_FC018298 17 fc0183a8 4 STR             SP, [R5,#0x14]
+sub_FC018298 18 fc0183bc 4 ORR             R2, R0, #0xB0000
+sub_FC018298 19 fc0183cc 4 MOV             R0, R5
+sub_FC018298 20 fc0183dc 4 ORR             R2, R0, #0xB0000
+sub_FC018298 21 fc0183ec 4 MOV             R0, R5
+sub_FC018298 22 fc0183fc 4 ORR             R2, R0, #0xB0000
+sub_FC018298 23 fc01840c 4 LDR             R0, [R5,#0x18]
+sub_FC018298 24 fc018418 4 B               loc_FC01842C
+sub_FC018298 25 fc01841c 4 CMP             R4, #3
+sub_FC018298 26 fc018424 4 MOV             R6, #0xD
+sub_FC018298 27 fc01842c 4 MOV             R2, R7
+sub_FC018298 28 fc01843c 4 LDR             R1, [R5,#0x18]!
+sub_FC018298 29 fc018448 4 B               loc_FC018448
+sub_FC018298 30 fc01844c 4 LDR             R2, =0xA0600
+sub_FC018608 0 fc018608 4 STMFD           SP!, {R4-R8,LR}
+sub_FC018608 1 fc01861c 4 MOV             R1, #0x280
+sub_FC018608 2 fc01862c 4 LDR             R0, =0xF800201C
+sub_FC018608 3 fc01863c 4 MOV             R2, R7
+sub_FC018608 4 fc01864c 4 LDR             R0, [R4,#8]
+sub_FC018608 5 fc018658 4 MOV             R2, R7
+sub_FC018608 6 fc018668 4 LDR             R4, [R4,#8]
+sub_FC018608 7 fc018674 4 MOV             R2, R7
+sub_FC018608 8 fc018684 4 LDR             R0, [R5,#8]
+sub_FC018608 9 fc018694 4 MOV             R1, #0x294
+sub_FC018608 10 fc0186a4 4 LDR             R1, [R4,#4]
+sub_FC0186F4 0 fc0186f4 4 STMFD           SP!, {R0-R11,LR}
+sub_FC0186F4 1 fc018720 4 MOV             R2, R9
+sub_FC0186F4 2 fc018730 4 LDR             R0, [R4,#0]
+sub_FC0186F4 3 fc018740 4 LDR             R0, [R4,#0x40]
+sub_FC0186F4 4 fc018750 4 CMP             R1, #1
+sub_FC0186F4 5 fc018758 4 CMP             R1, #2
+sub_FC0186F4 6 fc018760 4 B               loc_FC018794
+sub_FC0186F4 7 fc018764 4 ORR             R0, R0, #1
+sub_FC0186F4 8 fc018774 4 ORR             R0, R0, #2
+sub_FC0186F4 9 fc018780 4 MOV             R1, #1
+sub_FC0186F4 10 fc018794 4 LDR             R0, [R4,#0x18]
+sub_FC0186F4 11 fc0187b4 4 MOV             R2, R9
+sub_FC0186F4 12 fc0187c4 4 LDR             R0, [R4,#0x28]
+sub_FC0186F4 13 fc0187ec 4 LDR             R0, [R4,#0x34]
+sub_FC0186F4 14 fc018800 4 CMP             R9, #0
+sub_FC0186F4 15 fc018808 4 LDR             R0, [R4,#0x14]
+sub_FC0186F4 16 fc01884c 4 LDR             R0, [R4,#0x18]
+sub_FC0186F4 17 fc018858 4 LDR             R0, [R4,#0x34]
+sub_FC0186F4 18 fc018878 4 B               loc_FC018890
+sub_FC0186F4 19 fc01887c 4 LDR             R0, [R4,#0x34]
+sub_FC0186F4 20 fc018890 4 LDR             R1, [SP,#0x58]
+sub_FC0186F4 21 fc0188ac 4 CMP             R7, #0
+sub_FC0186F4 22 fc0188b8 4 MOV             R0, #0xC
+sub_FC0186F4 23 fc0188d8 4 LDR             R1, [R4,#0x34]
+sub_FC0186F4 24 fc0188ec 4 LDR             R1, [R4,#0]
+sub_FC0186F4 25 fc0188fc 4 CMP             R5, #0
+sub_FC0186F4 26 fc018904 4 MOV             R1, #0
+sub_FC0186F4 27 fc018910 4 CMP             R0, #0
+sub_FC0186F4 28 fc018918 4 MOV             R0, #1
+sub_FC0186F4 29 fc01891c 4 ADD             SP, SP, #0x5C
+sub_FC01894C 0 fc01894c 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01894C 1 fc018968 4 LDR             R0, [R4,#8]
+sub_FC01894C 2 fc018978 4 LDRD            R0, [R4,#0]
+sub_FC01894C 3 fc01898c 4 BL              sub_FC01197C
+sub_FC01894C 4 fc018998 4 LDR             R0, [R4,#0]
+sub_FC01894C 5 fc0189ac 4 LDR             R0, [R6,#8]
+sub_FC01894C 6 fc0189b8 4 LDR             R1, [R4,#0]
+sub_FC01894C 7 fc0189d8 4 LDR             R0, [R4,#0]
+sub_FC01894C 8 fc0189e8 4 CMP             R0, #0
+sub_FC01894C 9 fc0189f0 4 LDR             R0, [R6,#0]
+sub_FC01894C 10 fc018a00 4 MOV             R5, #3
+sub_FC01894C 11 fc018a04 4 MOV             R0, R5
+sub_FC018A0C 0 fc018a0c 4 STMFD           SP!, {R4-R8,LR}
+sub_FC018A0C 1 fc018a28 4 LDR             R0, [R4,#8]
+sub_FC018A0C 2 fc018a3c 4 MOV             R0, R7
+sub_FC018A0C 3 fc018a4c 4 LDR             R0, [R4,#8]
+sub_FC018A0C 4 fc018a58 4 MOV             R0, R7
+sub_FC018A0C 5 fc018a68 4 MOV             R0, R7
+sub_FC018A0C 6 fc018a88 4 MOV             R5, #3
+sub_FC018A0C 7 fc018a90 4 STR             R0, [R6,#0]
+sub_FC018A0C 8 fc018aa0 4 MOV             R0, R5
+sub_FC018AA8 0 fc018aa8 4 STMFD           SP!, {R4-R6,LR}
+sub_FC018AA8 1 fc018ac4 4 LDR             R1, [R0,#8]
+sub_FC018AA8 2 fc018ad0 4 LDR             R0, [R0,#0]
+sub_FC018AA8 3 fc018adc 4 BL              sub_FC01197C
+sub_FC018AA8 4 fc018aec 4 MOV             R0, R5
+sub_FC018AA8 5 fc018af4 4 MOV             R5, #3
+sub_FC018AFC 0 fc018afc 4 STMFD           SP!, {R4-R10,LR}
+sub_FC018AFC 1 fc018b24 4 MOV             R0, #0
+sub_FC018AFC 2 fc018b38 4 MOV             R0, R5
+sub_FC018AFC 3 fc018b4c 4 BL              sub_FC01197C
+sub_FC018AFC 4 fc018b5c 4 CMP             R6, #0
+sub_FC018AFC 5 fc018b6c 4 CMP             R5, R8
+sub_FC018AFC 6 fc018b78 4 MOV             R0, R5
+sub_FC018AFC 7 fc018b8c 4 MOV             R7, #3
+sub_FC018AFC 8 fc018b94 4 SUBS            R6, R6, #1
+sub_FC018AFC 9 fc018ba0 4 CMP             R7, #0
+sub_FC018AFC 10 fc018ba8 4 B               loc_FC018BB8
+sub_FC018AFC 11 fc018bac 4 BL              sub_FC01197C
+sub_FC018AFC 12 fc018bb8 4 MOV             R0, #0xFFFF
+sub_FC018AFC 13 fc018bc4 4 CMP             R5, R8
+sub_FC018AFC 14 fc018bd4 4 STR             R5, [R9,#0]
+sub_FC018AFC 15 fc018bdc 4 MOV             R0, R7
+sub_FC018AFC 16 fc018be0 4 LDMFD           SP!, {R4-R10,PC}
+sub_FC018BE4 0 fc018be4 4 STMFD           SP!, {R4-R8,LR}
+sub_FC018BE4 1 fc018c00 4 CMP             R5, #0
+sub_FC018BE4 2 fc018c10 4 BL              sub_FC01197C
+sub_FC018BE4 3 fc018c24 4 MOV             R2, #0
+sub_FC018BE4 4 fc018c38 4 ANDS            R2, R0, #0xC0
+sub_FC018BE4 5 fc018c48 4 CMP             R2, #0x80
+sub_FC018BE4 6 fc018c50 4 STR             R1, [R4,#0]
+sub_FC018BE4 7 fc018c54 4 MOV             R0, R6
+sub_FC018BE4 8 fc018c5c 4 MOV             R6, #3
+sub_FC018C64 0 fc018c64 4 STMFD           SP!, {R4-R6,LR}
+sub_FC018C64 1 fc018c84 4 LDR             R1, [R0,#8]
+sub_FC018C64 2 fc018c94 4 CMP             R1, #0xD
+sub_FC018C64 3 fc018ca0 4 MOV             R0, R5
+sub_FC018C64 4 fc018cf0 4 CMP             R1, #0xF
+sub_FC018C64 5 fc018cf8 4 MOV             R0, R5
+sub_FC018C64 6 fc018d7c 4 MOV             R0, R5
+sub_FC018C64 7 fc018ea0 4 MOV             R4, #3
+sub_FC018C64 8 fc018ea8 4 MOV             R0, SP
+sub_FC018C64 9 fc018eb4 4 MOV             R0, R4
+sub_FC018C64 10 fc018eb8 4 ADD             SP, SP, #0x18
+sub_FC018EC8 0 fc018ec8 4 STMFD           SP!, {R4-R6,LR}
+sub_FC018EC8 1 fc018edc 4 LDR             R0, [R4,#8]
+sub_FC018EC8 2 fc018ef0 4 LDR             R0, [R4,#4]
+sub_FC018EC8 3 fc018f04 4 MOV             R0, R1
+sub_FC018EC8 4 fc018f14 4 LDR             R0, [R4,#0]
+sub_FC018EC8 5 fc018f28 4 B               loc_FC018F44
+sub_FC018EC8 6 fc018f2c 4 LDR             R2, [R4,#4]
+sub_FC018EC8 7 fc018f38 4 CMP             R0, #0
+sub_FC018EC8 8 fc018f40 4 MOV             R5, #3
+sub_FC018EC8 9 fc018f44 4 MOV             R0, R5
+sub_FC018F4C 0 fc018f4c 4 STMFD           SP!, {R3-R11,LR}
+sub_FC018F4C 1 fc018f64 4 LDR             R9, [R4,#8]
+sub_FC018F4C 2 fc018f74 4 CMP             R9, #0x10000
+sub_FC018F4C 3 fc018f7c 4 LDR             R0, [R4,#0]
+sub_FC018F4C 4 fc018f8c 4 LDR             R0, [R4,#4]
+sub_FC018F4C 5 fc018f98 4 LDR             R1, [R4,#4]
+sub_FC018F4C 6 fc018fa8 4 MOV             R0, #4
+sub_FC018F4C 7 fc018fac 4 LDMFD           SP!, {R3-R11,PC}
+sub_FC018F4C 8 fc018fb0 4 CMP             R9, #0
+sub_FC018F4C 9 fc018fc0 4 CMP             R9, #2
+sub_FC018F4C 10 fc018fc8 4 MOV             R0, #3
+sub_FC018F4C 11 fc018fd0 4 MOV             R2, SP
+sub_FC018F4C 12 fc018fe4 4 STR             R7, [R4],#4
+sub_FC018F4C 13 fc018ff4 4 CMP             R8, #0
+sub_FC018F4C 14 fc018ffc 4 LDR             R0, [SP,#0]
+sub_FC018F4C 15 fc019008 4 STR             R7, [R4],#4
+sub_FC018F4C 16 fc01901c 4 LDR             R1, [R4,#4]
+sub_FC018F4C 17 fc019034 4 LDR             R1, [R5,#8]
+sub_FC018F4C 18 fc019040 4 CMP             R8, #0
+sub_FC018F4C 19 fc019048 4 CMP             R8, #0x10
+sub_FC018F4C 20 fc019050 4 LDR             R2, [R4,#0]
+sub_FC018F4C 21 fc019060 4 LDR             R2, [R4,#0]
+sub_FC018F4C 22 fc01907c 4 LDR             R1, [R4,#8]
+sub_FC018F4C 23 fc019088 4 LDR             R2, [R4,#0]
+sub_FC018F4C 24 fc019098 4 LDR             R1, [R5,#8]
+sub_FC018F4C 25 fc0190a4 4 ADD             R2, R7, R10
+sub_FC018F4C 26 fc0190b0 4 MOV             R6, R2
+sub_FC018F4C 27 fc0190b8 4 LDR             R2, [R5,#0]
+sub_FC018F4C 28 fc0190c8 4 STR             R6, [R5,#4]
+sub_FC018F4C 29 fc0190d8 4 CMP             R2, #0x10000
+sub_FC018F4C 30 fc0190e0 4 LDR             R3, [R4,#0]
+sub_FC018F4C 31 fc0190f0 4 LDR             R3, [R4,#4]
+sub_FC018F4C 32 fc0190fc 4 LDRD            R2, [R4,#0]
+sub_FC018F4C 33 fc019108 4 CMP             R1, R10
+sub_FC018F4C 34 fc019110 4 CMP             R1, #0x10000
+sub_FC018F4C 35 fc019118 4 LDR             R2, [R5,#0]
+sub_FC018F4C 36 fc019128 4 CMP             R6, R1
+sub_FC018F4C 37 fc019130 4 LDR             R1, [R5,#0]
+sub_FC018F4C 38 fc01913c 4 LDMFD           SP!, {R3-R11,PC}
+sub_FC019140 0 fc019140 4 STMFD           SP!, {R0-R2,R4,R5,LR}
+sub_FC019140 1 fc019164 4 CMP             R4, #0
+sub_FC019140 2 fc019170 4 MOV             R2, SP
+sub_FC019140 3 fc019188 4 LDR             R0, [SP,#0]
+sub_FC019140 4 fc019198 4 ADD             R2, R4, #8
+sub_FC019140 5 fc0191b0 4 LDR             R1, [SP,#8]
+sub_FC019140 6 fc0191cc 4 CMP             R2, #0x10000
+sub_FC019140 7 fc0191d4 4 ADD             R2, R2, R1
+sub_FC019140 8 fc0191e0 4 CMP             R5, R2
+sub_FC019140 9 fc0191e8 4 CMP             R5, R1
+sub_FC019140 10 fc0191f0 4 MOV             R0, #3
+sub_FC019140 11 fc0191f4 4 ADD             SP, SP, #0x14
+sub_FC0191FC 0 fc0191fc 4 STMFD           SP!, {R4-R8,LR}
+sub_FC0191FC 1 fc019214 4 LDR             R0, [R5,#0x384]
+sub_FC0191FC 2 fc019224 4 BLS             loc_FC0192F0
+sub_FC0191FC 3 fc019228 4 LDR             R1, [R6,#0]
+sub_FC0191FC 4 fc019234 4 LDR             R0, [R6,#8]
+sub_FC0191FC 5 fc019240 4 RSB             R0, R4, R4,LSL#4
+sub_FC0191FC 6 fc019254 4 CMN             R1, #1
+sub_FC0191FC 7 fc019264 4 LDR             R0, [R0,#0xC4]
+sub_FC0191FC 8 fc019278 4 CMP             R4, #0
+sub_FC0191FC 9 fc019280 4 RSB             R0, R4, R4,LSL#4
+sub_FC0191FC 10 fc0192a0 4 B               loc_FC0192AC
+sub_FC0191FC 11 fc0192a4 4 MOV             R0, #3
+sub_FC0191FC 12 fc0192ac 4 MOV             R7, #3
+sub_FC0191FC 13 fc0192b4 4 LDR             R0, [R5,#0x384]
+sub_FC0191FC 14 fc0192c4 4 RSB             R0, R4, R4,LSL#4
+sub_FC0191FC 15 fc0192e0 4 LDR             R0, [R5,#0x384]
+sub_FC0191FC 16 fc0192f0 4 MOV             R0, R7
+sub_FC0192F8 0 fc0192f8 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0192F8 1 fc01930c 4 ADDS            R0, R4, #0x5C
+sub_FC0192F8 2 fc019320 4 LDR             R2, [R1,#0xC]
+sub_FC0192F8 3 fc019334 4 LDR             R3, [R1,#4]
+sub_FC0192F8 4 fc019348 4 CMP             R0, #0
+sub_FC0192F8 5 fc019350 4 LDR             R0, [R5,#0x88]
+sub_FC0192F8 6 fc01935c 4 LDR             R0, [R5,#0x94]
+sub_FC0192F8 7 fc019370 4 LDR             R2, [R4,#0xC0]
+sub_FC0192F8 8 fc01937c 4 LDR             R1, [R4,#0xB8]
+sub_FC0192F8 9 fc019390 4 LDR             R0, [R5,#0xB0]
+sub_FC0192F8 10 fc01939c 4 LDR             R2, [R4,#0x18]
+sub_FC0192F8 11 fc0193a8 4 MOV             R0, #1
+sub_FC0192F8 12 fc0193ac 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC0192F8 13 fc0193b0 4 LDR             R1, [R4,#0x10]
+sub_FC0192F8 14 fc0193c4 4 LDR             R0, [R5,#0x98]
+sub_FC0192F8 15 fc0193d0 4 ADDS            R0, R4, #0x2C
+sub_FC0192F8 16 fc0193e4 4 LDR             R2, [R3,#0xC]
+sub_FC0192F8 17 fc0193f8 4 LDR             R1, [R0,#4]
+sub_FC0192F8 18 fc019404 4 CMP             R0, #0
+sub_FC0192F8 19 fc01940c 4 LDR             R0, [R4,#0xC8]
+sub_FC0192F8 20 fc019418 4 LDR             R0, [R4,#0xC4]
+sub_FC0192F8 21 fc019428 4 MOV             R0, #0
+sub_FC019710 0 fc019710 4 STMFD           SP!, {R0-R11,LR}
+sub_FC019710 1 fc019740 4 CMP             R1, #0
+sub_FC019710 2 fc019750 4 ADD             R9, R0, R1
+sub_FC019710 3 fc01975c 4 CMP             R10, #0
+sub_FC019710 4 fc019764 4 STR             R0, [SP,#4]
+sub_FC019710 5 fc019788 4 MOV             R2, #1
+sub_FC019710 6 fc0197a0 4 CMP             R5, #0
+sub_FC019710 7 fc0197b0 4 CMP             R4, #0
+sub_FC019710 8 fc0197b8 4 B               loc_FC0197F0
+sub_FC019710 9 fc0197bc 4 ADD             SP, SP, #0x1C
+sub_FC019710 10 fc0197c8 4 LDR             R0, =0x2FFFD
+sub_FC019710 11 fc0197d4 4 B               loc_FC019804
+sub_FC019710 12 fc0197d8 4 ADD             R0, R5, #1
+sub_FC019710 13 fc0197e8 4 MOV             R4, #1
+sub_FC019710 14 fc0197f0 4 LDR             R0, [SP,#0]
+sub_FC019710 15 fc0197fc 4 CMP             R8, #0x10
+sub_FC019710 16 fc019804 4 MOV             R0, #0
+sub_FC019710 17 fc019810 4 CMP             R10, #1
+sub_FC019710 18 fc019818 4 LDR             R0, [SP,#0]
+sub_FC019710 19 fc019828 4 AND             R2, R11, #0xFF
+sub_FC019710 20 fc019840 4 LDR             R0, [R6,#0x384]
+sub_FC019710 21 fc01986c 4 MOV             R0, #0
+sub_FC019710 22 fc01988c 4 MOV             R4, #1
+sub_FC019710 23 fc019894 4 STR             R0, [SP,#0xC]
+sub_FC019710 24 fc0198b4 4 LDR             R0, [R5,#0x30]!
+sub_FC019710 25 fc0198c8 4 ADD             R7, R7, #1
+sub_FC019710 26 fc0198d4 4 LDR             R0, [R6,#0x384]
+sub_FC019710 27 fc0198e0 4 CMP             R10, #1
+sub_FC019710 28 fc0198e8 4 SUB             R0, R8, R11
+sub_FC019710 29 fc0198f8 4 MOV             R4, #3
+sub_FC019710 30 fc019900 4 AND             R2, R0, #0xFF
+sub_FC019710 31 fc019918 4 LDR             R0, [SP,#0xC]
+sub_FC019710 32 fc019924 4 BL              sub_FC01197C
+sub_FC019710 33 fc019944 4 ADD             SP, SP, #0x1C
+sub_FC019958 0 fc019958 4 STMFD           SP!, {R4-R10,LR}
+sub_FC019958 1 fc019980 4 CMP             R6, R7
+sub_FC019958 2 fc019988 4 ADD             SP, SP, #0x28
+sub_FC019958 3 fc019994 4 ADD             R2, SP, #0xC
+sub_FC019958 4 fc0199a4 4 LDR             R0, [SP,#0xC]
+sub_FC019958 5 fc0199b4 4 SUB             R0, R0, R6
+sub_FC019958 6 fc0199c4 4 LDR             R1, [SP,#0x14]
+sub_FC019958 7 fc0199e0 4 MOV             R2, #0x10
+sub_FC019958 8 fc0199f8 4 MOV             R0, SP
+sub_FC019958 9 fc019a24 4 CMP             R8, #0
+sub_FC019958 10 fc019a2c 4 B               loc_FC019A70
+sub_FC019958 11 fc019a30 4 MOV             R2, #2
+sub_FC019958 12 fc019a50 4 MOV             R8, #3
+sub_FC019958 13 fc019a58 4 LDR             R0, [R7,#4]
+sub_FC019958 14 fc019a6c 4 B               loc_FC019A50
+sub_FC019958 15 fc019a70 4 MOV             R2, #2
+sub_FC019958 16 fc019a88 4 ADD             R1, R5, #0x1C
+sub_FC019958 17 fc019a9c 4 MOV             R2, #0
+sub_FC019958 18 fc019ab4 4 MOV             R1, R5
+sub_FC019958 19 fc019ac8 4 MOV             R2, R9
+sub_FC019958 20 fc019ae0 4 ADD             R1, R5, #0xEC
+sub_FC019958 21 fc019af4 4 LDR             R0, [R5,#0xEC]
+sub_FC019958 22 fc019b00 4 MOV             R1, #0xFFFFFFFF
+sub_FC019958 23 fc019b18 4 MOV             R0, SP
+sub_FC019958 24 fc019b34 4 CMP             R0, #0
+sub_FC019958 25 fc019b3c 4 MOV             R1, R7
+sub_FC019958 26 fc019b50 4 MOV             R0, SP
+sub_FC019958 27 fc019b6c 4 CMP             R0, #0
+sub_FC019958 28 fc019b74 4 MOV             R1, R7
+sub_FC019958 29 fc019b88 4 LDR             R0, [R5,#0]
+sub_FC019958 30 fc019b94 4 MOV             R2, #0xA3
+sub_FC019958 31 fc019bac 4 MOV             R1, SP
+sub_FC019958 32 fc019bc0 4 LDR             R0, [SP,#0xC]
+sub_FC019958 33 fc019bcc 4 SUB             R1, R0, R6
+sub_FC019958 34 fc019be8 4 ADD             R0, SP, #0xC
+sub_FC019958 35 fc019bf8 4 LDR             R0, [R5,#0x1C]
+sub_FC019958 36 fc019c04 4 MOV             R4, #9
+sub_FC019958 37 fc019c0c 4 ADD             R0, SP, #0xC
+sub_FC019958 38 fc019c1c 4 MOV             R4, #3
+sub_FC019958 39 fc019c20 4 ADD             SP, SP, #0x28
+sub_FC019C2C 0 fc019c2c 4 STMFD           SP!, {R0-R2,R4-R11,LR}
+sub_FC019C2C 1 fc019c6c 4 LDR             R0, [SP,#0x60]
+sub_FC019C2C 2 fc019c84 4 MOV             R0, #3
+sub_FC019C2C 3 fc019c90 4 LDR             R0, [SP,#0x64]
+sub_FC019C2C 4 fc019cb0 4 LDR             R11, [SP,#8]
+sub_FC019C2C 5 fc019cc4 4 B               loc_FC019D20
+sub_FC019C2C 6 fc019cc8 4 CMP             R4, #0x11
+sub_FC019C2C 7 fc019cd8 4 MOV             R2, #5
+sub_FC019C2C 8 fc019cf0 4 MOV             R2, #5
+sub_FC019C2C 9 fc019d08 4 MOV             R2, #5
+sub_FC019C2C 10 fc019d20 4 ADD             R0, R4, #4
+sub_FC019C2C 11 fc019d2c 4 MOV             R2, #4
+sub_FC019C2C 12 fc019d48 4 ADD             R0, R4, #6
+sub_FC019C2C 13 fc019d54 4 MOV             R2, #6
+sub_FC019C2C 14 fc019d70 4 B               loc_FC01A05C
+sub_FC019C2C 15 fc019d74 4 MOV             R8, #0
+sub_FC019C2C 16 fc019d8c 4 LDR             R0, [SP,#0]
+sub_FC019C2C 17 fc019dc8 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 18 fc019dd8 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 19 fc019df0 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 20 fc019e00 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 21 fc019e10 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 22 fc019e24 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 23 fc019e64 4 STRD            R8, [R10,#0]
+sub_FC019C2C 24 fc019e6c 4 MOV             R8, #0
+sub_FC019C2C 25 fc019e84 4 LDR             R0, [SP,#0]
+sub_FC019C2C 26 fc019ec0 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 27 fc019ed0 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 28 fc019ee8 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 29 fc019ef8 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 30 fc019f08 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 31 fc019f1c 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 32 fc019f5c 4 STRD            R8, [R10,#8]
+sub_FC019C2C 33 fc019f64 4 MOV             R8, #0
+sub_FC019C2C 34 fc019f7c 4 LDR             R0, [SP,#0]
+sub_FC019C2C 35 fc019fb8 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 36 fc019fc8 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 37 fc019fe0 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 38 fc019ff0 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 39 fc01a000 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 40 fc01a014 4 LDR             R0, [SP,#0xC]
+sub_FC019C2C 41 fc01a054 4 STRD            R8, [R10,#0x10]
+sub_FC019C2C 42 fc01a05c 4 STR             R0, [R10,#0x18]
+sub_FC019C2C 43 fc01a060 4 ADD             R4, R4, #1
+sub_FC019C2C 44 fc01a070 4 LDR             R0, [SP,#8]
+sub_FC019C2C 45 fc01a07c 4 MOV             R2, #0x11
+sub_FC019C2C 46 fc01a094 4 MOV             R2, #0x10
+sub_FC019C2C 47 fc01a0ac 4 LDR             R0, [SP,#0x30]
+sub_FC019C2C 48 fc01a0d0 4 MOV             R2, #0
+sub_FC019C2C 49 fc01a0e8 4 ADD             R1, SP, #0x18
+sub_FC019C2C 50 fc01a0fc 4 LDR             R0, [SP,#8]
+sub_FC019C2C 51 fc01a108 4 LDR             R0, [SP,#0x14]
+sub_FC019C2C 52 fc01a114 4 LDR             R1, [SP,#0x64]
+sub_FC019C2C 53 fc01a130 4 LDR             R4, [SP,#0x14]
+sub_FC019C2C 54 fc01a134 4 LDR             R1, [SP,#0x58]
+sub_FC019C2C 55 fc01a150 4 LDR             R0, [SP,#0x60]
+sub_FC019C2C 56 fc01a164 4 LDR             R1, [SP,#0x64]
+sub_FC01A18C 0 fc01a18c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01A18C 1 fc01a1ac 4 MOV             R2, #0x10
+sub_FC01A18C 2 fc01a1c0 4 MOV             R0, #0
+sub_FC01A18C 3 fc01a1d4 4 MOV             R2, #6
+sub_FC01A18C 4 fc01a1ec 4 MOV             R5, #3
+sub_FC01A18C 5 fc01a1f4 4 LDR             R0, [SP,#8]
+sub_FC01A18C 6 fc01a200 4 LDR             R1, [SP,#0]
+sub_FC01A18C 7 fc01a220 4 LDR             R0, [SP,#8]
+sub_FC01A18C 8 fc01a22c 4 LDR             R1, [SP,#0]
+sub_FC01A18C 9 fc01a24c 4 LDR             R0, [SP,#8]
+sub_FC01A18C 10 fc01a258 4 B               loc_FC01A2DC
+sub_FC01A18C 11 fc01a25c 4 STR             R0, [R4,#0]
+sub_FC01A18C 12 fc01a264 4 LDR             R1, [SP,#0]
+sub_FC01A18C 13 fc01a284 4 LDR             R0, [SP,#8]
+sub_FC01A18C 14 fc01a290 4 LDR             R1, [SP,#0]
+sub_FC01A18C 15 fc01a2b0 4 LDR             R0, [SP,#8]
+sub_FC01A18C 16 fc01a2bc 4 LDR             R1, [SP,#0]
+sub_FC01A18C 17 fc01a2dc 4 LDR             R0, [SP,#8]
+sub_FC01A18C 18 fc01a2e8 4 LDR             R1, [SP,#0]
+sub_FC01A18C 19 fc01a300 4 LDR             R0, [SP,#8]
+sub_FC01A18C 20 fc01a30c 4 LDR             R1, [SP,#0]
+sub_FC01A18C 21 fc01a324 4 LDR             R0, [SP,#0x14]
+sub_FC01A18C 22 fc01a330 4 CMP             R5, #0
+sub_FC01A18C 23 fc01a338 4 B               loc_FC01A348
+sub_FC01A18C 24 fc01a33c 4 LDR             R0, [R4,#0]
+sub_FC01A18C 25 fc01a348 4 ADD             R1, SP, #0xC
+sub_FC01A18C 26 fc01a35c 4 MOV             R0, R5
+sub_FC01A18C 27 fc01a360 4 ADD             SP, SP, #0x18
+sub_FC01A384 0 fc01a384 4 STMFD           SP!, {R4-R11,LR}
+sub_FC01A384 1 fc01a3a4 4 MOV             R10, #0
+sub_FC01A384 2 fc01a3cc 4 CMP             R0, #0
+sub_FC01A384 3 fc01a3d4 4 MOV             R8, #1
+sub_FC01A384 4 fc01a3f4 4 LDR             R0, [SP,#0x20]
+sub_FC01A384 5 fc01a404 4 MOV             R2, #0x10
+sub_FC01A384 6 fc01a41c 4 MOV             R4, #3
+sub_FC01A384 7 fc01a424 4 MOV             R2, #6
+sub_FC01A384 8 fc01a43c 4 MOV             R2, #1
+sub_FC01A384 9 fc01a458 4 MOV             R2, #0
+sub_FC01A384 10 fc01a470 4 LDR             R0, [SP,#8]
+sub_FC01A384 11 fc01a47c 4 B               loc_FC01A498
+sub_FC01A384 12 fc01a480 4 ADD             R1, SP, #0x48
+sub_FC01A384 13 fc01a494 4 B               loc_FC01A458
+sub_FC01A384 14 fc01a498 4 LDR             R1, [SP,#0]
+sub_FC01A384 15 fc01a4b0 4 LDR             R0, [SP,#8]
+sub_FC01A384 16 fc01a4bc 4 B               loc_FC01A910
+sub_FC01A384 17 fc01a4c0 4 LDR             R0, [SP,#0x48]
+sub_FC01A384 18 fc01a4d8 4 CMP             R6, #0
+sub_FC01A384 19 fc01a4e0 4 STR             R8, [R6,#0]
+sub_FC01A384 20 fc01a4fc 4 MOV             R5, #3
+sub_FC01A384 21 fc01a504 4 MOV             R2, #0x80
+sub_FC01A384 22 fc01a51c 4 MOV             R2, #0xA1
+sub_FC01A384 23 fc01a534 4 CMP             R0, #3
+sub_FC01A384 24 fc01a53c 4 MOV             R2, #0x82
+sub_FC01A384 25 fc01a554 4 ADD             R1, SP, #0x30
+sub_FC01A384 26 fc01a568 4 CMP             R5, #0
+sub_FC01A384 27 fc01a570 4 B               loc_FC01A91C
+sub_FC01A384 28 fc01a574 4 ADD             R1, R6, #0x10
+sub_FC01A384 29 fc01a588 4 B               loc_FC01A53C
+sub_FC01A384 30 fc01a58c 4 LDR             R1, [SP,#0]
+sub_FC01A384 31 fc01a5a4 4 LDR             R0, [SP,#8]
+sub_FC01A384 32 fc01a5b0 4 B               loc_FC01A910
+sub_FC01A384 33 fc01a5b4 4 LDR             R0, [SP,#0x48]
+sub_FC01A384 34 fc01a5dc 4 B               loc_FC01A91C
+sub_FC01A384 35 fc01a5e0 4 LDR             R1, [SP,#0]
+sub_FC01A384 36 fc01a5f8 4 LDR             R0, [SP,#8]
+sub_FC01A384 37 fc01a604 4 B               loc_FC01A910
+sub_FC01A384 38 fc01a608 4 ADDS            R5, R7, #0xC4
+sub_FC01A384 39 fc01a61c 4 MOV             R2, #3
+sub_FC01A384 40 fc01a630 4 MOV             R6, #3
+sub_FC01A384 41 fc01a638 4 ADD             R1, SP, #0x30
+sub_FC01A384 42 fc01a64c 4 LDR             R0, [SP,#0x30]
+sub_FC01A384 43 fc01a668 4 LDR             R0, [SP,#0x30]
+sub_FC01A384 44 fc01a680 4 LDR             R0, [R5,#0]
+sub_FC01A384 45 fc01a68c 4 CMP             R6, #0
+sub_FC01A384 46 fc01a694 4 B               loc_FC01A91C
+sub_FC01A384 47 fc01a698 4 LDR             R1, [SP,#0]
+sub_FC01A384 48 fc01a6b0 4 LDR             R0, [SP,#8]
+sub_FC01A384 49 fc01a6bc 4 B               loc_FC01A910
+sub_FC01A384 50 fc01a6c0 4 STR             R8, [R7,#0xD0]
+sub_FC01A384 51 fc01a6d8 4 B               loc_FC01A91C
+sub_FC01A384 52 fc01a6dc 4 LDR             R1, [SP,#0]
+sub_FC01A384 53 fc01a6f4 4 LDR             R0, [SP,#8]
+sub_FC01A384 54 fc01a700 4 B               loc_FC01A910
+sub_FC01A384 55 fc01a704 4 LDR             R0, [R7,#0x5C]
+sub_FC01A384 56 fc01a710 4 LDR             R0, [SP,#0x48]
+sub_FC01A384 57 fc01a71c 4 ADDS            R9, R7, #0x5C
+sub_FC01A384 58 fc01a72c 4 LDR             R0, [SP,#0x14]
+sub_FC01A384 59 fc01a738 4 MOV             R2, #0xA4
+sub_FC01A384 60 fc01a750 4 CMP             R0, #3
+sub_FC01A384 61 fc01a758 4 MOV             R5, #3
+sub_FC01A384 62 fc01a760 4 MOV             R2, #0
+sub_FC01A384 63 fc01a778 4 LDR             R0, [R6,#8]
+sub_FC01A384 64 fc01a784 4 CMP             R5, #0
+sub_FC01A384 65 fc01a78c 4 B               loc_FC01A91C
+sub_FC01A384 66 fc01a790 4 LDR             R1, [SP,#0]
+sub_FC01A384 67 fc01a7a8 4 LDR             R0, [SP,#8]
+sub_FC01A384 68 fc01a7b4 4 B               loc_FC01A910
+sub_FC01A384 69 fc01a7b8 4 ADDS            R5, R7, #0x84
+sub_FC01A384 70 fc01a7c8 4 MOV             R2, #0x10
+sub_FC01A384 71 fc01a7e0 4 MOV             R6, #3
+sub_FC01A384 72 fc01a7e8 4 LDR             R0, [SP,#0x38]
+sub_FC01A384 73 fc01a7f4 4 MOV             R2, #1
+sub_FC01A384 74 fc01a80c 4 CMP             R0, #1
+sub_FC01A384 75 fc01a818 4 STR             R8, [R5,#0x54]
+sub_FC01A384 76 fc01a83c 4 CMP             R0, #1
+sub_FC01A384 77 fc01a84c 4 ADD             R1, SP, #0x30
+sub_FC01A384 78 fc01a860 4 CMP             R6, #0
+sub_FC01A384 79 fc01a868 4 B               loc_FC01A91C
+sub_FC01A384 80 fc01a86c 4 STR             R11, [R5,#0x50]!
+sub_FC01A384 81 fc01a87c 4 ADD             R1, SP, #0x64
+sub_FC01A384 82 fc01a890 4 B               loc_FC01A818
+sub_FC01A384 83 fc01a894 4 LDR             R0, [SP,#0x44]
+sub_FC01A384 84 fc01a8a0 4 LDR             R0, [SP,#0x3C]
+sub_FC01A384 85 fc01a8b0 4 LDR             R1, [SP,#0]
+sub_FC01A384 86 fc01a8c8 4 LDR             R0, [SP,#8]
+sub_FC01A384 87 fc01a8d4 4 LDR             R1, [SP,#0]
+sub_FC01A384 88 fc01a8ec 4 LDR             R0, [SP,#8]
+sub_FC01A384 89 fc01a8f8 4 LDR             R1, [SP,#0]
+sub_FC01A384 90 fc01a910 4 LDR             R0, [SP,#0x48]
+sub_FC01A384 91 fc01a91c 4 CMP             R4, #0
+sub_FC01A384 92 fc01a924 4 ADD             R1, SP, #0x24
+sub_FC01A384 93 fc01a938 4 LDR             R0, [SP,#0x20]
+sub_FC01A384 94 fc01a944 4 ADD             R1, SP, #0x18
+sub_FC01A384 95 fc01a958 4 MOV             R0, R4
+sub_FC01A384 96 fc01a95c 4 ADD             SP, SP, #0x6C
+sub_FC01A988 0 fc01a988 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01A988 1 fc01a9a8 4 MOV             R0, #0
+sub_FC01A988 2 fc01a9bc 4 MOV             R2, #0xA4
+sub_FC01A988 3 fc01a9d4 4 CMP             R0, #3
+sub_FC01A988 4 fc01a9dc 4 MOV             R6, #3
+sub_FC01A988 5 fc01a9e4 4 MOV             R2, #0
+sub_FC01A988 6 fc01a9fc 4 LDR             R0, [R4,#8]
+sub_FC01A988 7 fc01aa08 4 MOV             R0, R6
+sub_FC01A988 8 fc01aa0c 4 ADD             SP, SP, #0x10
+sub_FC01AAB0 0 fc01aab0 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01AAB0 1 fc01aad0 4 MOV             R2, #0x10
+sub_FC01AAB0 2 fc01aae4 4 MOV             R2, #0x10
+sub_FC01AAB0 3 fc01aafc 4 MOV             R2, #6
+sub_FC01AAB0 4 fc01ab14 4 MOV             R2, #0
+sub_FC01AAB0 5 fc01ab2c 4 ADD             R1, SP, #0xC
+sub_FC01AAB0 6 fc01ab40 4 MOV             R0, #3
+sub_FC01AAB0 7 fc01ab54 4 LDR             R1, [SP,#0]
+sub_FC01AAB0 8 fc01ab6c 4 ADD             R1, SP, #0x18
+sub_FC01AAB0 9 fc01ab80 4 MOV             R4, #3
+sub_FC01AAB0 10 fc01ab84 4 MOV             R0, R4
+sub_FC01AAB0 11 fc01ab88 4 ADD             SP, SP, #0x48
+sub_FC01AAB0 12 fc01ab90 4 MOV             R2, #3
+sub_FC01AAB0 13 fc01aba8 4 ADD             R1, SP, #0x24
+sub_FC01AAB0 14 fc01abbc 4 LDR             R0, [SP,#0x24]
+sub_FC01AAB0 15 fc01abe8 4 STR             R0, [SP,#0x34]
+sub_FC01AAB0 16 fc01ac04 4 MOV             R2, #2
+sub_FC01AAB0 17 fc01ac1c 4 LDR             R0, [SP,#8]
+sub_FC01AAB0 18 fc01ac28 4 LDR             R0, [SP,#0]
+sub_FC01AAB0 19 fc01ac38 4 LDR             R0, [SP,#8]
+sub_FC01AAB0 20 fc01ac44 4 LDR             R0, [SP,#0]
+sub_FC01AAB0 21 fc01ac6c 4 LDR             R0, [SP,#8]
+sub_FC01AAB0 22 fc01ac78 4 LDR             R0, [SP,#0]
+sub_FC01AAB0 23 fc01ac88 4 LDR             R0, [SP,#8]
+sub_FC01AAB0 24 fc01ac94 4 ADD             SP, SP, #0x48
+sub_FC01AAB0 25 fc01aca0 4 LDR             R0, [SP,#0]
+sub_FC01AAB0 26 fc01acbc 4 B               loc_FC01AC44
+sub_FC01AAB0 27 fc01acc0 4 LDR             R0, [SP,#0]
+sub_FC01AAB0 28 fc01acdc 4 LDR             R0, [SP,#0]
+sub_FC01AAB0 29 fc01ad04 4 B               loc_FC01AB6C
+sub_FC01AD0C 0 fc01ad0c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01AD0C 1 fc01ad2c 4 MOV             R2, #0x10
+sub_FC01AD0C 2 fc01ad40 4 MOV             R2, #6
+sub_FC01AD0C 3 fc01ad58 4 MOV             R2, #0
+sub_FC01AD0C 4 fc01ad70 4 LDR             R0, [SP,#8]
+sub_FC01AD0C 5 fc01ad7c 4 LDR             R1, [SP,#0]
+sub_FC01AD0C 6 fc01ad9c 4 LDR             R0, [SP,#8]
+sub_FC01AD0C 7 fc01ada8 4 LDR             R1, [SP,#0]
+sub_FC01AD0C 8 fc01adc4 4 LDR             R0, [SP,#8]
+sub_FC01AD0C 9 fc01add0 4 LDR             R1, [SP,#0]
+sub_FC01AD0C 10 fc01adec 4 LDR             R0, [SP,#8]
+sub_FC01AD0C 11 fc01adf8 4 B               loc_FC01AE40
+sub_FC01AD0C 12 fc01adfc 4 STR             R0, [R4,#0]
+sub_FC01AD0C 13 fc01ae00 4 ADD             R1, SP, #0xC
+sub_FC01AD0C 14 fc01ae14 4 MOV             R5, #3
+sub_FC01AD0C 15 fc01ae18 4 MOV             R0, R5
+sub_FC01AD0C 16 fc01ae1c 4 ADD             SP, SP, #0x28
+sub_FC01AD0C 17 fc01ae24 4 LDR             R1, [SP,#0]
+sub_FC01AD0C 18 fc01ae40 4 MOV             R0, #4
+sub_FC01AE58 0 fc01ae58 4 STMFD           SP!, {R4-R7,LR}
+sub_FC01AE58 1 fc01ae78 4 ADD             R1, R5, #0x100
+sub_FC01AE58 2 fc01ae88 4 LDR             R0, [R5,#0x100]
+sub_FC01AE58 3 fc01ae98 4 LDR             R1, [R5,#0x1C]
+sub_FC01AE58 4 fc01aea4 4 MOV             R2, #3
+sub_FC01AE58 5 fc01aebc 4 ADD             R1, SP, #0xC
+sub_FC01AE58 6 fc01aed8 4 MOV             R7, #3
+sub_FC01AE58 7 fc01aedc 4 MOV             R0, R7
+sub_FC01AE58 8 fc01aee0 4 ADD             SP, SP, #0x1C
+sub_FC01AE58 9 fc01aee8 4 CMP             R4, #0
+sub_FC01AE58 10 fc01aef0 4 MOV             R0, R6
+sub_FC01AE58 11 fc01af08 4 STR             R4, [R5,#0x28]
+sub_FC01AE58 12 fc01af24 4 ADD             SP, SP, #0x1C
+sub_FC01AF78 0 fc01af78 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01AF78 1 fc01af98 4 MOV             R2, #0x10
+sub_FC01AF78 2 fc01afac 4 MOV             R2, #0x17
+sub_FC01AF78 3 fc01afc4 4 CMP             R0, #1
+sub_FC01AF78 4 fc01afcc 4 B               loc_FC01AFEC
+sub_FC01AF78 5 fc01afd0 4 MOV             R2, #1
+sub_FC01AF78 6 fc01afe8 4 B               loc_FC01B01C
+sub_FC01AF78 7 fc01afec 4 MOV             R2, #0
+sub_FC01AF78 8 fc01b004 4 MOV             R2, #0
+sub_FC01AF78 9 fc01b01c 4 MOV             R2, #0x17
+sub_FC01AF78 10 fc01b034 4 CMP             R0, #1
+sub_FC01AF78 11 fc01b03c 4 B               loc_FC01B0A0
+sub_FC01AF78 12 fc01b040 4 MOV             R2, #1
+sub_FC01AF78 13 fc01b058 4 B               loc_FC01B08C
+sub_FC01AF78 14 fc01b05c 4 MOV             R2, #0
+sub_FC01AF78 15 fc01b074 4 MOV             R2, #0
+sub_FC01AF78 16 fc01b08c 4 MOV             R1, SP
+sub_FC01AF78 17 fc01b0a0 4 MOV             R5, #3
+sub_FC01AF78 18 fc01b0a4 4 MOV             R0, R5
+sub_FC01AF78 19 fc01b0a8 4 ADD             SP, SP, #0x10
+sub_FC01B138 0 fc01b138 4 STMFD           SP!, {R4-R10,LR}
+sub_FC01B138 1 fc01b160 4 LDR             R4, [R7,#0]
+sub_FC01B138 2 fc01b170 4 CMP             R4, R8
+sub_FC01B138 3 fc01b17c 4 MOV             R1, R0
+sub_FC01B138 4 fc01b194 4 MOV             R5, #3
+sub_FC01B138 5 fc01b19c 4 LDR             R0, [SP,#0]
+sub_FC01B138 6 fc01b1ac 4 CMP             R0, #0
+sub_FC01B138 7 fc01b1b4 4 LDR             R1, [SP,#8]
+sub_FC01B138 8 fc01b1c8 4 ADD             R0, R0, R4
+sub_FC01B138 9 fc01b1d4 4 CMP             R8, R0
+sub_FC01B138 10 fc01b1dc 4 CMP             R5, #0
+sub_FC01B138 11 fc01b1e4 4 MOV             R9, #1
+sub_FC01B138 12 fc01b1ec 4 LDR             R1, [R7,#0]
+sub_FC01B138 13 fc01b208 4 ADD             R6, R6, #1
+sub_FC01B138 14 fc01b214 4 ADD             SP, SP, #0x10
+sub_FC01B220 0 fc01b220 4 STMFD           SP!, {R4,LR}
+sub_FC01B220 1 fc01b22c 4 MOV             R1, #0x16D
+sub_FC01B220 2 fc01b23c 4 LDR             R0, =dword_FC021FA8
+sub_FC01B2BC 0 fc01b2bc 4 LDR             R0, =0xF9023000
+sub_FC01B2CC 0 fc01b2cc 4 LDR             R0, =0xF9023000
+sub_FC01B2CC 1 fc01b2e0 4 LDR             R1, [R0,#0x2C]
+sub_FC01B2CC 2 fc01b2f0 4 BX              LR
+sub_FC01B2F8 0 fc01b2f8 4 STMFD           SP!, {R4,LR}
+sub_FC01B2F8 1 fc01b30c 4 MOV             R2, #0x90000
+sub_FC01B2F8 2 fc01b31c 4 LDR             R0, =0xF9023000
+sub_FC01B378 0 fc01b378 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01B378 1 fc01b384 4 MOV             R1, #0xD1
+sub_FC01B378 2 fc01b394 4 LDR             R5, =0xF8002BC0
+sub_FC01B3F8 0 fc01b3f8 4 LDR             R0, =0xFC4BC43C
+sub_FC01B3F8 1 fc01b3fc 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01B3FC 0 fc01b3fc 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01B3FC 1 fc01b43c 4 MOV             R0, R5
+sub_FC01B3FC 2 fc01b448 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC01B3FC 3 fc01ba2c 4 B               sub_FC01CE1C
+sub_FC01B454 0 fc01b454 4 LDR             R0, =0xFC4BE000
+sub_FC01B46C 0 fc01b46c 4 LDR             R0, =loc_FC021F64
+sub_FC01B46C 1 fc010984 4 CMP             R2, #0x80
+sub_FC01B494 0 fc01b494 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01B494 1 fc01b4a4 4 LDR             R2, =0xA00100
+sub_FC01B494 2 fc01b4b4 4 LDR             R0, [R4,#4]
+sub_FC01B494 3 fc01b4c4 4 MOV             R1, #0x91
+sub_FC01B494 4 fc01b4d4 4 LDR             R0, [R4,#0x20]
+sub_FC01B494 5 fc01b4e4 4 MOV             R2, R8
+sub_FC01B494 6 fc01b4f4 4 LDR             R0, [R4,#0x18]
+sub_FC01B494 7 fc01b50c 4 MOV             R1, #0x9A
+sub_FC01B494 8 fc01b51c 4 LDR             R0, [R4,#0x20]
+sub_FC01B494 9 fc01b53c 4 MOV             R2, R7
+sub_FC01B494 10 fc01b54c 4 LDR             R0, [R4,#0x18]
+sub_FC01B494 11 fc01b560 4 MOV             R2, R7
+sub_FC01B494 12 fc01b570 4 LDR             R0, [R4,#0x1C]
+sub_FC01B494 13 fc01b57c 4 AND             R1, R5, #3
+sub_FC01B494 14 fc01b590 4 MOV             R2, R8
+sub_FC01B494 15 fc01b5a0 4 CMP             R6, #0
+sub_FC01B494 16 fc01b5a8 4 LDR             R0, [R4,#0x2C]
+sub_FC01B494 17 fc01b5b4 4 MOV             R2, R7
+sub_FC01B494 18 fc01b5c4 4 LDR             R0, [R4,#0x24]
+sub_FC01B494 19 fc01b5d0 4 MOV             R2, R7
+sub_FC01B494 20 fc01b5e0 4 LDRD            R0, [R4,#0x2C]
+sub_FC01B494 21 fc01b5f0 4 B               loc_FC01B610
+sub_FC01B494 22 fc01b5f4 4 CMP             R0, R5
+sub_FC01B494 23 fc01b5fc 4 MOV             R2, R8
+sub_FC01B494 24 fc01b60c 4 B               loc_FC01B5A0
+sub_FC01B494 25 fc01b610 4 MOV             R2, R7
+sub_FC01B494 26 fc01b620 4 LDRD            R0, [R4,#0x24]
+sub_FC01B494 27 fc01b630 4 MOV             R2, R7
+sub_FC01B494 28 fc01b640 4 LDR             R0, [R4,#0x18]
+sub_FC01B494 29 fc01b658 4 MOV             R2, R7
+sub_FC01B494 30 fc01b668 4 LDRD            R0, [R4,#0x24]
+sub_FC01B494 31 fc01b67c 4 MOV             R2, R7
+sub_FC01B494 32 fc01b68c 4 MOV             R0, #1
+sub_FC01B6C0 0 fc01b6c0 4 CMP             R0, #0xA
+sub_FC01B6C0 1 fc01b6d4 4 CMP             R4, #0x3E8
+sub_FC01B6C0 2 fc01b6e0 4 MOV             R0, #0x1388
+sub_FC01B6C0 3 fc01b6f0 4 LDR             R0, =0x3531DEC
+sub_FC01B6C0 4 fc01b6fc 4 MOV             R2, #0x90000
+sub_FC01B6C0 5 fc01b70c 4 MOV             R0, #0x4D
+sub_FC01B6C0 6 fc01b718 4 LDR             R1, =0xF9021000
+sub_FC01B6C0 7 fc01b730 4 LDR             R0, [R1,#0x2C]
+sub_FC01B6C0 8 fc01b73c 4 LDR             R0, [R1,#0x2C]
+sub_FC01B770 0 fc01b770 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01B770 1 fc01b7b8 4 MOV             R0, #0x3E8
+sub_FC01B770 2 fc01b7c8 4 LDR             R0, [R5,#0x14]
+sub_FC01B770 3 fc01b7d4 4 CMP             R4, #0
+sub_FC01B770 4 fc01b7dc 4 BL              sub_FC01B2CC
+sub_FC01B770 5 fc01b7e8 4 MOV             R0, #5
+sub_FC01B770 6 fc01b7f0 4 LDR             R0, [R5,#0x10]
+sub_FC01B770 7 fc01b804 4 BL              sub_FC015E30
+sub_FC01B830 0 fc01b830 4 STMFD           SP!, {R4-R10,LR}
+sub_FC01B830 1 fc01b860 4 LDR             R0, [R9,#0x10]
+sub_FC01B830 2 fc01b874 4 LDR             R0, [R0,#0x1C]
+sub_FC01B830 3 fc01b884 4 LDR             R0, [R9,#4]
+sub_FC01B830 4 fc01b8a4 4 LDR             R0, [R9,#0x10]
+sub_FC01B830 5 fc01b8b8 4 LDR             R0, [R0,#0x1C]
+sub_FC01B830 6 fc01b8c4 4 LDR             R1, [R9,#4]
+sub_FC01B830 7 fc01b8d8 4 LDR             R1, [R1,#0x14]
+sub_FC01B830 8 fc01b914 4 BL              sub_FC01CD10
+sub_FC01B830 9 fc01b928 4 STR             R10, [R5,#0]
+sub_FC01B830 10 fc01b92c 4 CMP             R7, #0
+sub_FC01B830 11 fc01b934 4 LDR             R1, [R5,#0]
+sub_FC01B830 12 fc01b940 4 MOV             R0, R4
+sub_FC01B97C 0 fc01b97c 4 CMP             R0, #0
+sub_FC01B97C 1 fc01b984 4 B               loc_FC01CD38
+sub_FC01B97C 2 fc01b988 4 LDR             R0, =0xFC1030B8
+sub_FC01B97C 3 fc01cb6c 4 LDR             R3, =0xFC1030B0
+sub_FC01B97C 4 fc01cd38 4 LDR             R0, =0xFC10317C
+sub_FC01B97C 5 fc01be68 4 STMFD           SP!, {R4,LR}
+sub_FC01BA2C 0 fc01ba2c 4 B               sub_FC01CE1C
+sub_FC01BA2C 1 fc01ce1c 4 LDR             R2, =0xFC1030F8
+sub_FC01BA30 0 fc01ba30 4 LDR             R1, =0xFC1030B8
+sub_FC01BA44 0 fc01ba44 4 CMP             R1, #0
+sub_FC01BA44 1 fc01ba48 4 STMFD           SP!, {R4,LR}
+sub_FC01BA48 0 fc01ba48 4 STMFD           SP!, {R4,LR}
+sub_FC01BA48 1 fc01ba68 4 STR             R2, [R0,#0x14]
+sub_FC01BA48 2 fc01ba90 4 LDR             R1, [R1,#0xC]
+sub_FC01BA48 3 fc01baa8 4 LDRB            R1, [R0,#0x10]
+sub_FC01BA48 4 fc01bab4 4 MOV             R1, #3
+sub_FC01BA48 5 fc01bac0 4 CMP             R3, #0
+sub_FC01BA48 6 fc01bacc 4 MOV             R0, R3
+sub_FC01BA48 7 fc01bad0 4 LDMFD           SP!, {R4,PC}
+sub_FC01BA48 8 fc01bad4 4 BL              sub_FC01C7D8
+sub_FC01BAE4 0 fc01bae4 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01BAE4 1 fc01c720 4 CMP             R1, #2
+sub_FC01BAE4 2 fc01c738 4 LDR             R4, =0xFC103098
+sub_FC01BAE4 3 fc01c74c 4 CMP             R2, #0
+sub_FC01BAE4 4 fc01c788 4 LDMFD           SP!, {R4-R6}
+sub_FC01BB7C 0 fc01bb7c 4 CMP             R0, #0
+sub_FC01BB7C 1 fc01bb84 4 LDR             R0, [R0,#0xC]
+sub_FC01BB7C 2 fc01bb8c 4 BX              LR
+sub_FC01BB7C 3 fc01c2fc 4 STMFD           SP!, {R3-R11,LR}
+sub_FC01BB90 0 fc01bb90 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01BB90 1 fc01bbb4 4 CMP             R5, #0
+sub_FC01BB90 2 fc01bbc0 4 STR             R6, [R4,#0x24]
+sub_FC01BB90 3 fc01bbe0 4 MOV             R1, #0x5DC
+sub_FC01BB90 4 fc01bbf0 4 MOV             R1, #0
+sub_FC01BB90 5 fc01bc08 4 MOV             R1, #0
+sub_FC01BB90 6 fc01bc14 4 STR             R5, [R4,#0x18]
+sub_FC01BB90 7 fc01bc2c 4 LDR             R0, [R4,#0xC]
+sub_FC01BB90 8 fc01bc44 4 CMP             R0, #2
+sub_FC01BB90 9 fc01bc50 4 LDR             R1, [R4,#0x1C]
+sub_FC01BB90 10 fc01bc5c 4 STR             R0, [R4,#0x1C]
+sub_FC01BB90 11 fc01bc78 4 LDR             R0, [R4,#0xC]
+sub_FC01BB90 12 fc01bc90 4 CMP             R5, #0
+sub_FC01BB90 13 fc01bc98 4 LDR             R0, [R4,#0x2C]
+sub_FC01BB90 14 fc01bca4 4 LDR             R0, [R0,#4]
+sub_FC01BB90 15 fc01bcbc 4 MOV             R1, #0
+sub_FC01BB90 16 fc01bcc8 4 STR             R5, [R4,#0x24]
+sub_FC01BB90 17 fc01bce0 4 LDMFD           SP!, {R4-R6,LR}
+sub_FC01BB90 18 fc01bce8 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC01BCEC 0 fc01bcec 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01BCEC 1 fc01bd10 4 CMP             R0, R6
+sub_FC01BCEC 2 fc01bd18 4 CMP             R6, #0
+sub_FC01BCEC 3 fc01bd24 4 LDR             R7, [R4,#4]
+sub_FC01BCEC 4 fc01bd34 4 LDR             R1, [R7,#4]
+sub_FC01BCEC 5 fc01bd4c 4 CMP             R7, #0
+sub_FC01BCEC 6 fc01bd54 4 LDR             R0, [R7,#0xC]
+sub_FC01BCEC 7 fc01bd68 4 ADD             SP, SP, #8
+sub_FC01BCEC 8 fc01bd74 4 LDR             R5, [R0,#0xC]
+sub_FC01BCEC 9 fc01bd80 4 LDR             R0, [R5,#4]
+sub_FC01BCEC 10 fc01bdbc 4 STRB            R6, [R4,#0x29]
+sub_FC01BCEC 11 fc01bde0 4 STRB            R8, [R4,#0x29]
+sub_FC01BCEC 12 fc01bdf8 4 LDR             R0, [R4,#0xC]
+sub_FC01BCEC 13 fc01be48 4 LDR             R2, [R4,#0x10]
+sub_FC01BCEC 14 fc01be5c 4 ADD             SP, SP, #8
+sub_FC01BE68 0 fc01be68 4 STMFD           SP!, {R4,LR}
+sub_FC01BE68 1 fc01be7c 4 CMP             R4, #0
+sub_FC01BE68 2 fc01be94 4 MOV             R1, #0
+sub_FC01BEBC 0 fc01bebc 4 CMP             R1, #3
+sub_FC01BEBC 1 fc01bed0 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01BED0 0 fc01bed0 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01BED0 1 fc01bef8 4 LDR             R0, =0xFC103800
+sub_FC01BED0 2 fc01bf24 4 LDR             R0, [R7,R5,LSL#2]
+sub_FC01BED0 3 fc01bf30 4 LDR             R1, [R0,#0x1B4]
+sub_FC01BED0 4 fc01bf3c 4 LDR             R0, [R0,#0x1B8]
+sub_FC01BED0 5 fc01bf48 4 MOV             R0, #3
+sub_FC01BED0 6 fc01bf60 4 MOV             R0, #0
+sub_FC01BF70 0 fc01bf70 4 STMFD           SP!, {R4-R7}
+sub_FC01BF70 1 fc01bf8c 4 CMP             R1, #3
+sub_FC01BF70 2 fc01bfa0 4 CMP             R2, #1
+sub_FC01BF70 3 fc01c008 4 LDMFD           SP!, {R4-R7}
+sub_FC01C018 0 fc01c018 4 LDR             R2, =0xFC1030A8
+sub_FC01C040 0 fc01c040 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01C040 1 fc01c050 4 MOV             R0, #0x3E8
+sub_FC01C040 2 fc01c064 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC01C068 0 fc01c068 4 B               sub_FC01B6C0
+sub_FC01C068 1 fc01b6c0 4 CMP             R0, #0xA
+nullsub_3 0 fc01c0a4 4 BX              LR
+sub_FC01C0D0 0 fc01c0d0 4 LDR             R1, =0xFC1030B0
+sub_FC01C134 0 fc01c134 4 STMFD           SP!, {R4-R12,LR}
+sub_FC01C134 1 fc01c1a8 4 MOV             R0, #0
+sub_FC01C134 2 fc01c1b4 4 ADD             R12, R2, R0,LSL#5
+sub_FC01C134 3 fc01c1d4 4 ADD             R1, R1, #1
+sub_FC01C134 4 fc01c1e0 4 MOV             R0, #0x400000
+sub_FC01C134 5 fc01c26c 4 LDR             R0, [R6,R4,LSL#2]
+sub_FC01C134 6 fc01c27c 4 MOV             R0, R5
+sub_FC01C298 0 fc01c298 4 LDR             R1, =0xFC1030B0
+sub_FC01C2D0 0 fc01c2d0 4 LDR             R1, =0xFC1030B0
+sub_FC01C2EC 0 fc01c2ec 4 MOV             R0, #0
+sub_FC01C2FC 0 fc01c2fc 4 STMFD           SP!, {R3-R11,LR}
+sub_FC01C2FC 1 fc01c330 4 LDR             R0, =0xFC10308C
+sub_FC01C2FC 2 fc01c348 4 TST             R4, #0x100
+sub_FC01C2FC 3 fc01c350 4 LDR             R0, [R5,#8]
+sub_FC01C2FC 4 fc01c364 4 TST             R4, #4
+sub_FC01C2FC 5 fc01c36c 4 LDR             R0, [R5,#8]
+sub_FC01C2FC 6 fc01c380 4 TST             R4, #1
+sub_FC01C2FC 7 fc01c388 4 LDR             R0, =0xFC1030B0
+sub_FC01C2FC 8 fc01c39c 4 LDR             R0, =0xFC103800
+sub_FC01C2FC 9 fc01c3b0 4 ADD             R1, R6, R5,LSL#4
+sub_FC01C2FC 10 fc01c3c0 4 ADD             R0, R11, R5,LSL#6
+sub_FC01C2FC 11 fc01c420 4 ADD             R0, R5, #1
+sub_FC01C2FC 12 fc01c430 4 ADD             R0, R6, #1
+sub_FC01C2FC 13 fc01c440 4 LDR             R0, [SP,#0]
+sub_FC01C2FC 14 fc01c44c 4 MOV             R0, #1
+sub_FC01C2FC 15 fc01c460 4 LDR             R0, [R1,#0x1AC]
+sub_FC01C2FC 16 fc01c46c 4 LDR             R4, =0xFC103800
+sub_FC01C2FC 17 fc01c470 4 LDR             R0, [R5,R7,LSL#2]
+sub_FC01C2FC 18 fc01c4ac 4 LDR             R0, [R5,R7,LSL#2]
+sub_FC01C2FC 19 fc01c4e8 4 LDMFD           SP!, {R3-R11,PC}
+sub_FC01C528 0 fc01c528 4 LDR             R3, =0xFC1030B0
+sub_FC01C550 0 fc01c550 4 LDR             R1, =0xFC10308C
+sub_FC01C57C 0 fc01c57c 4 STMFD           SP!, {R4-R12,LR}
+sub_FC01C57C 1 fc01c590 4 LDR             R0, =0xFC103800
+sub_FC01C57C 2 fc01c59c 4 CMP             R7, #3
+sub_FC01C57C 3 fc01c5b0 4 ADD             R1, R7, R0,LSL#4
+sub_FC01C57C 4 fc01c5c8 4 ADD             R8, R10, R0,LSL#6
+sub_FC01C57C 5 fc01c5ec 4 LDR             R0, [R9,R5,LSL#2]
+sub_FC01C57C 6 fc01c5f8 4 LDR             R1, [R0,#0x1B4]
+sub_FC01C57C 7 fc01c604 4 LDR             R0, [R0,#0x1B8]
+sub_FC01C57C 8 fc01c610 4 MOV             R0, #3
+sub_FC01C57C 9 fc01c628 4 ADD             R6, R6, #1
+sub_FC01C57C 10 fc01c634 4 ADD             R0, R7, #1
+sub_FC01C57C 11 fc01c644 4 MOV             R2, #0
+sub_FC01C57C 12 fc01c654 4 MOV             R0, #0
+sub_FC01C57C 13 fc01c660 4 CMP             R2, #3
+sub_FC01C57C 14 fc01c674 4 STR             R4, [R12,R1,LSL#6]
+sub_FC01C57C 15 fc01c680 4 LDR             R7, [R9,R5,LSL#2]
+sub_FC01C57C 16 fc01c69c 4 ADD             R0, R0, #1
+sub_FC01C57C 17 fc01c6a8 4 ADD             R0, R2, #1
+sub_FC01C57C 18 fc01c6b8 4 MOV             R0, #0
+sub_FC01C6C8 0 fc01c6c8 4 CMP             R1, #3
+sub_FC01C6C8 1 fc01c6d8 4 CMP             R1, #0
+sub_FC01C6C8 2 fc01c6e4 4 CMP             R2, #0
+sub_FC01C6C8 3 fc01c6f0 4 LDR             R3, =0xFC1030B0
+sub_FC01C6C8 4 fc01c714 4 BX              LR
+sub_FC01C7D8 0 fc01c7d8 4 STMFD           SP!, {R3-R11,LR}
+sub_FC01C7D8 1 fc01c804 4 MOV             R1, #0x1C0
+sub_FC01C7D8 2 fc01c830 4 LDR             R3, =0xFC103800
+sub_FC01C7D8 3 fc01c864 4 LDR             R0, [R2,#0x1AC]
+sub_FC01C7D8 4 fc01c874 4 CMP             R7, #0x4000
+sub_FC01C7D8 5 fc01c880 4 LDR             R0, [R2,#0x1B8]
+sub_FC01C7D8 6 fc01c890 4 MOV             R2, #0x20
+sub_FC01C7D8 7 fc01c934 4 CMP             R0, #0
+sub_FC01C7D8 8 fc01c944 4 MOV             R1, #1
+sub_FC01C7D8 9 fc01c960 4 LDMFD           SP!, {R3-R11,PC}
+sub_FC01C970 0 fc01c970 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01C970 1 fc01c998 4 LDR             R0, [R8,R7,LSL#2]
+sub_FC01C970 2 fc01c9b4 4 MOV             R0, R4
+sub_FC01C970 3 fc01c9c4 4 UBFX            R0, R5, #8, #8
+sub_FC01C9D0 0 fc01c9d0 4 STMFD           SP!, {R0-R12,LR}
+sub_FC01C9D0 1 fc01c9f0 4 LDR             R0, [SP,#4]
+sub_FC01C9D0 2 fc01ca14 4 LDR             R0, =0xFC1030B0
+sub_FC01C9D0 3 fc01ca34 4 MOV             R0, R5
+sub_FC01C9D0 4 fc01ca44 4 AND             R1, R10, R11
+sub_FC01C9D0 5 fc01ca54 4 LDR             R5, =0xFC1030B0
+sub_FC01C9D0 6 fc01ca70 4 LDR             R0, [R5,R8,LSL#2]
+sub_FC01C9D0 7 fc01ca84 4 CMP             R7, #0x40000000
+sub_FC01C9D0 8 fc01ca8c 4 MOV             R0, R4
+sub_FC01C9D0 9 fc01ca9c 4 ADD             SP, SP, #0x10
+sub_FC01CAA8 0 fc01caa8 4 CMP             R1, #3
+sub_FC01CAA8 1 fc01cac4 4 LDR             R4, =0xFC103800
+sub_FC01CAA8 2 fc01cadc 4 CMP             R2, #1
+sub_FC01CAA8 3 fc01cb04 4 MOV             R0, R3
+sub_FC01CB18 0 fc01cb18 4 CMP             R1, #3
+sub_FC01CB18 1 fc01cb28 4 CMP             R1, #0
+sub_FC01CB18 2 fc01cb34 4 CMP             R2, #0
+sub_FC01CB18 3 fc01cb40 4 LDR             R3, =0xFC1030B0
+sub_FC01CB18 4 fc01cb60 4 BX              LR
+sub_FC01CBB0 0 fc01cbb0 4 STMFD           SP!, {R4-R10,LR}
+sub_FC01CBB0 1 fc01cc80 4 ADD             R0, R1, R1,LSL#1
+sub_FC01CBB0 2 fc01ccb8 4 LDR             R0, =0xFC10317C
+sub_FC01CD10 0 fc01cd10 4 MOV             R1, #0
+sub_FC01CD10 1 fc013f0c 4 LDR             R1, =0xFC106A88
+sub_FC01CD20 0 fc01cd20 4 LDR             R1, =0xFC10317C
+sub_FC01CDBC 0 fc01cdbc 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01CDBC 1 fc01cdd8 4 LDR             R0, =0xFC10317C
+sub_FC01CDBC 2 fc01cdec 4 CMP             R5, #0x1000
+sub_FC01CDBC 3 fc01ce38 4 LDR             R1, =0x42525551
+sub_FC01CE1C 0 fc01ce1c 4 LDR             R2, =0xFC1030F8
+sub_FC01CE38 0 fc01ce38 4 LDR             R1, =0x42525551
+sub_FC01CE38 1 fc01ce58 4 LDR             R2, [R1,#0xC]
+sub_FC01CE38 2 fc01ce6c 4 LDRB            R1, [R0,#0x10]
+sub_FC01CE38 3 fc01ce78 4 MOV             R1, #3
+sub_FC01CE38 4 fc01ce88 4 B               sub_FC01C7D8
+sub_FC01CE38 5 fc01c7d8 4 STMFD           SP!, {R3-R11,LR}
+sub_FC01CE90 0 fc01ce90 4 CMP             R2, #0
+sub_FC01CE90 1 fc01ce98 4 CMP             R0, R1
+sub_FC01CE90 2 fc01cea8 4 BCS             loc_FC01CFAC
+sub_FC01CE90 3 fc01ceac 4 ORR             R3, R1, R0
+sub_FC01CE90 4 fc01ceb8 4 EOR             R3, R1, R0
+sub_FC01CE90 5 fc01cec4 4 CMP             R2, #4
+sub_FC01CE90 6 fc01ced4 4 MOV             R3, R2
+sub_FC01CE90 7 fc01ced8 4 CMP             R3, #0
+sub_FC01CE90 8 fc01cee4 4 MOV             R4, R1
+sub_FC01CE90 9 fc01cf34 4 MOVS            R3, R2,LSR#2
+sub_FC01CE90 10 fc01cf3c 4 LDR             R12, [R1],#4
+sub_FC01CE90 11 fc01cf4c 4 ANDS            R12, R2, #3
+sub_FC01CE90 12 fc01cf54 4 MOV             R3, R1
+sub_FC01CE90 13 fc01cfa4 4 LDMFD           SP!, {R4-R7}
+sub_FC01CE90 14 fc01cfac 4 ADD             R1, R1, R2
+sub_FC01CE90 15 fc01cfc0 4 EOR             R3, R1, R0
+sub_FC01CE90 16 fc01cfcc 4 CMP             R2, #4
+sub_FC01CE90 17 fc01cfd8 4 MOV             R3, R2
+sub_FC01CE90 18 fc01cfdc 4 CMP             R3, #0
+sub_FC01CE90 19 fc01cfe8 4 SUB             R1, R1, #1
+sub_FC01CE90 20 fc01d030 4 MOVS            R3, R2,LSR#2
+sub_FC01CE90 21 fc01d038 4 LDR             R12, [R1,#-4]!
+sub_FC01CE90 22 fc01d048 4 ANDS            R2, R2, #3
+sub_FC01CE90 23 fc01d050 4 SUB             R1, R1, #1
+sub_FC01CE90 24 fc01d098 4 LDMFD           SP!, {R4-R7}
+sub_FC01D0A0 0 fc01d0a0 4 CMP             R2, #0
+sub_FC01D0A0 1 fc01d0a8 4 ANDS            R3, R0, #3
+sub_FC01D0A0 2 fc01d0c4 4 B               loc_FC01D0F8
+sub_FC01D0A0 3 fc01d0c8 4 MOV             R12, R0
+sub_FC01D0A0 4 fc01d0f8 4 CMP             R8, R3
+sub_FC01D0A0 5 fc01d100 4 CMP             R2, #0
+sub_FC01D0A0 6 fc01d108 4 LDMFD           SP!, {R4-R9}
+sub_FC01D0A0 7 fc01d110 4 CMP             R2, #0
+sub_FC01D0A0 8 fc01d118 4 AND             R3, R2, #3
+sub_FC01D0A0 9 fc01d128 4 ORR             R12, R1, R1,LSL#8
+sub_FC01D0A0 10 fc01d134 4 SUBS            R2, R2, #1
+sub_FC01D0A0 11 fc01d140 4 CMP             R3, #0
+sub_FC01D0A0 12 fc01d148 4 MOV             R1, R0
+sub_FC01D0A0 13 fc01d178 4 LDMFD           SP!, {R4-R9}
+sub_FC01D180 0 fc01d180 4 STMFD           SP!, {R4-R10,LR}
+sub_FC01D180 1 fc01d1ac 4 LDR             R3, [R4,#0x34]
+sub_FC01D180 2 fc01d1cc 4 LDR             R3, [R2,#0x2C]
+sub_FC01D180 3 fc01d1d8 4 LDR             R3, [R2,#0x2C]
+sub_FC01D180 4 fc01d1f4 4 MOV             R3, R0
+sub_FC01D180 5 fc01d204 4 LDR             R3, [R4,#0xC]
+sub_FC01D180 6 fc01d210 4 CMP             R0, #0x8000
+sub_FC01D180 7 fc01d224 4 LDR             R3, [R1,#0]
+sub_FC01D180 8 fc01d238 4 CMP             LR, #4
+sub_FC01D180 9 fc01d244 4 LDR             LR, [R1,#0x1C]
+sub_FC01D180 10 fc01d25c 4 CMP             R3, #0x18
+sub_FC01D180 11 fc01d268 4 ORR             R0, R0, #0x1000
+sub_FC01D180 12 fc01d26c 4 LDR             LR, [R4,#0x34]
+sub_FC01D180 13 fc01d28c 4 CMP             R7, #0
+sub_FC01D180 14 fc01d294 4 LDR             R0, [R1,#0]
+sub_FC01D180 15 fc01d2a4 4 LDR             R0, [R1,#8]
+sub_FC01D180 16 fc01d2b0 4 LDR             R5, [R4,#0x34]
+sub_FC01D180 17 fc01d2bc 4 LDR             R0, [R5,#0x28]
+sub_FC01D180 18 fc01d2d0 4 LDR             R2, [R5,#0x2C]
+sub_FC01D180 19 fc01d2e4 4 LDR             R0, [R4,#0x34]
+sub_FC01D180 20 fc01d2fc 4 MOV             R0, #0xA
+sub_FC01D180 21 fc01d314 4 CMP             R5, #0x320
+sub_FC01D180 22 fc01d31c 4 LDR             R1, [R4,#0x34]
+sub_FC01D180 23 fc01d338 4 LDR             R0, [R4,#0x34]
+sub_FC01D180 24 fc01d350 4 MOV             R0, #0xA
+sub_FC01D180 25 fc01d368 4 MOV             R0, R8
+sub_FC01D180 26 fc01d370 4 MOV             R8, R9
+sub_FC01D180 27 fc01d378 4 TST             R0, #4
+sub_FC01D180 28 fc01d380 4 LDR             R0, [R5,#0x2C]
+sub_FC01D180 29 fc01d390 4 TST             R0, #1
+sub_FC01D180 30 fc01d398 4 LDR             R0, [R1,#0]
+sub_FC01D180 31 fc01d3bc 4 STR             R12, [R2,#0x28]
+sub_FC01D180 32 fc01d3d0 4 LDR             R0, [R2,#0x2C]
+sub_FC01D180 33 fc01d3dc 4 LDR             R0, [R2,#0x2C]
+sub_FC01D180 34 fc01d3f8 4 LDR             R0, [R4,#0xC]
+sub_FC01D180 35 fc01d408 4 LDR             R0, [R1,#8]
+sub_FC01D180 36 fc01d418 4 CMP             R0, #4
+sub_FC01D180 37 fc01d434 4 LDR             R12, [R4,#0x34]
+sub_FC01D180 38 fc01d450 4 LDR             R0, [R1,#8]
+sub_FC01D180 39 fc01d45c 4 LDR             R0, [R1,#0xC]
+sub_FC01D180 40 fc01d47c 4 LDR             R0, [R1,#8]
+sub_FC01D180 41 fc01d488 4 LDR             R0, [R1,#0xC]
+sub_FC01D180 42 fc01d4a4 4 CMP             R7, #0
+sub_FC01D180 43 fc01d4ac 4 LDR             R0, [R1,#0x1C]
+sub_FC01D180 44 fc01d4b8 4 LDR             R6, [R4,#0x34]
+sub_FC01D180 45 fc01d4c4 4 LDR             R0, [R6,#0x28]
+sub_FC01D180 46 fc01d4d8 4 LDR             R1, [R6,#0x2C]
+sub_FC01D180 47 fc01d4ec 4 MOV             R0, #0xA
+sub_FC01D180 48 fc01d504 4 MOV             R0, R7
+sub_FC01D518 0 fc01d518 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01D518 1 fc01d52c 4 CMP             R2, #1
+sub_FC01D518 2 fc01d534 4 MOV             R1, #0x151
+sub_FC01D518 3 fc01d544 4 LDR             R0, [R5,#0x28]
+sub_FC01D518 4 fc01d550 4 LDR             R0, [R5,#0x34]
+sub_FC01D518 5 fc01d564 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC01D518 6 fc01d568 4 LDR             R0, [R5,#0]
+sub_FC01D518 7 fc01d574 4 CMP             R0, #6
+sub_FC01D518 8 fc01d584 4 BL              sub_FC017924
+sub_FC01D5A0 0 fc01d5a0 4 STMFD           SP!, {R4-R9,LR}
+sub_FC01D5A0 1 fc01d5c8 4 MOV             R1, #0x2DD
+sub_FC01D5A0 2 fc01d5d8 4 LDR             R0, [R4,#0x28]
+sub_FC01D5A0 3 fc01d600 4 LDR             R0, [R4,#0x34]
+sub_FC01D5A0 4 fc01d614 4 CMP             R8, #0
+sub_FC01D5A0 5 fc01d61c 4 B               loc_FC01D634
+sub_FC01D5A0 6 fc01d620 4 LDR             R0, [R4,#0x34]
+sub_FC01D5A0 7 fc01d634 4 LDR             R0, =0x5D0B00
+sub_FC01D5A0 8 fc01d648 4 LDR             R0, [R4,#0x1C]
+sub_FC01D5A0 9 fc01d674 4 MOV             R0, #0x37
+sub_FC01D5A0 10 fc01d6a0 4 MOV             R1, R6
+sub_FC01D5A0 11 fc01d6b4 4 MOV             R3, R8
+sub_FC01D5A0 12 fc01d6d0 4 TST             R7, #1
+sub_FC01D5A0 13 fc01d6d8 4 MOV             R1, #0
+sub_FC01D5A0 14 fc01d6dc 4 CMP             R1, #0
+sub_FC01D5A0 15 fc01d6e8 4 MOV             R0, #0xC
+sub_FC01D5A0 16 fc01d70c 4 LDR             R1, [R4,#0x34]
+sub_FC01D5A0 17 fc01d720 4 ADD             SP, SP, #0x24
+sub_FC01D5A0 18 fc01d728 4 LDR             R0, [R6,#0]
+sub_FC01D5A0 19 fc01d73c 4 B               loc_FC01D6DC
+sub_FC01D76C 0 fc01d76c 4 STMFD           SP!, {R4-R11,LR}
+sub_FC01D76C 1 fc01d7b0 4 LDR             R0, [R6,#0x44]
+sub_FC01D76C 2 fc01d7c0 4 MOV             R3, R11
+sub_FC01D76C 3 fc01d7dc 4 LDR             R1, [R6,#0x44]
+sub_FC01D76C 4 fc01d7ec 4 BL              sub_FC01495C
+sub_FC01D76C 5 fc01d804 4 LDR             R0, [R7,#0]
+sub_FC01D76C 6 fc01d850 4 LDRH            R0, [SP,#0x14]
+sub_FC01D76C 7 fc01d860 4 LDRH            R0, [SP,#0x16]
+sub_FC01D76C 8 fc01d874 4 ADD             R2, R12, R0
+sub_FC01D76C 9 fc01d88c 4 ADD             R0, R0, #1
+sub_FC01D76C 10 fc01d898 4 CMP             R0, #8
+sub_FC01D76C 11 fc01d8a0 4 CMP             R3, #0
+sub_FC01D76C 12 fc01d8a8 4 LDR             R2, [R7,#0x20]
+sub_FC01D76C 13 fc01d8c4 4 LDR             R12, [R4,#0x28]
+sub_FC01D76C 14 fc01d8d8 4 LDR             R2, [R4,#0x30]
+sub_FC01D76C 15 fc01d8ec 4 SUBS            R1, R2, R8
+sub_FC01D76C 16 fc01d8f8 4 LDR             R0, [R6,#0x44]
+sub_FC01D76C 17 fc01d930 4 LDR             R0, [R4,#0x54]
+sub_FC01D76C 18 fc01d944 4 ADD             SP, SP, #0x24
+sub_FC01D95C 0 fc01d95c 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01D95C 1 fc01d978 4 MOV             R0, #9
+sub_FC01D95C 2 fc01d9b0 4 LDR             R0, [R4,#0]
+sub_FC01D95C 3 fc01d9c0 4 CMP             R0, #2
+sub_FC01D95C 4 fc01d9c8 4 CMP             R0, #5
+sub_FC01D95C 5 fc01d9d0 4 CMP             R0, #6
+sub_FC01D95C 6 fc01d9d8 4 B               loc_FC01DAB4
+sub_FC01D95C 7 fc01d9dc 4 LDR             R0, [SP,#0xC]
+sub_FC01D95C 8 fc01d9ec 4 LDR             R1, [SP,#0x14]
+sub_FC01D95C 9 fc01da04 4 BFC             R0, #0xA, #0x16
+sub_FC01D95C 10 fc01da28 4 ORR             R2, R5, R1
+sub_FC01D95C 11 fc01da38 4 ADD             R0, R6, #1
+sub_FC01D95C 12 fc01da4c 4 STR             R0, [R4,#0x24]
+sub_FC01D95C 13 fc01da54 4 LDR             R0, [SP,#0xC]
+sub_FC01D95C 14 fc01da88 4 ORR             R2, R5, R1
+sub_FC01D95C 15 fc01da98 4 ADD             R0, R6, #1
+sub_FC01D95C 16 fc01dab4 4 LDR             R0, [SP,#0xC]
+sub_FC01D95C 17 fc01dac0 4 STR             R5, [R4,#0x24]
+sub_FC01D95C 18 fc01dac4 4 MOV             R0, R8
+sub_FC01D95C 19 fc01dac8 4 ADD             SP, SP, #0x28
+sub_FC01DAEC 0 fc01daec 4 STMFD           SP!, {R4-R10,LR}
+sub_FC01DAEC 1 fc01db28 4 LDR             R0, [R4,#0]
+sub_FC01DAEC 2 fc01db48 4 LDR             R0, [R4,#0x18]
+sub_FC01DAEC 3 fc01db5c 4 LDR             R0, [R4,#0xC]
+sub_FC01DAEC 4 fc01db68 4 CMP             R0, #0x200
+sub_FC01DAEC 5 fc01db70 4 LDR             R0, [R4,#0x48]
+sub_FC01DAEC 6 fc01db80 4 SUBS            R3, R0, R5
+sub_FC01DAEC 7 fc01db8c 4 LDR             R2, [R4,#0x30]
+sub_FC01DAEC 8 fc01dba0 4 LDR             R0, =0x5D1100
+sub_FC01DAEC 9 fc01dbac 4 RSBS            R2, R0, #1
+sub_FC01DAEC 10 fc01dbb8 4 LDR             R2, [R4,#0x28]
+sub_FC01DAEC 11 fc01dbcc 4 LDR             R12, [R4,#0x10]
+sub_FC01DAEC 12 fc01dbf4 4 BCC             loc_FC01DC18
+sub_FC01DAEC 13 fc01dbf8 4 LDRB            R5, [R1],#1
+sub_FC01DAEC 14 fc01dc18 4 MVN             R0, R0
+sub_FC01DAEC 15 fc01dc1c 4 CMP             R12, R0
+sub_FC01DAEC 16 fc01dc28 4 LDR             R0, [R4,#0x50]
+sub_FC01DAEC 17 fc01dc3c 4 CMP             R5, R6
+sub_FC01DAEC 18 fc01dc44 4 LDR             R0, =0x5D1400
+sub_FC01DAEC 19 fc01dc48 4 BL              sub_FC01495C
+sub_FC01DAEC 20 fc01dc50 4 LDR             R1, [R4,#0x48]
+sub_FC01DAEC 21 fc01dc6c 4 LDR             R0, [R8,#8]
+sub_FC01DAEC 22 fc01dc7c 4 LDR             R2, [R4,#0x58]
+sub_FC01DAEC 23 fc01dc8c 4 CMP             R5, #0
+sub_FC01DAEC 24 fc01dc9c 4 LDRB            R3, [R7],#1
+sub_FC01DAEC 25 fc01dcbc 4 MVN             R0, R0
+sub_FC01DAEC 26 fc01dcc8 4 LDR             R0, =0x5D1300
+sub_FC01DAEC 27 fc01dce0 4 MOV             R0, #0
+sub_FC01DAEC 28 fc01dce4 4 LDMFD           SP!, {R4-R10,PC}
+sub_FC01DD10 0 fc01dd10 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01DD10 1 fc01dd4c 4 MOV             R1, #3
+sub_FC01DD10 2 fc01dd64 4 CMP             R0, #6
+sub_FC01DD10 3 fc01dd6c 4 STR             R1, [SP,#8]
+sub_FC01DD10 4 fc01dd88 4 STR             R5, [R4,#0x10]
+sub_FC01DD10 5 fc01dd8c 4 ADD             SP, SP, #0x48
+sub_FC01DD10 6 fc01dd94 4 MOV             R0, #0x20000
+sub_FC01DDB4 0 fc01ddb4 4 STMFD           SP!, {R4-R10,LR}
+sub_FC01DDB4 1 fc01ddc8 4 LDR             R0, [R4,#0x40]
+sub_FC01DDB4 2 fc01ddd4 4 MOV             R7, #0
+sub_FC01DDB4 3 fc01de1c 4 STR             R7, [SP,#0x40]
+sub_FC01DDB4 4 fc01de54 4 MOV             R0, #0x64
+sub_FC01DDB4 5 fc01de6c 4 ADD             SP, SP, #0x48
+sub_FC01DDB4 6 fc01de78 4 MOV             R6, #0
+sub_FC01DE84 0 fc01de84 4 STMFD           SP!, {R4-R11,LR}
+sub_FC01DE84 1 fc01deb8 4 LDR             R0, [R11,#0x34]
+sub_FC01DE84 2 fc01decc 4 LDR             R1, [R0,#0x34]
+sub_FC01DE84 3 fc01dee0 4 MOV             R1, #0x418
+sub_FC01DE84 4 fc01def0 4 LDR             R0, [R11,#0x34]
+sub_FC01DE84 5 fc01df0c 4 LDR             R2, =0x5D0F00
+sub_FC01DE84 6 fc01df1c 4 LDR             R6, =0x5D0D00
+sub_FC01DE84 7 fc01df28 4 MOV             R1, #0x427
+sub_FC01DE84 8 fc01df38 4 TST             R10, #3
+sub_FC01DE84 9 fc01df40 4 MOV             R2, R6
+sub_FC01DE84 10 fc01df50 4 MVN             R0, R4
+sub_FC01DE84 11 fc01df5c 4 MOV             R1, #0x42D
+sub_FC01DE84 12 fc01df6c 4 AND             R6, R10, #0x3F
+sub_FC01DE84 13 fc01df80 4 LDR             R7, [R9,#0]
+sub_FC01DE84 14 fc01df8c 4 LDR             R0, [SP,#4]
+sub_FC01DE84 15 fc01df9c 4 CLZ             R0, R0
+sub_FC01DE84 16 fc01dfac 4 SUB             R0, R0, #0xF
+sub_FC01DE84 17 fc01dfcc 4 VLD4.32         {D0,D2,D4,D6}, [R8,#0]
+sub_FC01DE84 18 fc01dfe4 4 CMP             R1, #0
+sub_FC01DE84 19 fc01dfec 4 TST             R7, #0x2A
+sub_FC01DE84 20 fc01dff4 4 CMP             R5, #0
+sub_FC01DE84 21 fc01e000 4 LDR             R7, [R9,#0]
+sub_FC01DE84 22 fc01e00c 4 TST             R7, #0x200000
+sub_FC01DE84 23 fc01e014 4 TST             R7, #0x8000
+sub_FC01DE84 24 fc01e01c 4 VLD4.32         {D0-D3}, [R8,#0]
+sub_FC01DE84 25 fc01e028 4 SUB             R6, R6, #0x20
+sub_FC01DE84 26 fc01e034 4 VST4.32         {D0-D3}, [R10,#0]
+sub_FC01DE84 27 fc01e040 4 MOV             R2, R6
+sub_FC01DE84 28 fc01e054 4 CMP             R5, #0x20
+sub_FC01DE84 29 fc01e05c 4 MOV             R1, #0x486
+sub_FC01DE84 30 fc01e06c 4 SUB             R5, R5, #0x20
+sub_FC01DE84 31 fc01e074 4 LDR             R0, [R8,#0]
+sub_FC01DE84 32 fc01e080 4 SUB             R6, R6, #4
+sub_FC01DE84 33 fc01e088 4 SUB             R5, R5, #4
+sub_FC01DE84 34 fc01e08c 4 CMP             R5, #0
+sub_FC01DE84 35 fc01e094 4 B               unk_FC022420
+sub_FC01DE84 36 fc022420 1 DCB 0xFA
+sub_FC01E108 0 fc01e108 4 STMFD           SP!, {R4,LR}
+sub_FC01E15C 0 fc01e15c 4 STMFD           SP!, {R0-R12,LR}
+sub_FC01E15C 1 fc01e174 4 LDR             R1, =0x50425342
+sub_FC01E15C 2 fc01e188 4 MOV             R3, #0x5FE
+sub_FC01E15C 3 fc01e1a0 4 MOV             R0, #2
+sub_FC01E15C 4 fc01e1a4 4 ADD             SP, SP, #0x420
+sub_FC01E15C 5 fc01e1ac 4 CMP             R5, #0
+sub_FC01E15C 6 fc01e1c4 4 LDR             R1, [R5,#4]
+sub_FC01E15C 7 fc01e1d4 4 LDR             R0, [R5,#8]
+sub_FC01E15C 8 fc01e1e0 4 LDR             R1, [R5,#0xC]
+sub_FC01E15C 9 fc01e1f0 4 LDR             R0, [R5,#0x10]
+sub_FC01E15C 10 fc01e1fc 4 LDR             R1, [R5,#0x14]
+sub_FC01E15C 11 fc01e20c 4 CMP             R1, #0x9000
+sub_FC01E15C 12 fc01e214 4 LDR             R0, [R5,#0x18]
+sub_FC01E15C 13 fc01e220 4 LDR             R1, [R5,#0x1C]
+sub_FC01E15C 14 fc01e230 4 CMP             R1, #0x100
+sub_FC01E15C 15 fc01e238 4 MOV             R2, #0
+sub_FC01E15C 16 fc01e254 4 LDR             R0, [SP,#0x41C]
+sub_FC01E15C 17 fc01e2c8 4 MOV             R0, R8
+sub_FC01E15C 18 fc01e2d4 4 STR             R1, [R0,#0x100]!
+sub_FC01E15C 19 fc01e2e4 4 MOV             R11, #7
+sub_FC01E15C 20 fc01e2e8 4 MOVS            R0, R11
+sub_FC01E15C 21 fc01e2f0 4 LDR             R0, [SP,#0x3D0]
+sub_FC01E15C 22 fc01e31c 4 LDR             R1, [R5,#0x10]
+sub_FC01E15C 23 fc01e344 4 ADD             R2, R4, #0x20
+sub_FC01E15C 24 fc01e35c 4 MOV             R0, R8
+sub_FC01E15C 25 fc01e36c 4 ADD             R1, R4, #0x28
+sub_FC01E15C 26 fc01e380 4 MOV             R0, R8
+sub_FC01E15C 27 fc01e390 4 ADD             R0, R4, #0x2C
+sub_FC01E15C 28 fc01e3a0 4 MOV             R0, R8
+sub_FC01E15C 29 fc01e3b0 4 ADD             R3, R4, #0x38
+sub_FC01E15C 30 fc01e3cc 4 LDR             R1, [SP,#0x3D4]
+sub_FC01E15C 31 fc01e3f0 4 LDR             R0, [R5,#0x20]
+sub_FC01E15C 32 fc01e400 4 CMP             R1, R0,LSR#16
+sub_FC01E15C 33 fc01e418 4 STR             R3, [R8,#0xFC]!
+sub_FC01E15C 34 fc01e434 4 CMP             R1, R0
+sub_FC01E15C 35 fc01e444 4 LDR             R2, [SP,#0x3EC]
+sub_FC01E15C 36 fc01e45c 4 LDR             R1, [SP,#0x3E8]
+sub_FC01E15C 37 fc01e484 4 LDR             R0, [R5,#0x14]
+sub_FC01E15C 38 fc01e4ac 4 CMP             R8, #0
+sub_FC01E15C 39 fc01e4b4 4 CMP             R6, #0
+sub_FC01E15C 40 fc01e4bc 4 LDR             R0, [SP,#0x14]
+sub_FC01E15C 41 fc01e4c8 4 CMP             R7, #0
+sub_FC01E15C 42 fc01e4d0 4 LDR             R0, [R7,#0x384]
+sub_FC01E15C 43 fc01e4e0 4 LDR             R0, [R10,#0]
+sub_FC01E15C 44 fc01e4f0 4 STR             R9, [SP,#0x10]
+sub_FC01E15C 45 fc01e510 4 LDR             R2, [R10,#8]
+sub_FC01E15C 46 fc01e530 4 MOVS            R0, R8
+sub_FC01E15C 47 fc01e53c 4 STR             R1, [R0,#0xFC]
+sub_FC01E15C 48 fc01e54c 4 MOV             R0, #2
+sub_FC01E15C 49 fc01e554 4 RSB             R0, R4, R4,LSL#4
+sub_FC01E15C 50 fc01e56c 4 LDR             R0, [SP,#0x10]
+sub_FC01E15C 51 fc01e57c 4 RSB             R0, R4, R4,LSL#4
+sub_FC01E15C 52 fc01e598 4 CMP             R1, #3
+sub_FC01E15C 53 fc01e5a4 4 RSB             R1, R4, R4,LSL#4
+sub_FC01E15C 54 fc01e5d4 4 LDR             R1, [R0,#0xE0]
+sub_FC01E15C 55 fc01e5e0 4 RSB             R0, R4, R4,LSL#4
+sub_FC01E15C 56 fc01e624 4 STR             R0, [R8,#0x100]
+sub_FC01E15C 57 fc01e640 4 LDR             R1, [SP,#0x400]
+sub_FC01E15C 58 fc01e668 4 CMP             R0, #0
+sub_FC01E15C 59 fc01e670 4 ADD             R4, SP, #0x18
+sub_FC01E15C 60 fc01e68c 4 LDR             R0, [SP,#0x3C8]
+sub_FC01E15C 61 fc01e698 4 LDR             R1, [SP,#0x3C0]
+sub_FC01E15C 62 fc01e6b8 4 LDR             R1, [SP,#0x3C0]
+sub_FC01E15C 63 fc01e6d0 4 STR             R3, [R8,#0xFC]!
+sub_FC01E15C 64 fc01e6e0 4 ADD             SP, SP, #0x420
+sub_FC01E15C 65 fc01e6ec 4 LDR             R0, [SP,#0x41C]
+sub_FC01E15C 66 fc01e72c 4 LDR             R1, [SP,#0x41C]
+sub_FC01E15C 67 fc01e768 4 EOR             R3, R1, #2
+sub_FC01E15C 68 fc01e77c 4 MOV             R0, #0
+sub_FC01E15C 69 fc01e790 4 STR             R0, [R8,#0x104]
+sub_FC01E15C 70 fc01e7a0 4 ADD             SP, SP, #0x420
+sub_FC01E15C 71 fc01e7ac 4 EOR             R3, R1, #3
+sub_FC01E15C 72 fc01e7b8 4 LDR             R2, [SP,#0x3E4]
+sub_FC01E15C 73 fc01e7c8 4 CMP             R8, #0
+sub_FC01E15C 74 fc01e7dc 4 STR             R0, [R8,#0x100]
+sub_FC01E15C 75 fc01e7e8 4 STR             R3, [R8,#0xFC]
+sub_FC01E15C 76 fc01e7f0 4 LDR             R2, [SP,#0x41C]
+sub_FC01E888 0 fc01e888 4 CMP             R0, #0
+sub_FC01E888 1 fc01e894 4 STMFD           SP!, {R4,LR}
+sub_FC01E894 0 fc01e894 4 STMFD           SP!, {R4,LR}
+sub_FC01E894 1 fc01e8b8 4 BL              sub_FC01D0A0
+sub_FC01E894 2 fc01e8c4 4 BL              sub_FC01D0A0
+sub_FC01E8D0 0 fc01e8d0 4 CMP             R0, #0
+sub_FC01E8D0 1 fc01e8dc 4 LDR             R1, =sub_FC01EE20
+sub_FC01E8D0 2 fc01e8f8 4 BX              LR
+sub_FC01E908 0 fc01e908 4 STMFD           SP!, {R4-R11,LR}
+sub_FC01E908 1 fc01e944 4 LDR             R0, [R4,#0xC]
+sub_FC01E908 2 fc01e954 4 MOV             R2, #0xD8
+sub_FC01E908 3 fc01e974 4 MOV             R1, R11
+sub_FC01E908 4 fc01e98c 4 MOV             R0, #6
+sub_FC01E908 5 fc01e990 4 ADD             SP, SP, #0x24
+sub_FC01E908 6 fc01e998 4 MOV             R11, #1
+sub_FC01E908 7 fc01e9c4 4 LDR             R3, [R4,#0x14]
+sub_FC01E908 8 fc01e9d8 4 STR             R5, [SP,#0]
+sub_FC01E908 9 fc01e9fc 4 LDR             R2, [R4,#0x18]
+sub_FC01E908 10 fc01ea14 4 LDR             R1, [R4,#0x10]
+sub_FC01E908 11 fc01ea28 4 ADD             SP, SP, #0x24
+sub_FC01E908 12 fc01ea30 4 LDR             R12, [R4,#0x1C]
+sub_FC01E908 13 fc01ea48 4 B               loc_FC01EA14
+sub_FC01EA50 0 fc01ea50 4 CMP             R0, #0
+sub_FC01EA50 1 fc01ea5c 4 LDR             R1, =sub_FC01EAAC
+sub_FC01EA50 2 fc01ea90 4 BX              LR
+sub_FC01EAAC 0 fc01eaac 4 STMFD           SP!, {R4-R7,LR}
+sub_FC01EAAC 1 fc01ead4 4 LDR             R7, =0xFC4BE000
+sub_FC01EAAC 2 fc01eb10 4 LDR             R1, =(loc_FC021D68+3)
+sub_FC01EAAC 3 fc01eb28 4 LDR             R0, [R5,#0x38]
+sub_FC01EAAC 4 fc01eb44 4 STR             R0, [SP,#0]
+sub_FC01EAAC 5 fc01eb60 4 ADD             SP, SP, #0xC
+sub_FC01EAAC 6 fc01eb68 4 LDR             R0, [R7,#0xE4]
+sub_FC01EB7C 0 fc01eb7c 4 STMFD           SP!, {R3-R5}
+sub_FC01EB7C 1 fc01eb9c 4 CMP             R3, #0
+sub_FC01EB7C 2 fc01eba8 4 LDR             R5, =0xFC4BE000
+sub_FC01EB7C 3 fc01ebc4 4 SUB             R5, R5, #0x2000
+sub_FC01EB7C 4 fc01ebe0 4 LDR             R12, [R5,#0x1F8]
+sub_FC01EB7C 5 fc01ebf8 4 MOV             R12, #1
+sub_FC01EB7C 6 fc01ec0c 4 EOR             R12, R2, R2,LSR#4
+sub_FC01EB7C 7 fc01ec24 4 STR             R4, [R1,#0]
+sub_FC01EB7C 8 fc01ec38 4 LDMFD           SP!, {R3-R5}
+sub_FC01EB7C 9 fc01ec44 4 STR             R4, [R2,#0]
+sub_FC01EB7C 10 fc01ec58 4 LDR             R12, [R3,#0]
+sub_FC01EB7C 11 fc01ec64 4 LDMFD           SP!, {R3-R5}
+sub_FC01EC70 0 fc01ec70 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01EC70 1 fc01eca4 4 LDR             R0, =0xFC4BE000
+sub_FC01EC70 2 fc01ecc4 4 LDR             R1, [SP,#8]
+sub_FC01EC70 3 fc01ed08 4 LDR             R0, [R6,#0x3F0]
+sub_FC01EC70 4 fc01ed1c 4 BL              sub_FC01CE90
+sub_FC01EC70 5 fc01ed2c 4 MOV             R0, R5
+sub_FC01EC70 6 fc01ed30 4 ADD             SP, SP, #0x10
+sub_FC01EC70 7 fc01ed38 4 LDR             R0, [R0,#0x38]
+sub_FC01EC70 8 fc01ed50 4 LDR             R1, =(loc_FC021D68+3)
+sub_FC01ED70 0 fc01ed70 4 CMP             R0, #0
+sub_FC01ED70 1 fc01ed80 4 LDR             R2, =0xFC4BC000
+sub_FC01ED70 2 fc01ed8c 4 MOV             R0, R1
+sub_FC01ED98 0 fc01ed98 4 CMP             R1, #0
+sub_FC01ED98 1 fc01edac 4 LDR             R3, =0xFC4BE000
+sub_FC01ED98 2 fc01edc0 4 MOV             R0, R2
+sub_FC01EDCC 0 fc01edcc 4 CMP             R1, #0
+sub_FC01EDCC 1 fc01ede0 4 LDR             R12, =0xFC4BE000
+sub_FC01EDCC 2 fc01edfc 4 CMP             R0, #2
+sub_FC01EDCC 3 fc01ee08 4 LDR             R0, [R12,#0x34]
+sub_FC01EDCC 4 fc01ee14 4 MOV             R0, R3
+sub_FC01EDCC 5 fc01ee18 4 BX              LR
+sub_FC01EE20 0 fc01ee20 4 CMP             R1, #0
+sub_FC01EE20 1 fc01ee2c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01EE2C 0 fc01ee2c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01EE2C 1 fc01ee58 4 LDR             R0, [R5,#0]
+sub_FC01EE2C 2 fc01ee6c 4 LDR             R0, [R5,#8]
+sub_FC01EE2C 3 fc01ee80 4 LDR             R0, [R5,#0x14]
+sub_FC01EE2C 4 fc01ee9c 4 MOV             R2, #0x1C
+sub_FC01EE2C 5 fc01eeb0 4 LDR             R1, =sub_FC011688
+sub_FC01EE2C 6 fc01eee8 4 LDR             R0, [R4,#4]
+sub_FC01EE2C 7 fc01eef8 4 MOV             R2, #0x200
+sub_FC01EE2C 8 fc01ef10 4 LDR             R0, =0x50425342
+sub_FC01EF44 0 fc01ef44 4 STMFD           SP!, {R0-R2,R4-R11,LR}
+sub_FC01EF44 1 fc01ef6c 4 LDR             R0, [R9,#0x384]
+sub_FC01EF44 2 fc01ef78 4 CMP             R0, #3
+sub_FC01EF44 3 fc01ef80 4 LDR             R0, [SP,#0x538]
+sub_FC01EF44 4 fc01ef90 4 STR             R0, [R7,#0x108]
+sub_FC01EF44 5 fc01efa0 4 MOV             R11, #2
+sub_FC01EF44 6 fc01efa8 4 SUB             R0, R0, #1
+sub_FC01EF44 7 fc01efdc 4 MOV             R1, #0
+sub_FC01EF44 8 fc01effc 4 LDR             R0, [R9,#0x384]
+sub_FC01EF44 9 fc01f008 4 MOV             R2, #0x20
+sub_FC01EF44 10 fc01f028 4 MOV             R2, #0x14
+sub_FC01EF44 11 fc01f044 4 LDR             R0, [SP,#0x514]
+sub_FC01EF44 12 fc01f050 4 CMP             R9, #0
+sub_FC01EF44 13 fc01f060 4 CMP             R6, #3
+sub_FC01EF44 14 fc01f06c 4 CMP             R7, #0
+sub_FC01EF44 15 fc01f078 4 STR             R0, [R7,#0xFC]!
+sub_FC01EF44 16 fc01f08c 4 RSB             R0, R6, R6,LSL#4
+sub_FC01EF44 17 fc01f0a8 4 MOVS            R0, R7
+sub_FC01EF44 18 fc01f0b4 4 STR             R10, [R0,#0x100]!
+sub_FC01EF44 19 fc01f0c8 4 LDR             R1, [R8,#0xF4]
+sub_FC01EF44 20 fc01f0e0 4 MOVS            R0, R7
+sub_FC01EF44 21 fc01f0ec 4 STR             R1, [R0,#0x100]!
+sub_FC01EF44 22 fc01f0fc 4 MOV             R4, #5
+sub_FC01EF44 23 fc01f104 4 LDR             LR, [R8,#0xFC]
+sub_FC01EF44 24 fc01f11c 4 CMP             R1, #0
+sub_FC01EF44 25 fc01f124 4 CMP             R2, R0
+sub_FC01EF44 26 fc01f12c 4 LDRB            R3, [R1,R0]
+sub_FC01EF44 27 fc01f13c 4 ADD             R3, R0, #1
+sub_FC01EF44 28 fc01f150 4 ADD             R3, R0, #3
+sub_FC01EF44 29 fc01f164 4 ADD             R0, R0, LR
+sub_FC01EF44 30 fc01f17c 4 MOV             R4, #1
+sub_FC01EF44 31 fc01f180 4 CMP             R4, #0
+sub_FC01EF44 32 fc01f188 4 MOVS            R0, R7
+sub_FC01EF44 33 fc01f194 4 STR             R4, [R0,#0x100]!
+sub_FC01EF44 34 fc01f1a4 4 MOV             R4, #3
+sub_FC01EF44 35 fc01f1ac 4 MOV             R4, #0
+sub_FC01EF44 36 fc01f1b4 4 MOV             R2, R12
+sub_FC01EF44 37 fc01f1cc 4 MOVS            R1, R7
+sub_FC01EF44 38 fc01f1d8 4 B               loc_FC01F0FC
+sub_FC01EF44 39 fc01f1dc 4 RSB             R0, R5, R5,LSL#4
+sub_FC01EF44 40 fc01f204 4 MOVS            R1, R7
+sub_FC01EF44 41 fc01f210 4 B               loc_FC01F0FC
+sub_FC01EF44 42 fc01f214 4 LDR             R0, [SP,#0x528]
+sub_FC01EF44 43 fc01f228 4 CMP             R0, #3
+sub_FC01EF44 44 fc01f234 4 MOVS            R1, R7
+sub_FC01EF44 45 fc01f240 4 STR             R0, [R1,#0x100]!
+sub_FC01EF44 46 fc01f250 4 MOV             R4, #4
+sub_FC01EF44 47 fc01f258 4 CMP             R8, #1
+sub_FC01EF44 48 fc01f264 4 CMP             R8, #2
+sub_FC01EF44 49 fc01f270 4 LDR             R0, [SP,#0x528]
+sub_FC01EF44 50 fc01f288 4 MOVS            R1, R7
+sub_FC01EF44 51 fc01f294 4 B               loc_FC01F0FC
+sub_FC01EF44 52 fc01f298 4 MOV             R2, #0x100
+sub_FC01EF44 53 fc01f2c4 4 MOVS            R1, R7
+sub_FC01EF44 54 fc01f2d0 4 STR             R0, [R1,#0x100]!
+sub_FC01EF44 55 fc01f2dc 4 STR             R3, [R7,#0xFC]
+sub_FC01EF44 56 fc01f2e4 4 CMP             R8, #1
+sub_FC01EF44 57 fc01f2f0 4 CMP             R8, #2
+sub_FC01EF44 58 fc01f2fc 4 MOV             R1, SP
+sub_FC01EF44 59 fc01f310 4 MOVS            R0, R7
+sub_FC01EF44 60 fc01f31c 4 STR             R4, [R0,#0x100]!
+sub_FC01EF44 61 fc01f330 4 CMP             R8, #1
+sub_FC01EF44 62 fc01f340 4 CMP             R8, #2
+sub_FC01EF44 63 fc01f350 4 ADD             R0, R0, R1
+sub_FC01EF44 64 fc01f36c 4 LDR             R3, [R2,R0,LSL#2]
+sub_FC01EF44 65 fc01f378 4 MOVS            R1, R7
+sub_FC01EF44 66 fc01f388 4 STR             R0, [R1,#0x100]!
+sub_FC01EF44 67 fc01f398 4 ADD             R0, R0, #1
+sub_FC01EF44 68 fc01f3a4 4 CMP             R4, #0
+sub_FC01EF44 69 fc01f3ac 4 LDR             R1, [SP,R1,LSL#2]
+sub_FC01EF44 70 fc01f3bc 4 MOVS            R0, R7
+sub_FC01EF44 71 fc01f3c8 4 STR             R1, [R0,#0x100]!
+sub_FC01EF44 72 fc01f3d8 4 MOV             R4, #9
+sub_FC01EF44 73 fc01f3e0 4 CMP             R8, #1
+sub_FC01EF44 74 fc01f3e8 4 CMP             R8, #2
+sub_FC01EF44 75 fc01f3f0 4 MOVS            R0, R7
+sub_FC01EF44 76 fc01f3fc 4 STR             R8, [R0,#0x100]!
+sub_FC01EF44 77 fc01f410 4 LDR             R1, [SP,#0x14]
+sub_FC01EF44 78 fc01f420 4 LDR             R1, [SP,#0x18]
+sub_FC01EF44 79 fc01f430 4 LDR             R1, [SP,#0x1C]
+sub_FC01EF44 80 fc01f440 4 LDR             R1, [SP,#0x20]
+sub_FC01EF44 81 fc01f450 4 LDR             R2, [SP,#0x14]
+sub_FC01EF44 82 fc01f460 4 STR             R2, [R0,#0x100]!
+sub_FC01EF44 83 fc01f474 4 LDR             R1, [SP,#0x20]
+sub_FC01EF44 84 fc01f484 4 LDR             R1, [SP,#0x24]
+sub_FC01EF44 85 fc01f494 4 LDR             R1, [SP,#0x28]
+sub_FC01EF44 86 fc01f4a4 4 LDR             R0, [SP,#0x2C]
+sub_FC01EF44 87 fc01f4b4 4 LDR             R0, [SP,#0x30]
+sub_FC01EF44 88 fc01f4c4 4 LDR             R2, [SP,#0x20]
+sub_FC01EF44 89 fc01f4d4 4 STR             R2, [R0,#0x100]!
+sub_FC01EF44 90 fc01f4e0 4 STR             R3, [R7,#0xFC]
+sub_FC01EF44 91 fc01f4e8 4 CMP             R4, #0
+sub_FC01EF44 92 fc01f4f0 4 MOV             R11, #0xA
+sub_FC01EF44 93 fc01f4f8 4 LDR             R0, [SP,#0x514]
+sub_FC01EF44 94 fc01f508 4 CMP             R11, #0
+sub_FC01EF44 95 fc01f510 4 ADD             SP, SP, #0x400
+sub_FC01EF44 96 fc01f520 4 LDR             R0, [R9,#0x384]
+sub_FC01F580 0 fc01f580 4 STMFD           SP!, {R4-R12,LR}
+sub_FC01F580 1 fc01f638 4 CMP             R4, #0
+sub_FC01F580 2 fc01f644 4 CMP             R1, #2
+sub_FC01F580 3 fc01f680 4 LDR             R1, [R4],#8
+sub_FC01F580 4 fc01f690 4 CMP             R5, #0
+sub_FC01F580 5 fc01f69c 4 STR             R0, [R5,#0xFC]!
+sub_FC01F580 6 fc01f6ac 4 MOV             R4, #2
+sub_FC01F580 7 fc01f6b4 4 MOV             R4, #6
+sub_FC01F580 8 fc01f6bc 4 LDR             R0, [R4,#8]
+sub_FC01F580 9 fc01f6d8 4 CMP             R6, #2
+sub_FC01F580 10 fc01f6e4 4 CMP             R2, #0x20
+sub_FC01F580 11 fc01f6f0 4 MOV             R3, #0x3C8
+sub_FC01F580 12 fc01f710 4 ADD             R1, SP, #0x400
+sub_FC01F580 13 fc01f760 4 ADD             R0, SP, #0x400
+sub_FC01F580 14 fc01f794 4 CMP             R6, #1
+sub_FC01F580 15 fc01f7ac 4 CMP             R6, #2
+sub_FC01F580 16 fc01f7b8 4 ADD             R3, SP, #0x400
+sub_FC01F580 17 fc01f7f0 4 LDR             R1, [R4],#8
+sub_FC01F580 18 fc01f804 4 B               loc_FC01F8B0
+sub_FC01F580 19 fc01f808 4 MOV             R2, #8
+sub_FC01F580 20 fc01f81c 4 ADD             R0, SP, #0x590
+sub_FC01F580 21 fc01f844 4 CMP             R6, #1
+sub_FC01F580 22 fc01f85c 4 CMP             R6, #2
+sub_FC01F580 23 fc01f868 4 ADD             R3, SP, #0x400
+sub_FC01F580 24 fc01f89c 4 LDR             R1, [R4],#8
+sub_FC01F580 25 fc01f8b0 4 STR             R3, [R5,#0xFC]!
+sub_FC01F580 26 fc01f8c4 4 LDR             R1, [R7,#0xF4]
+sub_FC01F580 27 fc01f8d0 4 LDR             R2, [R7,#0xF0]
+sub_FC01F580 28 fc01f8e0 4 CMP             R2, #0x100
+sub_FC01F580 29 fc01f8e8 4 LDR             R0, [R7,#0xFC]
+sub_FC01F580 30 fc01f8f4 4 LDR             R3, [R7,#0xF8]
+sub_FC01F580 31 fc01f904 4 CMP             R3, #4
+sub_FC01F580 32 fc01f90c 4 MOV             R3, #0
+sub_FC01F580 33 fc01f924 4 STR             R1, [R5,#0xFC]!
+sub_FC01F580 34 fc01f934 4 MOV             R4, #3
+sub_FC01F580 35 fc01f93c 4 ADD             R0, SP, #0x10
+sub_FC01F580 36 fc01f94c 4 LDR             R2, [R7,#0xF0]!
+sub_FC01F580 37 fc01f960 4 STR             R0, [R5,#0xFC]!
+sub_FC01F580 38 fc01f970 4 MOV             R4, #5
+sub_FC01F580 39 fc01f978 4 LDR             R2, [R7,#0xF8]
+sub_FC01F580 40 fc01f990 4 CMP             R1, #0
+sub_FC01F580 41 fc01f998 4 CMP             R2, R0
+sub_FC01F580 42 fc01f9a0 4 LDRB            R12, [R1,R0]
+sub_FC01F580 43 fc01f9b0 4 ADD             R12, R0, #1
+sub_FC01F580 44 fc01f9c4 4 ADD             R12, R0, #3
+sub_FC01F580 45 fc01f9d8 4 ADD             R0, R0, R1
+sub_FC01F580 46 fc01f9f0 4 MOV             R0, R8
+sub_FC01F580 47 fc01f9f4 4 CMP             R0, #0
+sub_FC01F580 48 fc01f9fc 4 CMP             R5, #0
+sub_FC01F580 49 fc01fa08 4 STR             R0, [R5,#0xFC]!
+sub_FC01F580 50 fc01fa1c 4 MOV             R0, #0
+sub_FC01F580 51 fc01fa24 4 ADD             R10, SP, #0x31C
+sub_FC01F580 52 fc01fa38 4 LDR             R2, [R7,#0xF8]!
+sub_FC01F580 53 fc01fa4c 4 B               loc_FC01FB20
+sub_FC01F580 54 fc01fa50 4 LDR             R1, [R4,#0x18]
+sub_FC01F580 55 fc01fa6c 4 LDR             R1, [R4,#0x18]
+sub_FC01F580 56 fc01fa80 4 B               loc_FC01FB20
+sub_FC01F580 57 fc01fa84 4 CMP             R6, #1
+sub_FC01F580 58 fc01fa90 4 CMP             R6, #2
+sub_FC01F580 59 fc01fa9c 4 ADD             R7, SP, #0x400
+sub_FC01F580 60 fc01fab8 4 CMP             R5, #0
+sub_FC01F580 61 fc01fac8 4 STR             R2, [R5,#0xFC]!
+sub_FC01F580 62 fc01fadc 4 ADD             R7, SP, #0x218
+sub_FC01F580 63 fc01fb0c 4 MOV             R1, #0
+sub_FC01F580 64 fc01fb20 4 STR             R3, [R5,#0xFC]!
+sub_FC01F580 65 fc01fb34 4 CMP             R6, #1
+sub_FC01F580 66 fc01fb40 4 CMP             R6, #2
+sub_FC01F580 67 fc01fb4c 4 BIC             R0, R0, #3
+sub_FC01F580 68 fc01fb5c 4 LDR             R0, [SP,#0x238]
+sub_FC01F580 69 fc01fb74 4 STR             R3, [R5,#0xFC]!
+sub_FC01F580 70 fc01fb84 4 MOV             R4, #0xC
+sub_FC01F580 71 fc01fb88 4 LDR             R0, [SP,#0x5A0]
+sub_FC01F580 72 fc01fba0 4 CMP             R6, #1
+sub_FC01F580 73 fc01fbac 4 CMP             R6, #2
+sub_FC01F580 74 fc01fbb8 4 MOV             R1, #0xFFFFFFFF
+sub_FC01F580 75 fc01fbd4 4 LDR             R3, [R7,R0,LSL#2]
+sub_FC01F580 76 fc01fbe0 4 ADD             R0, R0, #1
+sub_FC01F580 77 fc01fbec 4 LDR             R3, [SP,#0x524]
+sub_FC01F580 78 fc01fbf8 4 LDR             R2, [R7,R0,LSL#2]
+sub_FC01F580 79 fc01fc08 4 STR             R0, [R5,#0x104]
+sub_FC01F580 80 fc01fc18 4 LDR             R0, [R7,R1,LSL#2]
+sub_FC01F580 81 fc01fc28 4 CMP             R5, #0
+sub_FC01F580 82 fc01fc34 4 B               loc_FC01FB84
+sub_FC01F580 83 fc01fc38 4 CMP             R6, #1
+sub_FC01F580 84 fc01fc44 4 CMP             R6, #2
+sub_FC01F580 85 fc01fc50 4 MOV             R1, R7
+sub_FC01F580 86 fc01fc68 4 MOV             R1, #0
+sub_FC01F580 87 fc01fc80 4 STR             R0, [R5,#0x100]
+sub_FC01F580 88 fc01fc8c 4 STR             R3, [R5,#0xFC]
+sub_FC01FC9C 0 fc01fc9c 4 STMFD           SP!, {R4-R7,LR}
+sub_FC01FC9C 1 fc01fcdc 4 MOV             R5, #0
+sub_FC01FC9C 2 fc01fd08 4 LDR             R6, [R1,#0x100]
+sub_FC01FC9C 3 fc01fd40 4 LDR             R12, [R3,#0x100]
+sub_FC01FE10 0 fc01fe10 4 STMFD           SP!, {R4-R8,LR}
+sub_FC01FE10 1 fc01fe34 4 CMP             R7, #0x100
+sub_FC01FE10 2 fc01fe40 4 MOV             R2, #0x100
+sub_FC01FE10 3 fc01fe5c 4 MOV             R2, #1
+sub_FC01FE10 4 fc01fe6c 4 LDRB            R1, [R6,R1]
+sub_FC01FE10 5 fc01fe80 4 SUB             R0, R7, R0
+sub_FC01FE10 6 fc01fe90 4 MOV             R12, R5,LSL#30
+sub_FC01FE10 7 fc01fee4 4 ADD             R0, R7, #3
+sub_FC01FE10 8 fc01feec 4 CMP             R0, #1
+sub_FC01FE10 9 fc01fef8 4 ADD             R1, R4, R0,LSL#2
+sub_FC01FE10 10 fc01ff0c 4 MOV             R0, #0
+sub_FC01FE10 11 fc01ff10 4 LDMFD           SP!, {R4-R8,PC}
+sub_FC01FF44 0 fc01ff44 4 STMFD           SP!, {R4-R6,LR}
+sub_FC01FF44 1 fc01ff74 4 LDRB            R2, [R1,R0]
+sub_FC01FF44 2 fc01ff80 4 ADD             R2, R1, R0
+sub_FC01FF44 3 fc01ff90 4 ADD             R0, R0, #1
+sub_FC01FF44 4 fc01ff98 4 ADD             R0, R0, #2
+sub_FC01FF44 5 fc01ffa4 4 CMP             R4, #0x10
+sub_FC01FF44 6 fc01ffb0 4 LDR             R12, [R5,#0]
+sub_FC01FF44 7 fc01ffc4 4 RSB             R3, R0, #0x100
+sub_FC01FF44 8 fc01ffe0 4 ADD             SP, SP, #0x108
+sub_FC020004 0 fc020004 4 STMFD           SP!, {R4,R5,LR}
+sub_FC020004 1 fc020030 4 LDR             R0, [R4,#0x100]
+sub_FC020004 2 fc020048 4 ADD             SP, SP, #0x104
+sub_FC020050 0 fc020050 4 CMP             R0, #0
+sub_FC020050 1 fc02005c 4 CMP             R1, #0
+sub_FC020050 2 fc020068 4 MOV             R12, #1
+sub_FC020050 3 fc02007c 4 BX              LR
+sub_FC020050 4 fc020080 4 MOV             R0, #6
+sub_FC020050 5 fc020088 4 MOV             R12, R0
+sub_FC020050 6 fc020094 4 LDRB            R1, [R2,#0]
+sub_FC020050 7 fc0200d4 4 ADD             R1, R0, R3,LSL#1
+sub_FC0200E8 0 fc0200e8 4 SUBS            R2, R2, #1
+sub_FC0200E8 1 fc0200f0 4 LDR             R3, [R0,R2,LSL#2]
+sub_FC0200E8 2 fc020100 4 MOV             R0, #0xFFFFFFFF
+sub_FC0200E8 3 fc020108 4 BLS             loc_FC020114
+sub_FC0200E8 4 fc02010c 4 MOV             R0, #1
+sub_FC0200E8 5 fc020114 4 SUBS            R2, R2, #1
+sub_FC0200E8 6 fc02011c 4 MOV             R0, #0
+sub_FC020124 0 fc020124 4 STMFD           SP!, {R4-R10,LR}
+sub_FC020124 1 fc020148 4 CMP             R7, #0
+sub_FC020124 2 fc020154 4 MOV             R2, R1
+sub_FC020124 3 fc02016c 4 LDRB            R3, [R0,#0]
+sub_FC020124 4 fc020178 4 SUBS            R2, R2, #1
+sub_FC020124 5 fc020188 4 TST             R1, #1
+sub_FC020124 6 fc020194 4 MOV             R0, #6
+sub_FC020124 7 fc02019c 4 SUB             R1, R0, #0x30
+sub_FC020124 8 fc0201ac 4 SUB             R1, R0, #0x41
+sub_FC020124 9 fc0201bc 4 SUB             R1, R0, #0x61
+sub_FC020124 10 fc0201cc 4 SXTB            R0, R0
+sub_FC020124 11 fc0201d0 4 CMP             R0, #0xF
+sub_FC020124 12 fc0201dc 4 TST             R4, #1
+sub_FC020124 13 fc0201f4 4 LDRB            R0, [R6,R5]
+sub_FC020124 14 fc020204 4 MOV             R0, R4,LSR#1
+sub_FC020124 15 fc020214 4 MOV             R0, #1
+sub_FC020278 0 fc020278 4 LDR             R0, [R0,#4]
+sub_FC020294 0 fc020294 4 LDR             R0, [R0,#4]
+sub_FC0202B0 0 fc0202b0 4 LDR             R0, [R0,#4]
+sub_FC0202C0 0 fc0202c0 4 LDR             R0, [R0,#4]
+sub_FC0202FC 0 fc0202fc 4 CMP             R1, #0
+sub_FC0202FC 1 fc020304 4 LDR             R0, =0x40400
+sub_FC0202FC 2 fc020310 4 LDR             R0, [R0,#4]
+sub_FC0202FC 3 fc01495c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC02032C 0 fc02032c 4 LDR             R3, [R0,#4]
+sub_FC020388 0 fc020388 4 STMFD           SP!, {R4,LR}
+sub_FC020388 1 fc0203b8 4 LDR             R0, [R4,#4]
+sub_FC020388 2 fc0203d8 4 LDR             R0, [R4,#4]
+sub_FC020388 3 fc0203f4 4 MOV             R2, #0x107
+sub_FC020388 4 fc020418 4 LDR             R0, [R0,#4]
+sub_FC020388 5 fc02042c 4 MOV             R1, #0x101
+sub_FC0204CC 0 fc0204cc 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0204CC 1 fc0204e0 4 MOV             R0, #1
+sub_FC0204CC 2 fc0204ec 4 LDR             R0, [R5,#4]
+sub_FC0204CC 3 fc020500 4 CMP             R4, R6
+sub_FC0204CC 4 fc020508 4 LDR             R0, [R5,#4]
+sub_FC020520 0 fc020520 4 STMFD           SP!, {R4-R12,LR}
+sub_FC020520 1 fc020538 4 MOV             R1, #0x316
+sub_FC020520 2 fc020548 4 CMP             R4, #0
+sub_FC020520 3 fc020550 4 MOV             R2, #0x40
+sub_FC020520 4 fc0205b8 4 B               loc_FC020638
+sub_FC020520 5 fc0205bc 4 LDMFD           SP!, {R4-R12,LR}
+sub_FC020520 6 fc0205c8 4 LDR             R0, [R5,#4]
+sub_FC020520 7 fc0205e4 4 MOV             R4, #0
+sub_FC020520 8 fc0205ec 4 MOV             R0, #1
+sub_FC020520 9 fc0205f8 4 LDR             R0, [R5,#4]
+sub_FC020520 10 fc02060c 4 CMP             R4, R10
+sub_FC020520 11 fc020614 4 LDR             R0, [R5,#4]
+sub_FC020520 12 fc020630 4 CMP             R9, #0
+sub_FC020520 13 fc020638 4 LDR             R0, [R5,#4]
+sub_FC020520 14 fc02065c 4 MOV             R4, #0
+sub_FC020520 15 fc020664 4 MOV             R0, #1
+sub_FC020520 16 fc020670 4 LDR             R0, [R5,#4]
+sub_FC020520 17 fc020684 4 CMP             R4, R10
+sub_FC020520 18 fc02068c 4 LDR             R0, [R5,#4]
+sub_FC020520 19 fc0206a8 4 MOV             R1, #0
+sub_FC020520 20 fc01495c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC020738 0 fc020738 4 STMFD           SP!, {R4-R12,LR}
+sub_FC020738 1 fc020764 4 MOV             R1, #0x37D
+sub_FC020738 2 fc020774 4 CMP             R4, #0
+sub_FC020738 3 fc02077c 4 CMP             R5, #0
+sub_FC020738 4 fc020784 4 CMP             R5, R4
+sub_FC020738 5 fc020794 4 ORR             R0, R0, R4
+sub_FC020738 6 fc0207a8 4 MOV             R2, R5
+sub_FC020738 7 fc0207bc 4 MOV             R2, R4
+sub_FC020738 8 fc0207d0 4 CMP             R5, #0x1000
+sub_FC020738 9 fc0207d8 4 MOV             R0, R11
+sub_FC020738 10 fc0207e4 4 LDR             R1, [R6,#4]
+sub_FC020738 11 fc020810 4 LDR             R0, [R6,#4]
+sub_FC020738 12 fc020824 4 AND             R0, R0, #0x200
+sub_FC020738 13 fc020834 4 LDR             R1, [R6,#4]
+sub_FC020738 14 fc020848 4 CMP             R9, #0
+sub_FC020738 15 fc020850 4 CMP             R0, #4
+sub_FC020738 16 fc020858 4 CMP             R4, #0
+sub_FC020738 17 fc020860 4 B               loc_FC020834
+sub_FC020738 18 fc020864 4 LDR             R1, [R6,#4]
+sub_FC020738 19 fc02087c 4 CMP             R0, #4
+sub_FC020738 20 fc020884 4 CMP             R4, #0
+sub_FC020738 21 fc02088c 4 B               loc_FC020864
+sub_FC020738 22 fc020890 4 TST             R0, #0x100
+sub_FC020738 23 fc020898 4 CMP             R5, #0
+sub_FC020738 24 fc0208a0 4 AND             R0, R0, #0x100
+sub_FC020738 25 fc0208ac 4 LDR             R2, [R6,#4]
+sub_FC020738 26 fc0208cc 4 CMP             R5, #0
+sub_FC020738 27 fc0208d4 4 MOV             R10, #0
+sub_FC020738 28 fc0208dc 4 MOV             R0, #1
+sub_FC020738 29 fc0208e8 4 CMP             R4, #0
+sub_FC020738 30 fc0208f4 4 MOV             R1, #0
+sub_FC020738 31 fc01495c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC020738 32 fc020b8c 4 STMFD           SP!, {R4-R10,LR}
+sub_FC020738 33 fc020520 4 STMFD           SP!, {R4-R12,LR}
+sub_FC020738 34 fc020388 4 STMFD           SP!, {R4,LR}
+sub_FC02099C 0 fc02099c 4 LDR             R0, [R0,#4]
+sub_FC02099C 1 fc0209b0 4 LDR             R0, [R0,#0x18]
+sub_FC02099C 2 fc0209c8 4 BX              LR
+sub_FC0209CC 0 fc0209cc 4 STMFD           SP!, {R4-R6,LR}
+sub_FC0209CC 1 fc0209e8 4 CMP             R5, #0
+sub_FC0209CC 2 fc0209f0 4 CMP             R5, #1
+sub_FC0209CC 3 fc0209f8 4 CMP             R5, #3
+sub_FC0209CC 4 fc020a00 4 ORR             R2, R5, R6
+sub_FC0209CC 5 fc020a14 4 LDR             R0, [R4,#4]
+sub_FC0209CC 6 fc020a3c 4 LDMFD           SP!, {R4-R6,PC}
+sub_FC0209CC 7 fc020a40 4 LDR             R0, [R4,#4]
+sub_FC0209CC 8 fc020a54 4 LDR             R1, [R0,#0]
+sub_FC0209CC 9 fc020a70 4 B               loc_FC020A98
+sub_FC0209CC 10 fc020a74 4 LDR             R0, [R4,#4]
+sub_FC0209CC 11 fc020a98 4 LDR             R0, [R4,#4]
+sub_FC0209CC 12 fc015e70 4 STMFD           SP!, {R4-R8,LR}
+sub_FC0209CC 13 fc01495c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC020AE8 0 fc020ae8 4 STMFD           SP!, {R4-R6,LR}
+sub_FC020AE8 1 fc020afc 4 MOV             R0, #1
+sub_FC020AE8 2 fc020b08 4 LDR             R0, [R5,#4]
+sub_FC020AE8 3 fc020b1c 4 CMP             R4, R6
+sub_FC020AE8 4 fc020b24 4 CMP             R4, R6
+sub_FC020B38 0 fc020b38 4 STMFD           SP!, {R4-R8,LR}
+sub_FC020B38 1 fc020b50 4 MOV             R0, #1
+sub_FC020B38 2 fc020b5c 4 LDR             R0, [R5,#4]
+sub_FC020B38 3 fc020b78 4 LDR             R0, [R5,#4]
+sub_FC020B8C 0 fc020b8c 4 STMFD           SP!, {R4-R10,LR}
+sub_FC020B8C 1 fc020ba8 4 MOV             R1, #0x2BF
+sub_FC020B8C 2 fc020bb8 4 CMP             R8, #0
+sub_FC020B8C 3 fc020bc0 4 MOV             R2, #0x80
+sub_FC020B8C 4 fc020c0c 4 B               loc_FC020C60
+sub_FC020B8C 5 fc020c10 4 LDMFD           SP!, {R4-R10,LR}
+sub_FC020B8C 6 fc020c1c 4 LDR             R0, [R7,#4]
+sub_FC020B8C 7 fc020c38 4 MOV             R0, #1
+sub_FC020B8C 8 fc020c48 4 LDR             R0, [R0,#0x38]
+sub_FC020B8C 9 fc020c60 4 MOV             R1, #0
+sub_FC020B8C 10 fc01495c 4 STMFD           SP!, {R4-R6,LR}
+sub_FC020CC8 0 fc020cc8 4 MOV             R3, R0
+sub_FC020CC8 1 fc020ce0 4 LDR             R4, [R3,#0]
+sub_FC020CC8 2 fc020d08 4 LDMFD           SP!, {R4,R5}
+sub_FC020D10 0 fc020d10 4 STMFD           SP!, {LR}
+sub_FC020D90 0 fc020d90 4 MRC             p15, 0, R2,c0,c0, 0
+sub_FC020E00 0 fc020e00 4 MCR             p15, 0, R0,c7,c5, 0
+sub_FC020E10 0 fc020e10 4 MOV             R6, R1
+sub_FC020E10 1 fc020e4c 4 MCR             p15, 0, R1,c9,c0, 6
+sub_FC020E10 2 fc020e5c 4 MOV             R1, #0
+sub_FC020E10 3 fc020ed8 4 MRC             p15, 0, R0,c0,c0, 0
+sub_FC020E10 4 fc020ef8 4 MRC             p15, 0, R0,c0,c0, 5
+sub_FC020E10 5 fc020f10 4 MRC             p15, 0, R0,c0,c0, 0
+sub_FC020E10 6 fc020f34 4 MOV             R1, #8
+sub_FC020E10 7 fc020f8c 4 MOV             R1, #0
+sub_FC020E10 8 fc020fa8 4 LDRB            R1, [R11,#0x18]
+sub_FC020E10 9 fc020fb4 4 STMFD           SP!, {LR}
+sub_FC020E10 10 fc020fc0 4 BX              LR
+sub_FC020FB4 0 fc020fb4 4 STMFD           SP!, {LR}
+sub_FC020FB4 1 fc020fc0 4 BX              LR
+sub_FC020FC4 0 fc020fc4 4 MRC             p15, 0, R1,c1,c0, 2
+sub_FC020FC4 1 fc02100c 4 MRC             p15, 2, R1,c15,c15, 0
+sub_FC020FC4 2 fc0210ac 8 MOV             R1, #0xFFFFFF0E
+sub_FC020FC4 3 fc0210c8 4 MRC             p15, 0, R1,c15,c15, 0
+sub_FC020FC4 4 fc0210e0 8 MOV             R1, #0xFFFFFF0F
+sub_FC020FC4 5 fc0210fc 4 MRC             p15, 0, R1,c15,c15, 0
+sub_FC020FC4 6 fc021108 8 MOV             R1, #0xFFFFFF0D
+sub_FC020FC4 7 fc021124 4 MOV             R1, #4
+sub_FC020FC4 8 fc021140 4 BX              LR
+sub_FC021144 0 fc021144 4 MOV             R0, #0
+sub_FC021194 0 fc021194 4 MOV             R1, #0xFFFFFFFF
+sub_FC0211B0 0 fc0211b0 4 MRC             p15, 0, R0,c0,c0, 0
+sub_FC0211E4 0 fc0211e4 4 MRC             p15, 0, R0,c0,c0, 0
+sub_FC0211E4 1 fc021204 4 CPS             #0x16
+sub_FC0211E4 2 fc021238 4 BX              LR
+sub_FC02123C 0 fc02123c 4 MSR             CPSR_c, #0xD6
+sub_FC021288 0 fc021288 4 MRC             p15, 0, R0,c1,c0, 1
+sub_FC0212B4 0 fc0212b4 4 MRC             p15, 0, R0,c0,c0, 0
+sub_FC0212B4 1 fc0212cc 4 MOV             R1, #4
+sub_FC0212B4 2 fc0212ec 8 MOV             R2, #0x511F0400
+sub_FC0212B4 3 fc021308 4 MOV             R1, #4
+sub_FC0212B4 4 fc021324 4 MOV             R1, #4
+sub_FC0212B4 5 fc021340 4 BX              LR
+sub_FC021344 0 fc021344 4 MRC             p15, 0, R0,c0,c0, 0
+sub_FC021344 1 fc02135c 4 MOV             R2, #0x500
+sub_FC021344 2 fc021380 4 MOV             R1, #0
+sub_FC021344 3 fc0213b8 4 BX              LR
+sub_FC021420 0 fc021420 4 CLZ             R2, R1
+sub_FC021420 1 fc021444 4 SMLAWT          R1, R1, R12, R1
+sub_FC021420 2 fc02145c 4 UMULL           R2, R12, R0, R1
+sub_FC021420 3 fc021484 4 RSB             R2, R2, #0
+sub_FC021420 4 fc0214b8 4 MOVCS           R0, R0
+sub_FC021420 5 fc0214c4 4 STMFD           SP!, {R0,LR}
+sub_FC0214C4 0 fc0214c4 4 STMFD           SP!, {R0,LR}
+sub_FC0215A4 0 fc0215a4 4 STMFD           SP!, {R0,R4,LR}

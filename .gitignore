@@ -1,0 +1,7 @@
+*.pyc
+*.o
+*.log
+*.bin
+*.elf
+*.mbn
+

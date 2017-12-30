@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<data>
+  <program SECTOR_SIZE_IN_BYTES="512" file_sector_offset="0" filename="egg.bin" label="sbl1bak" num_partition_sectors="1024" physical_partition_number="0" size_in_KB="512.0" sparse="false" start_byte_hex="0xc082000" start_sector="394256"/>
+</data>
