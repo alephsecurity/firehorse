@@ -60,6 +60,6 @@ by Roee Hay & Noam Hadad, Aleph Research
 #define ADDR_MMC_GET_DEVICE_BLOCKSIZE  (void *)(0x8F60F8D0)
 #define ADDR_GET_SCRATCH_ADDRESS       (void *)(0x8F601288)
 
-#define RAMDISK_SIZE            (2016526)
+#define RAMDISK_SIZE            (2017070)
 
 #endif
