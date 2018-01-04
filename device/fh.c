@@ -36,11 +36,12 @@ firehorse *getcontext()
     int i = 0;
     bp *bps = (bp *) fh->bps;
  
+    /*
     for (i = 0; i < bplen; i++)
     {
         bps[i].instsize = 4;
     }
- 
+    */
     fh->patches = (patch *)(bps + bplen);
  
 
@@ -121,7 +122,7 @@ bp *fh_reproduce_breakpoints_and_recover_instruction(u_int32 *lr)
         // D("BP: %08x", bps[i].va);
         if (bps[i].va == lr)
         {
-            D("Resolved breakpoint: %0d", i);
+           // D("Resolved breakpoint: %0d", i);
             b = &bps[i];
             break;
         }
@@ -132,15 +133,24 @@ bp *fh_reproduce_breakpoints_and_recover_instruction(u_int32 *lr)
         return NULL;       
     }
 
-    *(u_int32 *)(b->va) = (u_int32)b->inst;
-    D("reproducing instruction 4: %08x = %08x", b->va, *(u_int32 *)(b->va));
+    switch (b->instsize)
+    {
+        case 4: *(u_int32 *)(b->va) = (u_int32)b->inst; break;
+        case 2: *(u_int16 *)(b->va) = (u_int16)b->inst; break;
+    }
+
+    //D("reproducing instruction 4: %08x = %08x", b->va, *(u_int32 *)(b->va));
 
     for (i = 0; i < fh->bplen; i++)
     {
         if (0 == (bps[i].flag & BP_FLAG_ONCE) && (&bps[i] != b) && (bps[i].type == b->type))
         {
-            *(u_int32 *)(bps[i].va) = 0xFFFFFFFF;
-            D("reproducing breakpoint 4: %08x = %08x", bps[i].va, *(u_int32 *)(bps[i].va));
+            switch (bps[i].instsize)
+            {
+                case 4: *(u_int32 *)(bps[i].va) = UNDEF_INST_32; break;
+                case 2: *(u_int16 *)(bps[i].va) = UNDEF_INST_16; break;
+            }
+      //      D("reproducing breakpoint 4: %08x = %08x", bps[i].va, *(u_int32 *)(bps[i].va));
         }
     }
 
@@ -164,7 +174,7 @@ void fh_enable_breakpoints()
     //    D("Reading breakpoint @ %016lx w/ va %08x", b, b->va);
        if (fh->mode == b->type)
        {
-        // D("Recovering instruction for bp va 0x%08x", b->va);
+        // D("Saving original instruction for bp va 0x%08x", b->va);
         switch (b->instsize)
         {
             case 4:
@@ -181,16 +191,17 @@ void fh_enable_breakpoints()
    {
        bp *b = &fh->bps[i];
 
+   //    D("bp->type = %02d, current_mode = %02d", b->type, fh->mode);
        if (fh->mode == b->type)
        {
-        D("Installing bp for va 0x%08x", b->va);
+        D("Installing bp for va 0x%08x, size=%0d", b->va, b->instsize);
         switch (b->instsize)
         {
             case 4:
-                *(u_int32 *)(b->va) = 0xFFFFFFFF;
+                *(u_int32 *)(b->va) = UNDEF_INST_32;
                 break;
             case 2:
-                *(u_int16 *)(b->va) = 0xFFFF;
+                *(u_int16 *)(b->va) = UNDEF_INST_16;
                 break;
         }
     

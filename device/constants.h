@@ -19,7 +19,10 @@ by Roee Hay & Noam Hadad, Aleph Research
 #define ADDR_REMOTE_CALLBACK(n, dst) (void *)((ADDR_CALLBACK(n)-get_fh_entry()+dst))
 
 
+#define UNDEF_INST_32 (0xFFFFFFFF)
+#define UNDEF_INST_16 (0xDE00)
 
+//#define UNDEF_INST_16 (0xFC10)
 
 
 #endif

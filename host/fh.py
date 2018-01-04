@@ -105,11 +105,11 @@ class BreakpointManager:
         block = self.bbdb.get_func_entry(fname)
         self.bp(mode, block.va, flag=flag, cb=cb, msg=block.fname[:BP_MSG_LEN])
 
-    def bp_programmer(self, addr, flag=0, cb=0, msg=""):
-        self.bp(MODE_PROGRAMMER, addr, 4, flag, cb, msg)
+    def bp_programmer(self, addr, size=4, flag=0, cb=0, msg=""):
+        self.bp(MODE_PROGRAMMER, addr, size, flag, cb, msg)
 
-    def bp_pbl(self, addr, flag=0, cb=0, msg=""):
-        self.bp(MODE_PBL, addr, 4, flag, cb, msg)
+    def bp_pbl(self, addr, size=4, flag=0, cb=0, msg=""):
+        self.bp(MODE_PBL, addr, size, flag, cb, msg)
         
 
     def bp_sbl(self, addr, size=4, flag=0, cb=0, msg=""):
@@ -124,7 +124,7 @@ class BreakpointManager:
     def trace_function(self, mode, fname, flag = 0, cb = 0):
         for block in self.bbdb.get_blocks_for_func(fname):
             msg = "%s-%d" % (block.fname[:BP_MSG_LEN - 4], block.bbid)
-            self.bp(mode, block.va, flag=flag, cb=cb, msg=msg[:BP_MSG_LEN])
+            self.bp(mode, block.va, size=block.instsize, flag=flag, cb=cb, msg=msg[:BP_MSG_LEN])
 
 
     def pack(self):
@@ -132,7 +132,9 @@ class BreakpointManager:
         l = 0
         for b in sorted([bp.addr for bp in self.bps]):
             if b - l < 4:
-                assert 0 == 1, "adjacent breakpoint detected: %08x" % b
+#                assert 0 == 1, "adjacent breakpoint detected: %08x" % b
+                pass
+
             l = b
 
         bps = b""
@@ -415,12 +417,13 @@ class BasicBlock:
 class BasicBlocks:
     def __init__(self, path=None):
 
-        if None == path:
-            data = b""
-        else:
-            data = file(path, "rb").read()
-            
         self.blocks = {}
+
+        if None == path:
+           return
+        
+        data = file(path, "rb").read()
+
 
         for l in data.split("\n"):
             b = l.split(" ")

@@ -38,8 +38,6 @@ int dbg(char *msg, int line, int flag)
    u_int32 fixedlr = x[14];
    fixedlr -= thumb ? 2 : 4;
 
-   D("SAVED SP = %08x",  x[13]);
-//    DD("verifying pages");
 
 #ifdef VALIDATE_PAGES
    fh_verify_pages();   
@@ -78,7 +76,7 @@ int dbg(char *msg, int line, int flag)
 #endif
        if (NULL != b)
        {
-           D("bkva: %08x bkinst: %08x", b->va, b->inst);
+           D("bkva: %08x bkinst: %08x instsize: %2d", b->va, b->inst, b->instsize);
                
            if (0 != b->callback)
            {
