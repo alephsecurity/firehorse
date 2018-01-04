@@ -5,7 +5,7 @@
 
 .DEFAULT_GOAL := all
 
-DEVICE = cheeseburger
+DEVICE = nokia6
 BUILD_DIR = ./build
 LD_SCRIPT := ./fh.ld
 

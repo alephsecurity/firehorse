@@ -494,16 +494,16 @@ def do_cmd(args):
         return
 
     if argv0 == "run":
-        print 'uploading...'
+        I('uploading...')
         Framework.upload(int(argv2,16), argv1)
-        print 'executing...'
+        I('executing...')
         Framework.exe(int(argv2,16))
         return
 
     if argv0 == "runt":
-        print 'uploading...'
+        I('uploading...')
         Framework.upload(int(argv2,16), argv1)
-        print 'executing...'
+        I('executing...')
         Framework.exe(int(argv2,16)+1)
         return
 
@@ -522,7 +522,7 @@ def do_cmd(args):
         return
 
 
-    if argv0 == "exe64":
+    if argv0 == "exec64":
         Framework.exe64(int(argv1,16))
         I("ok")
         return
@@ -536,7 +536,7 @@ def do_cmd(args):
         return
 
     if argv0 == "sendfile":    
-        sendfile(argv1, int(argv2,16))
+        Framework.sendfile(argv1, int(argv2,16))
     
 
 
