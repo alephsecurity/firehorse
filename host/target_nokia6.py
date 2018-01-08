@@ -195,8 +195,10 @@ def apply_breakpoints(m):
     
     cmd = Commands()
 
-    m.break_function(MODE_PBL, "pbl_sense_jtag_test_points_edl", flag=BP_FLAG_ONCE, cb=cmd.DISABLE_UART)
+    m.break_function(MODE_PBL, "pbl_sense_jtag", flag=BP_FLAG_ONCE, cb=cmd.DISABLE_UART)
     m.break_function(MODE_PBL, "pbl_jmp_to_sbl", flag=BP_FLAG_ONCE, cb=cmd.CB_SBLPATCHER)
+
+    m.bp_sbl(0x803D05E, size=2, msg="Patch TrustZone", cb=cmd.PATCH_TZ)
     m.bp_sbl(0x0803E220, size=2, msg="SBLEnd", cb=cmd.ABL_PATCHER)
     m.bp_abl(0x8F6178F8, msg="beforelinux", cb=cmd.BEFORE_LINUX)
     m.bp_abl(0x8F633754, msg="mmcread2", cb=cmd.MMC_READ)

@@ -28,7 +28,7 @@ STACKHOOK(pblpatcher)
     DD("Good bye from PBL patcher");
 }
 
-void cb_disablejtag(cbargs *args)
+void cb_patchtz(cbargs *args)
 {
  
 }

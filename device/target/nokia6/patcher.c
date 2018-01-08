@@ -116,7 +116,13 @@ void cb_bootlinux(cbargs *cb)
 }
 
 
-void cb_disablejtag(cbargs *args)
+void cb_patchtz(cbargs *cb)
 {
- 
+    u_int8 *write_addr = (u_int8*)0x865EE514;
+    u_int32 tz_addr = 0x86500000;
+    DD("tz @0x86500000:");
+    fh_memdump((u_int32)tz_addr, 0x20);
+    *write_addr = 'x';
+    DD("tz @0x865EE514:");
+    fh_memdump((u_int32)write_addr, 0x20);
 }

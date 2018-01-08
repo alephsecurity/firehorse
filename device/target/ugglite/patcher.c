@@ -26,7 +26,7 @@ STACKHOOK(pblpatcher)
     
 }
 
-void cb_disablejtag(cbargs *args)
+void cb_patchtz(cbargs *args)
 {
 }
 void cb_sblpatcher(cbargs *args)

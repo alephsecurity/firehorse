@@ -41,7 +41,7 @@ B 0                         // CMD_CB_READUSB
 B cb_mmcread                // CMD_MMC_READ
 B cb_bootlinux              // CMD_BOOTLINUX
 B _shook_fhpatcher          // CMD_FH_PATCHER
-B cb_disablejtag            // CMD_DISABLE_JTAG
+B cb_patchtz                // CMD_PATCH_TZ
 B 0                         // CMD_DUMP_STRUCTS
 B 0                         // CMD_MINI_SNPRINTF
 B fh_log_msg                // CMD_FH_LOG
