@@ -40,7 +40,9 @@ def main():
 
     if args.moreverbose:
         lg.setVerbose(True)
-
+        
+    if not os.path.exists("../tmp"):
+        os.mkdir("../tmp")
     try:
         target.set_target(args.target_name, args.com)
     except KeyError:
