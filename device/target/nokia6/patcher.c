@@ -118,6 +118,7 @@ void cb_bootlinux(cbargs *cb)
 
 void cb_patchtz(cbargs *cb)
 {
+    /*
     u_int8 *write_addr = (u_int8*)0x865EE514;
     u_int32 tz_addr = 0x86500000;
     DD("tz @0x86500000:");
@@ -125,4 +126,25 @@ void cb_patchtz(cbargs *cb)
     *write_addr = 'x';
     DD("tz @0x865EE514:");
     fh_memdump((u_int32)write_addr, 0x20);
+    */
+
+    //write jump to dummy code (located at 0x86503B90) at address 0x86501340
+    u_int32 *call_addr = (u_int32*)0x86500008;
+
+    //set the hook
+    *call_addr = 0x94000EE2; //BL 0x86503B90
+
+    //write payload
+    u_int32 *payload_addr = 0x86503B90;
+
+ 
+    //return to hooked code
+    *(payload_addr++) = 0x58000040;//ldr x0, 0x8 -> 0x86501340
+    *(payload_addr++) = 0xD61F0000;//BR X0
+    *(payload_addr++) = 0x86501340;//value for x0
+
+    DD("tz @0x86503B90:");
+    fh_memdump(0x86503B90, 0x20);
+    DD("tz @0x86500008:");
+    fh_memdump(0x86500008, 0x10);
 }
