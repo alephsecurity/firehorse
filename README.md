@@ -1,5 +1,5 @@
 # firehorse # 
-By Roee Hay & Noam Hadad, Aleph Reseserch, HCL Technologies 
+By Roee Hay ([@roeehay](https://twitter.com/roeehay)) & Noam Hadad, Aleph Reseserch, HCL Technologies 
 
 Research & Exploitation framework for Qualcomm EDL Firehose programmers.
 
