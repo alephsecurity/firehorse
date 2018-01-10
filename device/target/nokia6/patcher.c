@@ -72,14 +72,18 @@ void cb_ablpatcher(cbargs *args)
 
 void patch_kernel()
 {
-    char foo2[]=  "hello from linux!!! foo";  
-    memcpy((void *)(0x10080000+0xEE8D10), foo2, sizeof(foo2));
+    char foo[]=  "hello from linux!!! foo";  
+    memcpy((void *)(0x10080000+0xEE8D10), foo, sizeof(foo));
 }
 
 void cb_before_linux()
 {
     patch_kernel();
     memcpy(ADDR_RAMDISK, ADDR_SCRATCH_RAMDISK, RAMDISK_SIZE);
+
+    //make sure the tz hook was executed
+    DD("TZ hook write address was 0x8F91FFF8, dumping memory @0x8F91FFF0:");
+    fh_memdump(0x8F91FFF0, 0x10);
     
 }
 
@@ -118,30 +122,27 @@ void cb_bootlinux(cbargs *cb)
 
 void cb_patchtz(cbargs *cb)
 {
-    /*
-    u_int8 *write_addr = (u_int8*)0x865EE514;
-    u_int32 tz_addr = 0x86500000;
-    DD("tz @0x86500000:");
-    fh_memdump((u_int32)tz_addr, 0x20);
-    *write_addr = 'x';
-    DD("tz @0x865EE514:");
-    fh_memdump((u_int32)write_addr, 0x20);
-    */
-
-    //write jump to dummy code (located at 0x86503B90) at address 0x86501340
+    //patch the function call at 0x86500008 with a call to our code (located at 0x86503B90) 
     u_int32 *call_addr = (u_int32*)0x86500008;
+    *call_addr = 0x94000EE2;                        // BL 0x86503B90
 
-    //set the hook
-    *call_addr = 0x94000EE2; //BL 0x86503B90
+    
+    u_int32 *payload_addr = (u_int32*)0x86503B90;   // write payload at 0x86503B90
+    u_int64 *constants_addr;
 
-    //write payload
-    u_int32 *payload_addr = 0x86503B90;
-
+    //write the address in the address 
+    *(payload_addr++) = 0x580000C0;                 // LDR X0, 0x18 -> loads the value in (**) to X0
+    *(payload_addr++) = 0xF9000000;                 // STR X0, [X0]
  
     //return to hooked code
-    *(payload_addr++) = 0x58000040;//ldr x0, 0x8 -> 0x86501340
-    *(payload_addr++) = 0xD61F0000;//BR X0
-    *(payload_addr++) = 0x86501340;//value for x0
+    *(payload_addr++) = 0x58000040;                 // LDR x0, 0x8 -> loads the value in (*)
+    *(payload_addr++) = 0xD61F0000;                 // BR X0
+
+    // constants
+    constants_addr = (u_int64*)payload_addr;
+    *(constants_addr++) = 0x86501340;               // (*) return value for x0
+    *(constants_addr++) = 0x8F91FFF8;               // (**) first value for x0
+
 
     DD("tz @0x86503B90:");
     fh_memdump(0x86503B90, 0x20);
