@@ -5,6 +5,7 @@ by Roee Hay & Noam Hadad, Aleph Research
 
 #include "fh.h"
 
+//addr_entry will hold the loading address of the firehorse payload - all other addresses are relative to addr_entry
 static void *addr_entry = (void *)0x66666666;
 
 void set_fh_entry(void *x) { addr_entry = x; }

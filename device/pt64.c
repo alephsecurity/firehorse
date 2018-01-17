@@ -7,17 +7,24 @@ by Roee Hay & Noam Hadad, Aleph Research
 
 u_int32 pt_get_index(u_int32 *va, u_int8 level);
 
+
+/*
+ * Sets entries in all levels of page table as writable for a given virtual address
+ */
 void pt64_set_attr_writable(u_int32 *va)
 {
-  u_int64 *next = get_ttbr0_el1();
-  u_int8 level = 1;
-  while (next != (u_int64 *)-1)
-  {
-    next = pt64_set_attr_writable_walk(next, va, level++);
-  }
-
+    u_int64 *next = get_ttbr0_el1();
+    u_int8 level = 1;
+    while (next != (u_int64 *)-1)
+    {
+        next = pt64_set_attr_writable_walk(next, va, level++);
+    }
 }
 
+
+/*
+ * Copy all attribuites in all levels of page table entries for one virtual address (dst_va) from the attributes of another virtual address (src_va)
+ */
 void pt64_copy_attr(u_int32 *dst_va, u_int32 *src_va)
 {
     ASSERT(TCR_GET_T0SZ(get_tcr_el1())>=25 && TCR_GET_T0SZ(get_tcr_el1()))<=33, "unsupported tngz value");
@@ -47,6 +54,9 @@ void pt64_copy_attr(u_int32 *dst_va, u_int32 *src_va)
 }
 
 
+/*
+ * Returns the index of an entry in a certain level of the page table  
+ */
 u_int32 pt_get_index(u_int32 *va, u_int8 level)
 {
     /* not tested */
@@ -67,6 +77,10 @@ u_int32 pt_get_index(u_int32 *va, u_int8 level)
     return -1;
 }
 
+
+/*
+ * Sets entry (in the specified level of the page table) of the given virtual address as writable 
+ */
 u_int64 *pt64_set_attr_writable_walk(u_int64 *base, u_int32 *va, u_int8 level)
 {
 
@@ -109,6 +123,7 @@ u_int64 *pt64_set_attr_writable_walk(u_int64 *base, u_int32 *va, u_int8 level)
 
  
 }
+
 
 void pt64_dump(u_int64 e)
 {

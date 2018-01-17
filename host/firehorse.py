@@ -31,7 +31,7 @@ def main():
     parser.add_argument('-s','--hello', dest='hello', action='store_true', help='', default=False)
     parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', help='Enable verbose logging')
     parser.add_argument('-vv', '--moreverbose', action='store_true', dest='moreverbose', help='Even more logging')
-    parser.add_argument('cmd', nargs='*',  help='Conduct command: fw .../target ...')
+    parser.add_argument('cmd', nargs='*',  help='Conduct command: fw ... | target ...')
 
     args = parser.parse_args()
     

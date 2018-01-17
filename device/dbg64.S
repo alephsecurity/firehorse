@@ -5,7 +5,8 @@
 
 #include "constants.h"
 
-
+// This label will be used as the exception handler for aarch64 exceptions
+// It saves the register state on the stack, and the passes the control to the dbg_entry function
 dbg_entry64:
     STP             X30, X0, [SP,#-0x10]! 
     STP             X28, X29, [SP,#-0x10]! 

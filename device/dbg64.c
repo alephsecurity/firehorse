@@ -12,9 +12,13 @@ __attribute__((naked)) dbg64entry() {
     __asm__("MOV %[regs], SP" : [regs] "=r" (regs));
     dbg64(regs);
 }
+
+/*
+ * 64 bit debugger
+ */
 int dbg64(u_int64 x[])
 {
-
+    // check our current EL and acquire relevant system regs 
     u_int64 currentel = get_currentel()>>2;
     u_int64 elr = -1, far = -1, esr = -1;
     switch (currentel)
@@ -36,9 +40,11 @@ int dbg64(u_int64 x[])
         default:
             break;
     }
+
     void *entry = get_fh_entry();
     firehorse *fh = getcontext();
-
+    
+    // reproduce all other breakpoints and recover the original instruction for the current breakpoint
     bp *b = fh_reproduce_breakpoints_and_recover_instruction((u_int32 *)elr);
 
     do
@@ -59,7 +65,6 @@ int dbg64(u_int64 x[])
         DD("");
 
     } while (b == NULL);
-
-
+    
     __asm__("MOV SP, %[x]; B dbg_exit64" :: [x] "r" (x));
 }

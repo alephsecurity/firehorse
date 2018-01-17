@@ -59,6 +59,7 @@ def boom():
     I('boom')
     return
 
+
 def upload_init64():
     target = t.get()
     p.sendfile("../device/build/init64.payload", target.fh_base_programmer)
@@ -79,7 +80,8 @@ def upload_fh():
    # e = XMLHunter(file("../device/build/fh64.payload","rb").read(), target.fh_base_programmer, target)
    # e.send()
     return
-    
+
+
 def upload_fh_data():
 
     target = t.get()  
@@ -90,11 +92,10 @@ def upload_fh_data():
     #bpm.bp_programmer(0xF801DA08, msg="poke")
     
     pm = PatchManager()
-  #  pm.patch32_programmer(0x1402C958, 0xFFFFFFFF)
+    # pm.patch32_programmer(0x1402C958, 0xFFFFFFFF)
 
     I('applying patches and breakpoints...')
 
-    
     I('creating pagecopy...')
     pages = set()
 
@@ -142,19 +143,22 @@ def magic():
     #hook_handlers()
 
 
-t.add_target(name="angler", arch=64, 
-                programmer_path=r"target/angler/prog_emmc_firehose.mbn", 
-                peekpoke_style=1, 
-                saved_lr=0xF801d214, saved_lr_addr = 0xFEC03f88,
-                exe_addr = 0xFEC03f88+0x110,
-                pbl_base_addr=0xFC010000,
-                page_table_base = 0xfe800000,
-                rpm_pbl_base_addr = 0xFC000000,
-                modem_pbl_base_addr = 0xFC004000,
-                fh_base_programmer = 0xfe824000,
-                fh_scratch_offset=0xc000, 
-                basicblocks_db_pbl="target/angler/pbl-angler-bbdb.txt",
-                rawprogram_xml="target/angler/rawprogram0.xml",
-                magic=magic,
-                rop=rop,
-                uart=0xfe813b70, pt_levels=3, tnsz=32)
+t.add_target(name="angler", arch=64,
+             programmer_path=r"target/angler/prog_emmc_firehose.mbn",
+             peekpoke_style=1,
+             saved_lr=0xF801d214,
+             saved_lr_addr=0xFEC03f88,
+             exe_addr=0xFEC03f88+0x110,
+             pbl_base_addr=0xFC010000,
+             page_table_base=0xfe800000,
+             rpm_pbl_base_addr=0xFC000000,
+             modem_pbl_base_addr=0xFC004000,
+             fh_base_programmer=0xfe824000,
+             fh_scratch_offset=0xc000,
+             basicblocks_db_pbl="target/angler/pbl-angler-bbdb.txt",
+             rawprogram_xml="target/angler/rawprogram0.xml",
+             magic=magic,
+             rop=rop,
+             uart=0xfe813b70,
+             pt_levels=3,
+             tnsz=32)

@@ -27,8 +27,6 @@ typedef struct
     u_int32 inst;
     u_int8 instsize;
     u_int8 callback;
-   // u_int32 cbarg1;
-   // u_int32 cbarg2;
     char msg[BP_MESSAGE_LENGTH+1];
 } 
 bp;

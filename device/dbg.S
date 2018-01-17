@@ -5,6 +5,9 @@
 
 #include "constants.h"
 
+// All labels here will be used as the exception handlers 
+// They all save the current registrs state to a known location,
+// and then passes the control to the dbg function
 
 dbg_data_abort_entry:
     MCR p15,0,R0,c13,c0,2;

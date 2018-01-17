@@ -18,6 +18,7 @@ Blog posts:
 To use this tool you'll need:
     1. Qualcomm Product Support Tools (QPST - we used version 2.7.437 running on a windows 10 machine)
     2. A Cross compiler to build the payload for the devices (we used [arm-eabi-4.6](https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/) toolchain for aarch32 and [aarch64-linux-android-4.8](https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8/) toolchain for aarch64, both running on ubuntu 16.04 machine)
+    3. Aquire the relevant programmers and copy them to the relevant host/target/<device> directory
 
 
 ### Building the payloads

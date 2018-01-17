@@ -20,11 +20,13 @@ _label2:
     BNE _label1;
     BX lr;
 
+
 invalidate_inst:
     DSB SY; ISB SY;
     MOV r0, #0;
     MCR p15, 0, r0, c7, c5, 0;
     BX lr;
+
 
 invalidate_tlb:
     DSB SY; ISB SY;
@@ -44,6 +46,7 @@ invalidate_caches:
     BL invalidate_tlb;
     BX r3;
 
+
 invalidate_bp:
     DSB SY; ISB SY;
     MOV r0, #0;
@@ -55,32 +58,41 @@ get_ttbr0:
     MRC p15,0,r0,c2,c0,0;
     BX lr;
 
+
 get_ttbr1:
     MRC p15,0,r0,c2,c0,1;
     BX lr;
+
+
 get_scr:
     MRC p15,0,r0,c1,c1,0
     BX lr;
+
 
 get_nsacr:
     MRC p15,0,r0,c1,c1,2
     BX lr
 
+
 get_vbar:
     MRC p15,0,r0,c12,c0,0
     BX lr
+
 
 get_cpsr:
     MRS r0, CPSR
     BX lr
 
+
 get_mvbar:
     MRC p15,0,r0,c12,c0,1
     BX lr
 
+
 get_rmr:
     MRC p15,0,r0,c12,c0,2
     BX lr
+
     
 disablemmu2:
     MRC             p15, 0, R0,c1,c0, 0;

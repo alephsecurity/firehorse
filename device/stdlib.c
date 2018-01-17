@@ -38,7 +38,8 @@ void memset(void *dst, int c, size_t n)
     }
 }
 
-    
+
+// normal copy followed by cache invalidation    
 void codecpy(void *dst, const void *src, size_t size)
 {
     memcpy(dst, src, size);
@@ -50,6 +51,7 @@ void writel(u_int32 addr, u_int32 data)
 {
    *(u_int32 *)(addr) = data;
 }
+
 
 u_int32 mod(u_int32 n, u_int32 m)
 {
@@ -63,6 +65,7 @@ u_int32 mod(u_int32 n, u_int32 m)
     }
     return n;
 }
+
 
 u_int32 div(u_int32 n, u_int32 d)
 {
@@ -80,8 +83,10 @@ u_int32 div(u_int32 n, u_int32 d)
     return i;
 }
 
+
 #ifdef NEED_ALIGNMENT
 
+// memcpy aligned
 void memcpya(void *dst, const void *src, size_t size)
 {
     while (size-- > 0)
@@ -91,6 +96,7 @@ void memcpya(void *dst, const void *src, size_t size)
 }
 
 
+// read 8 bytes aligned
 u_int64 r64a(u_int8 *buf)
 {
     u_int64 n1 = 8-(u_int64)(buf)%8;
@@ -109,6 +115,9 @@ u_int64 r64a(u_int8 *buf)
 
     return out;
 }
+
+
+// read 4 bytes aligned
 u_int32 r32a(u_int8 *buf)
 {
     u_int64 x = r64a(buf);
@@ -116,15 +125,23 @@ u_int32 r32a(u_int8 *buf)
 
     return nx;
 }
+
+
+// read 2 bytes aligned
 u_int16 r16a(u_int8 *buf)
 {
     return lsr(lsl(r64a(buf),48),48);
 }
 
+
+// read 1 byte aligned
 u_int8 r8a(u_int8 *buf)
 {
     return lsr(lsl(r64a(buf),56),56);
 }
+
+
+// write 8 bytes aligned
 void w64a(u_int8 *buf, u_int64 x)
 {
     u_int8 n1 = 8 - ((u_int8)(buf) % 8);
@@ -136,7 +153,6 @@ void w64a(u_int8 *buf, u_int64 x)
     u_int64 x1 = lsl(x, s2);
     u_int64 x2 = lsr(x, s1);
 
-
     u_int64 orig1 = lsr(lsl((*(u_int64 *)(buf-n2)), s1), s1);
     u_int64 orig2 = lsl(lsr((*(u_int64 *)(buf-n2+8)), s2), s2);
 
@@ -144,6 +160,8 @@ void w64a(u_int8 *buf, u_int64 x)
     *(u_int64 *)(buf-n2+8) = orig2  | x2;
 }
 
+
+// write 4 bytes aligned
 void w32a(u_int8 *buf, u_int32 x)
 {
     u_int64 orig = r64a(buf);
@@ -153,12 +171,16 @@ void w32a(u_int8 *buf, u_int32 x)
     w64a(buf, (lsl(lsr(orig,32),32))|(u_int64)x);
 }
 
+
+// write 2 bytes aligned
 void w16a(u_int8 *buf, u_int16 x)
 {
     u_int64 orig = r64a(buf);
     w64a(buf, (lsl(lsr(orig,16),16))|(u_int64)x);
 }
 
+
+// write 1 byte aligned 
 void w8a(u_int8 *buf, u_int8 x)
 {
     u_int64 orig = r64a(buf);
@@ -166,6 +188,7 @@ void w8a(u_int8 *buf, u_int8 x)
 }
 
 
+// logical shift left
 u_int64 lsl(u_int64 x, u_int64 y)
 {
     if (y == 64)
@@ -175,6 +198,8 @@ u_int64 lsl(u_int64 x, u_int64 y)
     return asm_lsl(x, y);
 }
 
+
+// logical shift right
 u_int64 lsr(u_int64 x, u_int64 y)
 {
     if (y == 64)
@@ -183,6 +208,7 @@ u_int64 lsr(u_int64 x, u_int64 y)
     }
     return asm_lsr(x, y);
 }
+
 #else
 u_int64 r64a(u_int8 *buf)  { return *(u_int64 *)buf; }
 u_int32 r32a(u_int8 *buf) { return *(u_int32 *)buf; }

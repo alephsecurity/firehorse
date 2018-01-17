@@ -8,145 +8,174 @@ get_currentel:
     mrs x0, CurrentEL
     ret
 
+
 .align 3
 get_elr_el1:
     mrs x0, ELR_EL1
     ret
+
 
 .align 3
 get_elr_el2:
     mrs x0, ELR_EL2
     ret
 
+
 .align 3
 get_elr_el3:
     mrs x0, ELR_EL3
     ret
+
 
 .align 3
 get_ttbr0_el1:
     mrs x0, TTBR0_EL1
     ret
 
+
 .align 3
 get_ttbr0_el2:
     mrs x0, TTBR0_EL2
     ret
+
 
 .align 3
 get_ttbr0_el3:
     mrs x0, TTBR0_EL3
     ret
 
+
 .align 3
 get_ttbr1_el1:
     mrs x0, TTBR1_EL1
     ret
+
 
 .align 3
 get_tcr_el1:
     mrs x0, TCR_EL1
     ret
 
+
 .align 3
 get_tcr_el2:
     mrs x0, TCR_EL2
     ret
+
 
 .align 3
 get_tcr_el3:
     mrs x0, TCR_EL3
     ret
 
+
 .align 3
 get_vbar_el1:
     mrs x0, VBAR_EL1
     ret
+
 
 .align 3
 get_vbar_el2:
     mrs x0, VBAR_EL2
     ret
 
+
 .align 3
 get_vbar_el3:
     mrs x0, VBAR_EL3
     ret
+
 
 .align 3
 get_daif:
     mrs x0, DAIF
     ret
 
+
 .align 3
 get_nzcv:
     mrs x0, NZCV
     ret
-    
+
+
 .align 3
 get_spsel:
     mrs x0, SPSel
     ret
+
 
 .align 3
 get_rvbar_el3:
     mrs x0, RVBAR_EL3
     ret
 
+
 .align 3
 get_rvbar_el2:
     mrs x0, RVBAR_EL2
     ret
+
 
 .align 3
 get_rvbar_el1:
     mrs x0, RVBAR_EL1
     ret
 
+
 .align 3
 get_scr_el3:
     mrs x0, SCR_EL3
     ret
+
 
 .align 3
 get_sctlr_el3:
     mrs x0, SCTLR_EL3
     ret
 
+
 .align 3
 get_sctlr_el2:
     mrs x0, SCTLR_EL2
     ret
+
 
 .align 3
 get_sctlr_el1:
     mrs x0, SCTLR_EL1
     ret
 
+
 .align 3
 get_far_el1:
     mrs x0, FAR_EL1
     ret
-    
+
+
 .align 3
 get_far_el2:
     mrs x0, FAR_EL2
     ret
+
 
 .align 3
 get_esr_el1:
     mrs x0, ESR_EL1
     ret
 
+
 .align 3
 get_esr_el2:
     mrs x0, ESR_EL2
     ret
 
+
 .align 3
 get_esr_el3:
     mrs x0, ESR_EL3
     ret
+
 
 .align 3
 enable_mmu:
@@ -160,12 +189,14 @@ enable_mmu:
     isb;
     ret
 
+
 .align 3
 flush_caches_el1_try2:
     ic	iallu;
     tlbi vmalle1is;
     dsb ish;
-    
+
+
 .align 3
 flush_caches_el1:
 	dsb sy;
@@ -199,19 +230,23 @@ dbg_exit64:
     LDP             X30, X0, [SP],#0x10
     ERET
 
+
 .align 3
 invalidate_caches:
     ret
+
 
 .align 3
 asm_lsl:
     LSL X0, X0, X1;
     RET
 
+
 .align 3
 asm_lsr:
     LSR X0, X0, X1;
     RET
+
 
 .global get_currentel
 .global get_elr_el1

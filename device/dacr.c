@@ -5,10 +5,11 @@ by Roee Hay & Noam Hadad, Aleph Research
 
 #include "fh.h"
 
+
+// sets the Domain Access Control Register to 0xFFFFFFFF
 STACKHOOK(dacr)
 {
    DD("Elevating to manager");
-   //__asm("MOV R0, #0xFFFFFFFF; MCR p15,0,R0,c3,c0,0;");
    fh_dacr();
    DD("Done elevating");
 }

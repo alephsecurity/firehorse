@@ -23,6 +23,9 @@ void invalidate_context()
 }
 
 
+/*
+ * Returns a pointer to the context (firehorse) data structure
+ */
 firehorse *getcontext()
 {
     if (INVALID_PTR != fh)
@@ -33,27 +36,19 @@ firehorse *getcontext()
     fh = (firehorse *)get_fh_scratch();
     u_int32 bplen = fh->bplen;
     fh->bps = (bp *)((unsigned int)fh + sizeof(firehorse));
-    int i = 0;
     bp *bps = (bp *) fh->bps;
- 
-    /*
-    for (i = 0; i < bplen; i++)
-    {
-        bps[i].instsize = 4;
-    }
-    */
     fh->patches = (patch *)(bps + bplen);
- 
-
     fh->pc = (pcopy *)(fh->patches + fh->patchlen);
 
     return fh;
 }
 
 
+/*
+ * Outputs a memory dump of the given address and size to uart
+ */
 void fh_memdump(u_int32 addr, u_int32 size)
 {
-
     char *c = (char *)(addr & 0xFFFFFFFC);
     while (c <= (char *)(addr+size))
     {
@@ -67,9 +62,12 @@ void fh_memdump(u_int32 addr, u_int32 size)
 
 }
 
+
+/*
+ * Outputs a memory dump of the given address and size to uart
+ */
 void fh_memdump2(u_int32 addr, u_int32 size)
 {
-
     char *c = (char *)(addr & 0xFFFFFFFC);
     char line[53];
 
@@ -80,67 +78,60 @@ void fh_memdump2(u_int32 addr, u_int32 size)
         uartB(line);
         c+=16;
     }
-
 }
 
+
+/*
+ * Applies the patches relevant to given mode we're in (PROGRAMMER, PBL, SBL or ABOOT)
+ */
 void fh_apply_patches()
 {
    firehorse *fh = getcontext();
-
    int i = 0;
 
-//    D("Patching for mode %d started", fh->mode);
-//    D("Reading patchlen @ %016lx = %08x", &fh->patchlen, fh->patchlen);
    for (i = 0; i < fh->patchlen; i++)
    {
        patch *p = &fh->patches[i];
-
        if (fh->mode != p->type) continue;
-    //    D("Patching: 0x%08x = 0x%08x", p->va, p->val);
        *(p->va) = p->val;
-    //    DD("ok.");
    }
-//    D("Patching for mode %d done", fh->mode);
 
 #ifdef VALIDATE_PAGES
    fh_compute_page_checksums();
 #endif
-
 }
 
 
 bp *fh_reproduce_breakpoints_and_recover_instruction(u_int32 *lr)
 {
     firehorse *fh = getcontext();
-
     u_int64 i = 0;
     bp *b = NULL;
     bp *bps = (bp *)fh->bps;
 
+    // find relevant breakpoint to restore
     for (i = 0; i < fh->bplen; i++)
     {
-        // D("BP: %08x", bps[i].va);
         if (bps[i].va == lr)
         {
-           // D("Resolved breakpoint: %0d", i);
             b = &bps[i];
             break;
         }
     }
-    // TODO: handle adjacent breakpoints
+
     if (NULL == b) 
     {
         return NULL;       
     }
 
+    // reproduce instruction
     switch (b->instsize)
     {
         case 4: *(u_int32 *)(b->va) = (u_int32)b->inst; break;
         case 2: *(u_int16 *)(b->va) = (u_int16)b->inst; break;
     }
 
-    //D("reproducing instruction 4: %08x = %08x", b->va, *(u_int32 *)(b->va));
-
+    // reproduce all other breakpoints (only the ones relevant to current mode)
     for (i = 0; i < fh->bplen; i++)
     {
         if (0 == (bps[i].flag & BP_FLAG_ONCE) && (&bps[i] != b) && (bps[i].type == b->type))
@@ -150,97 +141,86 @@ bp *fh_reproduce_breakpoints_and_recover_instruction(u_int32 *lr)
                 case 4: *(u_int32 *)(bps[i].va) = UNDEF_INST_32; break;
                 case 2: *(u_int16 *)(bps[i].va) = UNDEF_INST_16; break;
             }
-      //      D("reproducing breakpoint 4: %08x = %08x", bps[i].va, *(u_int32 *)(bps[i].va));
         }
     }
 
     return b;
-
 }
+
 
 void fh_enable_breakpoints()
 {
-   firehorse *fh = getcontext();
+    firehorse *fh = getcontext();
+    int i = 0;
 
-   int i = 0;
-
-//    D("Setting breakpoint for mode %d started", fh->mode);
-
-//    D("Reading bplen @ %016lx = %08x", &fh->bplen, fh->bplen);
-
-   for (i = 0; i < fh->bplen; i++)
-   {
-       bp *b = &fh->bps[i];
-    //    D("Reading breakpoint @ %016lx w/ va %08x", b, b->va);
-       if (fh->mode == b->type)
-       {
-        // D("Saving original instruction for bp va 0x%08x", b->va);
-        switch (b->instsize)
+    for (i = 0; i < fh->bplen; i++)
+    {
+        bp *b = &fh->bps[i];
+        if (fh->mode == b->type)
         {
-            case 4:
-                b->inst = *(u_int32 *)(b->va);
-                break;
-            case 2:
-                b->inst = (u_int32)*(u_int16 *)(b->va);
-                break;
+            switch (b->instsize)
+            {
+                case 4:
+                    b->inst = *(u_int32 *)(b->va);
+                    break;
+                case 2:
+                    b->inst = (u_int32)*(u_int16 *)(b->va);
+                    break;
+            }
         }
-    
-       }
-   }
-   for (i = 0; i < fh->bplen; i++)
-   {
-       bp *b = &fh->bps[i];
+    }
 
-   //    D("bp->type = %02d, current_mode = %02d", b->type, fh->mode);
-       if (fh->mode == b->type)
-       {
-        D("Installing bp for va 0x%08x, size=%0d", b->va, b->instsize);
-        switch (b->instsize)
+    for (i = 0; i < fh->bplen; i++)
+    {
+        bp *b = &fh->bps[i];
+        if (fh->mode == b->type)
         {
-            case 4:
-                *(u_int32 *)(b->va) = UNDEF_INST_32;
-                break;
-            case 2:
-                *(u_int16 *)(b->va) = UNDEF_INST_16;
-                break;
+            D("Installing bp for va 0x%08x, size=%0d", b->va, b->instsize);
+            switch (b->instsize)
+            {
+                case 4:
+                    *(u_int32 *)(b->va) = UNDEF_INST_32;
+                    break;
+                case 2:
+                    *(u_int16 *)(b->va) = UNDEF_INST_16;
+                    break;
+            }
+        
         }
-    
-       }
-   }
-//    D("Setting breakpoint for mode %d done", fh->mode);
-#ifdef VALIDATE_PAGES
-   fh_compute_page_checksums();
-#endif
-
+    }
+    #ifdef VALIDATE_PAGES
+    fh_compute_page_checksums();
+    #endif
 }
 
 
+/*
+ * Copies the FireHorse code to a new location and updates relevant pointers
+ */
 void fh_rebase(u_int32 dst) 
-{
-    
+{    
     codecpy(dst, get_fh_entry(), ADDR_SIZE);
-
     void (*rinit)() = ADDR_REMOTE_INIT(dst);
-    
     D("Calling remote init: %08x", rinit);
-
     rinit();
-
 }
 
 static char log[ADDR_FH_LOG_SIZE+1] = {1};
 static u_int32 logIndex = 0;
 
-#define LOG_INDEX_GET(x) mod(x, ADDR_FH_LOG_SIZE)
 
+#define LOG_INDEX_GET(x) mod(x, ADDR_FH_LOG_SIZE)
 #define LOG_INDEX       LOG_INDEX_GET(logIndex)
 #define LOG_INDEX_INC   LOG_INDEX_GET(logIndex++)
 #define LOG_WRITE(c)    log[LOG_INDEX_INC] = c; log[LOG_INDEX] = '\0'
+
 
 void fh_log_init()
 {
     log[sizeof(log)-1] = '\0';
 }
+
+
 void fh_log_msg(char *buf)
 {
     while (*buf != 0)
@@ -251,6 +231,8 @@ void fh_log_msg(char *buf)
     LOG_WRITE('\r');
     LOG_WRITE('\n');
 }
+
+
 void fh_log_data(char *data, u_int32 size)
 {
     while (size-- > 0)
@@ -260,6 +242,7 @@ void fh_log_data(char *data, u_int32 size)
     }
 }
 
+
 void fh_dump_log()
 {   
     uartB("LOG DUMP");
@@ -267,13 +250,15 @@ void fh_dump_log()
     uartB(log);
 }
 
+/*
+ * Invalidates uart and snprintf function pointers
+ */
 void fh_disable_uart()
 {
     set_uartB(ADDR_UARTB_NULL);
     set_snprintf(ADDR_SNPRINTF_NULL);
     set_dprintf(ADDR_DPRINTF_NULL);
 }
-
 
 
 void fh_print_banner(firehorse *fh)
@@ -284,23 +269,21 @@ void fh_print_banner(firehorse *fh)
     fh_print_system_registers();
 }
 
+
 void fh_print_system_registers()
 {
-
 #if ARCH==32
-
     D("CPSR = %08x", get_cpsr());
     D("SCR = %08x", get_scr());
     D("NSACR = %08x", get_nsacr());
     D("VBAR = %08x", get_vbar());
     D("MVBAR = %08x", get_mvbar());
     D("RMR = %08x", get_rmr());
-
     D("TTBR0 = %08x", get_ttbr0());
     D("TTBR1 = %08x", get_ttbr1());
 #endif
+
 #if ARCH==64
- 
   u_int64 currentel = get_currentel()>>2;
   u_int64 ttbr0 = 0, ttbr1 = 0;
   D("Exception Level=%d", currentel);
@@ -333,15 +316,14 @@ void fh_print_system_registers()
       D("SCTLR_EL1  = %016lx", get_sctlr_el1());    
       D("TCR_EL1    = %016lx", get_tcr_el1());
   }
-
 #endif
-
    DD(" ");
-
 }
 
 
-
+/*
+ * Convert a value in memory to its hex string representation
+ */
 static void _mem2str(u_int8 *in, u_int32 size, u_int8 offset, char *out)
 {
     int i = 0;
@@ -356,6 +338,7 @@ static void _mem2str(u_int8 *in, u_int32 size, u_int8 offset, char *out)
     }
     out[4+3*size] = '\0';
 }
+
 static void _itoa(u_int8 in, char *out)
 {
     u_int8 n1 = in & 0xF;
@@ -375,28 +358,25 @@ static char _n2c(u_int8 n)
 }
 
 
-
 #ifdef VALIDATE_PAGES
+
+/*
+ * Verifies the pages in the pagecopy(pcopy) struct weren't corrupted
+ */
 void fh_verify_pages()
 {
-  firehorse *fh = getcontext();
+    firehorse *fh = getcontext();
+    pcopy *p = fh->pc; 
+    page *pages = &(p->npages)+1;
+    u_int32 sum = 0;
+    int i;
 
-  pcopy *p = fh->pc;
+    for (i = 0; i < p->npages; i++)
+    {
+        int j;
 
- 
-   page *pages = &(p->npages)+1;
-
-//    D("number of pages to verify: %d", p->npages);
-   
-   u_int32 sum = 0;
-   int i;
-   for (i = 0; i < p->npages; i++)
-   {
         if (pages[i].mode != fh->mode) continue;
         if (!pages[i].cksum) continue;
-
-        int j;
-        // D("dst: %08x", pages[i].dst);
         
         for (j = 0 ; j < 0x1000/4; j++)
         {
@@ -405,9 +385,6 @@ void fh_verify_pages()
             if (0xFFFFFFFF == v)
             {
                 u_int32 *va = &(pages[i].dst)[j];
-                // D("Getting inst for va = %08x, v = 0x%08x", va, v);
-                //v = get_inst_for_va(fh, va);
-                // D("Got v = 0x%08x", v);
             }
             sum ^= v;
         }
@@ -419,43 +396,38 @@ void fh_verify_pages()
             }
         }
         sum = 0;
-        
-   }
-
-//    DD("verify pages done");
-  
+    }
 }
 
 
+/*
+ * Sets the checksum value for the pages in the pagecopy(pcopy) struct
+ */
 void fh_compute_page_checksums()
 {
-   int i = 0;
-   
-   firehorse *fh = getcontext();
-   pcopy *p = fh->pc;
+    firehorse *fh = getcontext();
+    pcopy *p = fh->pc;
+    page *pages = &(p->npages)+1;
+    u_int32 sum = 0;
+    int i = 0;
 
-   page *pages = &(p->npages)+1;
-
-//    D("fh_compute_page_checksums: %d pages", p->npages);
-   
-   u_int32 sum = 0;
-   for (i = 0; i < p->npages; i++)
-   {
-        int j,k;
-        // D("src: %08x  dst:%08x", pages[i].src, pages[i].dst);    
-        for (j = 0 ; j < 0x1000/4; j++)
-        {
-            u_int32 v = (pages[i].src)[j];
-            sum ^= v;
-        }
-        pages[i].cksum = sum;
-        sum = 0;
-   }
-
-//    D("fh_compute_page_checksums: done with %d pages", p->npages);
-
+    for (i = 0; i < p->npages; i++)
+    {
+            int j,k;
+            for (j = 0 ; j < 0x1000/4; j++)
+            {
+                u_int32 v = (pages[i].src)[j];
+                sum ^= v;
+            }
+            pages[i].cksum = sum;
+            sum = 0;
+    }
 }
 
+
+/*
+ * Returns the instruction to place in the given virual address
+ */
 static u_int32 get_inst_for_va(firehorse *fh, u_int32 *va)
 {
    int i;
@@ -470,8 +442,5 @@ static u_int32 get_inst_for_va(firehorse *fh, u_int32 *va)
    }
    return *va;
 }
-
-
-
 
 #endif

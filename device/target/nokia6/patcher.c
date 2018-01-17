@@ -27,6 +27,11 @@ STACKHOOK(pblpatcher)
     DD("PBL patcher called done!");
 }
 
+
+/*
+ * Called after the sbl is loaded to memory and before it is executed.
+ * Updates relevant sbl function pointers (so we can use them later...)
+ */
 void cb_sblpatcher(cbargs *args)
 {
     int *ptr = (int *)0x804CE67;
@@ -36,9 +41,14 @@ void cb_sblpatcher(cbargs *args)
     set_snprintf(ADDR_SNPRINTF_SBL);
 
     init();
-
-
 }
+
+
+/*
+ * Called after the abl is loaded to memory and before it is executed.
+ * Updates all relevant abl function pointers (so we can use them later...)
+ * Moves FireHorse to a new location (where it won't get overwritten)
+ */
 void cb_ablpatcher(cbargs *args)
 {
     char foowelcome[] = "welcome to foo\n";
@@ -70,12 +80,20 @@ void cb_ablpatcher(cbargs *args)
     
 }
 
+
+/*
+ * A small patch to one of the strings in the linnux kernel
+ */
 void patch_kernel()
 {
     char foo[]=  "hello from linux!!! foo";  
     memcpy((void *)(0x10080000+0xEE8D10), foo, sizeof(foo));
 }
 
+
+/*
+ * Overwrites the ramdisk with our moded ramdisk 
+ */
 void cb_before_linux()
 {
     patch_kernel();
@@ -88,6 +106,9 @@ void cb_before_linux()
 }
 
 
+/*
+ * Reads the logdump partition to ADDR_SCRATCH_RAMDISK
+ */
 void cb_mmcread()
 {
  
@@ -105,10 +126,18 @@ void cb_mmcread()
 
 }
 
+/*
+ * Called right before the linux kernel is jumped to
+ * patches the ramdisk size and kernel command line passed to the DTB consruction routine
+ */
 void cb_bootlinux(cbargs *cb)
 {
     char *cmdline = (char *)(cb->regs[R7]);
-    char buf[]= "console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci loglevel=7 buildvariant=user";
+    char buf[]= "console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 \
+                androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 \
+                lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci \
+                loglevel=7 buildvariant=user";
+
     D("Setting ramdisk size to %d", RAMDISK_SIZE);
     cb->regs[R5] = RAMDISK_SIZE;
 
@@ -116,10 +145,13 @@ void cb_bootlinux(cbargs *cb)
     D("cmdline = %s", cmdline);
     
     memcpy(cmdline, buf, sizeof(buf));
-
 }
 
 
+/*
+ * This callback is called right before QSEE start,
+ * it patches the TZ with a hook on the first function call after the entry point
+ */
 void cb_patchtz(cbargs *cb)
 {
     //patch the function call at 0x86500008 with a call to our code (located at 0x86503B90) 

@@ -5,6 +5,10 @@ by Roee Hay & Noam Hadad, Aleph Research
 
 #include "fh.h"
 
+
+/*
+ * Copies all pages in the FireHorse context struct to their specified destanation
+ */
 STACKHOOK(pagecopy)
 {
    int i = 0;
