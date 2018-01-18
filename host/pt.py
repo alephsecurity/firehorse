@@ -7,91 +7,96 @@ import sys
 import struct
 import re
 from log import *
+
+
 def get_n(x):
     return int(x[6:8]+x[4:6]+x[2:4]+x[0:2], 16)
+
 
 def parse_pt(data):
     va = 0
     entries = []
     while va < len(data):
-        entry = struct.unpack("<L",data[va:va+4])[0] 
-        
+        entry = struct.unpack("<L", data[va:va+4])[0]
         f = get_fld(entry)
 
-        if None == f:
-            va+=4
+        if f is None:
+            va += 4
             continue
 
         entries.append((va/4 << 20, f))
-        I("%08x %s", va/4 << 20, f) 
-        
-        va+=4
+        I("%08x %s", va/4 << 20, f)
+        va += 4
 
     return entries
+
 
 def parse_spt(data, base):
     va = 0
     while va < 0x400:
-        entry = struct.unpack("<L",data[va:va+4])[0] 
-        
-        f = get_sld(entry) 
-        I("%08x %s",base+(va/4 << 12), f)
-        va+=4
+        entry = struct.unpack("<L", data[va:va+4])[0]
+
+        f = get_sld(entry)
+        I("%08x %s", base+(va/4 << 12), f)
+        va += 4
+
 
 def get_fld(fld):
-        
     s = fld & 3
     if s == 0:
         return fault_desc(fld)
-    
+
     if s == 1:
         return pt_desc(fld)
 
     if s == 2:
         return section_desc(fld)
-        
+
     if s == 3:
         return reserved_desc(fld)
 
 
 def get_sld(sld):
-        
     s = sld & 3
     if s == 1:
         return sld_lp(sld)
-    
+
     if s > 1:
         return sld_xsp(sld)
-        
+
     return "UNSUPPORTED"
-        
+
+
 class descriptor(object):
     def __init__(self, fld):
         pass
-     
+
     def __repr__(self):
         s = "%8s " % self.get_name()
         for attr, value in self.__dict__.iteritems():
             try:
-                s+="%s=%s, " % (attr, hex(value))
+                s += "%s=%s, " % (attr, hex(value))
             except:
-                s+="%s=%s, " % (attr, value)
-    
-        return s     
-        
+                s += "%s=%s, " % (attr, value)
+
+        return s
+
+
 class fld(descriptor):
     pass
-    
+
+
 class fault_desc(fld):
 
     def get_name(self):
         return "FAULT"
 
+
 class reserved_desc(fld):
 
     def get_name(self):
         return "RESERVED"
-             
+
 
 class pt_desc(fld):
 
@@ -102,10 +107,12 @@ class pt_desc(fld):
         self.sbz1 = (desc >> 4) & 1
         self.ns = (desc >> 3) & 1
         self.sbz2 = (desc >> 2) & 1
-             
+
+
     def get_name(self):
         return "PT"
-        
+
+
 class section_desc(fld):
     def __init__(self, desc):
         self.section_base = (desc >> 20) << 20
@@ -121,14 +128,15 @@ class section_desc(fld):
         self.nx = (desc >> 4) & 1
         self.c = (desc >> 3) & 1
         self.b = (desc >> 2) & 1
-             
+
+
     def get_name(self):
         return "SECTION"
 
-        
+
 class sld(descriptor):
     pass
-    
+
 
 class sld_lp(sld):
 
@@ -143,9 +151,11 @@ class sld_lp(sld):
         self.ap = (desc >> 4) & 3
         self.c = (desc >> 3) & 1
         self.b = (desc >> 2) & 1
-             
+
+
     def get_name(self):
         return "LARGEPAGE"
+
 
 class sld_xsp(sld):
 
@@ -160,6 +170,7 @@ class sld_xsp(sld):
         self.c = (desc >> 3) & 1
         self.b = (desc >> 2) & 1
         self.nx = desc & 1
-        
+
+
     def get_name(self):
         return "XSMALLPAGE"

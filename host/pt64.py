@@ -31,7 +31,7 @@ def get_level_index(va, level):
 
 def get_level_bits(level, tnsz):
     if level == 1:
-        return 37-tnsz+26+1-30 
+        return 37-tnsz+26+1-30
 
     if level == 2:
         return 9
@@ -45,6 +45,7 @@ def get_level_bits(level, tnsz):
 def get_level_size(tnsz, level):
     return 2**get_level_bits(level, tnsz)*8
 
+
 def get_va_for_level(va, index, level):
     if level == 1:
         return va + (index<<30)
@@ -55,54 +56,56 @@ def get_va_for_level(va, index, level):
     if level == 3:
         return va + (index<<12)
 
+
 def parse_pt(data, base, tnsz, level=1):
     i = 0
     entries = []
     while i < min(len(data), get_level_size(tnsz, level)):
-        entry = struct.unpack("<Q",data[i:i+8])[0] 
-        
-        f = get_fld(entry, level) 
-        if None == f:
-            i+=8
+        entry = struct.unpack("<Q", data[i:i+8])[0]
+
+        f = get_fld(entry, level)
+        if f is None:
+            i += 8
             continue
         va = get_va_for_level(base, i/8, level)
         I("%016x %s" % (va, str(f)))
-        entries.append((va,f))
-        i+=8
+        entries.append((va, f))
+        i += 8
 
     return entries
 
+
 def get_fld(fld, level):
-        
     s = fld & 3
     if s == 0:
         return None
-    
+
     if s == 1:
         return block_entry4k(fld, level)
 
     if s == 2:
         return None
-        
+
     if s == 3:
         return table_entry4k(fld, level)
 
 
-        
 class descriptor(object):    
     def __repr__(self):
         s = "%8s " % self.get_name()
         for attr, value in self.__dict__.iteritems():
             try:
-                s+="%s=%s, " % (attr, hex(value))
+                s += "%s=%s, " % (attr, hex(value))
             except:
-                s+="%s=%s, " % (attr, value)
-    
-        return s     
-        
+                s += "%s=%s, " % (attr, value)
+
+        return s
+
+
 class fld(descriptor):
     pass
-    
+
+
 class entry(fld):
     def __init__(self, desc, level):
         self.level = level
@@ -110,7 +113,7 @@ class entry(fld):
         self.ap = (desc >> 61) & 3
         self.xn = (desc >> 60) & 1
         self.pxn = (desc >> 59) & 1
-        self.attrindex = (desc>>2) & 7 
+        self.attrindex = (desc>>2) & 7
         self.ns = (desc>>5) & 1
         self.ap = (desc>>6) & 3
         self.sh = (desc>>8) & 3
@@ -129,6 +132,7 @@ class fault_entry(fld):
     def get_name(self):
         return "FAULT"
 
+
 class block_entry4k(entry4k):
 
     def __init__(self, desc, level):
@@ -145,7 +149,6 @@ class table_entry4k(entry4k):
     def __init__(self, desc, level):
         entry4k.__init__(self, desc, level)
 
-                
+
     def get_name(self):
         return "TABLE4"
-        

