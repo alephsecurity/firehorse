@@ -22,15 +22,15 @@ To use this tool you'll need:
 
 
 ### Building the payloads
-First, we need to edit the Makefile in the device directory - set the device variable to whatever device we want (nokia6, angler, ugglite, mido and cheeseburger are currently supported).
+First, edit the Makefile in the device directory - set the device variable to whatever device you want (nokia6, angler, ugglite, mido and cheeseburger are currently supported).
 <br/>
 <br/>
-Next, we set the CROSS_COMPILE_32 and CROSS_COMPILE_64 enviroment vars as follows:
+Next, set the CROSS_COMPILE_32 and CROSS_COMPILE_64 enviroment vars as follows:
 ```
 export CROSS_COMPILE_32=<path-to-arm-eabi-4.6-toolchain>/bin/arm-eabi-
 export CROSS_COMPILE_64=<path-to-aarch64-linux-android-4.8-toolchain>/bin/aarch64-linux-android-
 ```
-Then we can call make and the payload for our specific device will be built
+Then call make and the payload for your specific device will be built
 
 ### Configure the tool 
 Before we start, we need to configure some stuff, edit the constants.py file in the host directory:
@@ -43,6 +43,8 @@ COM = "COM17"
 FH_LOADER = r"C:\Program Files (x86)\Qualcomm\QPST437\bin\fh_loader.exe"
 SAHARA_SERVER = r"C:\Program Files (x86)\Qualcomm\QPST437\bin\QSaharaServer.exe" 
 ```
+
+
 ### Usage examples
 ```
 c:\firehorse\host>python firehorse.py -s -c COM17 -t nokia6 target magic
