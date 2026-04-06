@@ -1,0 +1,109 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "firehorse"
+dynamic = ["version"]
+description = "Research & Exploitation framework for Qualcomm EDL Firehose programmers"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Roee Hay", email = "research@alephsecurity.com"},
+    {name = "Noam Hadad", email = "research@alephsecurity.com"},
+]
+maintainers = [
+    {name = "Aleph Research", email = "research@alephsecurity.com"},
+]
+keywords = ["qualcomm", "edl", "firehose", "mobile", "security", "research", "exploitation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Topic :: Security",
+    "Topic :: Software Development :: Embedded Systems",
+    "Topic :: System :: Hardware",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "pyserial",
+    "pyusb",
+    "cryptography",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "flake8",
+    "twine",
+    "wheel",
+    "build",
+    "setuptools_scm",
+]
+
+[project.urls]
+Homepage = "https://github.com/alephsecurity/firehorse"
+Repository = "https://github.com/alephsecurity/firehorse"
+Documentation = "https://alephsecurity.com/"
+"Blog Posts" = "https://alephsecurity.com/2018/01/22/qualcomm-edl-1/"
+"Research" = "https://alephsecurity.com/research/"
+"Bug Tracker" = "https://github.com/alephsecurity/firehorse/issues"
+
+[project.scripts]
+firehorse = "firehorse.firehorse:main"
+
+[tool.setuptools]
+packages = ["firehorse"]
+
+[tool.setuptools.package-data]
+firehorse = ["target/*.xml", "target/*.py"]
+
+[tool.setuptools_scm]
+write_to = "firehorse/_version.py"
+
+[tool.black]
+line-length = 100
+target-version = ['py36', 'py37', 'py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".eggs",
+    "*.egg-info",
+]

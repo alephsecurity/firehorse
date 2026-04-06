@@ -1,0 +1,12 @@
+pyserial
+pyusb
+cryptography
+
+[dev]
+pytest
+black
+flake8
+twine
+wheel
+build
+setuptools_scm

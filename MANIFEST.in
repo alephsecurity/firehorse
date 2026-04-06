@@ -1,0 +1,31 @@
+# Include the README and LICENSE files
+include README.md
+include LICENSE
+include pyproject.toml
+
+# Include all Python files
+recursive-include firehorse *.py
+
+# Include XML configuration files
+recursive-include firehorse *.xml
+
+# Include device directory with all source files
+recursive-include device *.c
+recursive-include device *.h
+recursive-include device *.S
+recursive-include device *.ld
+recursive-include device Makefile
+recursive-include device entry
+
+# Include target device files
+recursive-include firehorse/target *.xml
+
+# Exclude compiled files and cache
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .git*
+global-exclude *.so
+global-exclude *.a
+global-exclude *.o
